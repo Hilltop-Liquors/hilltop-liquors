@@ -1474,3 +1474,59 @@ VALUES
 (1470, 'EVERCLEAR 1.75L', '1.75L', 36.99, 4),
 (1471, 'ABSENTE 110 PROOF  GIFT SET 750ML', '750ML', 39.99, 7);
 
+
+# PRODUCT_TYPES TABLES (broadest cats)
+INSERT INTO `product_types` (`id`, `name`)
+VALUES
+(1, 'BEER'),
+(2, 'LIQUOR'),
+(3, 'WINE'),
+(4, 'NON ALCOHOL'),
+(5, 'SNACKS'),
+(6, 'MISC ITEMS');
+
+# CATEGORY (first sub cat)
+INSERT INTO `categories` (`id`, `name`)
+VALUES
+    (1, 'ALE'),
+    (2, 'BOTTLE OPENER'),
+    (3, 'BRANDY'),
+    (4, 'CIDER'),
+    (5, 'CORKSCREW'),
+    (6, 'CUPS'),
+    (7, 'DRINKS'),
+    (8, 'FLASK'),
+    (9, 'FRUIT'),
+    (10, 'GIFTS'),
+    (11, 'GIN'),
+    (12, 'IPA'),
+    (13, 'JUICE'),
+    (14, 'KOOZIES'),
+    (15, 'LAGER'),
+    (16, 'LIQUEUR'),
+    (17, 'MEAD'),
+    (18, 'MEZCAL'),
+    (19, 'MISC ITEMS'),
+    (20, 'MIXERS'),
+    (21, 'MOONSHINE'),
+    (22, 'NON ALCOHOL'),
+    (23, 'PICKLE'),
+    (24, 'PINK'),
+    (25, 'POURER'),
+    (26, 'RED'),
+    (27, 'RTD'),
+    (28, 'RUM'),
+    (29, 'SANGRIA'),
+    (30, 'SHOT GLASS'),
+    (31, 'SNACKS'),
+    (32, 'SPARKLING'),
+    (33, 'SPECIALTY BEER'),
+    (34, 'SYRUP'),
+    (35, 'TEQUILA'),
+    (36, 'TREATS'),
+    (37, 'VODKA'),
+    (38, 'WHISKEY'),
+    (39, 'WHITE'),
+    (40, 'WINE'),
+    (41, 'WINE OPENER');
+
