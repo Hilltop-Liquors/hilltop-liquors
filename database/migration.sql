@@ -21,13 +21,11 @@ CREATE TABLE `products` (
                             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                             `sku_num` varchar(255),
                             `name` varchar(255),
-                            `cat_id` int(11) unsigned,
                             `sub_cat_id` int(11) unsigned,
                             `size` varchar(100),
                             `price_in_cents` double,
                             `in_store_count` int,
                             PRIMARY KEY (`id`),
-                            FOREIGN KEY (cat_id) REFERENCES categories(id),
                             FOREIGN KEY (sub_cat_id) REFERENCES sub_categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
