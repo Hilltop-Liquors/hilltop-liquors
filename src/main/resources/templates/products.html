@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>FileUpload</h2>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${successmessage}">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <span th:text="${successmessage}"></span>
+            </div>
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${errormessage}">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <span th:text="${errormessage}"></span>
+            </div>
+
+            <form action="" th:action="@{'/fileupload'}" th:object="${product}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="fileupload">File Upload(EXCEL or CSV)</label>
+                    <input type="file" class="form-control" id="fileupload" name="file" th:field="*{file}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <h2>All Products</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Products</th>
+                    <th>Size in Volume</th>
+                    <th>Price</th>
+                    <th>In Store Count</th>
+                    <th>File Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.products}"></td>
+                    <td th:text="${product.size}"></td>
+                    <td th:text="${product.priceInCents}"></td>
+                    <td th:text="${product.inStoreCount}"></td>
+                    <td th:text="${product.fileType}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
