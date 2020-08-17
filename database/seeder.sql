@@ -1,6 +1,6 @@
 
 # PRODUCTS SEEDER
-INSERT INTO `products` (`id`, `sku`, `name`, `cat_id`, `sub_cat_id`, `size`, `price_in_cents`, `in_store_count`)
+INSERT INTO `products` (`id`, `sku_num`, `name`, `cat_id`, `sub_cat_id`, `size`, `price_in_cents`, `in_store_count`)
 VALUES
 (1, '10074271', '14 HANDS HOT TO TROT  SMOOTH RED WINE', 26, NULL, '750ML', 12.99, 43),
 (2, '10074306', '14 HANDS MERLOT 750ML', 26, 28, '750ML', 14.99, 20),
