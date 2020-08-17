@@ -1,51 +1,71 @@
 package com.codeup.hilltopliquors.models;
 
-import com.opencsv.bean.CsvBindByName;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-//    @Column(length = 80, nullable = false)
-    @CsvBindByName
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(length = 80, nullable = false)
     private String products;
-//    @Column(length = 25, nullable = false)
-    @CsvBindByName
+    @Column(length = 25, nullable = false, name = "size_by_volume")
     private String size;
-//    @Column(columnDefinition="Decimal(10,2) default '0.00'", nullable = false)
-    @CsvBindByName
-    private double price_in_cents;
-//    @Column(nullable = false)
-    @CsvBindByName
-    private int in_store_count;
+//    @Column(name = "price", columnDefinition="Decimal(10,2) default '0.00'", nullable = false)
+    @Column(name = "price")
+    private int priceInCents;
+    @Column(nullable = false)
+    private int inStoreCount;
+    @Column(name = "file_type")
+    private String fileType;
 
-    public Product() {}
+    @Transient
+    private MultipartFile file;
 
-    public Product(long id, String products, String size, double price_in_cents, int in_store_count) {
+    public Product () {}
+
+    public Product(int inStoreCount) {
+        this.inStoreCount = inStoreCount;
+    }
+    
+    public Product(Long id, int inStoreCount) {
+        this.id = id;
+        this.inStoreCount = inStoreCount;
+    }
+
+    public Product(Long id, String products, String size, int priceInCents, int inStoreCount) {
         this.id = id;
         this.products = products;
         this.size = size;
-        this.price_in_cents = price_in_cents;
-        this.in_store_count = in_store_count;
+        this.priceInCents = priceInCents;
+        this.inStoreCount = inStoreCount;
     }
 
-    public Product(String products, String size, double price_in_cents, int in_store_count) {
+    public Product(String products, String size, int priceInCents, int inStoreCount, String fileType) {
         this.products = products;
         this.size = size;
-        this.price_in_cents = price_in_cents;
-        this.in_store_count = in_store_count;
+        this.priceInCents = priceInCents;
+        this.inStoreCount = inStoreCount;
+        this.fileType = fileType;
     }
 
-    public long getId() {
+    public Product(String s, int parseInt, String extension) {
+    }
+
+    public Product(String s, String s1, String s2, int i, int parseInt, String extension) {
+    }
+
+    public Product(long parseLong, String s1, String s2, int i, int parseInt, String extension) {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,19 +85,35 @@ public class Product {
         this.size = size;
     }
 
-    public double getPrice_in_cents() {
-        return price_in_cents;
+    public int getPriceInCents() {
+        return priceInCents;
     }
 
-    public void setPrice_in_cents(double price_in_cents) {
-        this.price_in_cents = price_in_cents;
+    public void setPriceInCents(int priceInCents) {
+        this.priceInCents = priceInCents;
     }
 
-    public int getIn_store_count() {
-        return in_store_count;
+    public int getInStoreCount() {
+        return inStoreCount;
     }
 
-    public void setIn_store_count(int in_store_count) {
-        this.in_store_count = in_store_count;
+    public void setInStoreCount(int inStoreCount) {
+        this.inStoreCount = inStoreCount;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
