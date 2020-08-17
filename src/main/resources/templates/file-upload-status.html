@@ -36,7 +36,7 @@
                 <tbody>
                 <tr th:each="product, i : ${products}">
                     <th scope="row" th:text="${i.index + 1}"></th>
-                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.getId()}"></td>
                     <td th:text="${product.products}"></td>
                     <td th:text="${product.size}"></td>
                     <td th:text="${product.price_in_cents}"></td>
