@@ -1486,7 +1486,7 @@ VALUES
 (6, 'MISC ITEMS');
 
 # CATEGORY (first sub cat)
-INSERT INTO `categories` (`id`, `name`)
+INSERT INTO `categories` (`id`, `name`, `sub_cat_id`)
 VALUES
     (1, 'ALE'),
     (2, 'BOTTLE OPENER'),
@@ -1530,3 +1530,60 @@ VALUES
     (40, 'WINE'),
     (41, 'WINE OPENER');
 
+# CATEGORY (first sub cat)
+INSERT INTO `sub_categories` (`id`, `name`)
+VALUES
+    (1, 'AMBER'),
+    (2, 'AMERICAN'),
+    (3, 'ANEJO'),
+    (4, 'BLANCO'),
+    (5, 'BLOODY MARY'),
+    (6, 'BOCK'),
+    (7, 'BOURBON'),
+    (8, 'CABERNET SAUVIGNON'),
+    (9, 'CANADIAN'),
+    (10, 'CHAMPAGNE'),
+    (11, 'CHARDONNAY'),
+    (12, 'COFFEE'),
+    (13, 'COGNAC'),
+    (14, 'DAQUIRI'),
+    (15, 'DARK'),
+    (16, 'FLAVORED'),
+    (17, 'FRUIT BEER'),
+    (18, 'FRUIT COCKTAIL'),
+    (19, 'GOLD'),
+    (20, 'HARD ICED TEA'),
+    (21, 'HARD SELTZER'),
+    (22, 'HERBAL / SPICE'),
+    (23, 'KOLSH'),
+    (24, 'LONDON DRY'),
+    (25, 'MALBEC'),
+    (26, 'MALT LIQUOR'),
+    (27, 'MARGARITA'),
+    (28, 'MERLOT'),
+    (29, 'MOSCATO'),
+    (30, 'MOSCOW MULE'),
+    (31, 'MUD SLIDES'),
+    (32, 'PALE LAGER'),
+    (33, 'PINA COLADO'),
+    (34, 'PINK MOSCATO'),
+    (35, 'PINOT GRIGIO'),
+    (36, 'PINOT NOIR'),
+    (37, 'PROSECCO'),
+    (38, 'RED BLENDS'),
+    (39, 'REPOSADO'),
+    (40, 'RIESLING'),
+    (41, 'ROSE'),
+    (42, 'RYE'),
+    (43, 'SANGRIA'),
+    (44, 'SAUVIGNON BLANC'),
+    (45, 'SCHNAPPS'),
+    (46, 'SCOTCH'),
+    (47, 'SILVER / BLANCO'),
+    (48, 'SPICED'),
+    (49, 'STOUT'),
+    (50, 'TRIPLE SEC'),
+    (51, 'WHEAT ALE'),
+    (52, 'WHITE'),
+    (53, 'WHITE RUSSIAN'),
+    (54, 'WHITE ZINFADEL');
