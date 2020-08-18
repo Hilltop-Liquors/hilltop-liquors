@@ -10,15 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 import java.io.InputStreamReader;
 import java.util.List;
 
 
-//import net.java.ao.builder.EntityManagerBuilder;
+
 
 @Service
 @Transactional
@@ -27,8 +24,7 @@ public class SpringReadFileImplementation implements SpringReadFileService {
 
     @Autowired private SpringReadFileRepository springReadFileRepository;
 
-//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("product");
-//    EntityManager entityManager = entityManagerFactory.createEntityManager();
+
 
 
 
@@ -50,8 +46,6 @@ public class SpringReadFileImplementation implements SpringReadFileService {
     private boolean readDataFromCsv(MultipartFile file) {
         try {
 
-//            entityManager.createNativeQuery("TRUNCATE TABLE product CASCADE")
-//                    .executeUpdate();
             InputStreamReader reader = new InputStreamReader(file.getInputStream());
             CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
             List<String[]> rows = csvReader.readAll();
