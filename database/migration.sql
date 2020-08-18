@@ -25,6 +25,7 @@ CREATE TABLE `products` (
                             `size` varchar(100),
                             `price_in_cents` double,
                             `in_store_count` int,
+                            `img` varchar(100),
                             PRIMARY KEY (`id`),
                             FOREIGN KEY (sub_cat_id) REFERENCES sub_categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
