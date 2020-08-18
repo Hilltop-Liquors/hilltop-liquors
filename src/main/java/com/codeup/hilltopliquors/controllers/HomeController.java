@@ -40,4 +40,8 @@ public class HomeController {
     public String showSignUp() {
         return "signup";
     }
+    @GetMapping("/Orders")
+    public String showOrders() {
+        return "orders";
+    }
 }
