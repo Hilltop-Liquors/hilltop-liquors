@@ -24,11 +24,6 @@ public class SpringReadFileImplementation implements SpringReadFileService {
 
     @Autowired private SpringReadFileRepository springReadFileRepository;
 
-
-
-
-
-
     @Override
     public List<Product> findAll() {
         return (List<Product>) springReadFileRepository.findAll();
