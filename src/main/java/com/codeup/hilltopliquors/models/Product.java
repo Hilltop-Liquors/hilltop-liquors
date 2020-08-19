@@ -10,17 +10,15 @@ import javax.persistence.*;
 @Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private Long sku;
-    @Column(length = 80, nullable = false)
+    @Column(length = 80)
     private String name;
-    @Column(length = 5)
-//    private int categories;
-//    @Column(length = 5)
-    private int subCategories;
-    @Column(length = 25, nullable = false, name = "size_by_volume")
+    @OneToOne
+    private Subcategory subCategories;
+    @Column(length = 25, name = "size_by_volume")
     private String size;
     //    @Column(name = "price", columnDefinition="Decimal(10,2) default '0.00'", nullable = false)
     @Column(name = "price")
@@ -39,11 +37,10 @@ public class Product {
         this.inStoreCount = inStoreCount;
     }
 
-    public Product(Long id, Long sku, String name, int subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
+    public Product(Long id, Long sku, String name, Subcategory subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
         this.id = id;
         this.sku = sku;
         this.name = name;
-//        this.categories = categories;
         this.subCategories = subCategories;
         this.size = size;
         this.priceInCents = priceInCents;
@@ -51,17 +48,15 @@ public class Product {
         this.fileType = fileType;
     }
 
-    public Product(Long sku, String name, int subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
+    public Product(Long sku, String name, Subcategory subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
         this.sku = sku;
         this.name = name;
-//        this.categories = categories;
         this.subCategories = subCategories;
         this.size = size;
         this.priceInCents = priceInCents;
         this.inStoreCount = inStoreCount;
         this.fileType = fileType;
     }
-
 
     public Product(String s, int parseInt, String extension) {
     }
@@ -70,6 +65,9 @@ public class Product {
     }
 
     public Product(long parseLong, String s1, String s2, int i, int parseInt, String extension) {
+    }
+
+    public Product(long sku, String name, int subCatId, String size, int priceInCents, int inStoreCount, String extension) {
     }
 
 
@@ -101,11 +99,12 @@ public class Product {
 //        this.categories = categories;
 //    }
 
-    public int getSubCategories() {
+
+    public Subcategory getSubCategories() {
         return subCategories;
     }
 
-    public void setSubCategories(int subCategories) {
+    public void setSubCategories(Subcategory subCategories) {
         this.subCategories = subCategories;
     }
 

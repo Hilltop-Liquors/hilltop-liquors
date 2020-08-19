@@ -47,6 +47,7 @@ public class SpringReadFileImplementation implements SpringReadFileService {
             List<Product> productList = (List<Product>) springReadFileRepository.findAll();
             for(String[] row : rows) {
 
+
                 int subCatId = 0;
                 if (row[2].isEmpty()) {
                     subCatId = 0;
@@ -54,7 +55,7 @@ public class SpringReadFileImplementation implements SpringReadFileService {
                     subCatId = Integer.parseInt(row[2]);
                 }
 
-                Long incomingSku = Long.parseLong(row[0]);
+                long incomingSku = Long.parseLong(row[0]);
                 int newProductCount = Integer.parseInt(row[5]);
                 boolean recordExists = false;
 
@@ -70,6 +71,13 @@ public class SpringReadFileImplementation implements SpringReadFileService {
                 }
 //                System.out.println("Did This Run?");
                 if(!recordExists) {
+                    System.out.println(row[0]);
+                    System.out.println(row[1]);
+                    System.out.println(row[2]);
+                    System.out.println(row[3]);
+                    System.out.println(row[4]);
+                    System.out.println(row[5]);
+                    System.out.println(row[6]);
                     springReadFileRepository.save(new Product(Long.parseLong(row[0]), row[1], subCatId, row[3], (int) (Double.parseDouble(row[4]) * 100), Integer.parseInt(row[5]), FilenameUtils.getExtension(file.getOriginalFilename())));
                 }
             }
