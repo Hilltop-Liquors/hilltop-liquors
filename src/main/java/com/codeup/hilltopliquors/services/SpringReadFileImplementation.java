@@ -66,15 +66,18 @@ public class SpringReadFileImplementation implements SpringReadFileService {
                 }
 
                 int incomingSku = Integer.parseInt(row[0]);
+                int newProductCount = Integer.parseInt(row[6]);
 
-                for (Product product : productList)
-                if (incomingSku == product.getSku()) {
+                for (Product product : productList) {
+                    if (incomingSku == product.getSku()) {
 //                    System.out.println("These are equal: incomingSku " + incomingSku + " Existing Sku " + product.getSku()); // $$$ This WORKS!
+                        System.out.println(newProductCount);    // $$ This shows the first 2 updates
+                        System.out.println(product.getSku());  // $$  This shows the first 2 sku numbers
+                        springReadFileRepository.setProductCount(product.getSku(), newProductCount);   // $$ This appears to have updated the FIRST row inStoreCount
+                    }
 
+                  //  springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), subCatId, row[4], (int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
                 }
-
-                springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), subCatId, row[4],(int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
-
             }
             return true;
 
