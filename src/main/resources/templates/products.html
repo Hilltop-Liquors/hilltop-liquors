@@ -37,7 +37,11 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>Products</th>
+                <tr>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Categories</th>
+                    <th>SubCategories</th>
                     <th>Size in Volume</th>
                     <th>Price</th>
                     <th>In Store Count</th>
@@ -46,7 +50,10 @@
                 </thead>
                 <tbody>
                 <tr th:each="product : ${products}">
-                    <td th:text="${product.products}"></td>
+                    <td th:text="${product.sku}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.categories}"></td>
+                    <td th:text="${product.subCategories}"></td>
                     <td th:text="${product.size}"></td>
                     <td th:text="${product.priceInCents}"></td>
                     <td th:text="${product.inStoreCount}"></td>

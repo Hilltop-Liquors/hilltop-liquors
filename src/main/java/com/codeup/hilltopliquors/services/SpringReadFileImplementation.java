@@ -55,7 +55,7 @@ public class SpringReadFileImplementation implements SpringReadFileService {
             InputStreamReader reader = new InputStreamReader(file.getInputStream());
             CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
             List<String[]> rows = csvReader.readAll();
-
+            List<Product> productList = (List<Product>) springReadFileRepository.findAll();
             for(String[] row : rows) {
 
                 int subCatId = 0;
@@ -63,6 +63,14 @@ public class SpringReadFileImplementation implements SpringReadFileService {
                     subCatId = 0;
                 } else {
                     subCatId = Integer.parseInt(row[3]);
+                }
+
+                int incomingSku = Integer.parseInt(row[0]);
+
+                for (Product product : productList)
+                if (incomingSku == product.getSku()) {
+//                    System.out.println("These are equal: incomingSku " + incomingSku + " Existing Sku " + product.getSku()); // $$$ This WORKS!
+
                 }
 
                 springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), subCatId, row[4],(int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
