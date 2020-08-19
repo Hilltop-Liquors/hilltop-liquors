@@ -58,9 +58,14 @@ public class SpringReadFileImplementation implements SpringReadFileService {
 
             for(String[] row : rows) {
 
+                int subCatId = 0;
+                if (row[3].isEmpty()) {
+                    subCatId = 0;
+                } else {
+                    subCatId = Integer.parseInt(row[3]);
+                }
 
-
-                springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), Integer.parseInt(row[3]), row[4],(int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
+                springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), subCatId, row[4],(int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
 
             }
             return true;
