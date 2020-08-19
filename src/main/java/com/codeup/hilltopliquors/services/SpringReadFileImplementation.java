@@ -44,17 +44,34 @@ public class SpringReadFileImplementation implements SpringReadFileService {
             InputStreamReader reader = new InputStreamReader(file.getInputStream());
             CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
             List<String[]> rows = csvReader.readAll();
-
+            List<Product> productList = (List<Product>) springReadFileRepository.findAll();
             for(String[] row : rows) {
-//                Search by title to get the primary key id = productsDao.getIdbyTitle - this is where we set the id
-//                if primary key is not null, set the primary key in the following line
-//                pass in to constructor that sets id with other fields.
-//                create constructor that gets id and column count to
-               // springReadFileRepository.save(new Product(row[0] = String.valueOf(product.getId()), row[1], (int) (Double.parseDouble(row[2]) * 100), Integer.parseInt(row[3]), FilenameUtils.getExtension(file.getOriginalFilename())));
-                springReadFileRepository.save(new Product(row[0], row[1], (int) (Double.parseDouble(row[2]) * 100), Integer.parseInt(row[3]), FilenameUtils.getExtension(file.getOriginalFilename())));
-//                if id is not found, we can create a new record in db below
-//                springReadFileRepository.save(new Product(row[0], row[1], (int) (Double.parseDouble(row[2]) * 100), Integer.parseInt(row[3]), FilenameUtils.getExtension(file.getOriginalFilename())));
 
+                int subCatId = 0;
+                if (row[3].isEmpty()) {
+                    subCatId = 0;
+                } else {
+                    subCatId = Integer.parseInt(row[3]);
+                }
+
+                int incomingSku = Integer.parseInt(row[0]);
+                int newProductCount = Integer.parseInt(row[6]);
+                boolean recordExists = false;
+
+                for (Product product : productList) {
+                    if (incomingSku == product.getSku()) {
+                        recordExists = true;
+//                    System.out.println("These are equal: incomingSku " + incomingSku + " Existing Sku " + product.getSku()); // $$$ This WORKS!
+                        System.out.println(newProductCount);    // $$ This shows the first 2 updates
+                        System.out.println(product.getSku());  // $$  This shows the first 2 sku numbers
+                        springReadFileRepository.setProductCount(product.getSku(), newProductCount);   // $$ This appears to have updated the FIRST row inStoreCount
+                    } //else if (incomingSku != product.getSku()) {
+                   //(else if) }
+                }
+//                System.out.println("Did This Run?");
+                if(!recordExists) {
+                    springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), subCatId, row[4], (int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
+                }
             }
             return true;
 
