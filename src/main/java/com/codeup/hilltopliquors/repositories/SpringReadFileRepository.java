@@ -19,6 +19,6 @@ public interface SpringReadFileRepository extends CrudRepository<Product, Long> 
 //    query by itself threw a: Not supported for DML operations error...so we added the two above
     //https://stackoverflow.com/questions/39741102/how-to-beautifully-update-a-jpa-entity-in-spring-data
     @Query("update Product p set p.inStoreCount = :inStoreCount WHERE p.sku = :sku")
-    void setProductCount(@Param("sku") int sku, @Param("inStoreCount") int inStoreCount);
+    void setProductCount(@Param("sku") Long sku, @Param("inStoreCount") int inStoreCount);
 
 }
