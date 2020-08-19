@@ -57,14 +57,10 @@ public class SpringReadFileImplementation implements SpringReadFileService {
             List<String[]> rows = csvReader.readAll();
 
             for(String[] row : rows) {
-//                Search by title to get the primary key id = productsDao.getIdbyTitle - this is where we set the id
-//                if primary key is not null, set the primary key in the following line
-//                pass in to constructor that sets id with other fields.
-//                create constructor that gets id and column count to
-               // springReadFileRepository.save(new Product(row[0] = String.valueOf(product.getId()), row[1], (int) (Double.parseDouble(row[2]) * 100), Integer.parseInt(row[3]), FilenameUtils.getExtension(file.getOriginalFilename())));
-                springReadFileRepository.save(new Product(row[0], row[1], (int) (Double.parseDouble(row[2]) * 100), Integer.parseInt(row[3]), FilenameUtils.getExtension(file.getOriginalFilename())));
-//                if id is not found, we can create a new record in db below
-//                springReadFileRepository.save(new Product(row[0], row[1], (int) (Double.parseDouble(row[2]) * 100), Integer.parseInt(row[3]), FilenameUtils.getExtension(file.getOriginalFilename())));
+
+
+
+                springReadFileRepository.save(new Product(Integer.parseInt(row[0]), row[1], Integer.parseInt(row[2]), Integer.parseInt(row[3]), row[4],(int) (Double.parseDouble(row[5]) * 100), Integer.parseInt(row[6]), FilenameUtils.getExtension(file.getOriginalFilename())));
 
             }
             return true;
