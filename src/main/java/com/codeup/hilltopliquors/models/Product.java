@@ -12,13 +12,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 50, unique = true)
-    private int sku;
+    @Column(unique = true)
+    private Long sku;
     @Column(length = 80, nullable = false)
     private String name;
     @Column(length = 5)
-    private int categories;
-    @Column(length = 5)
+//    private int categories;
+//    @Column(length = 5)
     private int subCategories;
     @Column(length = 25, nullable = false, name = "size_by_volume")
     private String size;
@@ -39,11 +39,11 @@ public class Product {
         this.inStoreCount = inStoreCount;
     }
 
-    public Product(Long id, int sku, String name, int categories, int subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
+    public Product(Long id, Long sku, String name, int subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
         this.id = id;
         this.sku = sku;
         this.name = name;
-        this.categories = categories;
+//        this.categories = categories;
         this.subCategories = subCategories;
         this.size = size;
         this.priceInCents = priceInCents;
@@ -51,10 +51,10 @@ public class Product {
         this.fileType = fileType;
     }
 
-    public Product(int sku, String name, int categories, int subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
+    public Product(Long sku, String name, int subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
         this.sku = sku;
         this.name = name;
-        this.categories = categories;
+//        this.categories = categories;
         this.subCategories = subCategories;
         this.size = size;
         this.priceInCents = priceInCents;
@@ -81,9 +81,9 @@ public class Product {
         this.id = id;
     }
 
-    public int getSku() { return sku; }
+    public Long getSku() { return sku; }
 
-    public void setSku(int sku) { this.sku = sku; }
+    public void setSku(Long sku) { this.sku = sku; }
 
     public String getName() {
         return name;
@@ -93,13 +93,13 @@ public class Product {
         this.name = name;
     }
 
-    public int getCategories() {
-        return categories;
-    }
-
-    public void setCategories(int categories) {
-        this.categories = categories;
-    }
+//    public int getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(int categories) {
+//        this.categories = categories;
+//    }
 
     public int getSubCategories() {
         return subCategories;

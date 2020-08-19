@@ -40,7 +40,6 @@
                 <tr>
                     <th>SKU</th>
                     <th>Name</th>
-                    <th>Categories</th>
                     <th>SubCategories</th>
                     <th>Size in Volume</th>
                     <th>Price</th>
@@ -52,7 +51,6 @@
                 <tr th:each="product : ${products}">
                     <td th:text="${product.sku}"></td>
                     <td th:text="${product.name}"></td>
-                    <td th:text="${product.categories}"></td>
                     <td th:text="${product.subCategories}"></td>
                     <td th:text="${product.size}"></td>
                     <td th:text="${product.priceInCents}"></td>
