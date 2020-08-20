@@ -3,7 +3,7 @@ package com.codeup.hilltopliquors.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -29,26 +29,19 @@ public class User {
     private String phone;
 
     @Column(length = 50, nullable = false)
-    private int sms_consent;
+    private boolean sms_consent;
 
-    @Column(length = 20, nullable = false, unique = true)
-    private int isAdmin;
+    @Column(length = 20, nullable = false)
+    private boolean isAdmin;
 
-    @Column(length = 20, nullable = false, unique = true)
-    private int isEmployee;
+    @Column(length = 20, nullable = false)
+    private boolean isEmployee;
 
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "users_id")
+//    private Order order;
 
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "users_id")
-    private Order order;
-
-
-
-
-
-
-    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, int sms_consent, int isAdmin, int isEmployee) {
+    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, boolean sms_consent, boolean isAdmin, boolean isEmployee) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -133,27 +126,27 @@ public class User {
         this.phone = phone;
     }
 
-    public long getSms_consent() {
+    public boolean getSms_consent() {
         return sms_consent;
     }
 
-    public void setSms_consent(int sms_consent) {
+    public void setSms_consent(boolean sms_consent) {
         this.sms_consent = sms_consent;
     }
 
-    public long getIsAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(int isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public long getIsEmployee() {
+    public boolean getIsEmployee() {
         return isEmployee;
     }
 
-    public void setIsEmployee(int isEmployee) {
+    public void setIsEmployee(boolean isEmployee) {
         this.isEmployee = isEmployee;
     }
 }
