@@ -9,10 +9,18 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(length = 150, nullable = false)
     private String name;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "product_types_id")
     @OneToOne
+    @JoinColumn(name = "product_types_id", referencedColumnName = "id")
     private ProductType productTypes;
+
+    @OneToOne(mappedBy = "categories")
+    private Subcategory subcategory;
 
     public Category () {}
 
@@ -20,6 +28,13 @@ public class Category {
         this.id = id;
         this.name = name;
         this.productTypes = productTypes;
+    }
+
+    public Category(int id, String name, ProductType productTypes, Subcategory subcategory) {
+        this.id = id;
+        this.name = name;
+        this.productTypes = productTypes;
+        this.subcategory = subcategory;
     }
 
     public int getId() {
@@ -44,5 +59,13 @@ public class Category {
 
     public void setProductTypes(ProductType productTypes) {
         this.productTypes = productTypes;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 }

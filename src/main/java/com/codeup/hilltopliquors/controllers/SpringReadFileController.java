@@ -27,6 +27,8 @@ public class SpringReadFileController {
 
     @PostMapping("/fileupload")
     public String uploadFile(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
+        System.out.println("product.getSku() = " + product.getSku());
+        System.out.println("product.getFile() = " + product.getFile());
         boolean isFlag = springReadFileService.saveDataFromUploadFile(product.getFile());
         if(isFlag){
             redirectAttributes.addFlashAttribute("successmessage", "File uploaded Successfully!");
