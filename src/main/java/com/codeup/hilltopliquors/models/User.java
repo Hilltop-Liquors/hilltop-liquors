@@ -3,7 +3,7 @@ package com.codeup.hilltopliquors.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -29,17 +29,26 @@ public class User {
     private String phone;
 
     @Column(length = 50, nullable = false)
-    private long sms_consent;
+    private int sms_consent;
 
     @Column(length = 20, nullable = false, unique = true)
-    private long isAdmin;
+    private int isAdmin;
 
     @Column(length = 20, nullable = false, unique = true)
-    private long isEmployee;
+    private int isEmployee;
 
 
 
-    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, long sms_consent, long isAdmin, long isEmployee) {
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "users_id")
+    private Order order;
+
+
+
+
+
+
+    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, int sms_consent, int isAdmin, int isEmployee) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -128,7 +137,7 @@ public class User {
         return sms_consent;
     }
 
-    public void setSms_consent(long sms_consent) {
+    public void setSms_consent(int sms_consent) {
         this.sms_consent = sms_consent;
     }
 
@@ -136,7 +145,7 @@ public class User {
         return isAdmin;
     }
 
-    public void setIsAdmin(long isAdmin) {
+    public void setIsAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
 
@@ -144,7 +153,7 @@ public class User {
         return isEmployee;
     }
 
-    public void setIsEmployee(long isEmployee) {
+    public void setIsEmployee(int isEmployee) {
         this.isEmployee = isEmployee;
     }
 }
