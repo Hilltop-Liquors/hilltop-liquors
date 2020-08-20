@@ -13,11 +13,13 @@ public class OrderProduct {
     private int quantity;
 
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order_product")
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order_product")
+    @OneToOne
     private Order order;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "product_id")
+    @OneToOne
     private Product product;
 
     public OrderProduct(long id, int quantity, Order order, Product product) {
@@ -26,6 +28,28 @@ public class OrderProduct {
         this.order = order;
         this.product = product;
     }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    //public OrderProduct(long id, int quantity, Order order, Product product) {
+//    this.id = id;
+//    this.quantity = quantity;
+//    this.order = order;
+//    this.product = product;
+//}
 
     public long getId() {
         return id;
