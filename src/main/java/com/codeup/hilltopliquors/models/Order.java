@@ -4,36 +4,49 @@ package com.codeup.hilltopliquors.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "user_id")
-    private long userId;
-
-    @Column(name = "total_in_cents")
+    @Column(name = "total_in_cents", length = 250, nullable = false, unique = true)
     private int totalInCents;
 
-    @Column(name = "is_curbside")
+    @Column(name = "is_curbside", length = 250, nullable = false, unique = true)
     private int isCurbside;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", length = 250, nullable = false, unique = true)
     private int createdAt;
 
-    @Column(name = "order_is_fulfilled")
+    @Column(name = "order_is_fulfilled", length = 250, nullable = false, unique = true)
     private  int orderIsFulfilled;
 
 
-    public Order(long id, int userId, int totalInCents, int isCurbside, int createdAt, int orderIsFulfilled) {
+
+//    JOINING COLUMNS
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order")
+    private User user;
+//??????
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_product_id")
+    private OrderProduct orderProduct;
+
+
+
+
+
+    public Order() {
+    }
+
+    public Order(long id, int totalInCents, int isCurbside, int createdAt, int orderIsFulfilled) {
         this.id = id;
-        this.userId = userId;
         this.totalInCents = totalInCents;
         this.isCurbside = isCurbside;
         this.createdAt = createdAt;
         this.orderIsFulfilled = orderIsFulfilled;
     }
+
     public long getId() {
         return id;
     }
@@ -41,18 +54,12 @@ public class Order {
     public void setId(long id) {
         this.id = id;
     }
-    public long getUserId() {
-        return id;
-    }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-    public Long getTotalInCents() {
+    public int getTotalInCents() {
         return totalInCents;
     }
 
-    public void setTotalInCents(Long totalInCents) {
+    public void setTotalInCents(int totalInCents) {
         this.totalInCents = totalInCents;
     }
     public int getIsCurbside() {
@@ -77,5 +84,11 @@ public class Order {
         this.orderIsFulfilled = orderIsFulfilled;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
