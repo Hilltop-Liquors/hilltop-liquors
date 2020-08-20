@@ -49,8 +49,8 @@ public class HomeController {
         return "register";
     }
 
-    @GetMapping("/Orders")
-    public String showOrders() {
-        return "orders";
-    }
+//    @GetMapping("/Orders")
+//    public String showOrders() {
+//        return "orders";
+//    }
 }

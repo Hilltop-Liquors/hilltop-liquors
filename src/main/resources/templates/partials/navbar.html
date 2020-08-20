@@ -31,8 +31,55 @@
                 <a class="nav-link" href="/Register">Register <span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="/Login">Login <span class="sr-only">(current)</span></a>
+            <!-- login modal-->
+            <li class="nav-item active bg-dark" data-toggle="modal" data-target="#exampleModal">
+                <button style="z-index: 1;" type="button" class="btn btn-dark d-inline"
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                    Login
+                </button>
+
+                <!--end-->
+                <!-- LOGIN MODAL -->
+                <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title">Login</h1>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+<!--                                <div th:if="${param.error}">-->
+<!--                                    Invalid Username and Password.-->
+<!--                                </div>-->
+<!--                                <div th:if="${param.logout}">-->
+<!--                                    You have been logged out.-->
+<!--                                </div>-->
+
+                                <form method="post">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input class="form-control" id="username" name="username" type="text"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input class="form-control" id="password" name="password" type="password"/>
+                                    </div>
+                                    <button class="bg-dark text-white"
+                                            style="border-left: 4px solid orange; font-weight: lighter;"
+                                            type="submit">Login
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Login end-->
             </li>
 
             <li class="nav-item active">
@@ -40,9 +87,6 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/Cart">Cart <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/Orders">Orders <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/" id="dropdown01" data-toggle="dropdown"
@@ -61,21 +105,28 @@
             <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>
         </form>
 
-<!--        <th:block sec:authorize="!isAuthenticated()">-->
-<!--            <li>-->
-<!--                <a class="nav-link" th:href="@{/login}">Login</a>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--                <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>-->
-<!--            </li>-->
-<!--        </th:block>-->
-<!--        <th:block sec:authorize="isAuthenticated()">-->
-<!--            <li>-->
-<!--                <form th:action="@{/logout}" th:method="post">-->
-<!--                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-<!--                </form>-->
-<!--            </li>-->
-<!--        </th:block>-->
+        <!--        &lt;!&ndash;Login Modal &ndash;&gt;-->
+        <!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+        <!--            <div class="modal-dialog">-->
+        <!--                <div class="modal-content">-->
+        <!--                    <div class="modal-header">-->
+        <!--                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+        <!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+        <!--                            <span aria-hidden="true">&times;</span>-->
+        <!--                        </button>-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-body">-->
+        <!--                        ...-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-footer">-->
+        <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+        <!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        &lt;!&ndash;            End login modal&ndash;&gt;-->
     </div>
 </nav>
 
