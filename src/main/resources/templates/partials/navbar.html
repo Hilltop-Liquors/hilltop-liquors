@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+    </style>
+
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/Home">Hilltop Liquors</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="EventSupply">Events Supply <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/Recipes">Recipes <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/About">About <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/Register">Register <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>
+            </li>
+            <!--        SEARCH       -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Products</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="/Search">Beer</a>
+                    <a class="dropdown-item" href="/Search">Wine</a>
+                    <a class="dropdown-item" href="/Search">Spirits</a>
+                    <a class="dropdown-item" href="/Search">Non Alcoholic</a>
+                    <a class="dropdown-item" href="/Search">Extras</a>
+                </div>
+            </li>
+            <!--        CART        -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/Cart"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <!--        &lt;!&ndash;Login Modal &ndash;&gt;-->
+        <!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+        <!--            <div class="modal-dialog">-->
+        <!--                <div class="modal-content">-->
+        <!--                    <div class="modal-header">-->
+        <!--                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+        <!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+        <!--                            <span aria-hidden="true">&times;</span>-->
+        <!--                        </button>-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-body">-->
+        <!--                        ...-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-footer">-->
+        <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+        <!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        &lt;!&ndash;            End login modal&ndash;&gt;-->
+
+        <!-- LOGIN BTN-->
+
+
+<!--            <li class="nav-item active bg-dark" data-toggle="modal" data-target="#exampleModal">-->
+                <button style="z-index: 1;" type="button" class="btn btn-dark d-inline"
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                    Login
+                </button>
+<!--            </li>-->
+
+
+        <!-- LOGIN MODAL -->
+        <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Login</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!--                                <div th:if="${param.error}">-->
+                        <!--                                    Invalid Username and Password.-->
+                        <!--                                </div>-->
+                        <!--                                <div th:if="${param.logout}">-->
+                        <!--                                    You have been logged out.-->
+                        <!--                                </div>-->
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input class="form-control" id="username" name="username" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control" id="password" name="password" type="password"/>
+                            </div>
+                            <button class="bg-dark text-white"
+                                    style="border-left: 4px solid orange; font-weight: lighter;"
+                                    type="submit">Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        CONTACT        -->
+    </div>
+</nav>
+
+</body>
+</html>

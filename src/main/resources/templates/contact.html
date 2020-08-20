@@ -1,14 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="partials :: head (pageTitle ='Contact Us')">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Contact</title>
+
+    <style>
+        nav{
+            height: 70px!important;
+        }
+    </style>
 
 </head>
 <body>
-<header th:replace="partials :: header"></header>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<h1>CAN YOU SEE THIS</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, debitis deserunt et illum molestias nesciunt, nihil odio, porro quis quisquam quo recusandae sed sint tempora vitae voluptatem voluptatum! Dolorem, eaque.</p>
-<P>CONTACT US TEST!!!!</P>
-<footer th:replace="partials :: footer"></footer>
+<div class="container m-5 p-5">
+    <h2>Questions or Concerns?</h2>
+    <h4>Contact Us!</h4>
+
+        <form>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" id="Name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="number" class="form-control" id="phoneNumber" placeholder="(xxx)xxx-xxxx">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="eventInfo">Message Here</label>
+                <textarea class="form-control" id="eventInfo" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark btn-outline-info">Send Email</button>
+            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
+        </form>
+    </div>
+
+
+
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

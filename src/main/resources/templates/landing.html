@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Liquors</title>
+
+    <style>
+        nav{
+            height: 70px!important;
+        }
+    </style>
+
+</head>
+<body>
+<h1>Hilltop Liquors</h1>
+
+<div class="card m-5 p-5">
+    <div class="card-header">
+        Are you 21 or older?
+    </div>
+    <div class="card-body">
+        <a href="/Home" class="btn btn-primary">YES</a>
+
+        <!--NO Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            NO
+        </button>
+
+        <!--NO  Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Entrance denied!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<!--                            <span aria-hidden="true">&times;</span>-->
+                        </button>
+                    </div>
+<!--                    <div class="modal-body">-->
+<!--                        ...-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                        <button type="button" class="btn btn-primary">Understood</button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

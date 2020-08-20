@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Register</title>
+
+    <style>
+        nav{
+            height: 70px!important;
+        }
+    </style>
+
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="container m-5 p-5">
+    <h2>Register</h2>
+<!--    <hr>-->
+<!--    <form th:action="@{'/users/register'}" th:method="post" th:object="${user}" class="p-5" style="margin-top: -5%;">-->
+<!--        <div class="form-group">-->
+<!--            <label for="createUsername">Username</label>-->
+<!--            <input type="text" class="form-control" id="createUsername" th:field="*{username}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="createEmail">Email</label>-->
+<!--            <input type="text" class="form-control" id="createEmail" th:field="*{email}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="createPassword">Password</label>-->
+<!--            <input type="text" class="form-control" id="createPassword" th:field="*{password}">-->
+<!--        </div>-->
+<!--        <button style="border-left: 4px solid orange;" class="bg-dark text-white" type="submit">Submit post</button>-->
+<!--        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/}">back</a>-->
+<!--    </form>-->
+    <form >
+        <div class="form-group">
+            <label for="createUsername">Username</label>
+            <input type="text" class="form-control" id="createUsername">
+        </div>
+        <div class="form-group">
+            <label for="createEmail">Email</label>
+            <input type="text" class="form-control" id="createEmail">
+        </div>
+        <div class="form-group">
+            <label for="createPassword">Password</label>
+            <input type="text" class="form-control" id="createPassword">
+        </div>
+        <button class="bg-dark text-white" type="submit">Register</button>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
+    </form>
+
+
+</div>
+
+
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>
