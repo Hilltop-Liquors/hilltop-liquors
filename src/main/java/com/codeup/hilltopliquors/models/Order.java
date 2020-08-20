@@ -6,20 +6,25 @@ import javax.persistence.*;
 @Entity
 @Table(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(name = "user_id")
     private long userId;
+
     @Column(name = "total_in_cents")
-    private long totalInCents;
+    private int totalInCents;
+
     @Column(name = "is_curbside")
     private int isCurbside;
+
     @Column(name = "created_at")
     private int createdAt;
+
     @Column(name = "order_is_fulfilled")
     private  int orderIsFulfilled;
+
 
     public Order(long id, int userId, int totalInCents, int isCurbside, int createdAt, int orderIsFulfilled) {
         this.id = id;
