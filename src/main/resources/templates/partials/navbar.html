@@ -14,21 +14,27 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+
             <li class="nav-item active">
                 <a class="nav-link" href="EventSupply">Events Supply <span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="/Recipes">Recipes <span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="/About">About <span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item active">
-                <a class="nav-link" href="/SignUp">Sign Up <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/Register">Register <span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="/Login">Login <span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>
             </li>
@@ -54,6 +60,22 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>
         </form>
+
+<!--        <th:block sec:authorize="!isAuthenticated()">-->
+<!--            <li>-->
+<!--                <a class="nav-link" th:href="@{/login}">Login</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a class="nav-link" th:href="@{/sign-up}">Sign Up</a>-->
+<!--            </li>-->
+<!--        </th:block>-->
+<!--        <th:block sec:authorize="isAuthenticated()">-->
+<!--            <li>-->
+<!--                <form th:action="@{/logout}" th:method="post">-->
+<!--                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
+<!--                </form>-->
+<!--            </li>-->
+<!--        </th:block>-->
     </div>
 </nav>
 

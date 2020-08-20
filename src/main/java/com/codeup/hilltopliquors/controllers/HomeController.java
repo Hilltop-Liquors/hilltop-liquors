@@ -34,19 +34,19 @@ public class HomeController {
         return "contact";
     }
 
-    @GetMapping("/Login")
-    public String showLogin() {
-        return "login";
-    }
+//    @GetMapping("/Login")
+//    public String showLogin() {
+//        return "login";
+//    }
 
     @GetMapping("/Recipes")
     public String showRecipes() {
         return "recipes";
     }
 
-    @GetMapping("/SignUp")
+    @GetMapping("/Register")
     public String showSignUp() {
-        return "signup";
+        return "register";
     }
 
     @GetMapping("/Orders")

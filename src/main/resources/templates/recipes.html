@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="partials :: head (pageTitle ='Recipes')">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Recipes</title>
+
+    <style>
+        nav {
+            height: 70px !important;
+        }
+    </style>
 
 </head>
 <body>
-<header th:replace="partials :: header"></header>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<h1>CAN YOU SEE THIS</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, debitis deserunt et illum molestias nesciunt, nihil odio, porro quis quisquam quo recusandae sed sint tempora vitae voluptatem voluptatum! Dolorem, eaque.</p>
-<P>RECIPES TEST!!!!</P>
-<footer th:replace="partials :: footer"></footer>
+<div class="container m-5 p-5">
+    <h1>Recipes</h1>
+</div>
+
+
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
