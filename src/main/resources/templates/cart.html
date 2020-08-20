@@ -1,14 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="partials :: head (pageTitle ='Cart')">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Home</title>
+
+    <style>
+        nav {
+            height: 70px !important;
+        }
+
+    </style>
 
 </head>
 <body>
-<header th:replace="partials :: header"></header>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<h1>CAN YOU SEE THIS</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, debitis deserunt et illum molestias nesciunt, nihil odio, porro quis quisquam quo recusandae sed sint tempora vitae voluptatem voluptatum! Dolorem, eaque.</p>
-<P>MY SHOPPING CART TEST!!!!</P>
-<footer th:replace="partials :: footer"></footer>
+<div class="container m-5 p-5">
+
+    <div id="w">
+        <header id="title">
+            <h1>Username's Cart</h1>
+            <br>
+        </header>
+        <div id="page">
+            <table id="cart">
+                <thead>
+                <tr>
+                    <th class="first">Photo</th>
+                    <th class="second">Qty</th>
+                    <th class="third">Product</th>
+                    <th class="fourth">Line Total</th>
+                    <th class="fifth">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- shopping cart contents -->
+                <tr class="productitm">
+                    <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                    <td><img src="../img/filler_bottle.png" class="thumb"></td>
+                    <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                    <td>Bubble Gum Wine <span class="pl-1 pr-1" style="font-weight: lighter">(you will get sick)</span>
+                    </td>
+                    <td>$79.00</td>
+                    <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                </tr>
+                <tr class="productitm">
+                    <!-- http://www.amazon.com/Stuff-My-Cat-The-Book/dp/0811855384 -->
+                    <td><img src="../img/filler_bottle.png"></td>
+                    <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                    <td>Crown Royal 750ML</td>
+                    <td>$75.00</td>
+                    <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                </tr>
+                <tr class="productitm">
+                    <!-- http://www.amazon.com/SpongeBob-SquarePants-The-First-Episodes/dp/B002DYJTVW -->
+                    <td><img src="../img/filler_bottle.png" class="thumb"></td>
+                    <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                    <td>BudLigh 12pk</td>
+                    <td>$8.95</td>
+                    <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                </tr>
+                <tr class="productitm">
+                    <!-- http://www.barnesandnoble.com/w/javascript-and-jquery-david-sawyer-mcfarland/1100405042 -->
+                    <td><img src="../img/filler_bottle.png" class="thumb"></td>
+                    <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                    <td>Boxed Red Wine</td>
+                    <td>$27.50</td>
+                    <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                </tr>
+
+                <!-- tax + subtotal -->
+                <tr class="totalprice">
+                    <td class="light">Total:</td>
+                    <td colspan="2">&nbsp;</td>
+                    <td colspan="2"><span class="thick">$225.45</span></td>
+                </tr>
+
+                <!-- checkout btn -->
+                <tr class="checkoutrow">
+                    <td colspan="5" class="checkout">
+                        <button id="submitbtn">Checkout Now!</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--     CITATION: https://codepen.io/BryanBanda/pen/yoGnj   -->
+
+</div>
+
+
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
