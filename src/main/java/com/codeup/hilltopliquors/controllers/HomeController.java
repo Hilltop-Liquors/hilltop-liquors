@@ -34,11 +34,6 @@ public class HomeController {
         return "contact";
     }
 
-//    @GetMapping("/Login")
-//    public String showLogin() {
-//        return "login";
-//    }
-
     @GetMapping("/Recipes")
     public String showRecipes() {
         return "recipes";
@@ -49,8 +44,9 @@ public class HomeController {
         return "register";
     }
 
-//    @GetMapping("/Orders")
-//    public String showOrders() {
-//        return "orders";
-//    }
+    @GetMapping("/Search")
+    public String showSearch() {
+        return "search";
+    }
+
 }

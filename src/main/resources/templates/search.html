@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Search</title>
+
+    <style>
+        nav {
+            height: 70px !important;
+        }
+    </style>
+
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="container m-5 p-5">
+
+    <h2>Search</h2>
+</div>
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>
