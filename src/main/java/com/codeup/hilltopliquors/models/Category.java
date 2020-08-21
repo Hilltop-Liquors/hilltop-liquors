@@ -14,8 +14,6 @@ public class Category {
     @Column(length = 150, nullable = false)
     private String name;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "product_types_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_type_id", referencedColumnName = "id")
     private ProductType productType;

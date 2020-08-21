@@ -1,6 +1,7 @@
 package com.codeup.hilltopliquors.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -10,13 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false)
     private String first_name;
 
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false)
     private String last_name;
 
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false)
     private String username;
 
     @Column(length = 100, nullable = false, unique = true)
@@ -37,9 +38,8 @@ public class User {
     @Column(length = 20, nullable = false)
     private boolean isEmployee;
 
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "users_id")
-//    private Order order;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public User(long id, String first_name, String last_name, String username, String email, String password, String phone, boolean sms_consent, boolean isAdmin, boolean isEmployee) {
         this.id = id;

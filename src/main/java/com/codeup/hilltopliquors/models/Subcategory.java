@@ -17,7 +17,7 @@ public class Subcategory {
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "categories_id")
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @JoinColumn(name = "cat_id", referencedColumnName = "id")
     private Category category;
 
     @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL)

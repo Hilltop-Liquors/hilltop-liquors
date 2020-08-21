@@ -1,4 +1,4 @@
-USE hilltop_db;
+USE hilltop_app_db;
 
 # PRODUCTS_TYPES
 INSERT INTO `product_type` (`id`, `name`)
@@ -57,7 +57,7 @@ VALUES
 
 
 # SUB_CATEGORIES
-INSERT INTO `sub_category` (`id`, `name`, `category_id`)
+INSERT INTO `sub_category` (`id`, `name`, `cat_id`)
 VALUES
 (1, 'AMBER', 1),
 (2, 'AMERICAN', 38),
