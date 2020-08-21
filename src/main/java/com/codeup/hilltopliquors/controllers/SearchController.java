@@ -6,7 +6,6 @@ import com.codeup.hilltopliquors.repositories.ProductRepository;
 import com.codeup.hilltopliquors.repositories.ProductTypeRepository;
 import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -32,8 +31,7 @@ public class SearchController {
         public String searchPage(Model model){
                 List<Product> products = productDao.findAll();
                 model.addAttribute("products", products);
-                return "/search";
-
+                return "search/search";
         }
 
 }
