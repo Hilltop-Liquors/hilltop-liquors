@@ -14,43 +14,49 @@
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<nav th:insert="partials/side-nav :: side-nav"></nav>
 
-<div class="container mt-5 mb-5 pt-5">
 <!--  SEARCH BAR  -->
-    <form th:action="@{/Search}" method="get">
-        <input id="txtSearch" type="text" name="keyword">
-        <button type="submit">Search</button>
-    </form>
+<!--    <form th:action="@{/Search}" method="get">-->
+<!--        <input id="txtSearch" type="text" name="keyword">-->
+<!--        <button type="submit">Search</button>-->
+<!--    </form>-->
 
-<!-- BEER SEARCH -->
-    <form th:action="@{/Search}" method="get">
-        <input type="hidden" name="keyword" value="Beer">
-        <button type="submit">Beer</button>
-    </form>
+<!--    &lt;!&ndash; BEER SEARCH &ndash;&gt;-->
+<!--    <form th:action="@{/Search}" method="get">-->
+<!--        <input type="hidden" name="keyword" value="Beer">-->
+<!--        <button type="submit">Beer</button>-->
+<!--    </form>-->
 
+<div class="row mt-5" style="border: 2px solid red; width:100%;">
+    <nav class="col-md-1" th:insert="partials/side-nav :: side-nav"></nav>
     <!--SHOW ALL PRODUCTS-->
-    <div class="row d-flex justify-content-center">
-        <div th:each="product : ${products}" class="card col-md-2 m-3 shadow p-3 bg-white rounded">
+    <div class="col-md-11 float-right">
+        <!--    <div class="col-md-2 d-flex justify-content-center">-->
+        <div th:each="product : ${products}" class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
             <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
                th:value="${product.id}">
                 <div class="card-header bg-dark text-white center"
                      style="border-bottom: 4px solid maroon; ">
-                    <img class="center" style="width: 126px; height: 189px;" src="../static/img/filler_bottle.png" th:src="@{img/filler_bottle.png}" alt="bottle"/>
+                    <img class="center" style="width: 126px; height: 189px;" src="../static/img/filler_bottle.png"
+                         th:src="@{img/filler_bottle.png}" alt="bottle"/>
                 </div>
             </a>
             <div class="card-body d-flex flex-column">
                 <p th:text="${product.name}"></p>
-<!--                <p th:text="${product.size}"></p>-->
+                <!--                <p th:text="${product.size}"></p>-->
                 <p th:text="${product.priceInCents}"></p>
 
                 <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                <a href="#"><button style="color:black; font-size: smaller;" class="mt-auto btn btn-light" th:text="${product.getSubCategory().getCategory().getProductType().getName()}"></button></a>
+                <a href="#">
+                    <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
+                            th:text="${product.getSubCategory().getCategory().getProductType().getName()}"></button>
+                </a>
             </div>
         </div>
     </div>
+    <!--    </div>-->
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
