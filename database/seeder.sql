@@ -722,10 +722,10 @@ VALUES
 
 
 
-
+USE hilltop_db;
 
 # PRODUCTS_TYPES
-INSERT INTO `product_types` (`id`, `name`)
+INSERT INTO `product_type` (`id`, `name`)
 VALUES
 (1, 'BEER'),
 (2, 'LIQUOR'),
@@ -735,7 +735,7 @@ VALUES
 (6, 'MISC ITEMS');
 
 # CATEGORIES
-INSERT INTO `categories` (`id`, `name`, `product_type_id`)
+INSERT INTO `cat` (`id`, `name`, `product_types_id`)
 VALUES
 (1, 'ALE', 1),
 (2, 'BOTTLE OPENER', 6),
@@ -779,8 +779,10 @@ VALUES
 (40, 'WINE', 3),
 (41, 'WINE OPENER', 6);
 
+USE hilltop_db;
+
 # SUB_CATEGORIES
-INSERT INTO `sub_categories` (`id`, `name`, `cat_id`)
+INSERT INTO `sub_category` (`id`, `name`, `categories_id`)
 VALUES
 (1, 'AMBER', 1),
 (2, 'AMERICAN', 38),
