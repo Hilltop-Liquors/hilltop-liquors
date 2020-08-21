@@ -15,9 +15,24 @@
 
 <div class="container m-5 p-5">
 
-    <h2>Search</h2>
-</div>
+    <!--SHOW ALL PRODUCTS-->
+    <div class="row d-flex justify-content-space-between justify-content-center">
+        <div th:each="product : ${products}" class="card col-md-2 ml-3 mr-3 mb-5 shadow p-3 mb-5 bg-white rounded">
+            <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
+               th:value="${product.id}">
+                <div th:text="${product.name}" class="card-header bg-dark text-white"
+                     style="border-left: 8px solid orange; border-bottom: 4px solid orange; "></div>
+            </a>
+            <div class="card-body">
+                <p th:text="${product.name}"></p>
+                <p th:text="${product.size}"></p>
+                <p th:text="${product.priceInCents}"></p>
 
+                <button style="border-left: 4px solid orange;" class="bg-dark text-white mt-2">view</button>
+            </div>
+        </div>
+    </div>
+</div>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
