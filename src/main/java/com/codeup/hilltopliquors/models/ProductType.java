@@ -1,6 +1,7 @@
 package com.codeup.hilltopliquors.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product_type")
@@ -11,8 +12,8 @@ public class ProductType {
     private int id;
     @Column(length = 75, nullable = false)
     private String name;
-    @OneToOne(mappedBy = "productTypes")
-    private Category category;
+    @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)
+    private List<Category> categories;
 
     public ProductType () {}
 
@@ -21,10 +22,10 @@ public class ProductType {
         this.name = name;
     }
 
-    public ProductType(int id, String name, Category category) {
+    public ProductType(int id, String name, List<Category> categories) {
         this.id = id;
         this.name = name;
-        this.category = category;
+        this.categories = categories;
     }
 
     public int getId() {
@@ -43,11 +44,11 @@ public class ProductType {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }

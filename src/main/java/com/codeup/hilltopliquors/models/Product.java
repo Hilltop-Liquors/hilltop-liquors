@@ -19,9 +19,9 @@ public class Product {
     @Column(length = 80)
     private String name;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "sub_category_id", referencedColumnName = "id")
-    private Subcategory subCategories;
+    private Subcategory subCategory;
 
     @Column(length = 25, name = "size_by_volume")
     private String size;
@@ -45,21 +45,24 @@ public class Product {
         this.inStoreCount = inStoreCount;
     }
 
-    public Product(Long id, Long sku, String name, Subcategory subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
+
+
+    public Product(Long id, Long sku, String name, Subcategory subCategory, String size, int priceInCents, int inStoreCount, String fileType, MultipartFile file) {
         this.id = id;
         this.sku = sku;
         this.name = name;
-        this.subCategories = subCategories;
+        this.subCategory = subCategory;
         this.size = size;
         this.priceInCents = priceInCents;
         this.inStoreCount = inStoreCount;
         this.fileType = fileType;
+        this.file = file;
     }
 
-    public Product(Long sku, String name, Subcategory subCategories, String size, int priceInCents, int inStoreCount, String fileType) {
+    public Product(Long sku, String name, Subcategory subCategory, String size, int priceInCents, int inStoreCount, String fileType) {
         this.sku = sku;
         this.name = name;
-        this.subCategories = subCategories;
+        this.subCategory = subCategory;
         this.size = size;
         this.priceInCents = priceInCents;
         this.inStoreCount = inStoreCount;
@@ -111,12 +114,12 @@ public class Product {
 //    }
 
 
-    public Subcategory getSubCategories() {
-        return subCategories;
+    public Subcategory getSubCategory() {
+        return subCategory;
     }
 
-    public void setSubCategories(Subcategory subCategories) {
-        this.subCategories = subCategories;
+    public void setSubCategory(Subcategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     public String getSize() {

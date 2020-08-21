@@ -760,6 +760,8 @@ VALUES
 (40, 'WINE', 3),
 (41, 'WINE OPENER', 6);
 
+USE hilltop_db;
+
 # SUB_CATEGORIES
 INSERT INTO `sub_category` (`id`, `name`, `categories_id`)
 VALUES

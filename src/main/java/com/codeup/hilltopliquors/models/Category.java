@@ -1,6 +1,7 @@
 package com.codeup.hilltopliquors.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "cat")
@@ -15,26 +16,20 @@ public class Category {
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "product_types_id")
-    @OneToOne
-    @JoinColumn(name = "product_types_id", referencedColumnName = "id")
-    private ProductType productTypes;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_type_id", referencedColumnName = "id")
+    private ProductType productType;
 
-    @OneToOne(mappedBy = "categories")
-    private Subcategory subcategory;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Subcategory> subcategories;
 
     public Category () {}
 
-    public Category(int id, String name, ProductType productTypes) {
+    public Category(int id, String name, ProductType productType, List<Subcategory> subcategories) {
         this.id = id;
         this.name = name;
-        this.productTypes = productTypes;
-    }
-
-    public Category(int id, String name, ProductType productTypes, Subcategory subcategory) {
-        this.id = id;
-        this.name = name;
-        this.productTypes = productTypes;
-        this.subcategory = subcategory;
+        this.productType = productType;
+        this.subcategories = subcategories;
     }
 
     public int getId() {
@@ -53,19 +48,20 @@ public class Category {
         this.name = name;
     }
 
-    public ProductType getProductTypes() {
-        return productTypes;
+    public ProductType getProductType() {
+        return productType;
     }
 
-    public void setProductTypes(ProductType productTypes) {
-        this.productTypes = productTypes;
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
-    public Subcategory getSubcategory() {
-        return subcategory;
+    public List<Subcategory> getSubcategories() {
+        return subcategories;
     }
 
-    public void setSubcategory(Subcategory subcategory) {
-        this.subcategory = subcategory;
+    public void setSubcategories(List<Subcategory> subcategories) {
+        this.subcategories = subcategories;
     }
 }
+

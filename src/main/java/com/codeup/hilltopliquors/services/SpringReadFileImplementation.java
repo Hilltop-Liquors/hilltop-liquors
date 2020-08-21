@@ -91,7 +91,8 @@ public class SpringReadFileImplementation implements SpringReadFileService {
 
 //                    springReadFileRepository.save(new Product(Long.parseLong(row[0]), row[1], subCatId, row[3], (int) (Double.parseDouble(row[4]) * 100), Integer.parseInt(row[5]), FilenameUtils.getExtension(file.getOriginalFilename())));
 
-//                    springReadFileRepository.save(new Product(FilenameUtils.getExtension(file.getOriginalFilename()), Integer.parseInt(row[5]), row[1], (int) (Double.parseDouble(row[4]) * 100), row[3], Long.parseLong(row[0]), subCatId));
+                //   springReadFileRepository.save(new Product(FilenameUtils.getExtension(file.getOriginalFilename()), Integer.parseInt(row[5]), row[1], (int) (Double.parseDouble(row[4]) * 100), row[3], Long.parseLong(row[0]), subCatId));
+                            springReadFileRepository.save(testProduct);
                 }
             }
             return true;

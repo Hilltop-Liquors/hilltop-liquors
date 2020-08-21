@@ -1,6 +1,7 @@
 package com.codeup.hilltopliquors.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "sub_category")
@@ -15,26 +16,20 @@ public class Subcategory {
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "categories_id")
-    @OneToOne
-    @JoinColumn(name = "categories_id", referencedColumnName = "id")
-    private Category categories;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
-    @OneToOne(mappedBy = "subCategories")
-    private Product product;
+    @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL)
+    private List<Product> products;
 
     public Subcategory () {}
 
-    public Subcategory(int id, String name, Category categories) {
+    public Subcategory(int id, String name, Category category, List<Product> products) {
         this.id = id;
         this.name = name;
-        this.categories = categories;
-    }
-
-    public Subcategory(int id, String name, Category categories, Product product) {
-        this.id = id;
-        this.name = name;
-        this.categories = categories;
-        this.product = product;
+        this.category = category;
+        this.products = products;
     }
 
     public int getId() {
@@ -53,20 +48,19 @@ public class Subcategory {
         this.name = name;
     }
 
-    public Category getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(Category categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
-
 }
