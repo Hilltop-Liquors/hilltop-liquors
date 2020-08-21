@@ -3,46 +3,40 @@ package com.codeup.hilltopliquors.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 250, nullable = false, unique = true)
+    @Column(length = 250, nullable = false)
     private int totalInCents;
 
-    @Column(length = 250, nullable = false, unique = true)
-    private int isCurbside;
+    @Column(length = 250, nullable = false)
+    private boolean isCurbside;
 
-    @Column(length = 250, nullable = false, unique = true)
+    @Column(length = 250, nullable = false)
     private Timestamp createdAt;
 
-    @Column(length = 250, nullable = false, unique = true)
-    private  int orderIsFulfilled;
+    @Column(length = 250, nullable = false)
+    private  boolean orderIsFulfilled;
 
-//    JOINING COLUMNS
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order")
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User user;
 
-//??????
-
-
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "order_product_id")
-//    private OrderProduct orderProduct;
-
-
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderProduct> orderProducts;
 
 
 
     public Order() {
     }
 
-    public Order(long id, int totalInCents, int isCurbside, Timestamp createdAt, int orderIsFulfilled) {
+    public Order(long id, int totalInCents, boolean isCurbside, Timestamp createdAt, boolean orderIsFulfilled) {
         this.id = id;
         this.totalInCents = totalInCents;
         this.isCurbside = isCurbside;
@@ -65,11 +59,11 @@ public class Order {
     public void setTotalInCents(int totalInCents) {
         this.totalInCents = totalInCents;
     }
-    public int getIsCurbside() {
+    public boolean getIsCurbside() {
         return isCurbside;
     }
 
-    public void setIsCurbside(int isCurbside) {
+    public void setIsCurbside(boolean isCurbside) {
         this.isCurbside = isCurbside;
     }
     public Timestamp getCreatedAt() {
@@ -79,11 +73,11 @@ public class Order {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
-    public int getOrderIsFulfilled() {
+    public boolean getOrderIsFulfilled() {
         return orderIsFulfilled;
     }
 
-    public void setOrderIsFulfilled(int orderIsFulfilled) {
+    public void setOrderIsFulfilled(boolean orderIsFulfilled) {
         this.orderIsFulfilled = orderIsFulfilled;
     }
 

@@ -3,7 +3,7 @@ package com.codeup.hilltopliquors.models;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
@@ -26,7 +26,6 @@ public class Product {
     @Column(length = 25, name = "size_by_volume")
     private String size;
 
-    //    @Column(name = "price", columnDefinition="Decimal(10,2) default '0.00'", nullable = false)
     @Column(name = "price")
     private int priceInCents;
 
@@ -35,6 +34,13 @@ public class Product {
 
     @Column(name = "file_type")
     private String fileType;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<OrderProduct> orderProducts;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "order_product_id", referencedColumnName = "id")
+//    private OrderProduct orderProduct;
 
     @Transient
     private MultipartFile file;
@@ -47,7 +53,7 @@ public class Product {
 
 
 
-    public Product(Long id, Long sku, String name, Subcategory subCategory, String size, int priceInCents, int inStoreCount, String fileType, MultipartFile file) {
+    public Product(Long id, Long sku, String name, Subcategory subCategory, String size, int priceInCents, int inStoreCount, String fileType, List<OrderProduct> orderProducts) {
         this.id = id;
         this.sku = sku;
         this.name = name;
@@ -56,9 +62,10 @@ public class Product {
         this.priceInCents = priceInCents;
         this.inStoreCount = inStoreCount;
         this.fileType = fileType;
-        this.file = file;
+        this.orderProducts = orderProducts;
     }
 
+// NO TOUCHY
     public Product(Long sku, String name, Subcategory subCategory, String size, int priceInCents, int inStoreCount, String fileType) {
         this.sku = sku;
         this.name = name;
@@ -78,12 +85,16 @@ public class Product {
     public Product(long parseLong, String s1, String s2, int i, int parseInt, String extension) {
     }
 
-//    public Product(long sku, String name, int subCatId, String size, int priceInCents, int inStoreCount, String extension) {
-//    }
-
     public Product(String extension, int parseInt, String s, int i, String s1, long parseLong, int subCatId) {
     }
 
+    public List<OrderProduct> getOrderProduct() {
+        return orderProducts;
+    }
+
+    public void setOrderProduct(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 
     public Long getId() {
         return id;

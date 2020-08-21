@@ -1,6 +1,7 @@
 package com.codeup.hilltopliquors.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "order_product")
@@ -9,18 +10,22 @@ public class OrderProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 250, nullable = false, unique = true)
+    @Column(length = 250, nullable = false)
     private int quantity;
 
-
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order_product")
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orders_id", referencedColumnName = "id")
     private Order order;
 
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "product_id")
-    @OneToOne
+//    @OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
+//    private List<Product> products;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
+
+    public OrderProduct() {
+    }
 
     public OrderProduct(long id, int quantity, Order order, Product product) {
         this.id = id;
@@ -44,12 +49,6 @@ public class OrderProduct {
     public void setProduct(Product product) {
         this.product = product;
     }
-    //public OrderProduct(long id, int quantity, Order order, Product product) {
-//    this.id = id;
-//    this.quantity = quantity;
-//    this.order = order;
-//    this.product = product;
-//}
 
     public long getId() {
         return id;

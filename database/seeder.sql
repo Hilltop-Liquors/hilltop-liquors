@@ -1,14 +1,28 @@
 use hilltop_app_db;
 
+
+
 # DROP table users;
+# DROP table orders;
+# DROP table order_product;
+# DROP table product;
 
 show tables;
-describe orders;
 describe users;
+describe orders;
 describe order_product;
-describe products;
+describe product;
+describe product_type;
 
 select * from users;
+
+INSERT INTO `order_product` (`id`, `quantity`, `orders_id`, `product_id`)
+VALUES
+(1, 3, 1, 23);
+
+INSERT INTO `orders` (`id`, `created_at`, `is_curbside`, `order_is_fulfilled`, `total_in_cents`, `users_id`)
+VALUES
+(1, '2020-09-12 23:59:59' , true, true, 1200, 1);
 
 INSERT INTO `users` (`id`, `email`, `first_name`, `is_admin`, `is_employee`, `last_name`, `password`, `phone`, `sms_consent`, `username`)
 VALUES
