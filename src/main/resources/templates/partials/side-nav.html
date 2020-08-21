@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+<!--    &lt;!&ndash;  CITATION: https://coreui.io/docs/getting-started/download/#source-files  &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">-->
+<!--    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>-->
 </head>
 <body>
 
 <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-<div th:fragment="side-nav" class="c-sidebar c-sidebar-dark c-sidebar-show fixed-top" style="margin-top: 55px; height: 100%; z-index: 1">
+<div th:fragment="side-nav" class="c-sidebar c-sidebar-dark c-sidebar-show fixed-top" style="margin-top: 55px; height: 100%; z-index: 1;">
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-title">Nav Title</li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="#">
                 <i class="c-sidebar-nav-icon cil-speedometer"></i> Nav item
-            </a>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
-                <i class="c-sidebar-nav-icon cil-speedometer"></i> With badge
-                <span class="badge badge-primary">NEW</span>
             </a>
         </li>
         <li class="c-sidebar-nav-item nav-dropdown">
