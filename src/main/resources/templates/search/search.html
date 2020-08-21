@@ -15,19 +15,13 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 
-<!--  SEARCH BAR  -->
-<!--    <form th:action="@{/Search}" method="get">-->
+<!--&lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
+<!--    <form class="d-inline mt-5" th:action="@{/Search}" method="get">-->
 <!--        <input id="txtSearch" type="text" name="keyword">-->
 <!--        <button type="submit">Search</button>-->
 <!--    </form>-->
 
-<!--    &lt;!&ndash; BEER SEARCH &ndash;&gt;-->
-<!--    <form th:action="@{/Search}" method="get">-->
-<!--        <input type="hidden" name="keyword" value="Beer">-->
-<!--        <button type="submit">Beer</button>-->
-<!--    </form>-->
-
-<div class="row mt-5" style="border: 2px solid red; width:100%;">
+<div class="row mt-5" style="width:100%;">
     <nav class="col-md-1" th:insert="partials/side-nav :: side-nav"></nav>
     <!--SHOW ALL PRODUCTS-->
     <div class="col-md-11 float-right">
