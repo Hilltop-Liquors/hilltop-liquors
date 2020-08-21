@@ -26,18 +26,16 @@ public class SearchController {
                 this.productTypeDao = productTypeDao;
         }
 
-//        GET ALL POSTS
+//        GET ALL POSTS and SEARCH BAR
         @GetMapping("/Search")
         public String getProducts(Model model, String keyword){
                 List<Product> products = productDao.findAll();
-
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
                 }
                 else {
                         model.addAttribute("products", products);
                 }
-
                 return "search/search";
         }
 

@@ -11,18 +11,23 @@
 
 </head>
 <body>
+
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container mt-5 mb-5 pt-5">
+<nav th:insert="partials/side-nav :: side-nav"></nav>
 
+<div class="container mt-5 mb-5 pt-5">
+<!--  SEARCH BAR  -->
     <form th:action="@{/Search}" method="get">
         <input id="txtSearch" type="text" name="keyword">
         <button type="submit">Search</button>
     </form>
 
-<!--    <a th:href="@{/posts/show/{id}(id=${post.id})}" th:value="${post.id}">-->
-<!--    <button style="border-left: 4px solid orange;" class="bg-dark text-white mt-2">Beer</button>-->
-<!--</a>-->
+<!-- BEER SEARCH -->
+    <form th:action="@{/Search}" method="get">
+        <input type="hidden" name="keyword" value="Beer">
+        <button type="submit">Beer</button>
+    </form>
 
     <!--SHOW ALL PRODUCTS-->
     <div class="row d-flex justify-content-center">
