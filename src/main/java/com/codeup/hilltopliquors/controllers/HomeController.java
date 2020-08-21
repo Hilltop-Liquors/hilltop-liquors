@@ -44,9 +44,9 @@ public class HomeController {
         return "register";
     }
 
-    @GetMapping("/Search")
-    public String showSearch() {
-        return "search";
-    }
+//    @GetMapping("/Search")
+//    public String showSearch() {
+//        return "search";
+//    }
 
 }
