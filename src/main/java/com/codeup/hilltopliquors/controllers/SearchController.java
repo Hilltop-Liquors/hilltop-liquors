@@ -1,6 +1,9 @@
 package com.codeup.hilltopliquors.controllers;
 
+import com.codeup.hilltopliquors.models.Category;
 import com.codeup.hilltopliquors.models.Product;
+import com.codeup.hilltopliquors.models.ProductType;
+import com.codeup.hilltopliquors.models.Subcategory;
 import com.codeup.hilltopliquors.repositories.CategoryRepository;
 import com.codeup.hilltopliquors.repositories.ProductRepository;
 import com.codeup.hilltopliquors.repositories.ProductTypeRepository;
@@ -8,6 +11,8 @@ import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -30,12 +35,21 @@ public class SearchController {
         @GetMapping("/Search")
         public String getProducts(Model model, String keyword){
                 List<Product> products = productDao.findAll();
+                List<ProductType> productTypes = productTypeDao.findAll();
+                List<Category> categories = catDao.findAll();
+                List<Subcategory> subCategories = subCatDao.findAll();
+
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
+                        model.addAttribute("keyword", "Search results for: " + keyword);
                 }
                 else {
                         model.addAttribute("products", products);
                 }
+
+                model.addAttribute("productTypes", productTypes);
+                model.addAttribute("categories", categories);
+
                 return "search/search";
         }
 
