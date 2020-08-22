@@ -36,6 +36,8 @@ public class SearchController {
         public String getProducts(Model model, String keyword){
                 List<Product> products = productDao.findAll();
                 List<ProductType> productTypes = productTypeDao.findAll();
+                List<Category> categories = catDao.findAll();
+                List<Subcategory> subCategories = subCatDao.findAll();
 
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -44,7 +46,10 @@ public class SearchController {
                 else {
                         model.addAttribute("products", products);
                 }
+
                 model.addAttribute("productTypes", productTypes);
+                model.addAttribute("categories", categories);
+
                 return "search/search";
         }
 

@@ -26,21 +26,34 @@
         <!--  SEARCH BAR  -->
         <form class="center ml-2 d-inline mt-5" th:action="@{/Search}" method="get">
             <input id="txtSearch" type="text" name="keyword">
-            <br>
         </form>
 
         <!--  LIQUOR  -->
         <ul class="c-sidebar-nav">
-
             <li class="c-sidebar-nav-title">Browse by category</li>
 
             <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-            <li class="c-sidebar-nav-item" th:each="productType : ${productTypes}">
-                <a class="c-sidebar-nav-link" style="color: black; text-decoration: none;"
-                   th:href="@{/Search}"
-                   th:value="${productType.getId()}">
-                    <p th:text="${productType.getName()}"></p>
+            <li class="c-sidebar-nav-item" style="color: black; text-decoration: none;"
+                th:each="productType : ${productTypes}">
+                <a th:href="@{/Search}" th:value="${productType.getId()}">
+                    <form class="c-sidebar-nav-link" th:action="@{/Search}" method="get">
+                        <input type="hidden" name="productCat" th:value="${productType.getId()}">
+                        <p th:text="${productType.getName()}"></p>
+
+                    </form>
                 </a>
+
+                <!--    CATEGORY SIDE-NAV DISPLAY   -->
+                <!--                    <ul>-->
+                <!--                        <li th:each="category : ${categories}">-->
+                <!--                            <a class="c-sidebar-nav-link" style="color: black; text-decoration: none;"-->
+                <!--                               th:href="@{/Search}"-->
+                <!--                               th:value="${category.getId()}">-->
+                <!--                                <p th:text="${category.getName()}"></p>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+
             </li>
         </ul>
     </div>
@@ -64,22 +77,20 @@
             </a>
             <div class="card-body d-flex flex-column">
                 <p th:text="${product.name}"></p>
-                <!--                <p th:text="${product.size}"></p>-->
                 <p th:text="${product.priceInCents}"></p>
 
                 <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                <!--                 need category id that has this product_type id below to redirect to category page-->
                 <a>
-                    <!--                <a th:href="@{/Search/find/{id}(id=${product.getSubCategory().getProducts()})}" th:value="${product.getSubCategory().getProducts()}">-->
                     <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
-                            th:text="${product.getSubCategory().getCategory().getProductType().getName()}"></button>
+                            th:text="${product.getSubCategory().getCategory().getProductType().getName()}">
+                    </button>
                 </a>
             </div>
         </div>
     </div>
-    <!--    </div>-->
+
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
