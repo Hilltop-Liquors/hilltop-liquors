@@ -37,10 +37,9 @@
             <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
             <li class="c-sidebar-nav-item" th:each="productType : ${productTypes}">
                 <a class="c-sidebar-nav-link" style="color: black; text-decoration: none;"
-                   th:href="@{/Search/{id}(id=${productType.getId()})}"
+                   th:href="@{/Search}"
                    th:value="${productType.getId()}">
                     <p th:text="${productType.getName()}"></p>
-
                 </a>
             </li>
         </ul>

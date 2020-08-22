@@ -48,17 +48,4 @@ public class SearchController {
                 return "search/search";
         }
 
-//        @GetMapping("/searchCat/{id}")
-//        public String getProductCat(@PathVariable(value = "id") Integer id, Model model){
-//                ProductType productType = productTypeDao.getOne(id);
-//
-//                model.addAttribute("productTypes", productType);
-//
-//                return"search/search";
-//
-//        }
-
-
-
-
 }
