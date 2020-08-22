@@ -30,9 +30,14 @@ public class SearchController {
         @GetMapping("/Search")
         public String getProducts(Model model, String keyword){
                 List<Product> products = productDao.findAll();
+
+
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
                 }
+//                else if() {
+//
+//                }
                 else {
                         model.addAttribute("products", products);
                 }
