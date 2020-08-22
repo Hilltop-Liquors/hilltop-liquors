@@ -7,97 +7,57 @@
 </head>
 <body>
 
-<!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-<div th:fragment="side-nav" class="c-sidebar c-sidebar-dark c-sidebar-show fixed-top navbar-expand-md"
-     style="margin-top: 55px; height: 100%; z-index: 1;">
+<!--&lt;!&ndash;  CITATION: https://coreui.io/docs/getting-started/download/#source-files  &ndash;&gt;-->
+<!--<div th:fragment="side-nav" class="c-sidebar c-sidebar-dark c-sidebar-show fixed-top navbar-expand-md"-->
+<!--     style="margin-top: 55px; height: 100%; z-index: 1;">-->
 
-    <!--  SEARCH BAR  -->
-    <form class="center d-inline mt-5" th:action="@{/Search}" method="get">
-        <input id="txtSearch" type="text" name="keyword">
-        <button type="submit">Search</button>
-    </form>
-
-
-
-    <!--  LIQUOR  -->
-    <ul class="c-sidebar-nav">
-
-        <li class="c-sidebar-nav-title" th:text="${keyword}"></li>
-
-        <li class="c-sidebar-nav-title">Browse by category</li>
-
-        <li class="c-sidebar-nav-item">
+<!--    &lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
+<!--    <form class="center d-inline mt-5" th:action="@{/Search}" method="get">-->
+<!--        <input id="txtSearch" type="text" name="keyword">-->
+<!--        <button type="submit">Search</button>-->
+<!--    </form>-->
 
 
-            <a th:href="@{/Search/{id}(id=${post.id})}" th:value="${post.id}">
-                <button style="border-left: 4px solid orange;" class="bg-dark text-white mt-2">view</button>
-            </a>
-<!--            <form class="d-inline mt-5" th:action="@{/Search}" method="get">-->
-<!--&lt;!&ndash;                enter value for liquor id&ndash;&gt;-->
-<!--&lt;!&ndash;                <input type="submit" name="productTypeKeyWord" th:value="2">&ndash;&gt;-->
-<!--                <a class="c-sidebar-nav-link" th:href="@{/Search/find/{id}(id=${products.getSubCategory().getCategory().getProductType().getName()})}" th:value="${post.id}">-->
-<!--                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Liquor-->
-<!--                </a>-->
-<!--            </form>-->
-        </li>
 
-        <!--    BEER    -->
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
-                <i class="c-sidebar-nav-icon cil-speedometer"></i> Beer
-            </a>
-        </li>
+<!--    &lt;!&ndash;  LIQUOR  &ndash;&gt;-->
+<!--    <ul class="c-sidebar-nav">-->
 
-        <!--    WINE    -->
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
-                <i class="c-sidebar-nav-icon cil-speedometer"></i> Wine
-            </a>
-        </li>
+<!--        <li class="c-sidebar-nav-title" th:text="${keyword}"></li>-->
+
+<!--        <li class="c-sidebar-nav-title">Browse by category</li>-->
+
+<!--        <li class="c-sidebar-nav-item">-->
 
 
-        <!--        &lt;!&ndash;    LIQUOR    &ndash;&gt;-->
-        <!--        <li class="dropdown c-sidebar-nav-item">-->
-        <!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonLiquor"-->
-        <!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-        <!--                <span class="c-sidebar-nav-icon">Liquor</span>-->
-        <!--            </a>-->
-        <!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLiquor">-->
-        <!--                <a class="dropdown-item" href="#">Action</a>-->
-        <!--                <a class="dropdown-item" href="#">Another action</a>-->
-        <!--                <a class="dropdown-item" href="#">Something else here</a>-->
-        <!--            </div>-->
-        <!--        </li>-->
+<!--&lt;!&ndash;            <a th:href="@{/Search/{id}(id=${post.id})}" th:value="${post.id}">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button style="border-left: 4px solid orange;" class="bg-dark text-white mt-2">view</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <form class="d-inline mt-5" th:action="@{/Search}" method="get">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                enter value for liquor id&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <input type="submit" name="productTypeKeyWord" th:value="2">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="c-sidebar-nav-link" th:href="@{/Search/find/{id}(id=${products.getSubCategory().getCategory().getProductType().getName()})}" th:value="${post.id}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Liquor&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--        </li>-->
 
-        <!--        &lt;!&ndash;    BEER    &ndash;&gt;-->
-        <!--        <li class="dropdown c-sidebar-nav-item">-->
-        <!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonBeer"-->
-        <!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-        <!--                <span class="c-sidebar-nav-icon">Beer</span>-->
-        <!--            </a>-->
-        <!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBeer">-->
-        <!--                <a class="dropdown-item" href="#">Action</a>-->
-        <!--                <a class="dropdown-item" href="#">Another action</a>-->
-        <!--                <a class="dropdown-item" href="#">Something else here</a>-->
-        <!--            </div>-->
-        <!--        </li>-->
+<!--        &lt;!&ndash;    BEER    &ndash;&gt;-->
+<!--        <li class="c-sidebar-nav-item">-->
+<!--            <a class="c-sidebar-nav-link" href="#">-->
+<!--                <i class="c-sidebar-nav-icon cil-speedometer"></i> Beer-->
+<!--            </a>-->
+<!--        </li>-->
 
-        <!--        &lt;!&ndash;    WINE   &ndash;&gt;-->
-        <!--        <li class="dropdown c-sidebar-nav-item">-->
-        <!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonWine"-->
-        <!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-        <!--                <span class="c-sidebar-nav-icon">Wine</span>-->
-        <!--            </a>-->
-        <!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonWine">-->
-        <!--                <a class="dropdown-item" href="#">Action</a>-->
-        <!--                <a class="dropdown-item" href="#">Another action</a>-->
-        <!--                <a class="dropdown-item" href="#">Something else here</a>-->
-        <!--            </div>-->
-        <!--        </li>-->
+<!--        &lt;!&ndash;    WINE    &ndash;&gt;-->
+<!--        <li class="c-sidebar-nav-item">-->
+<!--            <a class="c-sidebar-nav-link" href="#">-->
+<!--                <i class="c-sidebar-nav-icon cil-speedometer"></i> Wine-->
+<!--            </a>-->
+<!--        </li>-->
 
 
-    </ul>
+<!--    </ul>-->
     <!--    <button class="c-sidebar-minimizer c-brand-minimizer" type="button"></button>-->
-</div>
+<!--</div>-->
 </body>
 </html>

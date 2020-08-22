@@ -11,6 +11,7 @@ import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -37,23 +38,14 @@ public class SearchController {
 
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
+                        model.addAttribute("keyword", "Search results for: " + keyword);
                 }
-//                else if (productTypeKeyWord) {
-//                        model.addAttribute("products", catDao.findByProductTypeId() )
-//                }
                 else {
                         model.addAttribute("products", products);
                 }
                 return "search/search";
         }
 
-        @GetMapping("/Search")
-        public String getSideNav(Model model, String keyword){
-                model.addAttribute("keyword", "Search results for: " + keyword);
-
-                return "partials/side-nav";
-
-        }
 
         @GetMapping("/Search/find")
         public String getCatProducts(Model model, Integer productTypeId) {
