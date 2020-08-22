@@ -48,10 +48,10 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+<!--        rolled back the version to 4 for the walk through I built out-->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-            <version>3.0.4.RELEASE</version>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
 
 <!--        CSV FILE Setup-->
@@ -115,6 +115,18 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>

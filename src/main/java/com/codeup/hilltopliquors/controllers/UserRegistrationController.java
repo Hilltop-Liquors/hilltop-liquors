@@ -34,6 +34,9 @@ public class UserRegistrationController {
 
     @GetMapping
     public String showRegistrationForm(Model model) {
+//        Trying to debug why my registration is not working
+//        added this...thought it was odd to pass a model object but not use it
+//        model.addAttribute("user", new User());
         return "registration";
     }
 
@@ -51,7 +54,7 @@ public class UserRegistrationController {
         }
 
         userService.save(userDto);
-        return "redirect:/registration?success";
+        return "redirect:/Home";
     }
 
 }
