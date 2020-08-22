@@ -34,37 +34,15 @@
 
             <li class="c-sidebar-nav-title">Browse by category</li>
 
-            <!--    LIQUOR    -->
-            <li class="c-sidebar-nav-item">
-                <!--                <a class="c-sidebar-nav-link" href="#">-->
-                <!--                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Liquor-->
-                <!--                </a>-->
-                <a th:href="@{/searchCat/{id}(id=${post.id})}" th:value="${post.id}">
-                    <button style="border-left: 4px solid orange;" class="bg-dark text-white mt-2">view</button>
-                </a>
-<!--                <form th:action="@{/searchCat}" method="get" class="d-inline ml-2">-->
-<!--                    <input type="hidden" name="Liquor" value="${product.getSubCategory().getCategory().getProductType().getName()}">-->
-<!--                    <input class="btn btn-success btn-sm" name="quantityBtn" type="submit" value="+1">-->
-<!--                </form>-->
+            <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
+            <li class="c-sidebar-nav-item" th:each="productType : ${productTypes}">
+                <a class="c-sidebar-nav-link" style="color: black; text-decoration: none;"
+                   th:href="@{/Search/{id}(id=${productType.getId()})}"
+                   th:value="${productType.getId()}">
+                    <p th:text="${productType.getName()}"></p>
 
-            </li>
-
-
-            <!--    BEER    -->
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#">
-                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Beer
                 </a>
             </li>
-
-            <!--    WINE    -->
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#">
-                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Wine
-                </a>
-            </li>
-
-
         </ul>
     </div>
 

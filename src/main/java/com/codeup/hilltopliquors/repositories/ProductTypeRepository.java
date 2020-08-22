@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface ProductTypeRepository extends JpaRepository<ProductType, Integer> {
 
-// @Query(value="SELECT * FROM product_type p WHERE p.id LIKE %:keyword%", nativeQuery = true)
-// List<ProductType> findByKeyWord(@Param("productTypekeyword") String keyword);
+    @Override
+    List<ProductType> findAll();
 
 }
 

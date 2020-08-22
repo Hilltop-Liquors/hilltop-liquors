@@ -35,6 +35,7 @@ public class SearchController {
         @GetMapping("/Search")
         public String getProducts(Model model, String keyword){
                 List<Product> products = productDao.findAll();
+                List<ProductType> productTypes = productTypeDao.findAll();
 
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -43,18 +44,19 @@ public class SearchController {
                 else {
                         model.addAttribute("products", products);
                 }
+                model.addAttribute("productTypes", productTypes);
                 return "search/search";
         }
 
-        @GetMapping("/searchCat/{id}")
-        public String getProductCat(@PathVariable(value = "id") Integer id, Model model){
-                ProductType productType = productTypeDao.getOne(id);
-
-                model.addAttribute("productType", productType);
-
-                return"search/search";
-
-        }
+//        @GetMapping("/searchCat/{id}")
+//        public String getProductCat(@PathVariable(value = "id") Integer id, Model model){
+//                ProductType productType = productTypeDao.getOne(id);
+//
+//                model.addAttribute("productTypes", productType);
+//
+//                return"search/search";
+//
+//        }
 
 
 
