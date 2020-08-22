@@ -17,18 +17,28 @@
         <button type="submit">Search</button>
     </form>
 
+
+
     <!--  LIQUOR  -->
     <ul class="c-sidebar-nav">
+
+        <li class="c-sidebar-nav-title" th:text="${keyword}"></li>
+
         <li class="c-sidebar-nav-title">Browse by category</li>
 
         <li class="c-sidebar-nav-item">
-            <form class="d-inline mt-5" th:action="@{/Search}" method="get">
-<!--                enter value for liquor id-->
-                <input type="hidden" name="productTypeKeyWord" value="2">
-                <a class="c-sidebar-nav-link" href="#">
-                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Liquor
-                </a>
-            </form>
+
+
+            <a th:href="@{/Search/{id}(id=${post.id})}" th:value="${post.id}">
+                <button style="border-left: 4px solid orange;" class="bg-dark text-white mt-2">view</button>
+            </a>
+<!--            <form class="d-inline mt-5" th:action="@{/Search}" method="get">-->
+<!--&lt;!&ndash;                enter value for liquor id&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="submit" name="productTypeKeyWord" th:value="2">&ndash;&gt;-->
+<!--                <a class="c-sidebar-nav-link" th:href="@{/Search/find/{id}(id=${products.getSubCategory().getCategory().getProductType().getName()})}" th:value="${post.id}">-->
+<!--                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Liquor-->
+<!--                </a>-->
+<!--            </form>-->
         </li>
 
         <!--    BEER    -->

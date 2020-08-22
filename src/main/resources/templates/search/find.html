@@ -14,15 +14,15 @@
 
 <!--<nav th:replace="partials/navbar :: navbar"></nav>-->
 
-<!--<div class="row mt-5" style="width:100%;">-->
-<!--    <nav class="col-md-1" th:insert="partials/side-nav :: side-nav"></nav>-->
+<div class="row mt-5" style="width:100%;">
+    <nav class="col-md-1" th:insert="partials/side-nav :: side-nav"></nav>
 
-<!--<div class="card card-body" th:each="product : ${products}">-->
-<!--    <p th:text="${product.name}"></p>-->
-<!--    <p style="font-weight: lighter;">-->
-<!--        ~ <span style="font-weight: lighter;" th:text="${comment.getParentPost().getParentUser().getEmail()}"></span>-->
-<!--    </p>-->
-<!--</div>-->
-
+    <div class="card card-body" th:each="category : ${categories}">
+        <p th:text="${category.getName()}"></p>
+        <!--    <p style="font-weight: lighter;">-->
+        <!--        ~ <span style="font-weight: lighter;" th:text="${comment.getParentPost().getParentUser().getEmail()}"></span>-->
+        <!--    </p>-->
+    </div>
+</div>
 </body>
 </html>

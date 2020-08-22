@@ -13,7 +13,7 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
 //    @Query(value="SELECT * FROM product_type p WHERE p.id LIKE %:keyword%", nativeQuery = true)
-    List<Category> findByProductTypeId(@Param("productTypeKeyWord") int productTypeKeyWord);
+    List<Category> findByProductTypeId(@Param("productTypeId") Integer productTypeId);
 
 
 

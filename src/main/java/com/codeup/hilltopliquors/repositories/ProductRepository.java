@@ -17,6 +17,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByKeyWord(@Param("keyword") String keyword);
 
 
+//    List<Product> getProductsBySubCategory(int subId);
+
     @Override
     List<Product> findAll();
 

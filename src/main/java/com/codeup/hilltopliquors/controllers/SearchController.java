@@ -47,10 +47,26 @@ public class SearchController {
                 return "search/search";
         }
 
-        @GetMapping("/Search/find")
-        public String getCatProducts(Model model, int prodcutTypeId) {
+        @GetMapping("/Search")
+        public String getSideNav(Model model, String keyword){
+                model.addAttribute("keyword", "Search results for: " + keyword);
 
-                List<Product> getProductByCat = productTypeDao.fin
+                return "partials/side-nav";
+
+        }
+
+        @GetMapping("/Search/find")
+        public String getCatProducts(Model model, Integer productTypeId) {
+//                List<Product> products = productDao.findAll();
+//
+//                model.addAttribute("product", products)
+
+                List<Category> categories = catDao.findByProductTypeId(productTypeId);
+                model.addAttribute("categories", categories);
+
+//                List<Product> products = productDao.f
+
+//                List<Product> getProductByCat = productTypeDao.fin
 
 
                 return "/search/find";
