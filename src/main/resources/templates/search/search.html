@@ -71,10 +71,12 @@
     <!--    -->
     <!--    <nav class="col-md-1" th:insert="partials/side-nav :: side-nav"></nav>-->
 
-        <h2 style="margin-left: 20%; margin-top: 52px; width:100%; z-index:1000; background-color: #EBEDEF; " class="fixed-top" th:text="${keyword}"></h2>
+        <h2 style="margin-left: 20%; margin-top: 52px; width:100%; z-index:1000; background-color: #EBEDEF;" class="fixed-top pb-4 pt-3">
+            <span th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></span>
+        </h2>
 
         <!--SHOW ALL PRODUCTS-->
-        <div class="col-md-9 mt-5" style="width: 100%; margin-left: 10%; z-index: 1">
+        <div class="col-md-9" style="width: 100%; margin-left: 10%; z-index: 1; margin-top: 5%;">
             <div th:each="product : ${products}" class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
                 <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
                    th:value="${product.id}">
