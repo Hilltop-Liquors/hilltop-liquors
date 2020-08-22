@@ -46,24 +46,15 @@ public class SearchController {
                 return "search/search";
         }
 
+        @GetMapping("/searchCat/{id}")
+        public String getProductCat(@PathVariable(value = "id") Integer id, Model model){
+                ProductType productType = productTypeDao.getOne(id);
 
-        @GetMapping("/Search/find")
-        public String getCatProducts(Model model, Integer productTypeId) {
-//                List<Product> products = productDao.findAll();
-//
-//                model.addAttribute("product", products)
+                model.addAttribute("productType", productType);
 
-                List<Category> categories = catDao.findByProductTypeId(productTypeId);
-                model.addAttribute("categories", categories);
+                return"search/search";
 
-//                List<Product> products = productDao.f
-
-//                List<Product> getProductByCat = productTypeDao.fin
-
-
-                return "/search/find";
         }
-
 
 
 
