@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <!--    &lt;!&ndash;  CITATION: https://coreui.io/docs/getting-started/download/#source-files  &ndash;&gt;-->
-    <!--    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">-->
-    <!--    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>-->
 </head>
 <body>
 
@@ -15,52 +12,78 @@
      style="margin-top: 55px; height: 100%; z-index: 1;">
 
     <!--  SEARCH BAR  -->
-    <form class="d-inline mt-5" th:action="@{/Search}" method="get">
+    <form class="center d-inline mt-5" th:action="@{/Search}" method="get">
         <input id="txtSearch" type="text" name="keyword">
         <button type="submit">Search</button>
     </form>
 
+    <!--  LIQUOR  -->
     <ul class="c-sidebar-nav">
-        <li class="c-sidebar-nav-title">Selection</li>
+        <li class="c-sidebar-nav-title">Browse by category</li>
 
-<!--        &lt;!&ndash;    LIQUOR    &ndash;&gt;-->
-<!--        <li class="dropdown c-sidebar-nav-item">-->
-<!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonLiquor"-->
-<!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                <span class="c-sidebar-nav-icon">Liquor</span>-->
-<!--            </a>-->
-<!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLiquor">-->
-<!--                <a class="dropdown-item" href="#">Action</a>-->
-<!--                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                <a class="dropdown-item" href="#">Something else here</a>-->
-<!--            </div>-->
-<!--        </li>-->
+        <li class="c-sidebar-nav-item">
+            <form class="d-inline mt-5" th:action="@{/Search}" method="get">
+<!--                enter value for liquor id-->
+                <input type="hidden" name="productTypeKeyWord" value="2">
+                <a class="c-sidebar-nav-link" href="#">
+                    <i class="c-sidebar-nav-icon cil-speedometer"></i> Liquor
+                </a>
+            </form>
+        </li>
 
-<!--        &lt;!&ndash;    BEER    &ndash;&gt;-->
-<!--        <li class="dropdown c-sidebar-nav-item">-->
-<!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonBeer"-->
-<!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                <span class="c-sidebar-nav-icon">Beer</span>-->
-<!--            </a>-->
-<!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBeer">-->
-<!--                <a class="dropdown-item" href="#">Action</a>-->
-<!--                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                <a class="dropdown-item" href="#">Something else here</a>-->
-<!--            </div>-->
-<!--        </li>-->
+        <!--    BEER    -->
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="#">
+                <i class="c-sidebar-nav-icon cil-speedometer"></i> Beer
+            </a>
+        </li>
 
-<!--        &lt;!&ndash;    WINE   &ndash;&gt;-->
-<!--        <li class="dropdown c-sidebar-nav-item">-->
-<!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonWine"-->
-<!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                <span class="c-sidebar-nav-icon">Wine</span>-->
-<!--            </a>-->
-<!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonWine">-->
-<!--                <a class="dropdown-item" href="#">Action</a>-->
-<!--                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                <a class="dropdown-item" href="#">Something else here</a>-->
-<!--            </div>-->
-<!--        </li>-->
+        <!--    WINE    -->
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="#">
+                <i class="c-sidebar-nav-icon cil-speedometer"></i> Wine
+            </a>
+        </li>
+
+
+        <!--        &lt;!&ndash;    LIQUOR    &ndash;&gt;-->
+        <!--        <li class="dropdown c-sidebar-nav-item">-->
+        <!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonLiquor"-->
+        <!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                <span class="c-sidebar-nav-icon">Liquor</span>-->
+        <!--            </a>-->
+        <!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLiquor">-->
+        <!--                <a class="dropdown-item" href="#">Action</a>-->
+        <!--                <a class="dropdown-item" href="#">Another action</a>-->
+        <!--                <a class="dropdown-item" href="#">Something else here</a>-->
+        <!--            </div>-->
+        <!--        </li>-->
+
+        <!--        &lt;!&ndash;    BEER    &ndash;&gt;-->
+        <!--        <li class="dropdown c-sidebar-nav-item">-->
+        <!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonBeer"-->
+        <!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                <span class="c-sidebar-nav-icon">Beer</span>-->
+        <!--            </a>-->
+        <!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBeer">-->
+        <!--                <a class="dropdown-item" href="#">Action</a>-->
+        <!--                <a class="dropdown-item" href="#">Another action</a>-->
+        <!--                <a class="dropdown-item" href="#">Something else here</a>-->
+        <!--            </div>-->
+        <!--        </li>-->
+
+        <!--        &lt;!&ndash;    WINE   &ndash;&gt;-->
+        <!--        <li class="dropdown c-sidebar-nav-item">-->
+        <!--            <a class=" c-sidebar-nav-link btn btn-secondary dropdown-toggle" id="dropdownMenuButtonWine"-->
+        <!--               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                <span class="c-sidebar-nav-icon">Wine</span>-->
+        <!--            </a>-->
+        <!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonWine">-->
+        <!--                <a class="dropdown-item" href="#">Action</a>-->
+        <!--                <a class="dropdown-item" href="#">Another action</a>-->
+        <!--                <a class="dropdown-item" href="#">Something else here</a>-->
+        <!--            </div>-->
+        <!--        </li>-->
 
 
     </ul>

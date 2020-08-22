@@ -37,7 +37,8 @@
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
 <!--                 need category id that has this product_type id below to redirect to category page-->
-                <a th:href="@{/Search/find/{id}(id=${product.getId()})}" th:value="${product.getId()}">
+                <a>
+<!--                <a th:href="@{/Search/find/{id}(id=${product.getSubCategory().getProducts()})}" th:value="${product.getSubCategory().getProducts()}">-->
                     <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
                             th:text="${product.getSubCategory().getCategory().getProductType().getName()}"></button>
                 </a>

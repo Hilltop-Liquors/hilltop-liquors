@@ -32,29 +32,28 @@ public class SearchController {
 
 //        GET ALL POSTS and SEARCH BAR
         @GetMapping("/Search")
-        public String getProducts(Model model, String keyword, long id){
+        public String getProducts(Model model, String keyword){
                 List<Product> products = productDao.findAll();
 
                 if(keyword != null){
                         model.addAttribute("products", productDao.findByKeyWord(keyword));
                 }
+//                else if (productTypeKeyWord) {
+//                        model.addAttribute("products", catDao.findByProductTypeId() )
+//                }
                 else {
                         model.addAttribute("products", products);
                 }
                 return "search/search";
         }
 
-        @GetMapping("/Search/find/{id}")
-        public String getBeer(@PathVariable(value = "id") int id, Model model) {
-                ProductType getProductType = productTypeDao.getOne(id);
-                List<Category> getCategory = productTypeDao.getOne(id).getCategories();
+        @GetMapping("/Search/find")
+        public String getCatProducts(Model model, int prodcutTypeId) {
 
+                List<Product> getProductByCat = productTypeDao.fin
 
-                model.addAttribute("categories", getCategory);
-                model.addAttribute("productType", getProductType);
 
                 return "/search/find";
-
         }
 
 
