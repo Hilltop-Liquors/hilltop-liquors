@@ -112,6 +112,10 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.3.17.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
 
     </dependencies>
 

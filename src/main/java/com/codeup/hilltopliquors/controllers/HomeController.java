@@ -39,14 +39,24 @@ public class HomeController {
         return "recipes";
     }
 
-    @GetMapping("/Register")
-    public String showSignUp() {
-        return "register";
+//    @GetMapping("/Register")
+//    public String showSignUp() {
+//        return "registration";
+//    }
+
+    @GetMapping("/Login")
+    public String showLogin() {
+        return "login";
     }
 
     @GetMapping("/Search")
     public String showSearch() {
         return "search";
+    }
+
+    @GetMapping("/user")
+    public String userIndex() {
+        return "user/index";
     }
 
 }

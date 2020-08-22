@@ -1,13 +1,15 @@
 package com.codeup.hilltopliquors.services;
 
 import com.codeup.hilltopliquors.models.User;
+import com.codeup.hilltopliquors.security.UserRegistrationDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
-    public User findUserByEmail(String email);
+   User findByEmail(String email);
 
-    public User findUserByUsername(String username);
+   User findByUsername(String username);
 
-    public void saveUser(User user);
+   User save(UserRegistrationDto registration);
 
 }

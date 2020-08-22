@@ -1,4 +1,11 @@
 USE hilltop_app_db;
+USE hilltop_db;
+
+# role
+INSERT INTO `role` (`id`, `name`)
+VALUES
+('1','ROLE_USER'),
+('2','ROLE_ADMIN');
 
 # PRODUCTS_TYPES
 INSERT INTO `product_type` (`id`, `name`)
