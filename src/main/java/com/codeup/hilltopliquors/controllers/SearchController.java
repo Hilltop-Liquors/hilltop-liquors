@@ -1,6 +1,8 @@
 package com.codeup.hilltopliquors.controllers;
 
+import com.codeup.hilltopliquors.models.Category;
 import com.codeup.hilltopliquors.models.Product;
+import com.codeup.hilltopliquors.models.ProductType;
 import com.codeup.hilltopliquors.repositories.CategoryRepository;
 import com.codeup.hilltopliquors.repositories.ProductRepository;
 import com.codeup.hilltopliquors.repositories.ProductTypeRepository;
@@ -8,6 +10,7 @@ import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -43,5 +46,23 @@ public class SearchController {
                 }
                 return "search/search";
         }
+
+        @GetMapping("/Search/Beer/{id}")
+        public String getBeer(@PathVariable(value = "id") int id, Model model) {
+                ProductType productType = productTypeDao.getOne(id);
+                List<Category>
+
+
+        }
+                Post indPost = postsDao.getOne(id);
+                List<Comment> getComments = postsDao.getOne(id).getComments();
+
+                model.addAttribute("comments", getComments);
+                model.addAttribute("post", indPost);
+
+                return "posts/show";
+
+
+
 
 }

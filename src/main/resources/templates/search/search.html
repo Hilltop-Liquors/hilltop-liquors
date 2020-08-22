@@ -14,13 +14,6 @@
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-
-<!--&lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
-<!--    <form class="d-inline mt-5" th:action="@{/Search}" method="get">-->
-<!--        <input id="txtSearch" type="text" name="keyword">-->
-<!--        <button type="submit">Search</button>-->
-<!--    </form>-->
-
 <div class="row mt-5" style="width:100%;">
     <nav class="col-md-1" th:insert="partials/side-nav :: side-nav"></nav>
     <!--SHOW ALL PRODUCTS-->
@@ -43,7 +36,8 @@
                 <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                <a href="#">
+<!--                 need category id that has this product_type id below to redirect to category page-->
+                <a th:action="@{/Search/Beer/{id}(id=${post.id})}" th:method="GET" href="#">
                     <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
                             th:text="${product.getSubCategory().getCategory().getProductType().getName()}"></button>
                 </a>
