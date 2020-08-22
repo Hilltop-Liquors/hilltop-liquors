@@ -45,13 +45,12 @@ public class User {
 
 //    Adding the mapping table to connect users and roles
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
+    @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private Collection < Role > roles;
+    private Collection<Role> roles;
 
 
     public User(long id, String first_name, String last_name, String username, String email, String password, String phone, boolean sms_consent) {

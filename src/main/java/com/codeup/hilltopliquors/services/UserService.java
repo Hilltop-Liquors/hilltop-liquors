@@ -10,6 +10,10 @@ public interface UserService extends UserDetailsService {
 
    User findByUsername(String username);
 
-   User save(UserRegistrationDto registration);
+//   This was originally set as User save(...) but intelliJ told me that the method was
+//   never used in that state and had me convert it to void...still not able to
+//   register a user, but will keep this update for now as I continue down the rabbit hole
+//   (...these notes are starting to feel like the diary from castaway)
+   void save(UserRegistrationDto registration);
 
 }

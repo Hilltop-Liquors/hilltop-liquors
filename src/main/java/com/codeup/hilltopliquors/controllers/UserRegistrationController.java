@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
 
@@ -33,10 +34,14 @@ public class UserRegistrationController {
     }
 
     @GetMapping
-    public String showRegistrationForm(Model model) {
+    public String showRegistrationForm(WebRequest request, Model model) {
 //        Trying to debug why my registration is not working
 //        added this...thought it was odd to pass a model object but not use it
 //        model.addAttribute("user", new User());
+//        After a little more reading from: https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
+//        I added this which makes since as this is also what we use in post
+        UserRegistrationDto userDto = new UserRegistrationDto();
+        model.addAttribute("user", userDto);
         return "registration";
     }
 
@@ -52,7 +57,7 @@ public class UserRegistrationController {
         if (result.hasErrors()) {
             return "registration";
         }
-
+        System.out.println(userDto);
         userService.save(userDto);
         return "redirect:/Home";
     }
