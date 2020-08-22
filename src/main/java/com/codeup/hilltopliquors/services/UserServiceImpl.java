@@ -30,9 +30,9 @@ public class UserServiceImpl implements UserService{
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+//    public User findByEmail(String email) {
+//        return userRepository.findByEmail(email);
+//    }
 
 
     public User findByUsername(String username) {
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService{
     }
 
 
-    public void save(UserRegistrationDto registration) {
+    public User save(UserRegistrationDto registration) {
         User user = new User();
         user.setFirst_name(registration.getFirstName());
         user.setLast_name(registration.getLastName());
@@ -51,7 +51,9 @@ public class UserServiceImpl implements UserService{
         user.setPhone(registration.getPhone());
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
         System.out.println(user);
-        userRepository.save(user);
+        System.out.println("TESTING 1, 2, 3 ... is this thing on?!");
+//        This was missing return... could this be WHY nothing is being stored?!
+        return userRepository.save(user);
     }
 
     @Override

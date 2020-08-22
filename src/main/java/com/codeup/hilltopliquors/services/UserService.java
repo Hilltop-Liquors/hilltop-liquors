@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
 
-   User findByEmail(String email);
+//   User findByEmail(String email);
 
    User findByUsername(String username);
 
@@ -14,6 +14,6 @@ public interface UserService extends UserDetailsService {
 //   never used in that state and had me convert it to void...still not able to
 //   register a user, but will keep this update for now as I continue down the rabbit hole
 //   (...these notes are starting to feel like the diary from castaway)
-   void save(UserRegistrationDto registration);
+  User save(UserRegistrationDto registration);
 
 }

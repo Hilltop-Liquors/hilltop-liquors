@@ -22,7 +22,8 @@ import javax.validation.Valid;
 // we return to the registration page. Otherwise, we redirect and inform the user the registration procedure is complete.
 
 @Controller
-@RequestMapping("/registration")
+//Commenting this out because I am not sure that it is targeting my getters and posts correctly
+//@RequestMapping("/registration")
 public class UserRegistrationController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class UserRegistrationController {
         return new UserRegistrationDto();
     }
 
-    @GetMapping
+    @GetMapping("/registration")
     public String showRegistrationForm(WebRequest request, Model model) {
 //        Trying to debug why my registration is not working
 //        added this...thought it was odd to pass a model object but not use it
@@ -45,7 +46,9 @@ public class UserRegistrationController {
         return "registration";
     }
 
-    @PostMapping
+//    Adding this, trying to figure out why I am not getting any interaction from
+//    my page submissions...could it have something to do with this?
+    @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
         BindingResult result) {
 
@@ -59,7 +62,7 @@ public class UserRegistrationController {
         }
         System.out.println(userDto);
         userService.save(userDto);
-        return "redirect:/Home";
+        return "redirect:/registration?success";
     }
 
 }
