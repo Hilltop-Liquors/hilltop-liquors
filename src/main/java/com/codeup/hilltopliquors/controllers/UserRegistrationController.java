@@ -35,14 +35,14 @@ public class UserRegistrationController {
     }
 
     @GetMapping("/registration")
-    public String showRegistrationForm(WebRequest request, Model model) {
+    public String showRegistrationForm(Model model) {
 //        Trying to debug why my registration is not working
 //        added this...thought it was odd to pass a model object but not use it
 //        model.addAttribute("user", new User());
 //        After a little more reading from: https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
 //        I added this which makes since as this is also what we use in post
-        UserRegistrationDto userDto = new UserRegistrationDto();
-        model.addAttribute("user", userDto);
+//        UserRegistrationDto userDto = new UserRegistrationDto();
+//        model.addAttribute("user", userDto);
         return "registration";
     }
 
@@ -57,9 +57,10 @@ public class UserRegistrationController {
             result.rejectValue("username", null, "There is already an account registered with that username");
         }
 
-        if (result.hasErrors()) {
-            return "registration";
-        }
+//        if (result.hasErrors()) {
+//            return "registration";
+//        }
+
         System.out.println(userDto);
         userService.save(userDto);
         return "redirect:/registration?success";

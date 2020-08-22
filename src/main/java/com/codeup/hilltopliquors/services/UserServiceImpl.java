@@ -2,6 +2,7 @@ package com.codeup.hilltopliquors.services;
 
 import com.codeup.hilltopliquors.models.Role;
 import com.codeup.hilltopliquors.models.User;
+import com.codeup.hilltopliquors.repositories.RoleRepository;
 import com.codeup.hilltopliquors.repositories.UserRepository;
 import com.codeup.hilltopliquors.security.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
 
 //    public User findByEmail(String email) {
 //        return userRepository.findByEmail(email);
@@ -49,7 +53,8 @@ public class UserServiceImpl implements UserService{
         user.setPassword(bCryptPasswordEncoder.encode(registration.getPassword()));
         user.setSms_consent(registration.getSmsConsent());
         user.setPhone(registration.getPhone());
-        user.setRoles(Arrays.asList(new Role("ROLE_USER")));
+        user.setRoles(Arrays.asList((roleRepository.findByName("ROLE_USER"))));
+//        user.setRoles()
         System.out.println(user);
         System.out.println("TESTING 1, 2, 3 ... is this thing on?!");
 //        This was missing return... could this be WHY nothing is being stored?!

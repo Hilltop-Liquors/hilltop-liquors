@@ -24,7 +24,7 @@ public class User {
     @Column(length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 250, nullable = false)
     private String password;
 
     @Column(length = 50, nullable = false)
@@ -53,7 +53,18 @@ public class User {
     private Collection<Role> roles;
 
 
-    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, boolean sms_consent) {
+//    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, boolean sms_consent) {
+//        this.id = id;
+//        this.first_name = first_name;
+//        this.last_name = last_name;
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//        this.phone = phone;
+//        this.sms_consent = sms_consent;
+//    }
+
+    public User(long id, String first_name, String last_name, String username, String email, String password, String phone, boolean sms_consent, List<Order> orders, Collection<Role> roles) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -62,6 +73,8 @@ public class User {
         this.password = password;
         this.phone = phone;
         this.sms_consent = sms_consent;
+        this.orders = orders;
+        this.roles = roles;
     }
 
     public User() {
