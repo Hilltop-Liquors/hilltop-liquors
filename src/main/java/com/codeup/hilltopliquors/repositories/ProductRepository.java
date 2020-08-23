@@ -23,6 +23,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllBySubCategoryCategoryId(@Param("catId")Integer catId);
 
-//    List<Product> findAllBySubCategoryId()
+    List<Product> findAllBySubCategoryId(@Param("subId") Integer subId);
 
 }

@@ -52,29 +52,29 @@
             <!--            </form>-->
 
 
-<!--            <li>-->
-<!--                <ul class="c-sidebar-nav">-->
-<!--                    <li class="c-sidebar-nav-item pl-3" th:each="category : ${catTags}">-->
-<!--                        <a class="c-sidebar-nav-link" style="color: white; text-decoration: none;"-->
-<!--                           th:href="@{/Beer}"-->
-<!--                           th:value="${category.getId()}">-->
-<!--                            <p th:text="${category.getName()}"></p>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </li>-->
+            <!--            <li>-->
+            <!--                <ul class="c-sidebar-nav">-->
+            <!--                    <li class="c-sidebar-nav-item pl-3" th:each="category : ${catTags}">-->
+            <!--                        <a class="c-sidebar-nav-link" style="color: white; text-decoration: none;"-->
+            <!--                           th:href="@{/Beer}"-->
+            <!--                           th:value="${category.getId()}">-->
+            <!--                            <p th:text="${category.getName()}"></p>-->
+            <!--                        </a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </li>-->
 
             <!--  CAT SIDE NAV DISPLAY  -->
             <li>
                 <ul class="c-sidebar-nav">
                     <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">
                         <form th:action="@{/Liquor}" method="get">
-                        <button  type="submit" class="c-sidebar-nav-link nav-link" style="color: white; text-decoration: none;"
-                           th:value="${category.getId()}" name="catId">
+                            <button type="submit" class="c-sidebar-nav-link nav-link"
+                                    style="color: white; text-decoration: none;"
+                                    th:value="${category.getId()}" name="catId">
 
-                            <p th:text="${category.getName()}"></p>
-                        </button>
-<!--                        </a>-->
+                                <span th:text="${category.getName()}"></span>
+                            </button>
                         </form>
                     </li>
                 </ul>
@@ -111,26 +111,18 @@
                 <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-
-<!--                <form th:action="@{/Liquor}" method="get">-->
-<!--                    <button  type="submit" class="c-sidebar-nav-link nav-link" style="color: white; text-decoration: none;"-->
-<!--                             th:value="${category.getId()}" name="catId">-->
-
-<!--                        <p th:text="${category.getName()}"></p>-->
-<!--                    </button>-->
-<!--                    &lt;!&ndash;                        </a>&ndash;&gt;-->
-<!--                </form>-->
                 <form th:action="@{/Liquor}" method="get">
-                    <button th:value="${productType.getSubCategory().getCategory().getId()}" name="catId" style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
-                            th:text="${productType.getSubCategory().getCategory().getName()}">
-                    </button>
+                    <p th:value="${productType.getSubCategory().getId()}" name="subId"
+                       style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
+                       th:text="${productType.getSubCategory().getName()}">
+                    </p>
                 </form>
             </div>
         </div>
 
         <!--    CAT NAV PRODUCT DISPLAY ON CLICK    -->
         <div th:each="productType : ${catProducts}"
-                class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
+             class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
             <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${productType.id})}"
                th:value="${productType.id}">
                 <div class="card-header bg-dark text-white center"
@@ -147,11 +139,65 @@
                 <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                <a>
-                    <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
-                            th:text="${productType.getSubCategory().getCategory().getName()}">
-                    </button>
-                </a>
+                    <!--        CAT TAGS            -->
+<!--                <form th:action="@{/Liquor}" method="get">-->
+<!--                    <p th:value="${productType.getSubCategory().getCategory().getId() }" name="catId"-->
+<!--                       style="color:black; font-size: smaller;" class="mt-auto btn btn-light"-->
+<!--                       th:text="${productType.getSubCategory().getCategory().getName() }">-->
+<!--                    </p>-->
+<!--                </form>-->
+                    <!--        SUB CAT TAGS            -->
+<!--                <form th:action="@{/Liquor}" method="get">-->
+<!--                    <button type="submit" class="c-sidebar-nav-link nav-link"-->
+<!--                            style="color: white; text-decoration: none;"-->
+<!--                            th:value="${category.getId()}" name="catId">-->
+
+<!--                        <span th:text="${category.getName()}"></span>-->
+<!--                    </button>-->
+<!--                </form>-->
+                <form th:action="@{/Liquor}" method="get">
+                    <input th:value="${productType.getSubCategory().getId()}" name="subId"
+                       style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
+                       th:text="${productType.getSubCategory().getName()}">
+<!--                    </input>-->
+                </form>
+            </div>
+        </div>
+
+
+        <!--    SUB CAT NAV PRODUCT DISPLAY ON CLICK    -->
+        <div th:each="productType : ${subProducts}"
+             class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
+            <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${productType.id})}"
+               th:value="${productType.id}">
+                <div class="card-header bg-dark text-white center"
+                     style="border-bottom: 4px solid maroon;  ">
+                    <img class="center" style="width: 126px; height: 189px;"
+                         src="../static/img/filler_bottle.png"
+                         th:src="@{img/filler_bottle.png}" alt="bottle"/>
+                </div>
+            </a>
+            <div class="card-body d-flex flex-column">
+                <p th:text="${productType.name}"></p>
+                <p th:text="${productType.priceInCents}"></p>
+
+                <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
+                <hr>
+                <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
+                <!--        CAT TAGS            -->
+                <!--                <form th:action="@{/Liquor}" method="get">-->
+                <!--                    <p th:value="${productType.getSubCategory().getCategory().getId() }" name="catId"-->
+                <!--                       style="color:black; font-size: smaller;" class="mt-auto btn btn-light"-->
+                <!--                       th:text="${productType.getSubCategory().getCategory().getName() }">-->
+                <!--                    </p>-->
+                <!--                </form>-->
+                <!--        SUB CAT TAGS            -->
+                <form th:action="@{/Liquor}" method="get">
+                    <p th:value="${productType.getSubCategory().getId()}" name="subId"
+                       style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
+                       th:text="${productType.getSubCategory().getName()}">
+                    </p>
+                </form>
             </div>
         </div>
 
