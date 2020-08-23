@@ -28,6 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/") // user's home page, it can be any URL
+                .failureUrl("/login-error")
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
