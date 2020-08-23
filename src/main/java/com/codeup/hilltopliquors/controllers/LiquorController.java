@@ -33,6 +33,7 @@ public class LiquorController {
     @GetMapping("/Liquor")
     public String getLiquorProducts(Model model, String keyword) {
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
+        List<Category> catTags = catDao.findAll();
 
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -41,6 +42,7 @@ public class LiquorController {
             model.addAttribute("products", products);
         }
 
+        model.addAttribute("catTag", catDao);
         model.addAttribute("products", products);
 
         return "search/liquor";
