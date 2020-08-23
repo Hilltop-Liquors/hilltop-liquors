@@ -44,10 +44,10 @@ public class HomeController {
 //        return "registration";
 //    }
 
-    @GetMapping("/Login")
-    public String showLogin() {
-        return "login";
-    }
+//    @GetMapping("/Login")
+//    public String showLogin() {
+//        return "login";
+//    }
 
 //    @GetMapping("/Search")
 //    public String showSearch() {
