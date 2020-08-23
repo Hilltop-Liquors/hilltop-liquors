@@ -19,12 +19,14 @@
 <div class="row mt-5" style="width:100%;">
 
     <!--  SIDE NAV  -->
+    <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Search}">All Products</a>
+
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
     <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-dark c-sidebar-show fixed-top navbar-expand-md"
          style="margin-top: 55px; height: 100%; z-index: 1001;">
 
         <!--  SEARCH BAR  -->
-        <form class="center ml-2 d-inline mt-5" th:action="@{/Search}" method="get">
+        <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
             <input id="txtSearch" type="text" name="keyword">
         </form>
 
@@ -33,49 +35,62 @@
             <li class="c-sidebar-nav-title">Browse by category</li>
 
             <!--       LIQUOR      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Liquor}">
-                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">
-                        <p>LIQUOR</p>
-                    </form>
-                </a>
+<!--            <li class="c-sidebar-nav-item border-bottom-1">-->
+<!--                <a th:href="@{/Liquor}">-->
+<!--                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">-->
+<!--                        <p>LIQUOR</p>-->
+<!--                    </form>-->
+<!--                </a>-->
+<!--            </li>-->
+
+            <li >
+
+                <ul class="c-sidebar-nav">
+                    <li class="c-sidebar-nav-item pl-3" th:each="category : ${catTags}">
+                        <a class="c-sidebar-nav-link" style="color: white; text-decoration: none;"
+                           th:href="@{/Liquor}"
+                           th:value="${category.getId()}">
+                            <p th:text="${category.getName()}"></p>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
-            <!--       BEER      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Beer}">
-                    <form class="c-sidebar-nav-link">
-                        <p>BEER</p>
-                    </form>
-                </a>
-            </li>
+            <!--            &lt;!&ndash;       BEER      &ndash;&gt;-->
+            <!--            <li class="c-sidebar-nav-item">-->
+            <!--                <a th:href="@{/Beer}">-->
+            <!--                    <form class="c-sidebar-nav-link">-->
+            <!--                        <p>BEER</p>-->
+            <!--                    </form>-->
+            <!--                </a>-->
+            <!--            </li>-->
 
-            <!--       WINE      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Wine}">
-                    <form class="c-sidebar-nav-link">
-                        <p>WINE</p>
-                    </form>
-                </a>
-            </li>
+            <!--            &lt;!&ndash;       WINE      &ndash;&gt;-->
+            <!--            <li class="c-sidebar-nav-item">-->
+            <!--                <a th:href="@{/Wine}">-->
+            <!--                    <form class="c-sidebar-nav-link">-->
+            <!--                        <p>WINE</p>-->
+            <!--                    </form>-->
+            <!--                </a>-->
+            <!--            </li>-->
 
-            <!--       NON-ALCOHOLIC      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Non-Alcoholic}">
-                    <form class="c-sidebar-nav-link">
-                        <p>NON-ALCOHOLIC</p>
-                    </form>
-                </a>
-            </li>
+            <!--            &lt;!&ndash;       NON-ALCOHOLIC      &ndash;&gt;-->
+            <!--            <li class="c-sidebar-nav-item">-->
+            <!--                <a th:href="@{/Non-Alcoholic}">-->
+            <!--                    <form class="c-sidebar-nav-link">-->
+            <!--                        <p>NON-ALCOHOLIC</p>-->
+            <!--                    </form>-->
+            <!--                </a>-->
+            <!--            </li>-->
 
-            <!--       EXTRAS      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Extras}">
-                    <form class="c-sidebar-nav-link">
-                        <p>EXTRAS</p>
-                    </form>
-                </a>
-            </li>
+            <!--            &lt;!&ndash;       EXTRAS      &ndash;&gt;-->
+            <!--            <li class="c-sidebar-nav-item">-->
+            <!--                <a th:href="@{/Extras}">-->
+            <!--                    <form class="c-sidebar-nav-link">-->
+            <!--                        <p>EXTRAS</p>-->
+            <!--                    </form>-->
+            <!--                </a>-->
+            <!--            </li>-->
 
         </ul>
     </div>
