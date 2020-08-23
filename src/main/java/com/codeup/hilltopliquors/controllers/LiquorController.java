@@ -52,10 +52,7 @@ public class LiquorController {
             model.addAttribute("catProducts", catProducts);
         } else {
             model.addAttribute("products", products);
-
         }
-            System.out.println(catId);
-            System.out.println(catProducts);
 
         model.addAttribute("catTags", catTags);
 

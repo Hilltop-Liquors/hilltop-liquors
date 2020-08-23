@@ -111,11 +111,20 @@
                 <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                <a>
-                    <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
+
+<!--                <form th:action="@{/Liquor}" method="get">-->
+<!--                    <button  type="submit" class="c-sidebar-nav-link nav-link" style="color: white; text-decoration: none;"-->
+<!--                             th:value="${category.getId()}" name="catId">-->
+
+<!--                        <p th:text="${category.getName()}"></p>-->
+<!--                    </button>-->
+<!--                    &lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                </form>-->
+                <form th:action="@{/Liquor}" method="get">
+                    <button th:value="${productType.getSubCategory().getCategory().getId()}" name="catId" style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
                             th:text="${productType.getSubCategory().getCategory().getName()}">
                     </button>
-                </a>
+                </form>
             </div>
         </div>
 
