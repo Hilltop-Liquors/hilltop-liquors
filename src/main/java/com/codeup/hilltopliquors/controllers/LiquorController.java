@@ -42,7 +42,7 @@ public class LiquorController {
             model.addAttribute("products", products);
         }
 
-        model.addAttribute("catTag", catDao);
+        model.addAttribute("catTags", catTags);
         model.addAttribute("products", products);
 
         return "search/liquor";

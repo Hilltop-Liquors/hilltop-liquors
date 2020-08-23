@@ -80,6 +80,7 @@
         </ul>
     </div>
     <!--SHOW ALL PRODUCTS-->
+    <!--SHOW ALL PRODUCTS-->
     <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
         <!--  SEARCH KEYWORD RENDERED  -->
         <h2 style="margin-left: 18%; background-color: #EBEDEF;"
@@ -89,33 +90,36 @@
             <span><h5 th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></h5></span>
         </h2>
         <hr>
-                <div th:each="productType : ${products}" class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
-                    <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${productType.id})}"
-                       th:value="${productType.id}">
-                        <div class="card-header bg-dark text-white center"
-                             style="border-bottom: 4px solid maroon; ">
-                            <img class="center" style="width: 126px; height: 189px;"
-                                 src="../static/img/filler_bottle.png"
-                                 th:src="@{img/filler_bottle.png}" alt="bottle"/>
-                        </div>
-                    </a>
-                    <div class="card-body d-flex flex-column">
-                        <p th:text="${productType.name}"></p>
-                        <p th:text="${productType.priceInCents}"></p>
+        <span><h5 th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></h5></span>
 
-                        <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
-                        <hr>
-                        <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                        <a>
-                            <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
-                                    th:text="${productType.getSubCategory().getCategory().getName()}">
-                            </button>
-                        </a>
-                    </div>
+        <hr>
+        <div th:each="productType : ${products}" class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
+            <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${productType.id})}"
+               th:value="${productType.id}">
+                <div class="card-header bg-dark text-white center"
+                     style="border-bottom: 4px solid maroon; ">
+                    <img class="center" style="width: 126px; height: 189px;"
+                         src="../static/img/filler_bottle.png"
+                         th:src="@{img/filler_bottle.png}" alt="bottle"/>
                 </div>
-            </div>
+            </a>
+            <div class="card-body d-flex flex-column">
+                <p th:text="${productType.name}"></p>
+                <p th:text="${productType.priceInCents}"></p>
 
+                <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
+                <hr>
+                <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
+                <a>
+                    <button style="color:black; font-size: smaller;" class="mt-auto btn btn-light"
+                            th:text="${productType.getSubCategory().getCategory().getName()}">
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
-    <footer th:replace="partials/footer :: footer"></footer>
+
+</div>
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
