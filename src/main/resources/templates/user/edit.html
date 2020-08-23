@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+</head>
+<body>
+
+    <form th:action="@{/user/update/{id}(id=${user.id})}" method="post" th:object="${user}">
+        <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+           th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
+            error</p>
+
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+            <label for="firstName" class="control-label">First name</label> <input
+                id="firstName" class="form-control" th:field="*{first_name}" th:value="*{first_name}" />
+            <p class="error-message"
+               th:each="error: ${#fields.errors('firstName')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+            <label for="lastName" class="control-label">Last name</label> <input
+                id="lastName" class="form-control" th:field="*{last_name}" th:value="*{last_name}" />
+            <p class="error-message"
+               th:each="error : ${#fields.errors('lastName')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+            <label for="email" class="control-label">E-mail</label> <input
+                id="email" class="form-control" th:field="*{email}" />
+            <p class="error-message"
+               th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
+                error</p>
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+            <label for="username" class="control-label">Username</label> <input
+                id="username" class="form-control" th:field="*{username}" />
+            <p class="error-message"
+               th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation
+                error</p>
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('confirmUsername')}? 'has-error':''">
+            <label for="confirmUsername" class="control-label">Confirm
+                username</label> <input id="confirmUsername" class="form-control"
+                                        th:field="*{confirmUsername}" />
+            <p class="error-message"
+               th:each="error : ${#fields.errors('confirmUsername')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="control-label">Phone</label>
+            <input class="form-control" type="tel" value="1-555-5555" placeholder="1-555-5555"
+                   id="phone" th:field="*{phone}">
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+            <label for="password" class="control-label">Password</label> <input
+                id="password" class="form-control" type="password"
+                th:field="*{password}" />
+            <p class="error-message danger"
+               th:each="error : ${#fields.errors('password')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+            <label for="confirmPassword" class="control-label">Confirm
+                password</label> <input id="confirmPassword" class="form-control"
+                                        type="password" th:field="*{confirmPassword}" />
+            <p class="error-message"
+               th:each="error : ${#fields.errors('confirmPassword')}"
+               th:text="${error}">Validation error</p>
+        </div>
+
+        <input class="btn btn-success" type="submit" value="Update">
+    </form>
+
+</body>
+</html>
