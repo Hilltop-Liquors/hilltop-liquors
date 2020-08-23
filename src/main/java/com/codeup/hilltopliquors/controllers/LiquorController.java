@@ -11,33 +11,32 @@ import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Controller
-public class SearchController {
-
+public class LiquorController {
     private final ProductRepository productDao;
     private final SubcategoryRepository subCatDao;
     private final CategoryRepository catDao;
     private final ProductTypeRepository productTypeDao;
 
-    public SearchController(ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao) {
+    public LiquorController(ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao) {
         this.productDao = productDao;
         this.subCatDao = subCatDao;
         this.catDao = catDao;
         this.productTypeDao = productTypeDao;
     }
 
+    //        LIQUOR
     //        GET ALL POSTS and SEARCH BAR
-    @GetMapping("/Search")
-    public String getProducts(Model model, String keyword) {
-        List<Product> products = productDao.findAll();
-        List<ProductType> productTypes = productTypeDao.findAll();
-        List<Category> categories = catDao.findAll();
-        List<Subcategory> subCategories = subCatDao.findAll();
+    @GetMapping("/Liquor")
+    public String getLiquorProducts(Model model, String keyword) {
+        List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
+//        List<ProductType> productTypes = productTypeDao.f;
+//        List<Category> categories = catDao.findAll();
+//        List<Subcategory> subCategories = subCatDao.
+//        List<Subcategory> subCategories = subCatDao.getAllByCategoryProductTypeName("LIQUOR");
 
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -46,36 +45,13 @@ public class SearchController {
             model.addAttribute("products", products);
         }
 
-        model.addAttribute("productTypes", productTypes);
-        model.addAttribute("categories", categories);
+        model.addAttribute("products", products);
+//        model.addAttribute("subCategories", subCategories);
+//        model.addAttribute("productTypes", productTypes);
+//        model.addAttribute("categories", categories);
 
-        return "search/search";
+        return "search/liquor";
     }
 
-    //        BEER
-    @GetMapping("/Beer")
-    public String getBeerProducts() {
-        return "search/beer";
-    }
-
-    //        WINE
-    @GetMapping("/Wine")
-    public String getWineProducts() {
-        return "search/wine";
-    }
-
-    //        NON-ALCOHOLIC
-    @GetMapping("/Non-Alcoholic")
-    public String getNonAlcoholicProducts() {
-        return "search/non-alcoholic";
-    }
-
-    //        EXTRAS
-    @GetMapping("/Extras")
-    public String getExtraProducts() {
-        return "search/extras";
-    }
 
 }
-
-

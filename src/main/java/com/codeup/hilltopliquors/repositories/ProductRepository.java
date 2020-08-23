@@ -13,8 +13,11 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query(value="SELECT * FROM product p WHERE p.name LIKE %:keyword%", nativeQuery = true)
+    @Query(value = "SELECT * FROM product p WHERE p.name LIKE %:keyword%", nativeQuery = true)
     List<Product> findByKeyWord(@Param("keyword") String keyword);
+
+    List<Product> findAllBySubCategoryCategoryProductTypeId(int productTypeId);
+
 
 //    List<Product> findProductsBySubCategoryId(int subId);
 
@@ -24,6 +27,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 //    List<Product> getProductsBySubCategory(int subId);
 
     @Override
+
     List<Product> findAll();
 
 }
