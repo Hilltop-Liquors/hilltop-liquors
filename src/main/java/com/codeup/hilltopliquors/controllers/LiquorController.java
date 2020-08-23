@@ -46,18 +46,16 @@ public class LiquorController {
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
             model.addAttribute("keyword", "Search results for: " + keyword);
-        } else {
-            model.addAttribute("products", products);
         }
 
-            System.out.println(catId);
-            System.out.println(catProducts);
         if (catId != null) {
             model.addAttribute("catProducts", catProducts);
         } else {
             model.addAttribute("products", products);
 
         }
+            System.out.println(catId);
+            System.out.println(catProducts);
 
         model.addAttribute("catTags", catTags);
 
