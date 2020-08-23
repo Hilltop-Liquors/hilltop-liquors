@@ -11,7 +11,5 @@ import java.util.List;
 @Repository
 public interface SubcategoryRepository extends JpaRepository<Subcategory, Integer> {
 
-    List<Subcategory> findByCategoryId(@Param("productTypeKeyWord") int productTypeKeyWord);
-
 
 }
