@@ -1,5 +1,6 @@
 package com.codeup.hilltopliquors.controllers;
 
+import com.codeup.hilltopliquors.models.Category;
 import com.codeup.hilltopliquors.models.Product;
 import com.codeup.hilltopliquors.repositories.CategoryRepository;
 import com.codeup.hilltopliquors.repositories.ProductRepository;
@@ -31,6 +32,8 @@ public class BeerController {
         @GetMapping("/Beer")
         public String getBeerProducts(Model model, String keyword) {
             List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(1);
+            List<Category> catTags = catDao.findCategoriesByProductTypeId(1);
+
 
             if (keyword != null) {
                 model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -38,7 +41,7 @@ public class BeerController {
             } else {
                 model.addAttribute("products", products);
             }
-
+            model.addAttribute("catTags", catTags);
             model.addAttribute("products", products);
 
             return "search/beer";
