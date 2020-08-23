@@ -12,9 +12,6 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-//    @Query(value="SELECT * FROM product_type p WHERE p.id LIKE %:keyword%", nativeQuery = true)
-
-
 
 
 }

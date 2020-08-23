@@ -13,8 +13,6 @@ import java.util.List;
 @Repository
 public interface ProductTypeRepository extends JpaRepository<ProductType, Integer> {
 
-//    @Override
-//    List<ProductType> findAllByName(String name);
 
 }
 

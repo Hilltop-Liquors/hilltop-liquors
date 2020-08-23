@@ -52,29 +52,6 @@ public class SearchController {
         return "search/search";
     }
 
-    //        BEER
-    @GetMapping("/Beer")
-    public String getBeerProducts() {
-        return "search/beer";
-    }
-
-    //        WINE
-    @GetMapping("/Wine")
-    public String getWineProducts() {
-        return "search/wine";
-    }
-
-    //        NON-ALCOHOLIC
-    @GetMapping("/Non-Alcoholic")
-    public String getNonAlcoholicProducts() {
-        return "search/non-alcoholic";
-    }
-
-    //        EXTRAS
-    @GetMapping("/Extras")
-    public String getExtraProducts() {
-        return "search/extras";
-    }
 
 }
 

@@ -1,9 +1,6 @@
 package com.codeup.hilltopliquors.controllers;
 
-import com.codeup.hilltopliquors.models.Category;
 import com.codeup.hilltopliquors.models.Product;
-import com.codeup.hilltopliquors.models.ProductType;
-import com.codeup.hilltopliquors.models.Subcategory;
 import com.codeup.hilltopliquors.repositories.CategoryRepository;
 import com.codeup.hilltopliquors.repositories.ProductRepository;
 import com.codeup.hilltopliquors.repositories.ProductTypeRepository;
@@ -15,24 +12,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class LiquorController {
+public class ExtrasController {
     private final ProductRepository productDao;
     private final SubcategoryRepository subCatDao;
     private final CategoryRepository catDao;
     private final ProductTypeRepository productTypeDao;
 
-    public LiquorController(ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao) {
+    public ExtrasController(ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao) {
         this.productDao = productDao;
         this.subCatDao = subCatDao;
         this.catDao = catDao;
         this.productTypeDao = productTypeDao;
     }
 
-    //        LIQUOR
+    //        Extras
     //        GET ALL POSTS and SEARCH BAR
-    @GetMapping("/Liquor")
-    public String getLiquorProducts(Model model, String keyword) {
-        List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
+    @GetMapping("/Extras")
+    public String getExtrasProducts(Model model, String keyword) {
+//        How to target productType ids 5 and 6?
+        List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(6);
 
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -43,7 +41,7 @@ public class LiquorController {
 
         model.addAttribute("products", products);
 
-        return "search/liquor";
+        return "search/extras";
     }
 
 

@@ -12,7 +12,4 @@ import java.util.List;
 public interface SubcategoryRepository extends JpaRepository<Subcategory, Integer> {
 
 
-    List<Subcategory> getAllByCategoryProductTypeName(String id);
-
-
 }
