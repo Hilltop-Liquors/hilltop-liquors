@@ -51,16 +51,29 @@
             <!--                <input id="txtSearch" type="text" name="keyword">-->
             <!--            </form>-->
 
+
+<!--            <li>-->
+<!--                <ul class="c-sidebar-nav">-->
+<!--                    <li class="c-sidebar-nav-item pl-3" th:each="category : ${catTags}">-->
+<!--                        <a class="c-sidebar-nav-link" style="color: white; text-decoration: none;"-->
+<!--                           th:href="@{/Beer}"-->
+<!--                           th:value="${category.getId()}">-->
+<!--                            <p th:text="${category.getName()}"></p>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
             <!--  CAT SIDE NAV DISPLAY  -->
             <li>
                 <ul class="c-sidebar-nav">
                     <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">
-                        <form action="@{/Liquor}" method="get">
-
-                        <input class="c-sidebar-nav-link nav-link" style="color: white; text-decoration: none;"
-                           th:href="@{/Liquor/{id}(id=${category.getId()})}" th:value="${category.getId()}" name="catId">
+                        <form th:action="@{/Liquor}" method="get">
+                        <button  type="submit" class="c-sidebar-nav-link nav-link" style="color: white; text-decoration: none;"
+                           th:value="${category.getId()}" name="catId">
 
                             <p th:text="${category.getName()}"></p>
+                        </button>
 <!--                        </a>-->
                         </form>
                     </li>
@@ -107,9 +120,7 @@
         </div>
 
         <!--    CAT NAV PRODUCT DISPLAY ON CLICK    -->
-
-        <div
-                th:each="productType : ${catProducts}"
+        <div th:each="productType : ${catProducts}"
                 class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
             <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${productType.id})}"
                th:value="${productType.id}">

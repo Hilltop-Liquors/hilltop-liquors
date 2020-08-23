@@ -50,7 +50,9 @@ public class LiquorController {
             model.addAttribute("products", products);
         }
 
-        if (catId == 1) {
+            System.out.println(catId);
+            System.out.println(catProducts);
+        if (catId != null) {
             model.addAttribute("catProducts", catProducts);
         } else {
             model.addAttribute("products", products);
