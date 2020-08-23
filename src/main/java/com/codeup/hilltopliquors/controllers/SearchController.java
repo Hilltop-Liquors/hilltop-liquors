@@ -19,38 +19,69 @@ import java.util.List;
 @Controller
 public class SearchController {
 
-        private final ProductRepository productDao;
-        private final SubcategoryRepository subCatDao;
-        private final CategoryRepository catDao;
-        private final ProductTypeRepository productTypeDao;
+    private final ProductRepository productDao;
+    private final SubcategoryRepository subCatDao;
+    private final CategoryRepository catDao;
+    private final ProductTypeRepository productTypeDao;
 
-        public SearchController(ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao){
-                this.productDao = productDao;
-                this.subCatDao = subCatDao;
-                this.catDao = catDao;
-                this.productTypeDao = productTypeDao;
+    public SearchController(ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao) {
+        this.productDao = productDao;
+        this.subCatDao = subCatDao;
+        this.catDao = catDao;
+        this.productTypeDao = productTypeDao;
+    }
+
+    //        GET ALL POSTS and SEARCH BAR
+    @GetMapping("/Search")
+    public String getProducts(Model model, String keyword) {
+        List<Product> products = productDao.findAll();
+        List<ProductType> productTypes = productTypeDao.findAll();
+        List<Category> categories = catDao.findAll();
+        List<Subcategory> subCategories = subCatDao.findAll();
+
+        if (keyword != null) {
+            model.addAttribute("products", productDao.findByKeyWord(keyword));
+            model.addAttribute("keyword", "Search results for: " + keyword);
+        } else {
+            model.addAttribute("products", products);
         }
 
-//        GET ALL POSTS and SEARCH BAR
-        @GetMapping("/Search")
-        public String getProducts(Model model, String keyword){
-                List<Product> products = productDao.findAll();
-                List<ProductType> productTypes = productTypeDao.findAll();
-                List<Category> categories = catDao.findAll();
-                List<Subcategory> subCategories = subCatDao.findAll();
+        model.addAttribute("productTypes", productTypes);
+        model.addAttribute("categories", categories);
 
-                if(keyword != null){
-                        model.addAttribute("products", productDao.findByKeyWord(keyword));
-                        model.addAttribute("keyword", "Search results for: " + keyword);
-                }
-                else {
-                        model.addAttribute("products", products);
-                }
+        return "search/search";
+    }
 
-                model.addAttribute("productTypes", productTypes);
-                model.addAttribute("categories", categories);
+    //        LIQUOR
+    @GetMapping("/Liquor")
+    public String getLiquorProducts() {
+        return "search/liquor";
+    }
 
-                return "search/search";
-        }
+    //        BEER
+    @GetMapping("/Beer")
+    public String getBeerProducts() {
+        return "search/beer";
+    }
+
+    //        WINE
+    @GetMapping("/Wine")
+    public String getWineProducts() {
+        return "search/wine";
+    }
+
+    //        NON-ALCOHOLIC
+    @GetMapping("/Non-Alcoholic")
+    public String getNonAlcoholicProducts() {
+        return "search/non-alcoholic";
+    }
+
+    //        EXTRAS
+    @GetMapping("/Extras")
+    public String getExtraProducts() {
+        return "search/extras";
+    }
 
 }
+
+

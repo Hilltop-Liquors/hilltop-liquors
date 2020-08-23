@@ -33,28 +33,78 @@
             <li class="c-sidebar-nav-title">Browse by category</li>
 
             <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-            <li class="c-sidebar-nav-item" style="color: black; text-decoration: none;"
-                th:each="productType : ${productTypes}">
-                <a th:href="@{/Search}" th:value="${productType.getId()}">
-                    <form class="c-sidebar-nav-link" th:action="@{/Search}" method="get">
-                        <input type="hidden" name="productCat" th:value="${productType.getId()}">
-                        <p th:text="${productType.getName()}"></p>
 
+            <!--       LIQUOR      -->
+            <li class="c-sidebar-nav-item">
+                <a th:href="@{/Liquor}">
+                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">
+                        <p>LIQUOR</p>
                     </form>
                 </a>
-
-                <!--    CATEGORY SIDE-NAV DISPLAY   -->
-                <!--                    <ul>-->
-                <!--                        <li th:each="category : ${categories}">-->
-                <!--                            <a class="c-sidebar-nav-link" style="color: black; text-decoration: none;"-->
-                <!--                               th:href="@{/Search}"-->
-                <!--                               th:value="${category.getId()}">-->
-                <!--                                <p th:text="${category.getName()}"></p>-->
-                <!--                            </a>-->
-                <!--                        </li>-->
-                <!--                    </ul>-->
-
             </li>
+
+            <!--       BEER      -->
+            <li class="c-sidebar-nav-item">
+                <a th:href="@{/Beer}">
+                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">
+                        <p>BEER</p>
+                    </form>
+                </a>
+            </li>
+
+            <!--       WINE      -->
+            <li class="c-sidebar-nav-item">
+                <a th:href="@{/Wine}">
+                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">
+                        <p>WINE</p>
+                    </form>
+                </a>
+            </li>
+
+            <!--       NON-ALCOHOLIC      -->
+            <li class="c-sidebar-nav-item">
+                <a th:href="@{/Non-Alcoholic}">
+                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">
+                        <p>NON-ALCOHOLIC</p>
+                    </form>
+                </a>
+            </li>
+
+            <!--       EXTRAS      -->
+            <li class="c-sidebar-nav-item">
+                <a th:href="@{/Extras}">
+                    <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">
+                        <p>EXTRAS</p>
+                    </form>
+                </a>
+            </li>
+
+
+            <!--            <li class="c-sidebar-nav-item" style="color: black; text-decoration: none;"-->
+            <!--                th:each="productType : ${productTypes}">-->
+            <!--                <a th:href="@{/Search}" th:value="${productType.getId()}">-->
+            <!--&lt;!&ndash;                    <div th:if="${productType.getId() == 1}">&ndash;&gt;-->
+            <!--                        <form class="c-sidebar-nav-link" th:action="@{/Beer}" method="get">-->
+
+            <!--                            <input type="hidden" name="productCat" th:value="${productType.getId()}">-->
+            <!--                            <p th:text="${productType.getName()}">-->
+            <!--                            </p>-->
+            <!--                        </form>-->
+            <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+            <!--                </a>-->
+
+            <!--    CATEGORY SIDE-NAV DISPLAY   -->
+            <!--                    <ul>-->
+            <!--                        <li th:each="category : ${categories}">-->
+            <!--                            <a class="c-sidebar-nav-link" style="color: black; text-decoration: none;"-->
+            <!--                               th:href="@{/Search}"-->
+            <!--                               th:value="${category.getId()}">-->
+            <!--                                <p th:text="${category.getName()}"></p>-->
+            <!--                            </a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+
+
         </ul>
     </div>
 
