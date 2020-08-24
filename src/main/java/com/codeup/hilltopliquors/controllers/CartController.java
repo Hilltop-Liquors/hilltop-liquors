@@ -55,20 +55,33 @@ public class CartController {
     @PostMapping("/add/{productId}")
     public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
 
-        request.getSession().setAttribute("sessionUser", "sessionUser");
+        // check if cart exists
+        // if not set a cart in the session with one item
+        // if it does exist, extrat the cart and add a new item to it
 
+        /*
+            List<Product> cart;
+            if (request.getSession().getAttribute("cart") == null) {
+                cart = new ArrayList<>();
+            } else {
+                cart = request.getSession().getAttribute("cart");
+            }
+            cart.add the product to the cart
+            request.getSession().setAttribute("cart", cart);
+         */
+        request.getSession().setAttribute("sessionUser", "sessionUser");
         Product product = productDao.getOne(id);
 
-
-
-        if (request.getSession().getAttribute("sessionUser") == null) {
-//            create new cart
-            List<Product> cart = new ArrayList<>();
+        List<Product> cart;
+        int cartSize = cart.size();
+        if (cartSize == 0) {
+            cart = new ArrayList<>();
+        } else if(request.getSession().getAttribute("sessionUser") != null) {
             cart.add(product);
-            System.out.println(cart);
             model.addAttribute("cart", cart);
-//        }
-        return "search/search";
+        }
+
+        return "cart";
 
     }
 
