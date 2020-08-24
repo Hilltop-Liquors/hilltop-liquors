@@ -29,19 +29,23 @@
                 </thead>
                 <tbody>
                 <!-- shopping cart contents -->
-                <div th:each="cartItem : ${cart}">
-                    <tr class="productitm">
-                        <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                        <td><img src="../static/img/filler_bottle.png" class="thumb"></td>
-                        <td><input type="text" th:value="${cartItem.getOrderProducts()}" min="0" max="99" class="qtyinput"></td>
-<!--                        <td th:text="${cartItem.getProduct().getName()}"><span class="pl-1 pr-1"-->
+
+                    <tr th:each="carts : ${cart}">
+                        <td><span th:text="${carts.getName() }"> </span></td>
+
+                    </tr>
+
+<!--                    <tr class="productitm">-->
+<!--                        &lt;!&ndash; http://www.inkydeals.com/deal/ginormous-bundle/ &ndash;&gt;-->
+<!--                        <td><img src="../static/img/filler_bottle.png" class="thumb"></td>-->
+<!--&lt;!&ndash;                        <td><input type="text" }" min="0" max="99" class="qtyinput"></td>&ndash;&gt;-->
+<!--                        <td th:text="${cartItem.getName()}"><span class="pl-1 pr-1"-->
 <!--                                                                               style="font-weight: lighter"></span>-->
 <!--                        </td>-->
-<!--                        <td th:text="${cartItem.getProduct().getPriceInCents()}"></td>-->
-                        <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
-                    </tr>
-                </div>
-                <form th:action="@{/cart/checkout}" th:object="${order}">
+<!--&lt;!&ndash;                        <td th:text="${cartItem.getProduct().getPriceInCents()}"></td>&ndash;&gt;-->
+<!--                        <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>-->
+<!--
+                <form th:action="@{/cart/checkout}" th:object="${order}"> -->
                     <!-- checkout btn -->
                     <tr class="checkoutrow">
                         <td colspan="5" class="checkout">
