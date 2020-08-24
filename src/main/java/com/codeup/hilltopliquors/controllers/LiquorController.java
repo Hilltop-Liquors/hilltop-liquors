@@ -31,19 +31,37 @@ public class LiquorController {
     //        LIQUOR
     //        GET ALL POSTS and SEARCH BAR
     @GetMapping("/Liquor")
-    public String getLiquorProducts(Model model, String keyword) {
+    public String getLiquorProducts(Model model, String keyword, Integer catId, Integer subId) {
+
+//        7.2 switch statement thymeleaf
+//        5.1 setting thymeleaf value
+
+//        NAV DISPLAY
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
-        List<Category> catTags = catDao.findAll();
+        List<Category> catTags = catDao.findCategoriesByProductTypeId(2);
+
+//        PRODUCT TARGET
+        List<Product> catProducts = productDao.findAllBySubCategoryCategoryId(catId);
+
+//      SUB TAGS REDIRECT
+        List<Product> subProducts =productDao.findAllBySubCategoryId(subId);
 
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
             model.addAttribute("keyword", "Search results for: " + keyword);
+        }
+
+        if (catId != null) {
+            model.addAttribute("catProducts", catProducts);
+        } else if (subId != null) {
+            System.out.println(subId);
+            model.addAttribute("subProducts", subProducts);
         } else {
             model.addAttribute("products", products);
         }
 
-        model.addAttribute("catTag", catDao);
-        model.addAttribute("products", products);
+
+        model.addAttribute("catTags", catTags);
 
         return "search/liquor";
     }

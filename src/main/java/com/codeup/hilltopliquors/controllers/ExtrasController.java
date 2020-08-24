@@ -1,5 +1,6 @@
 package com.codeup.hilltopliquors.controllers;
 
+import com.codeup.hilltopliquors.models.Category;
 import com.codeup.hilltopliquors.models.Product;
 import com.codeup.hilltopliquors.repositories.CategoryRepository;
 import com.codeup.hilltopliquors.repositories.ProductRepository;
@@ -31,6 +32,7 @@ public class ExtrasController {
     public String getExtrasProducts(Model model, String keyword) {
 //        How to target productType ids 5 and 6?
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(6);
+        List<Category> catTags = catDao.findCategoriesByProductTypeId(6);
 
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -38,7 +40,7 @@ public class ExtrasController {
         } else {
             model.addAttribute("products", products);
         }
-
+        model.addAttribute("catTags", catTags);
         model.addAttribute("products", products);
 
         return "search/extras";
