@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -52,12 +52,21 @@
                     <a class="dropdown-item" href="/Search">Extras</a>
                 </div>
             </li>
+            <li class="nav-item active">
+            <div sec:authorize="isAuthenticated()">
+                <a class="nav-link" th:href="@{/user/edit}"><i class="fas fa-user-cog"></i> <span class="sr-only">(current)</span></a>
+            </div>
+            </li>
             <!--        CART        -->
             <li class="nav-item active">
                 <a class="nav-link" href="/Cart"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/Login">Login</a>
+            <li class="nav-item active" sec:authorize="isAuthenticated()">
+                <a class="nav-link" th:href="@{/Logout}">Logout</a>
+                <span th:text="${#authentication.principal.username}"></span>
+            </li>
+            <li class="nav-item active" sec:authorize="isAnonymous()">
+                <a class="nav-link" th:href="@{/Login}">Login</a>
             </li>
 <!--            <li class="nav-item active">-->
 <!--                <a class="nav-link" href="/registration">Register</a>-->

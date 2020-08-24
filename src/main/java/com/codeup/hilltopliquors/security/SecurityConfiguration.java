@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/") // user's home page, it can be any URL
+                .defaultSuccessUrl("/Home") // user's home page, it can be any URL
                 .failureUrl("/login-error")
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/Cart" // only authenticated users can create ads
+                        "/Cart", "/user/edit" // only authenticated users can create ads
 
                 )
                 .authenticated()
