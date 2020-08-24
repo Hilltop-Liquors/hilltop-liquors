@@ -19,10 +19,10 @@ public class HomeController {
         return "about";
     }
 
-    @GetMapping("/Cart")
-    public String showCart() {
-        return "cart";
-    }
+//    @GetMapping("/Cart")
+//    public String showCart() {
+//        return "cart";
+//    }
 
     @GetMapping("/EventSupply")
     public String showCatering() {
