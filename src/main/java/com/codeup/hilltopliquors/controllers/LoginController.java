@@ -47,9 +47,6 @@ public class LoginController {
 //            response.sendRedirect("/login");
 //        }
 
-
-
-
 //        request.getSession().setAttribute("user", user);
 
 
@@ -94,6 +91,8 @@ public class LoginController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+
+        request.getSession().invalidate();
         return "redirect:/Home";
     }
 }

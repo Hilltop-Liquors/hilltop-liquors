@@ -63,7 +63,7 @@
             </li>
             <li class="nav-item active" sec:authorize="isAuthenticated()">
                 <a class="nav-link" th:href="@{/Logout}">Logout</a>
-                <span th:text="${#authentication.principal.username}"></span>
+                <span class="nav-line" style="color:white" th:text="${#authentication.principal.username}"></span>
             </li>
             <li class="nav-item active" sec:authorize="isAnonymous()">
                 <a class="nav-link" th:href="@{/Login}">Login</a>

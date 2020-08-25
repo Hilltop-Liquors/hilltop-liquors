@@ -10,7 +10,9 @@ import java.util.List;
 @Controller
 public class HomeController {
     @GetMapping("/")
-    public String showLanding() {
+    public String showLanding(HttpServletRequest request) {
+
+        request.getSession().invalidate();
         return "landing";
     }
 
@@ -18,7 +20,6 @@ public class HomeController {
     public String showHome(HttpServletRequest request) {
 
         List<Product> cart;
-
         if (request.getSession().getAttribute("cart") == null) {
             cart = new ArrayList<>();
         } else {
