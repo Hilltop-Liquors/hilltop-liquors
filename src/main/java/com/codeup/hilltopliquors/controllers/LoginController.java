@@ -1,5 +1,7 @@
 package com.codeup.hilltopliquors.controllers;
 
+import com.codeup.hilltopliquors.models.Product;
+import com.codeup.hilltopliquors.models.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -11,14 +13,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LoginController {
 
         @GetMapping("/Login")
-    public String login(Model model) {
-        return "user/login";
+    public String login(Model model, HttpServletRequest request) {
+
+            return "user/login";
     }
+
+
+//    boolean validAttempt = Password.check(password, user.getPassword());
+//
+//        if (validAttempt) {
+//        request.getSession().setAttribute("user", user);
+//        response.sendRedirect("/profile");
+//    } else {
+//        response.sendRedirect("/login");
+//    }
+
 
     @RequestMapping("/login-error")
     public String loginError(Model model) {

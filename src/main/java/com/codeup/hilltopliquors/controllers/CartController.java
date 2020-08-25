@@ -69,16 +69,20 @@ public class CartController {
     public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
 
         List<Product> cart;
+        cart = (List<Product>) request.getSession().getAttribute("cart");
+
         Product product = productDao.getOne(id);
 
-        if (request.getSession().getAttribute("cart") == null) {
-            cart = new ArrayList<>();
-        } else {
-            cart = (List<Product>) request.getSession().getAttribute("cart");
-        }
-        cart.add(product);
-        request.getSession().setAttribute("cart", cart);
+//        if (request.getSession().getAttribute("cart") == null) {
+//            cart = new ArrayList<>();
+//        } else {
+//            cart = (List<Product>) request.getSession().getAttribute("cart");
+//        }
+//        request.getSession().setAttribute("cart", cart);
 
+        cart.add(product);
+
+        System.out.println(cart);
         model.addAttribute("cart", cart);
 
 //        Have to redirect to cart because on /cart
@@ -87,10 +91,12 @@ public class CartController {
     }
 
     @GetMapping("/Cart")
-    public String showCart(Model model) {
-//        List<Product> cart = (List<Product>) request.getSession().getAttribute("cart");
-//
+    public String showCart(Model model, HttpSession session) {
+
+//        List<Product> cart;
+//        cart = (List<Product>) session.getAttribute("cart");
 //        model.addAttribute("cart", cart);
+
         return "cart";
     }
 

@@ -41,7 +41,7 @@ public class UserRegistrationController {
 //        I added this which makes since as this is also what we use in post
 //        UserRegistrationDto userDto = new UserRegistrationDto();
 //        model.addAttribute("user", userDto);
-        return "registration";
+        return "user/registration";
     }
 
 //    Adding this, trying to figure out why I am not getting any interaction from

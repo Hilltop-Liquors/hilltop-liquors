@@ -33,7 +33,10 @@
 
             <div th:if="${param.success}">
                 <div class="alert alert-info">You've successfully registered
-                    to our awesome app!</div>
+                    to our awesome app!
+                    <br>
+                <a th:href="@{/Login}">Login now!</a>
+                </div>
             </div>
 
             <h1>Registration</h1>
