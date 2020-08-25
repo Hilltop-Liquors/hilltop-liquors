@@ -2,6 +2,7 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.Product;
 import com.codeup.hilltopliquors.models.User;
+import com.codeup.hilltopliquors.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -19,8 +20,38 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-        @GetMapping("/Login")
-    public String login(Model model, HttpServletRequest request) {
+    private final UserRepository userDao;
+
+    public LoginController(UserRepository userDao) {
+        this.userDao = userDao;
+    }
+
+    @GetMapping("/Login")
+    public String login(Model model, HttpServletRequest request, HttpServletResponse response) {
+
+//        String username = request.getParameter("username");
+////        String password = request.getParameter("password");
+//        User user = userDao.findByUsername(username);
+//
+////        if (user == null) {
+////            response.sendRedirect("/login");
+////            return;
+////        }
+//
+//        boolean validAttempt = Password.check(password, user.getPassword());
+//
+//        if (validAttempt) {
+//            request.getSession().setAttribute("user", user);
+//            response.sendRedirect("/profile");
+//        } else {
+//            response.sendRedirect("/login");
+//        }
+
+
+
+
+//        request.getSession().setAttribute("user", user);
+
 
             return "user/login";
     }

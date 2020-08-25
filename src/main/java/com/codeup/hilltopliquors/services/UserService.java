@@ -6,8 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
 
-//   User findByEmail(String email);
-
+   User findByEmail(String email);
    User findByUsername(String username);
 
 //   This was originally set as User save(...) but intelliJ told me that the method was
