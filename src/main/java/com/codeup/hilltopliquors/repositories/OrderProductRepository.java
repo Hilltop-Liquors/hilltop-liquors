@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface OrderProductRepository  extends JpaRepository<OrderProduct, Long> {
-    List<OrderProduct> findAllByOrderProductOrderId(Long id);
+//    List<OrderProduct> findAllByOrderProductOrderId(Long id);
 
 //
 }

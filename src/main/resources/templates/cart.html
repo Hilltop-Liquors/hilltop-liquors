@@ -2,60 +2,218 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/head :: head">
     <title>Hilltop-Cart</title>
+
     <style>
         nav {
             height: 70px !important;
         }
     </style>
+
 </head>
 <body>
+
+<!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container m-5 p-5">
-    <div id="w">
-        <header id="title">
-            <h1 th:text="${username}"></h1>
-            <br>
-        </header>
-        <div id="page">
-            <table id="cart">
-                <thead>
-                <tr>
-                    <th class="first">Photo</th>
-                    <th class="second">Qty</th>
-                    <th class="third">Product</th>
-                    <th class="fourth">Line Total</th>
-                    <th class="fifth">&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- shopping cart contents -->
-                <div th:each="cartItem : ${cart}">
-                    <tr class="productitm">
-                        <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                        <td><img src="../static/img/filler_bottle.png" class="thumb"></td>
-                        <td><input type="text" th:value="${cartItem.getOrderProducts()}" min="0" max="99" class="qtyinput"></td>
-<!--                        <td th:text="${cartItem.getProduct().getName()}"><span class="pl-1 pr-1"-->
-<!--                                                                               style="font-weight: lighter"></span>-->
-<!--                        </td>-->
-<!--                        <td th:text="${cartItem.getProduct().getPriceInCents()}"></td>-->
-                        <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
-                    </tr>
+
+<a style="text-decoration: none; color:black; margin-top:15%;" th:href="@{/Search}">keep
+    shopping</a>
+<h1 class="ml-4" style="margin-top:5%;">Cart</h1>
+<br>
+<div style="width: 100%;">
+
+    <div class="d-inline float-left ml-3 pl-4" style="width: 40%; margin-right:10%;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Size</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${cart}">
+                <!--                    <th scope="row"></th>-->
+                <td th:text="${cartItem.getName()}"></td>
+                <td th:text="${cartItem.getSize()}"></td>
+                <th></th>
+                <td th:text="${cartItem.getPriceInCents()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--  RECEIPT  -->
+    <div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">
+        <h4 class="p-2">Ready to place your order for pickup?</h4>
+        <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Size</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${cart}">
+                <!--                    <th scope="row"></th>-->
+                <td th:text="${cartItem.getName()}"></td>
+                <td th:text="${cartItem.getSize()}"></td>
+                <th>Qty</th>
+                <td th:text="${cartItem.getPriceInCents()}"></td>
+            </tr>
+            </tbody>
+            <!-- checkout btn -->
+            <tfoot>
+
+            <tr class="float-right">
+                <td>
+                    <p><span>Total: #</span></p>
+                </td>
+            </tr>
+            <tr class="float-right">
+                <td>
+                    <button th:action="@{/cart/checkout}" th:object="${order}" class="bg-dark text-white"
+                            data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
+                        Checkout
+                    </button>
+                </td>
+                <!--                </input>-->
+            </tr>
+
+            </tfoot>
+        </table>
+    </div>
+
+</div> <!--  END DIV ROW-->
+
+<!--CHECKOUT DETAILS MODAL-->
+<div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Checkout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input">
+                        </div>
+                        <p>in-store pickup</p>
+                    </div>
                 </div>
-                <form th:action="@{/cart/checkout}" th:object="${order}">
-                    <!-- checkout btn -->
-                    <tr class="checkoutrow">
-                        <td colspan="5" class="checkout">
-                            <button class="bg-dark text-white" type="submit">Checkout</button>
-                            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
-                        </td>
-                    </tr>
-                </form>
-                </tbody>
-            </table>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input">
+                        </div>
+                        <p>curbside-store pickup</p>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <p>date & time</p>
+                    </div>
+                    <!--                    <input type="text" class="form-control" aria-label="Text input with checkbox">-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal" type="button">
+                    Confirm pickup details
+                </button>
+            </div>
         </div>
     </div>
-    <!--     CITATION: https://codepen.io/BryanBanda/pen/yoGnj   -->
 </div>
+
+<!--CHECKOUT MODAL-->
+<div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="checkoutModalLabel">Checkout</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4 class="p-2">Place your order for pickup</h4>
+                <table class="table table-hover table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cartItem : ${cart}">
+                        <!--                    <th scope="row"></th>-->
+                        <td th:text="${cartItem.getName()}"></td>
+                        <td th:text="${cartItem.getSize()}"></td>
+                        <th>Qty</th>
+                        <td th:text="${cartItem.getPriceInCents()}"></td>
+                    </tr>
+                    </tbody>
+                    <!-- checkout btn -->
+                    <tfoot>
+
+                    <tr class="float-right">
+                        <td>
+                            <p><span>Total: #</span></p>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
+                    Send Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--SUCCESS MODAL-->
+<div class="fade modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="successModalLabel">Success</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <h5>An order receipt has been sent to your email. </h5>
+                    <h5>be ready to show your id upon arrival</h5>
+
+                    <h6>See you at the top!</h6>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                <button class="bg-dark text-white close" data-dismiss="modal">
+                    Send Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--</div>-->
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
