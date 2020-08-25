@@ -73,25 +73,34 @@ public class CartController {
 
         Product product = productDao.getOne(id);
 
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
+        request.getSession().setAttribute("cart", cart);
+
+        cart.add(product);
+
+//        System.out.println(cart);
+//        model.addAttribute("cart", cart);
+
+//        Have to redirect to cart because on /cart
+        return "search/search";
+
+    }
+
+    @GetMapping("/Cart")
+    public String showCart(Model model, HttpServletRequest request) {
+
+
+//        List<Product> cart;
 //        if (request.getSession().getAttribute("cart") == null) {
 //            cart = new ArrayList<>();
 //        } else {
 //            cart = (List<Product>) request.getSession().getAttribute("cart");
 //        }
 //        request.getSession().setAttribute("cart", cart);
-
-        cart.add(product);
-
-        System.out.println(cart);
-        model.addAttribute("cart", cart);
-
-//        Have to redirect to cart because on /cart
-        return "cart";
-
-    }
-
-    @GetMapping("/Cart")
-    public String showCart(Model model, HttpSession session) {
 
 //        List<Product> cart;
 //        cart = (List<Product>) session.getAttribute("cart");
