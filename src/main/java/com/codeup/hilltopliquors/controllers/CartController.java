@@ -73,20 +73,20 @@ public class CartController {
 
         Product product = productDao.getOne(id);
 
-        if (request.getSession().getAttribute("cart") == null) {
-            cart = new ArrayList<>();
-        } else {
-            cart = (List<Product>) request.getSession().getAttribute("cart");
-        }
-        request.getSession().setAttribute("cart", cart);
+//        if (request.getSession().getAttribute("cart") == null) {
+//            cart = new ArrayList<>();
+//        } else {
+//            cart = (List<Product>) request.getSession().getAttribute("cart");
+//        }
+//        request.getSession().setAttribute("cart", cart);
 
         cart.add(product);
 
 //        System.out.println(cart);
-//        model.addAttribute("cart", cart);
+        model.addAttribute("cart", cart);
 
 //        Have to redirect to cart because on /cart
-        return "search/search";
+        return "cart";
 
     }
 

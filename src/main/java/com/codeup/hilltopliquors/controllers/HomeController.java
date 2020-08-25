@@ -19,13 +19,13 @@ public class HomeController {
     @GetMapping("/Home")
     public String showHome(HttpServletRequest request) {
 
-//        List<Product> cart;
-//        if (request.getSession().getAttribute("cart") == null) {
-//            cart = new ArrayList<>();
-//        } else {
-//            cart = (List<Product>) request.getSession().getAttribute("cart");
-//        }
-//        request.getSession().setAttribute("cart", cart);
+        List<Product> cart;
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
+        request.getSession().setAttribute("cart", cart);
         return "home";
     }
 
