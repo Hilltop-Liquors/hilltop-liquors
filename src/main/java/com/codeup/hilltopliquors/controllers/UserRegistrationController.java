@@ -41,25 +41,33 @@ public class UserRegistrationController {
 //        I added this which makes since as this is also what we use in post
 //        UserRegistrationDto userDto = new UserRegistrationDto();
 //        model.addAttribute("user", userDto);
-        return "registration";
+        return "user/registration";
     }
 
 //    Adding this, trying to figure out why I am not getting any interaction from
 //    my page submissions...could it have something to do with this?
     @PostMapping("/registration")
-    public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
-        BindingResult result) {
+    public String registerUserAccount( Model model, @ModelAttribute("user") @Valid UserRegistrationDto userDto,
+        BindingResult result, String email, String username, String confirmUsername, String password, String confirmPassword) {
 
-        User existing = userService.findByUsername(userDto.getUsername());
-        if (existing != null) {
-            result.rejectValue("username", null, "There is already an account registered with that username");
+//        User existingEmail = userService.findByEmail(userDto.getEmail());
+        User existingUserName = userService.findByUsername(userDto.getUsername());
+
+//        model.addAttribute("existing", existingUserName);
+
+        if (existingUserName != null) {
+//            result.rejectValue("username", null, "There is already an account registered with that username");
+            model.addAttribute("regError", true);
+            return "user/registration";
         }
 
-//        if (result.hasErrors()) {
-//            return "registration";
-//        }
+        if ( email.equalsIgnoreCase("") || username.equalsIgnoreCase("") || confirmUsername.equalsIgnoreCase("") || password.equalsIgnoreCase("") || confirmPassword.equalsIgnoreCase("")){
+            model.addAttribute("emptyField", true);
 
-        System.out.println(userDto);
+            return "user/registration";
+        }
+
+
         userService.save(userDto);
         return "redirect:/registration?success";
     }

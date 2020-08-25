@@ -72,7 +72,9 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid maroon;" class="bg-dark text-white">Add to Cart</button>
+<!--                <form th:action ="@{/add/{productId}(productId=${product.id})}" th:method="post">-->
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+<!--                </form>-->
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <a>
