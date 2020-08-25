@@ -59,7 +59,7 @@
             </li>
             <!--        CART        -->
             <li class="nav-item active">
-                <a class="nav-link" href="/Cart"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/Cart}"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active" sec:authorize="isAuthenticated()">
                 <a class="nav-link" th:href="@{/Logout}">Logout</a>

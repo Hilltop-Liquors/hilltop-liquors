@@ -2,63 +2,76 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/head :: head">
     <title>Hilltop-Cart</title>
+
     <style>
         nav {
             height: 70px !important;
         }
     </style>
+
 </head>
 <body>
+
+<!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container m-5 p-5">
-    <div id="w">
-        <header id="title">
-            <h1 th:text="${username}"></h1>
+    <div>
+        <header>
+            <!--                <h1 th:text="${user.username}"></h1>-->
             <br>
         </header>
-        <div id="page">
-            <table id="cart">
+
+
+        <div class="row col-md-12">
+
+
+
+            <table class="table table-hover" style="width:25%;">
                 <thead>
                 <tr>
-                    <th class="first">Photo</th>
-                    <th class="second">Qty</th>
-                    <th class="third">Product</th>
-                    <th class="fourth">Line Total</th>
-                    <th class="fifth">&nbsp;</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
                 </tr>
                 </thead>
                 <tbody>
-                <!-- shopping cart contents -->
-
-                    <tr th:each="carts : ${cart}">
-                        <td>th:text="${carts.getName()}"> </span></td>
-
-                    </tr>
-
-<!--                    <tr class="productitm">-->
-<!--                        &lt;!&ndash; http://www.inkydeals.com/deal/ginormous-bundle/ &ndash;&gt;-->
-<!--                        <td><img src="../static/img/filler_bottle.png" class="thumb"></td>-->
-<!--&lt;!&ndash;                        <td><input type="text" }" min="0" max="99" class="qtyinput"></td>&ndash;&gt;-->
-<!--                        <td th:text="${cartItem.getName()}"><span class="pl-1 pr-1"-->
-<!--                                                                               style="font-weight: lighter"></span>-->
-<!--                        </td>-->
-<!--&lt;!&ndash;                        <td th:text="${cartItem.getProduct().getPriceInCents()}"></td>&ndash;&gt;-->
-<!--                        <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>-->
-<!--
-                <form th:action="@{/cart/checkout}" th:object="${order}"> -->
-                    <!-- checkout btn -->
-                    <tr class="checkoutrow">
-                        <td colspan="5" class="checkout">
+                <tr th:each="cartItem : ${cart}">
+                    <th scope="row"></th>
+                    <td th:text="${cartItem.getName()}"></td>
+                    <td th:text="${cartItem.getSize()}"></td>
+                    <th></th>
+                    <td th:text="${cartItem.getPriceInCents()}"></td>
+                </tr>
+                <!-- checkout btn -->
+                <tr>
+                    <td class="float-right"><span>Total: <span> #</span> </span></td>
+                </tr>
+                <tr class="checkout row">
+                    <td colspan="5" class="float-right">
+                        <form th:action="@{/cart/checkout}" th:object="${order}">
                             <button class="bg-dark text-white" type="submit">Checkout</button>
-                            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
-                        </td>
-                    </tr>
-                </form>
+                        </form>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Search}">keep
+                            shopping</a>
+                    </td>
+                </tr>
                 </tbody>
             </table>
-        </div>
+
+
+
+
+        </div> <!--  END DIV ROW-->
+
+
     </div>
-    <!--     CITATION: https://codepen.io/BryanBanda/pen/yoGnj   -->
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>

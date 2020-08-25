@@ -52,13 +52,9 @@ public class CartController {
 
 //        only conditional logic is if there is not anything in their cart and if their cart has not been created yet then this is when we would create the cart in the session. Because when they first load up a session their session does not have a cart.
 
-    @PostMapping("/add/{productId}")
-    public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
-
-        // check if cart exists
-        // if not set a cart in the session with one item
-        // if it does exist, extrat the cart and add a new item to it
-
+    // check if cart exists
+    // if not set a cart in the session with one item
+    // if it does exist, extract the cart and add a new item to it
         /*
             List<Product> cart;
             if (request.getSession().getAttribute("cart") == null) {
@@ -69,24 +65,31 @@ public class CartController {
             cart.add the product to the cart
             request.getSession().setAttribute("cart", cart);
          */
-        request.getSession().setAttribute("sessionUser", "sessionUser");
-        Product product = productDao.getOne(id);
+    @PostMapping("/add/{productId}")
+    public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
 
         List<Product> cart;
-        int cartSize = cart.size();
-        if (cartSize == 0) {
-            cart = new ArrayList<>();
-        } else if(request.getSession().getAttribute("sessionUser") != null) {
-            cart.add(product);
-            model.addAttribute("cart", cart);
-        }
+        Product product = productDao.getOne(id);
 
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
+        cart.add(product);
+        request.getSession().setAttribute("cart", cart);
+
+        model.addAttribute("cart", cart);
+
+//        Have to redirect to cart because on /cart
         return "cart";
 
     }
 
     @GetMapping("/Cart")
     public String showCart(Model model) {
+//        List<Product> cart = (List<Product>) request.getSession().getAttribute("cart");
+//
 //        model.addAttribute("cart", cart);
         return "cart";
     }
