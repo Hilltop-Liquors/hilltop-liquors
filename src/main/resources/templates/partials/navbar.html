@@ -43,19 +43,18 @@
             <!--        SEARCH       -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/" id="dropdown01" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Products</a>
+                   aria-haspopup="true" aria-expanded="false">Shop Now!</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/Search">Beer</a>
-                    <a class="dropdown-item" href="/Search">Wine</a>
-                    <a class="dropdown-item" href="/Search">Spirits</a>
-                    <a class="dropdown-item" href="/Search">Non Alcoholic</a>
-                    <a class="dropdown-item" href="/Search">Extras</a>
+                    <a class="dropdown-item" th:href="@{/Liquor}">Liquor</a>
+                    <a class="dropdown-item" th:href="@{/Beer}">Beer</a>
+                    <a class="dropdown-item" th:href="@{/Wine}">Wine</a>
+                    <a class="dropdown-item" th:href="@{/Extras}">Extras</a>
                 </div>
             </li>
             <li class="nav-item active">
-            <div sec:authorize="isAuthenticated()">
-                <a class="nav-link" th:href="@{/user/edit}"><i class="fas fa-user-cog"></i> <span class="sr-only">(current)</span></a>
-            </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/user/edit}"><i class="fas fa-user-cog"></i> <span class="sr-only">(current)</span></a>
+                </div>
             </li>
             <!--        CART        -->
             <li class="nav-item active">
@@ -63,19 +62,20 @@
             </li>
             <li class="nav-item active" sec:authorize="isAuthenticated()">
                 <a class="nav-link d-inline" th:href="@{/Logout}">Logout</a>
-                <span class="nav-line d-inline" style="color:white" th:text="${#authentication.principal.username}"></span>
+                <span class="nav-line d-inline" style="color:white"
+                      th:text="${#authentication.principal.username}"></span>
             </li>
             <li class="nav-item active" sec:authorize="isAnonymous()">
                 <a class="nav-link" th:href="@{/Login}">Login</a>
             </li>
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" href="/registration">Register</a>-->
-<!--            </li>-->
+            <!--            <li class="nav-item active">-->
+            <!--                <a class="nav-link" href="/registration">Register</a>-->
+            <!--            </li>-->
         </ul>
-<!--        <form class="form-inline my-2 my-lg-0">-->
-<!--            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
-<!--            <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
-<!--        </form>-->
+        <!--        <form class="form-inline my-2 my-lg-0">-->
+        <!--            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+        <!--            <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
+        <!--        </form>-->
 
         <form class="form-inline my-2 my-lg-0" th:action="@{/Search}" method="get">
             <input id="txtSearch" type="text" name="keyword">
@@ -106,19 +106,19 @@
         <!--        &lt;!&ndash;            End login modal&ndash;&gt;-->
 
         <!-- LOGIN BTN-->
-<!--<li>-->
-<!--    <label for="login">login</label>-->
-<!--    <input type="button" th:href="/login" class="button" id="login">-->
-<!--</li>-->
+        <!--<li>-->
+        <!--    <label for="login">login</label>-->
+        <!--    <input type="button" th:href="/login" class="button" id="login">-->
+        <!--</li>-->
 
 
-<!--            <li class="nav-item active bg-dark" data-toggle="modal" data-target="#exampleModal">-->
-<!--                <button style="z-index: 1;" type="button" class="btn btn-dark d-inline"-->
-<!--                        data-toggle="modal"-->
-<!--                        data-target="#exampleModalCenter">-->
-<!--                    Login-->
-<!--                </button>-->
-<!--            </li>-->
+        <!--            <li class="nav-item active bg-dark" data-toggle="modal" data-target="#exampleModal">-->
+        <!--                <button style="z-index: 1;" type="button" class="btn btn-dark d-inline"-->
+        <!--                        data-toggle="modal"-->
+        <!--                        data-target="#exampleModalCenter">-->
+        <!--                    Login-->
+        <!--                </button>-->
+        <!--            </li>-->
 
 
         <!-- LOGIN MODAL -->
