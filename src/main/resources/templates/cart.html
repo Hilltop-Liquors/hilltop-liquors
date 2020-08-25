@@ -14,7 +14,7 @@
 
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container m-5 p-5">
+<div class="container" style="width: 100%; margin-top: 5%;">
     <div>
         <header>
             <!--                <h1 th:text="${user.username}"></h1>-->
@@ -22,11 +22,8 @@
         </header>
 
 
-        <div class="row col-md-12">
-
-
-
-            <table class="table table-hover" style="width:25%;">
+        <div class="row">
+            <table class="col-md-5 table table-hover mr-5">
                 <thead>
                 <tr>
                     <th scope="col">Product</th>
@@ -43,32 +40,42 @@
                     <th></th>
                     <td th:text="${cartItem.getPriceInCents()}"></td>
                 </tr>
-                <!-- checkout btn -->
-                <tr>
-                    <td class="float-right"><span>Total: <span> #</span> </span></td>
-                </tr>
-                <tr class="checkout row">
-                    <td colspan="5" class="float-right">
-                        <form th:action="@{/cart/checkout}" th:object="${order}">
-                            <button class="bg-dark text-white" type="submit">Checkout</button>
-                        </form>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Search}">keep
-                            shopping</a>
-                    </td>
-                </tr>
                 </tbody>
             </table>
+            <!--  RECIEPT  -->
 
+            <table class="col-md-5 table table-hover t-dark border border-dark ml-5">
+                <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tr th:each="cartItem : ${cart}">
+                    <th scope="row"></th>
+                    <td th:text="${cartItem.getName()}"></td>
+                    <td th:text="${cartItem.getSize()}"></td>
+                    <th></th>
+                    <td th:text="${cartItem.getPriceInCents()}"></td>
+                </tr>
+                <!-- checkout btn -->
+                <tr>
+                    <td>
+                        <p class="float-left"><span>Total: <span> #</span> </span></td>
 
+                    <button th:action="@{/cart/checkout}" th:object="${order}" class="bg-dark text-white" type="submit">
+                        Checkout
+                    </button>
+                </tr>
+                </tbody>
 
+            </table>
 
         </div> <!--  END DIV ROW-->
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Search}">keep
+            shopping</a>
 
 
     </div>
