@@ -65,7 +65,7 @@ public class CartController {
             cart.add the product to the cart
             request.getSession().setAttribute("cart", cart);
          */
-    @PostMapping("/add/{productId}")
+    @PostMapping("/{productId}")
     public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
 
         List<Product> cart;

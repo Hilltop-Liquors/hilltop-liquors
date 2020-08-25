@@ -131,7 +131,7 @@
                 <p th:text="${product.name}"></p>
                 <p th:text="${product.priceInCents}"></p>
 
-                <form th:action ="@{/add/{productId}(productId=${product.id})}" th:method="post">
+                <form th:action ="@{/{productId}(productId=${product.id})}" th:method="post">
                     <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
                 </form>
 
