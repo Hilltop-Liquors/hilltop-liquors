@@ -21,15 +21,7 @@ public class HomeController {
 
     @GetMapping("/Home")
     @ModelAttribute("cart")
-    public String showHome(HttpServletRequest request) {
-
-        List<Product> cart;
-        if (request.getSession().getAttribute("cart") == null) {
-            cart = new ArrayList<>();
-        } else {
-            cart = (List<Product>) request.getSession().getAttribute("cart");
-        }
-        request.getSession().setAttribute("cart", cart);
+    public String showHome() {
         return "home";
     }
 
@@ -38,11 +30,6 @@ public class HomeController {
 
         return "about";
     }
-
-//    @GetMapping("/Cart")
-//    public String showCart() {
-//        return "cart";
-//    }
 
     @GetMapping("/EventSupply")
     public String showCatering() {
