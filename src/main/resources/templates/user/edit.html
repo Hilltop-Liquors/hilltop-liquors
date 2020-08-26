@@ -15,12 +15,12 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
-<div th:if="${param.success}">
-    <div class="alert alert-info">You've successfully updated your account!
-        <br>
-        <a th:href="@{/Home}">Return Home!</a>
-    </div>
-</div>
+        <div th:if="${param.success}">
+            <div class="alert alert-info">You've successfully updated your account!
+                <br>
+                <a th:href="@{/Home}">Return Home!</a>
+            </div>
+        </div>
 
 
 
@@ -100,9 +100,14 @@
 <!--               th:each="error : ${#fields.errors('confirmPassword')}"-->
 <!--               th:text="${error}">Validation error</p>-->
 <!--        </div>-->
-            <input type="hidden" th:value="${user.id}" />
-        <button type="submit" value="submit" class="btn btn-success">Update</button>
-    </form>
+                    <input type="hidden" th:value="${user.id}" />
+                <button type="submit" value="submit" class="btn btn-success">Update</button>
+            </form>
+            <br>
+<!--            Delete Button -->
+            <form th:action="@{/user/delete/{id}(id=${user.id})}" method="post" th:object="${user}">
+                <button type="submit" value="submit" class="btn btn-danger">Delete Account</button>
+            </form>
 
         </div>
     </div>
@@ -111,5 +116,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
