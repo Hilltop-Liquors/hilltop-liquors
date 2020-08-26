@@ -100,9 +100,14 @@
 <!--               th:each="error : ${#fields.errors('confirmPassword')}"-->
 <!--               th:text="${error}">Validation error</p>-->
 <!--        </div>-->
-            <input type="hidden" th:value="${user.id}" />
-        <button type="submit" value="submit" class="btn btn-success">Update</button>
-    </form>
+                    <input type="hidden" th:value="${user.id}" />
+                <button type="submit" value="submit" class="btn btn-success">Update</button>
+            </form>
+            <br>
+<!--            Delete Button -->
+            <form th:action="@{/user/delete/{id}(id=${user.id})}" method="post" th:object="${user}">
+                <button type="submit" value="submit" class="btn btn-danger">Delete Account</button>
+            </form>
 
         </div>
     </div>
