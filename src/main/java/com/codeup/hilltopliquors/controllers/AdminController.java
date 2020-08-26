@@ -41,7 +41,7 @@ public AdminController(UserRepository userDao) {
 //        System.out.println("THIS IS THE SOUT:" + currentUser);
             model.addAttribute("user", currentUser);
             System.out.println(request.isUserInRole(("ROLE_ADMIN")));
-            return "/admin/admin-page";
+            return "admin/admin-page";
         } else {
             return "redirect:/Home";
         }
@@ -53,7 +53,7 @@ public AdminController(UserRepository userDao) {
 
         List<User> siteUsers = userDao.findAll();
         model.addAttribute("users", siteUsers);
-            return "/admin/users-list";
+            return "admin/users-list";
 //        } else {
 //            return "redirect:/Home";
 //        }
