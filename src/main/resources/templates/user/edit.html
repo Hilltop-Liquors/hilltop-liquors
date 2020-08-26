@@ -84,7 +84,7 @@
         <div class="form-group"
              >
             <label for="password" class="control-label">Password</label> <input
-                id="password" class="form-control" type="password"
+                id="password" class="form-control" type="password" name="password"
                 th:field="*{password}" />
             <p class="error-message danger"
                th:each="error : ${#fields.errors('password')}"

@@ -52,7 +52,7 @@ public class UserEditController {
     }
 
     @PostMapping("/user/edit/{id}")
-    public String updateUser(@PathVariable long id, @ModelAttribute("user") @Valid UserRegistrationDto userDto) {
+    public String updateUser(@ModelAttribute User user) {
 
 
 //        User updatedUser = userDao.getOne(id);
@@ -63,14 +63,14 @@ public class UserEditController {
 //        updatedUser.setPassword(userDto.getPassword());
 //        updatedUser.setPhone(userDto.getPhone());
 //bCryptPasswordEncoder.encode(registration.getPassword())
-//        currentUser.setPassword(bCryptPasswordEncoder.encode(password));
+//        currentUser.setPassword(bCryptPasswordEncoder.encode(currentUser.getPassword()));
 
 //        System.out.println(currentUser.getPassword());
-        System.out.println("THIS IS THE UPDATED USER " + userDto.getUsername());
-        userService.save(userDto);
 
-//        return "redirect:/registration?success";
-        return "redirect:/user/edit/{id}?success";
+            userDao.save(user);
+            return "redirect:/Home";
+
+//        return "redirect:/user/edit/{id}?success";
 
     }
 
