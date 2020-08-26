@@ -15,205 +15,205 @@
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<a style="text-decoration: none; color:black; margin-top:15%;" th:href="@{/Search}">keep
-    shopping</a>
-<h1 class="ml-4" style="margin-top:5%;">Cart</h1>
-<br>
-<div style="width: 100%;">
+<!--<a style="text-decoration: none; color:black; margin-top:15%;" th:href="@{/Search}">keep-->
+<!--    shopping</a>-->
+<!--<h1 class="ml-4" style="margin-top:5%;">Cart</h1>-->
+<!--<br>-->
+<div style="width: 100%; margin-top:15%; border: 2px solid red;" >
 
-    <div class="d-inline float-left ml-3 pl-4" style="width: 40%; margin-right:10%;">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Size</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="cartItem : ${cart}">
-                <!--                    <th scope="row"></th>-->
-                <td th:text="${cartItem.getName()}"></td>
-                <td th:text="${cartItem.getSize()}"></td>
-                <th></th>
-                <td th:text="${cartItem.getPriceInCents()}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+<!--    <div class="d-inline float-left ml-3 pl-4" style="width: 40%; margin-right:10%;">-->
+<!--        <table class="table">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th scope="col">Product</th>-->
+<!--                <th scope="col">Size</th>-->
+<!--                <th scope="col">Quantity</th>-->
+<!--                <th scope="col">Price</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="cartItem : ${cart}">-->
+<!--                &lt;!&ndash;                    <th scope="row"></th>&ndash;&gt;-->
+<!--                <td th:text="${cartItem.getName()}"></td>-->
+<!--                <td th:text="${cartItem.getSize()}"></td>-->
+<!--                <th></th>-->
+<!--                <td th:text="${cartItem.getPriceInCents()}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
 
-    <!--  RECEIPT  -->
-    <div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">
-        <h4 class="p-2">Ready to place your order for pickup?</h4>
-        <table class="table table-hover table-sm">
-            <thead>
-            <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Size</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="cartItem : ${cart}">
-                <!--                    <th scope="row"></th>-->
-                <td th:text="${cartItem.getName()}"></td>
-                <td th:text="${cartItem.getSize()}"></td>
-                <th>Qty</th>
-                <td th:text="${cartItem.getPriceInCents()}"></td>
-            </tr>
-            </tbody>
-            <!-- checkout btn -->
-            <tfoot>
+<!--    &lt;!&ndash;  RECEIPT  &ndash;&gt;-->
+<!--    <div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">-->
+<!--        <h4 class="p-2">Ready to place your order for pickup?</h4>-->
+<!--        <table class="table table-hover table-sm">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th scope="col">Product</th>-->
+<!--                <th scope="col">Size</th>-->
+<!--                <th scope="col">Quantity</th>-->
+<!--                <th scope="col">Price</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="cartItem : ${cart}">-->
+<!--                &lt;!&ndash;                    <th scope="row"></th>&ndash;&gt;-->
+<!--                <td th:text="${cartItem.getName()}"></td>-->
+<!--                <td th:text="${cartItem.getSize()}"></td>-->
+<!--                <th>Qty</th>-->
+<!--                <td th:text="${cartItem.getPriceInCents()}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--            &lt;!&ndash; checkout btn &ndash;&gt;-->
+<!--            <tfoot>-->
 
-            <tr class="float-right">
-                <td>
-                    <p><span>Total: #</span></p>
-                </td>
-            </tr>
-            <tr class="float-right">
-                <td>
-                    <button th:action="@{/cart/checkout}" th:object="${order}" class="bg-dark text-white"
-                            data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
-                        Checkout
-                    </button>
-                </td>
-                <!--                </input>-->
-            </tr>
+<!--            <tr class="float-right">-->
+<!--                <td>-->
+<!--                    <p><span>Total: #</span></p>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr class="float-right">-->
+<!--                <td>-->
+<!--                    <button th:action="@{/cart/checkout}" th:object="${order}" class="bg-dark text-white"-->
+<!--                            data-toggle="modal" data-target="#checkoutDetailsModal" type="button">-->
+<!--                        Checkout-->
+<!--                    </button>-->
+<!--                </td>-->
+<!--                &lt;!&ndash;                </input>&ndash;&gt;-->
+<!--            </tr>-->
 
-            </tfoot>
-        </table>
-    </div>
+<!--            </tfoot>-->
+<!--        </table>-->
+<!--    </div>-->
 
-</div> <!--  END DIV ROW-->
+<!--</div> &lt;!&ndash;  END DIV ROW&ndash;&gt;-->
 
-<!--CHECKOUT DETAILS MODAL-->
-<div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel">Checkout</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
-                        </div>
-                        <p>in-store pickup</p>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
-                        </div>
-                        <p>curbside-store pickup</p>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <p>date & time</p>
-                    </div>
-                    <!--                    <input type="text" class="form-control" aria-label="Text input with checkbox">-->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal" type="button">
-                    Confirm pickup details
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<!--&lt;!&ndash;CHECKOUT DETAILS MODAL&ndash;&gt;-->
+<!--<div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="detailsModalLabel">Checkout</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <div class="input-group-text">-->
+<!--                            <input type="checkbox" aria-label="Checkbox for following text input">-->
+<!--                        </div>-->
+<!--                        <p>in-store pickup</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <div class="input-group-text">-->
+<!--                            <input type="checkbox" aria-label="Checkbox for following text input">-->
+<!--                        </div>-->
+<!--                        <p>curbside-store pickup</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <p>date & time</p>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <input type="text" class="form-control" aria-label="Text input with checkbox">&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&ndash;&gt;-->
+<!--                <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal" type="button">-->
+<!--                    Confirm pickup details-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<!--CHECKOUT MODAL-->
-<div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="checkoutModalLabel">Checkout</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h4 class="p-2">Place your order for pickup</h4>
-                <table class="table table-hover table-sm">
-                    <thead>
-                    <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Size</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+<!--&lt;!&ndash;CHECKOUT MODAL&ndash;&gt;-->
+<!--<div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title" id="checkoutModalLabel">Checkout</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <h4 class="p-2">Place your order for pickup</h4>-->
+<!--                <table class="table table-hover table-sm">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">Product</th>-->
+<!--                        <th scope="col">Size</th>-->
+<!--                        <th scope="col">Quantity</th>-->
+<!--                        <th scope="col">Price</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
                     <tr th:each="cartItem : ${cart}">
                         <!--                    <th scope="row"></th>-->
-                        <td th:text="${cartItem.getName()}"></td>
-                        <td th:text="${cartItem.getSize()}"></td>
-                        <th>Qty</th>
-                        <td th:text="${cartItem.getPriceInCents()}"></td>
-                    </tr>
-                    </tbody>
-                    <!-- checkout btn -->
-                    <tfoot>
+                        <td th:text="${cartItem}"></td>
+<!--                        <td th:text="${cartItem.getSize()}"></td>-->
+<!--                        <th>Qty</th>-->
+<!--                        <td th:text="${cartItem.getPriceInCents()}"></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                    &lt;!&ndash; checkout btn &ndash;&gt;-->
+<!--                    <tfoot>-->
 
-                    <tr class="float-right">
-                        <td>
-                            <p><span>Total: #</span></p>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
+<!--                    <tr class="float-right">-->
+<!--                        <td>-->
+<!--                            <p><span>Total: #</span></p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tfoot>-->
+<!--                </table>-->
 
-            </div>
-            <div class="modal-footer">
-                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
-                    Send Order
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--SUCCESS MODAL-->
-<div class="fade modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="successModalLabel">Success</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-body">
-                    <h5>An order receipt has been sent to your email. </h5>
-                    <h5>be ready to show your id upon arrival</h5>
-
-                    <h6>See you at the top!</h6>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <button class="bg-dark text-white close" data-dismiss="modal">
-                    Send Order
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&ndash;&gt;-->
+<!--                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#successModal">-->
+<!--                    Send Order-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!--</div>-->
+
+<!--&lt;!&ndash;SUCCESS MODAL&ndash;&gt;-->
+<!--<div class="fade modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title" id="successModalLabel">Success</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="modal-body">-->
+<!--                    <h5>An order receipt has been sent to your email. </h5>-->
+<!--                    <h5>be ready to show your id upon arrival</h5>-->
+
+<!--                    <h6>See you at the top!</h6>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&ndash;&gt;-->
+<!--                <button class="bg-dark text-white close" data-dismiss="modal">-->
+<!--                    Send Order-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+</div>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

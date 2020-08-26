@@ -24,7 +24,7 @@ import java.util.Objects;
 
 
 @Controller
-@SessionAttributes("cart")
+//@RequestMapping("/cart")
 public class CartController {
     private final OrderRepository orderDao;
     private final ProductRepository productDao;
@@ -84,14 +84,14 @@ public class CartController {
 //        return String.valueOf(new RedirectView("/sessionattributes/cart.html"));
 //    }
 //        ========== was using
-    @PostMapping("/{productId}")
-    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, @PathVariable("productId") Long id) {
-//        List<Product> cart;
-//        cart = (List<Product>) request.getSession().getAttribute("cart");
-        Product product = productDao.getOne(id);
-        cart.add(product);
-        return "cart";
-    }
+//    @PostMapping("/Search")
+//    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, long productId) {
+////        List<Product> cart;
+////        cart = (List<Product>) request.getSession().getAttribute("cart");
+//        Product product = productDao.getOne(productId);
+//        cart.add(product);
+//        return "search/search";
+//    }
 
 //  ===============      =====================
 //        if (request.getSession().getAttribute("cart") == null) {
@@ -111,9 +111,7 @@ public class CartController {
 //    }
 
     @GetMapping("/Cart")
-    public String showForm(
-            Model model,
-            @SessionAttribute("cart") List<Product> cart) {
+    public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
 //        List<Product> cart;
 //        cart = (List<Product>) request.getSession().getAttribute("cart");
 //        Product product = productDao.getOne(id);
