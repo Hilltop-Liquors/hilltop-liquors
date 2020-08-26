@@ -2,12 +2,15 @@ package com.codeup.hilltopliquors.controllers;
 import com.codeup.hilltopliquors.models.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+//@SessionAttributes("cart")
 public class HomeController {
     @GetMapping("/")
     public String showLanding(HttpServletRequest request) {
@@ -17,6 +20,7 @@ public class HomeController {
     }
 
     @GetMapping("/Home")
+    @ModelAttribute("cart")
     public String showHome(HttpServletRequest request) {
 
         List<Product> cart;

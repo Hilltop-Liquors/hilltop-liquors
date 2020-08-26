@@ -124,7 +124,8 @@
             </div>
             <div class="modal-footer">
                 <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal" type="button">
+                <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
+                        data-target="#checkoutModal" type="button">
                     Confirm pickup details
                 </button>
             </div>
@@ -155,7 +156,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="cartItem : ${cart}">
-                        <!--                    <th scope="row"></th>-->
+                        <th scope="row"></th>
                         <td th:text="${cartItem.getName()}"></td>
                         <td th:text="${cartItem.getSize()}"></td>
                         <th>Qty</th>
@@ -176,7 +177,8 @@
             </div>
             <div class="modal-footer">
                 <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal" data-target="#successModal">
+                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
+                        data-target="#successModal">
                     Send Order
                 </button>
             </div>
@@ -213,7 +215,6 @@
 </div>
 
 
-<!--</div>-->
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
