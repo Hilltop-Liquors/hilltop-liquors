@@ -58,58 +58,51 @@
 </head>
 <body>
 
-<!--  TOP NAV  -->
-<nav th:replace="partials/navbar :: navbar"></nav>
-<div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">
-    <h4 class="p-2">Ready to place your order for pickup?</h4>
-    <table class="table table-hover table-sm">
-        <thead>
-        <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Size</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="cartItem : ${cart}">
-            <!--                    <th scope="row"></th>-->
-            <td th:text="${cartItem.getName()}"></td>
-            <td th:text="${cartItem.getSize()}"></td>
-            <th>Qty</th>
-            <td th:text="${cartItem.getPriceInCents()}"></td>
-        </tr>
-        </tbody>
-        <tfoot>
+<!--  CONTAINER  -->
+<div class="mt-5 p-5" style="width:100%;">
 
-        <tr class="float-right">
-            <td>
-                <p><span>Total: #</span></p>
-            </td>
-        </tr>
-        <tr class="float-right">
-            <td>
-                <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
-                <button sec="isAuthenticated()" th:object="${order}"
-                        th:href="@{/Cart/confirm-details}" class="bg-dark text-white"
-                        data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
-                    Checkout
-                </button>
-
-                <span sec="isAnonymous()">
-                        <a th:href="@{/Login}">Please log in </a>
-                    </span>
-                <!--         ==========================           -->
-            </td>
-
-        </tr>
-
-        </tfoot>
-    </table>
+    <h5>Checkout</h5>
 
 
-</div> <!--  END DIV ROW-->
+    <!--=-================================== FORM DETAILS -->
 
+    <form th:action="@{/Cart/confirm-details}" th:method="post">
+        <!--    CURBSIDE  -->
+        <div class="form-group row">
+            <label for="isCurbside" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="checkbox" id="isCurbside" name="isCurbside" aria-label="Checkbox for following text input">
+                <p>Would you like curbside-store service?</p>
+            </div>
+        </div>
+        <!--    DATE PICKING UP  -->
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">What date will you be picking up your
+                items?</label>
+            <div class="col-sm-10">
+                <div class="input-container">
+                    <input id="inputPassword3" type="date" minlength="1"
+                           maxlength="64" placeholder=" " autocomplete="nope" required="required"
+                           name="pickUpDate">
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--    TIME PICKING UP    -->
+        <div class="form-group row">
+            <label for="pickupTime" class="col-sm-2 col-form-label">What time will you be arriving?</label>
+            <div class="col-sm-10">
+                <input type="time" id="pickupTime" name="pickupTime" min="10:00" max="20:00" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 <footer th:replace="partials/footer :: footer"></footer>
 </body>

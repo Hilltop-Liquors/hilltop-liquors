@@ -54,15 +54,15 @@ public class CartController {
 
     @PostMapping("/Cart")
     public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime){
-        Order newOrder = new Order();
-//        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Instant instant = Instant.now();
-        Timestamp timestamp = Timestamp.from(instant);
-        newOrder.setCreatedAt(timestamp);
-        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
-        System.out.println("HERE WE ARE" + pickUpDate);
-        System.out.println("HERE WE ARE" + isCurbside);
-        System.out.println("HERE WE ARE" + pickupTime);
+//        Order newOrder = new Order();
+////        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Instant instant = Instant.now();
+//        Timestamp timestamp = Timestamp.from(instant);
+//        newOrder.setCreatedAt(timestamp);
+//        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
+//        System.out.println("HERE WE ARE" + pickUpDate);
+//        System.out.println("HERE WE ARE" + isCurbside);
+//        System.out.println("HERE WE ARE" + pickupTime);
 
         return "cart/cart";
     }
@@ -75,8 +75,25 @@ public class CartController {
         return "cart/cart-checkout-details";
     }
 
+    @PostMapping("/Cart/confirm-details")
+    public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, String pickUpDate, boolean isCurbside, String pickupTime) {
+        Order newOrder = new Order();
+//        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Instant instant = Instant.now();
+        Timestamp timestamp = Timestamp.from(instant);
+        newOrder.setCreatedAt(timestamp);
+        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
+        System.out.println("HERE WE ARE" + pickUpDate);
+        System.out.println("HERE WE ARE" + isCurbside);
+        System.out.println("HERE WE ARE" + pickupTime);
+
+        model.addAttribute("cart", cart);
+
+        return "cart/cart-checkout-receipt";
+    }
+
     //  CHECKOUT STOP 2
-    @GetMapping("/Cart/confirm-details")
+    @GetMapping("/Cart/confirm-receipt")
     public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
 

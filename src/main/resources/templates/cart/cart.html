@@ -119,13 +119,16 @@
             <tr class="float-right">
                 <td>
                     <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
-                    <button sec="isAuthenticated()" th:object="${order}"
-                            th:href="@{/Cart/confirm-details}"  class="bg-dark text-white"
-                            data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
-                        Checkout
-                    </button>
 
-                    <span sec="isAnonymous()">
+                    <form th:action="@{/Cart/confirm-details}" th:method="get">
+                        <input type="hidden" class="form-control" />
+                        <button sec:authorize="isAuthenticated()"   type="submit">
+                            Checkout
+                        </button>
+                    </form>
+
+
+                    <span sec:authorize="isAnonymous()">
                         <a th:href="@{/Login}">Please log in </a>
                     </span>
                     <!--         ==========================           -->
