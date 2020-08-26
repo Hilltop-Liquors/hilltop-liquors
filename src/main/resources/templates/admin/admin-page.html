@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-    <meta charset="UTF-8">
+<head th:include="partials/head :: head">
+
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
     <title>Admin Page</title>
 </head>
 <body>
         <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+        <div>
+            <br>
+            <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
+            <br>
+        </div>
 
         <h2><a th:href="@{/admin/users}">View Users</a></h2>
     </div>
 </sec:authorize>
+
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
