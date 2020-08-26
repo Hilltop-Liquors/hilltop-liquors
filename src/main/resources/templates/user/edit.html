@@ -59,8 +59,8 @@
         </div>
         <div class="form-group"
              >
-            <input id="username" type="checkbox" name="username" th:value="*{username}" />   <label
-                class="control-label" for="username"> Check if you wish to keep current username
+            <input id="checkName" type="radio" name="checkName" th:value="*{username}" />   <label
+                class="control-label" for="checkName"> Check if you wish to keep current username
         </label>
 <!--            <p class="error-message alert-danger"-->
 <!--               th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation-->
@@ -70,7 +70,7 @@
             >
 <!--            removed the username from the field-->
             <label for="updateUsername" class="control-label">Username (only fill in if you wish to change your username)</label> <input
-                id="updateUsername" name="updateUsername" class="form-control" />
+                id="updateUsername" name="updateUsername" class="form-control" th:field="*{username}" />
 <!--            <p class="error-message alert-danger"-->
 <!--               th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation-->
 <!--                error</p>-->
