@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:include="partials/head :: head">
     <title>Hilltop-Cart</title>
 
@@ -33,7 +33,6 @@
             </thead>
             <tbody>
             <tr th:each="cartItem : ${cart}">
-                <!--                    <th scope="row"></th>-->
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <th></th>
@@ -64,7 +63,6 @@
                 <td th:text="${cartItem.getPriceInCents()}"></td>
             </tr>
             </tbody>
-            <!-- checkout btn -->
             <tfoot>
 
             <tr class="float-right">
@@ -74,12 +72,18 @@
             </tr>
             <tr class="float-right">
                 <td>
-                    <button th:action="@{/cart/checkout}" th:object="${order}" class="bg-dark text-white"
+<!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
+                    <button sec:authorize="isAuthenticated()" th:action="@{/CheckoutDetails}" th:object="${order}" class="bg-dark text-white"
                             data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
                         Checkout
                     </button>
+
+                    <span sec:authorize="isAnonymous()">
+                        <a th:href="@{/Login}">Please log in </a>
+                    </span>
+<!--         ==========================           -->
                 </td>
-                <!--                </input>-->
+
             </tr>
 
             </tfoot>
@@ -119,15 +123,15 @@
                     <div class="input-group-prepend">
                         <p>date & time</p>
                     </div>
-                    <!--                    <input type="text" class="form-control" aria-label="Text input with checkbox">-->
                 </div>
             </div>
             <div class="modal-footer">
-                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
                 <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
                         data-target="#checkoutModal" type="button">
                     Confirm pickup details
                 </button>
+                <!--         ==========================           -->
             </div>
         </div>
     </div>
@@ -176,11 +180,12 @@
 
             </div>
             <div class="modal-footer">
-                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
                 <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
                         data-target="#successModal">
                     Send Order
                 </button>
+<!--         ==========================           -->
             </div>
         </div>
     </div>
@@ -205,10 +210,11 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--         ============== DISMISS ============           -->
                 <button class="bg-dark text-white close" data-dismiss="modal">
                     Send Order
                 </button>
+<!--         ==========================           -->
             </div>
         </div>
     </div>
