@@ -28,7 +28,7 @@
 <!--    <div class="alert alert-danger"> Email, username and password fields must be filled out.</div>-->
 <!--</div>-->
 
-    <form th:action="@{/edit/{id}(id=${currentUser.id})}" th:value="${currentUser.id}" method="post" th:object="${currentUser}">
+    <form th:action="@{/user/edit/{id}(id=${user.id})}" th:value="${user.id}" method="post" th:object="${user}">
 <!--        <p class="error-message" th:if="${#fields.hasGlobalErrors()}"-->
 <!--           th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation-->
 <!--            error</p>-->

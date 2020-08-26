@@ -25,10 +25,10 @@ public class UserEditController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
-    }
+//    @ModelAttribute("user")
+//    public UserRegistrationDto userRegistrationDto() {
+//        return new UserRegistrationDto();
+//    }
 
 
     public UserEditController(UserRepository userDao) {
@@ -46,31 +46,28 @@ public class UserEditController {
         String username = authentication.getName();
         User currentUser = userDao.findByUsername(username);
 //        System.out.println("THIS IS THE SOUT:" + currentUser);
-       model.addAttribute("currentUser", currentUser);
+       model.addAttribute("user", currentUser);
 
         return "user/edit";
     }
 
     @PostMapping("/user/edit/{id}")
-    public String updateUser(@ModelAttribute User user) {
+    public String updateUser(@ModelAttribute User user, @RequestParam(name = "password") String password, BindingResult result) {
 
 
-//        User updatedUser = userDao.getOne(id);
-//        updatedUser.setEmail(userDto.getEmail());
-//        updatedUser.setFirst_name(userDto.getFirstName());
-//        updatedUser.setLast_name(userDto.getLastName());
-//        updatedUser.setUsername(userDto.getUsername());
-//        updatedUser.setPassword(userDto.getPassword());
-//        updatedUser.setPhone(userDto.getPhone());
-//bCryptPasswordEncoder.encode(registration.getPassword())
-//        currentUser.setPassword(bCryptPasswordEncoder.encode(currentUser.getPassword()));
+        if(password == null) {
+            result.rejectValue("password", null, "Please make sure to fill in this field");
+            return "user/edit";
+        }
 
-//        System.out.println(currentUser.getPassword());
+
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+
+
 
             userDao.save(user);
-            return "redirect:/Home";
 
-//        return "redirect:/user/edit/{id}?success";
+        return "redirect:/user/edit?success";
 
     }
 
