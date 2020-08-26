@@ -84,7 +84,7 @@
                 <!--                    <th scope="row"></th>-->
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
-                <th>Qty</th>
+                <th th:text="${cartItem.getInStoreCount()}"></th>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
             </tr>
             </tbody>
