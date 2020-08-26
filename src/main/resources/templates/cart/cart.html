@@ -75,6 +75,10 @@
                 <th scope="col">Size</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -83,6 +87,12 @@
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.setInStoreCount(1)}"></td>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
+                <td> <input class=" d-inline btn btn-success btn-sm" name="quantityBtn" type="submit" value="+1"> </td>
+                <td> <input class=" d-inline btn btn-warning btn-sm" name="quantityBtn" type="submit" value="-1"></td>
+                <td></td>
+                <td>
+                    <input class=" d-inline btn btn-danger btn-sm" name="quantityBtn" type="submit" value="Remove">
+                </td>
             </tr>
             </tbody>
         </table>
