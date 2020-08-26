@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService{
         user.setPassword(bCryptPasswordEncoder.encode(registration.getPassword()));
         user.setSms_consent(registration.getSmsConsent());
         user.setPhone(registration.getPhone());
-        user.setRoles(Arrays.asList((roleRepository.findByName("ROLE_ADMIN"))));
+        user.setRoles(Arrays.asList((roleRepository.findByName("ROLE_USER"))));
 //        user.setRoles()
         System.out.println(user);
         System.out.println("TESTING 1, 2, 3 ... is this thing on?!");
