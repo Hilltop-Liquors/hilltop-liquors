@@ -53,20 +53,20 @@ public class UserEditController {
     }
 
     @PostMapping("/user/edit/{id}")
-    public String updateUser(@ModelAttribute User user, @RequestParam(name = "email") String email, @RequestParam(name = "checkName") String checkName, @RequestParam(name = "phone") String phone,@RequestParam(name = "password") String password, @RequestParam(name = "updateUsername") String updateUsername,BindingResult result) {
+    public String updateUser(@ModelAttribute User user) {
 
-        if(email.isEmpty()) {
-            result.rejectValue("email", null, "Please make sure to provide a proper email");
-        return "user/edit";
-        }
+//        if(email.isEmpty()) {
+//            result.rejectValue("email", null, "Please make sure to provide a proper email");
+//        return "user/edit";
+//        }
 
-        User existingUserName = userService.findByUsername(updateUsername);
+//        User existingUserName = userService.findByUsername(updateUsername);
 //        String currentUN = user.getUsername();
 
-        if(existingUserName != null) {
-            result.rejectValue("username", null, "This username already exists, please provide another");
-            return "user/edit";
-        }
+//        if(existingUserName != null) {
+//            result.rejectValue("username", null, "This username already exists, please provide another");
+//            return "user/edit";
+//        }
 //        List<User> users = userDao.findAll();
 //        User current = userDao.findByUsername(username);
 //
@@ -80,36 +80,37 @@ public class UserEditController {
 //            }
 //        }
 
-        if(updateUsername.equalsIgnoreCase("null")) {
-            result.rejectValue("username", null, "Who do you think we are, Domino's? We take exception to this!");
-            return "user/edit";
-        }
+//        if(updateUsername.equalsIgnoreCase("null")) {
+//            result.rejectValue("username", null, "Who do you think we are, Domino's? We take exception to this!");
+//            return "user/edit";
+//        }
 
 
 
-        if(password.isEmpty()) {
-            result.rejectValue("password", null, "Please make sure to fill in a proper password");
-            return "user/edit";
-        }
+//        if(password.isEmpty()) {
+//            result.rejectValue("password", null, "Please make sure to fill in a proper password");
+//            return "user/edit";
+//        }
 
 //        if(username.isEmpty() && password.isEmpty()) {
 //            result.rejectValue("password", null, "Please make sure to fill in a proper password");
 //            return "user/edit";
 //        }
 
-        if(checkName == null){
-////          username.equals(user.getUsername());
-//           user.setUsername(updateUsername);
-            user.setUsername(updateUsername);
-            System.out.println(updateUsername);
-            user.setPassword(bCryptPasswordEncoder.encode(password));
-            userDao.save(user);
+//        if(checkName == null){
+//////          username.equals(user.getUsername());
+////           user.setUsername(updateUsername);
+//            user.setUsername(updateUsername);
+//            System.out.println(updateUsername);
+//            user.setPassword(bCryptPasswordEncoder.encode(password));
+//            userDao.save(user);
+//
+//            return "redirect:/user/edit?success";
+//        }
 
-            return "redirect:/user/edit?success";
-        }
+//        user.setPassword(bCryptPasswordEncoder.encode(password));
 
-        user.setPassword(bCryptPasswordEncoder.encode(password));
-
+        user.setPassword(user.getPassword());
             userDao.save(user);
 
         return "redirect:/user/edit?success";

@@ -57,39 +57,40 @@
                th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
                 error</p>
         </div>
-        <div class="form-group"
-             >
-            <input id="checkName" type="radio" name="checkName" th:value="*{username}" />   <label
-                class="control-label" for="checkName"> Check if you wish to keep current username
-        </label>
-<!--            <p class="error-message alert-danger"-->
-<!--               th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation-->
-<!--                error</p>-->
-        </div>
-        <div class="form-group"
-            >
-<!--            removed the username from the field-->
-            <label for="updateUsername" class="control-label">Username (only fill in if you wish to change your username)</label> <input
-                id="updateUsername" name="updateUsername" class="form-control" th:field="*{username}" />
-<!--            <p class="error-message alert-danger"-->
-<!--               th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation-->
-<!--                error</p>-->
-        </div>
+<!--        <div class="form-group"-->
+<!--             >-->
+<!--            <input id="checkName" type="radio" name="checkName" th:value="*{username}" />   <label-->
+<!--                class="control-label" for="checkName"> Check if you wish to keep current username-->
+<!--        </label>-->
+<!--&lt;!&ndash;            <p class="error-message alert-danger"&ndash;&gt;-->
+<!--&lt;!&ndash;               th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation&ndash;&gt;-->
+<!--&lt;!&ndash;                error</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="form-group"-->
+<!--            >-->
+<!--&lt;!&ndash;            removed the username from the field&ndash;&gt;-->
+<!--            -->
+<!--            <label for="updateUsername" class="control-label">Username (only fill in if you wish to change your username)</label>-->
+<!--            <input id="updateUsername" name="updateUsername" class="form-control" th:field="*{username}" />-->
+<!--&lt;!&ndash;            <p class="error-message alert-danger"&ndash;&gt;-->
+<!--&lt;!&ndash;               th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation&ndash;&gt;-->
+<!--&lt;!&ndash;                error</p>&ndash;&gt;-->
+<!--        </div>-->
 
         <div class="form-group">
             <label for="phone" class="control-label">Phone</label>
             <input class="form-control" type="tel" value="1-555-5555" placeholder="1-555-5555"
                    id="phone" th:field="*{phone}">
         </div>
-        <div class="form-group"
-             >
-            <label for="password" class="control-label">Password</label> <input
-                id="password" class="form-control" type="password" name="password"
-                th:field="*{password}" />
-            <p class="error-message alert-danger"
-               th:each="error : ${#fields.errors('password')}"
-               th:text="${error}">Validation error</p>
-        </div>
+<!--        <div class="form-group"-->
+<!--             >-->
+<!--            <label for="password" class="control-label">Password</label> <input-->
+<!--                id="password" class="form-control" type="password" name="password"-->
+<!--                th:field="*{password}" />-->
+<!--            <p class="error-message alert-danger"-->
+<!--               th:each="error : ${#fields.errors('password')}"-->
+<!--               th:text="${error}">Validation error</p>-->
+<!--        </div>-->
 <!--        <div class="form-group"-->
 <!--             >-->
 <!--            <label for="confirmPassword" class="control-label">Confirm-->
