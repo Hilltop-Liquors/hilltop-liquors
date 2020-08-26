@@ -64,6 +64,11 @@ public class UserRegistrationController {
         username = userDto.getUsername();
         confirmUsername = userDto.getConfirmUsername();
 
+        if(username.equalsIgnoreCase("null")) {
+            result.rejectValue("username", null, "Who do you think we are, Domino's? We take exception to this!");
+            return "user/registration";
+        }
+
         if(!(username.equals(confirmUsername))) {
             result.rejectValue("confirmUsername", null, "Please make sure both usernames match");
             return "user/registration";

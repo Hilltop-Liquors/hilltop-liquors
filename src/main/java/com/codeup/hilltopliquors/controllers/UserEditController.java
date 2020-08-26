@@ -52,11 +52,24 @@ public class UserEditController {
     }
 
     @PostMapping("/user/edit/{id}")
-    public String updateUser(@ModelAttribute User user, @RequestParam(name = "password") String password, BindingResult result) {
+    public String updateUser(@ModelAttribute User user,@RequestParam(name = "email") String email, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, BindingResult result) {
 
+        if(email.isEmpty()) {
+            result.rejectValue("email", null, "Please make sure to provide a proper email");
+        }
 
-        if(password == null) {
-            result.rejectValue("password", null, "Please make sure to fill in this field");
+        if(username.equalsIgnoreCase("null")) {
+            result.rejectValue("username", null, "Who do you think we are, Domino's? We take exception to this!");
+            return "user/edit";
+        }
+
+        if(username.isEmpty()) {
+            result.rejectValue("username", null, "Please fill in a username");
+            return "user/edit";
+        }
+
+        if(password.isEmpty()) {
+            result.rejectValue("password", null, "Please make sure to fill in a proper password");
             return "user/edit";
         }
 
