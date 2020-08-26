@@ -2,29 +2,15 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
-import com.codeup.hilltopliquors.security.UserRegistrationDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.net.http.HttpRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @Controller
@@ -50,12 +36,23 @@ public class CartController {
     @ModelAttribute("order")
     public Order order() {
         Order newOrder = new Order();
-//        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Instant instant = Instant.now();
         Timestamp timestamp = Timestamp.from(instant);
         newOrder.setCreatedAt(timestamp);
-//        newOrder.setUser(user);
+
         return newOrder;
+    }
+
+    @ModelAttribute("orderDetails")
+    public List<String> order(HttpServletRequest request) {
+        List<String> orderDetails;
+        if (request.getSession().getAttribute("orderDetails") == null) {
+            orderDetails = new ArrayList<>();
+        } else {
+            orderDetails = (List<String>) request.getSession().getAttribute("orderDetails");
+        }
+        request.getSession().setAttribute("orderDetails", orderDetails);
+        return orderDetails;
     }
 
 
@@ -63,10 +60,70 @@ public class CartController {
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
 
-        return "cart";
+        return "cart/cart";
     }
 
 //    Will set name of values in modal and then call to save them on button click to database
+
+    @PostMapping("/Cart")
+    public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime) {
+//        Order newOrder = new Order();
+////        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Instant instant = Instant.now();
+//        Timestamp timestamp = Timestamp.from(instant);
+//        newOrder.setCreatedAt(timestamp);
+//        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
+//        System.out.println("HERE WE ARE" + pickUpDate);
+//        System.out.println("HERE WE ARE" + isCurbside);
+//        System.out.println("HERE WE ARE" + pickupTime);
+
+        return "cart/cart";
+    }
+
+    //  CHECKOUT STOP 1
+    @GetMapping("/Cart/confirm-details")
+    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart) {
+        model.addAttribute("cart", cart);
+
+        return "cart/cart-checkout-details";
+    }
+
+    @PostMapping("/Cart/confirm-details")
+    public String saveCheckoutDetails( Model model ,@SessionAttribute("cart") List<Product> cart ,@SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime) {
+        orderDetails.add(pickupTime);
+        orderDetails.add(isCurbside);
+        orderDetails.add(pickUpDate);
+
+        System.out.println(orderDetails);
+        model.addAttribute("cart", cart);
+
+        return "cart/cart-checkout-receipt";
+    }
+
+    //  CHECKOUT STOP 2
+    @GetMapping("/Cart/checkout-receipt")
+    public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
+        model.addAttribute("orderDetails", orderDetails);
+        model.addAttribute("cart", cart);
+
+        System.out.println(orderDetails);
+
+        return "cart/cart";
+    }
+
+    @PostMapping("/Cart/checkout-receipt")
+    public String saveCheckoutOrder(@SessionAttribute("cart") List<Product> cart) {
+//        List<Product> cart;
+        cart.clear();
+
+
+
+//        else {
+//            cart = (List<Product>) request.getSession().getAttribute("cart");
+//        }
+
+        return "redirect:/Home";
+    }
 
 
 }
