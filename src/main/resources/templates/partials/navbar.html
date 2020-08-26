@@ -22,9 +22,12 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
 <!--                ADDING THIS TO ALLOW ONLY ADMIN TO ACCESS AND SEE THIS PAGE-->
-                <div sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin">ADMIN<span class="sr-only">(current)</span></a>
-                </div>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                            <a class="nav-link" href="/admin">ADMIN<span class="sr-only">(current)</span></a>
+                    </div>
+                </sec:authorize>
+
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="EventSupply">Events Supply <span class="sr-only">(current)</span></a>
