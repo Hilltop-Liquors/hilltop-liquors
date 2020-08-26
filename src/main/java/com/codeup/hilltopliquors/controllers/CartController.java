@@ -68,5 +68,16 @@ public class CartController {
 
 //    Will set name of values in modal and then call to save them on button click to database
 
+    @PostMapping("/Cart")
+    public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime){
+        Order newOrder = new Order();
+//        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Instant instant = Instant.now();
+        Timestamp timestamp = Timestamp.from(instant);
+        newOrder.setCreatedAt(timestamp);
+
+        return null;
+    }
+
 
 }
