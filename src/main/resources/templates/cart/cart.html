@@ -77,21 +77,20 @@
                 <th scope="col">Price</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="cartItem : ${cart}">
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
-                <td th:text="${cartItem.setInStoreCount(1)}"></td>
+                <td><input type="number" th:value="${cartItem.setInStoreCount(1)}" min="0" max="99" class="qtyinput"></td>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
-                <td> <input class=" d-inline btn btn-success btn-sm" name="quantityBtn" type="submit" value="+1"> </td>
-                <td> <input class=" d-inline btn btn-warning btn-sm" name="quantityBtn" type="submit" value="-1"></td>
                 <td></td>
                 <td>
-                    <input class=" d-inline btn btn-danger btn-sm" name="quantityBtn" type="submit" value="Remove">
+                    <form th:action="@{/Cart}" method="post">
+                        <input type="hidden" th:value="${cartItem.getName()}" name="delete"/>
+                        <button type="submit" value="Submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
                 </td>
             </tr>
             </tbody>

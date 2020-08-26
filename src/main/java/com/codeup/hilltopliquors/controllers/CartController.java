@@ -66,7 +66,12 @@ public class CartController {
 //    Will set name of values in modal and then call to save them on button click to database
 
     @PostMapping("/Cart")
-    public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime) {
+    public String orderDetails(String delete, @SessionAttribute("cart") List<Product> cart) {
+
+
+            cart.remove(delete);
+
+
 //        Order newOrder = new Order();
 ////        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        Instant instant = Instant.now();
@@ -77,7 +82,7 @@ public class CartController {
 //        System.out.println("HERE WE ARE" + isCurbside);
 //        System.out.println("HERE WE ARE" + pickupTime);
 
-        return "cart/cart";
+        return "redirect:/Cart";
     }
 
     //  CHECKOUT STOP 1
