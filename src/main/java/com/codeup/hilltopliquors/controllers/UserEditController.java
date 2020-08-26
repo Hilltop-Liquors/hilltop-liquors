@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class UserEditController {
@@ -56,6 +57,20 @@ public class UserEditController {
 
         if(email.isEmpty()) {
             result.rejectValue("email", null, "Please make sure to provide a proper email");
+        return "user/edit";
+        }
+
+        List<User> users = userDao.findAll();
+        User current = userDao.findByUsername(username);
+
+;        for(User u : users) {
+//            User userExists = userDao.findByUsername(u.getUsername());
+//            System.out.println(userExists.getUsername());
+
+            if (!current.getUsername().equals(user.getUsername()) && user == u) {
+                result.rejectValue("username", null, "This username already exists, please provide another");
+                return "user/edit";
+            }
         }
 
         if(username.equalsIgnoreCase("null")) {

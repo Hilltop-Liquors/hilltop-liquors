@@ -78,9 +78,11 @@ public class UserRegistrationController {
         confirmPassword = userDto.getConfirmPassword();
 
         if(!(password.equals(confirmPassword))) {
-            result.rejectValue("confirmPassword", null, "Please make sure both passwords match");
+            result.rejectValue("password", null, "Please make sure both passwords match");
             return "user/registration";
         }
+
+
 
         if ( email.equalsIgnoreCase("") || username.equalsIgnoreCase("") || confirmUsername.equalsIgnoreCase("") || password.equalsIgnoreCase("") || confirmPassword.equalsIgnoreCase("")){
             model.addAttribute("emptyField", true);
