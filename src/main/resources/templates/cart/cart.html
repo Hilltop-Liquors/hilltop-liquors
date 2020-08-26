@@ -67,7 +67,7 @@
 <br>
 <div style="width: 100%;">
 
-    <div class="d-inline float-left ml-3 pl-4" style="width: 40%; margin-right:10%;">
+    <div class="d-inline float-left ml-3 pl-2" style="width: 40%; margin-right:10%;">
         <table class="table">
             <thead>
             <tr>
@@ -75,14 +75,37 @@
                 <th scope="col">Size</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="cartItem : ${cart}">
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
-                <th></th>
+                <td th:text="${cartItem.getInStoreCount() }"></td>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
+                <td>
+                    <form th:action="@{/Cart}" method="post">
+                        <input class="btn btn-warning btn-sm" name="quantityBtnPlus" type="hidden" th:value="${cartItem.getName()}">
+                        <button type="submit" value="Submit" class="btn btn-primary btn-sm">+1</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/Cart}" method="post">
+                        <input class="btn btn-warning btn-sm" name="quantityBtnMinus" type="hidden" th:value="${cartItem.getName()}">
+                        <button type="submit" value="Submit" class="btn btn-secondary btn-sm">-1</button>
+                    </form>
+                </td>
+                <td></td>
+                <td>
+                    <form th:action="@{/Cart}" method="post">
+                        <input type="hidden" th:value="${cartItem.getName()}" name="delete"/>
+                        <button type="submit" value="Submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -105,7 +128,7 @@
                 <!--                    <th scope="row"></th>-->
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
-                <th>Qty</th>
+                <td th:text="${cartItem.setInStoreCount(1)}"></td>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
             </tr>
             </tbody>

@@ -59,14 +59,39 @@ public class CartController {
     @GetMapping("/Cart")
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
-
         return "cart/cart";
     }
 
 //    Will set name of values in modal and then call to save them on button click to database
 
     @PostMapping("/Cart")
-    public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime) {
+    public String orderDetails(Model model ,String delete, String quantityBtnPlus,  String quantityBtnMinus ,@SessionAttribute("cart") List<Product> cart) {
+        model.addAttribute("cart", cart);
+
+        cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
+
+//        for(Product cartItem : cart){
+//            if(quantityBtnPlus.equalsIgnoreCase(cartItem.getName())){
+//               int plus = cartItem.getInStoreCount() + 1;
+//                int plusCalc = plus + 1;
+//               cartItem.setInStoreCount(plusCalc);
+//            }
+//        }
+//
+//        for(Product cartItem : cart) {
+//            if (quantityBtnMinus.equalsIgnoreCase(cartItem.getName())) {
+//                int minus = cartItem.getInStoreCount();
+//                int minusCalc = minus - 1;
+////                if (minus < 0) {
+////                    cartItem.getInStoreCount();
+////                } else {
+//                    cartItem.setInStoreCount(minusCalc);
+//                }
+//            }
+
+
+
+
 //        Order newOrder = new Order();
 ////        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        Instant instant = Instant.now();
@@ -123,7 +148,7 @@ public class CartController {
 //            cart = (List<Product>) request.getSession().getAttribute("cart");
 //        }
 
-        return "redirect:/Home";
+        return "redirect:/Home?success";
     }
 
 

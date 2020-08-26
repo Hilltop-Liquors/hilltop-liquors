@@ -14,6 +14,10 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="container m-5 p-5">
+    <div th:if="${param.success}">
+        <div class="alert alert-info">Thank you for your order! See you at the top!
+        </div>
+    </div>
 
     <h2>HOME TEST</h2>
 </div>
