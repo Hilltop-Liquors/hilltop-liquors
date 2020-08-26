@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Settings</title>
+    <head th:include="partials/head :: head">
+
+        <link rel="stylesheet" type="text/css"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+        <title>Settings</title>
 </head>
 <body>
 
-    <form th:action="@{/user/edit/{id}(id=${user.id})}" th:value="${user.id}" method="post" th:object="${user}">
-        <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
-           th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
-            error</p>
+<div class="container m-auto">
+    <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+<div th:if="${param.success}">
+    <div class="alert alert-info">You've successfully your account!
+        <br>
+        <a th:href="@{/Home}">Return Home!</a>
+    </div>
+</div>
+
+
+
+<!--<div th:if="${emptyField}">-->
+<!--    <div class="alert alert-danger"> Email, username and password fields must be filled out.</div>-->
+<!--</div>-->
+
+    <form th:action="@{/edit/{id}(id=${currentUser.id})}" th:value="${currentUser.id}" method="post" th:object="${currentUser}">
+<!--        <p class="error-message" th:if="${#fields.hasGlobalErrors()}"-->
+<!--           th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation-->
+<!--            error</p>-->
 
         <div class="form-group"
              th:classappend="${#fields.hasErrors('first_name')}? 'has-error':''">
@@ -20,7 +42,7 @@
                th:text="${error}">Validation error</p>
         </div>
         <div class="form-group"
-             th:classappend="${#fields.hasErrors('last_name')}? 'has-error':''">
+             >
             <label for="lastName" class="control-label">Last name</label> <input
                 id="lastName" class="form-control" th:field="*{last_name}" th:value="*{last_name}" />
             <p class="error-message"
@@ -28,7 +50,7 @@
                th:text="${error}">Validation error</p>
         </div>
         <div class="form-group"
-             th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+             >
             <label for="email" class="control-label">E-mail</label> <input
                 id="email" class="form-control" th:field="*{email}" />
             <p class="error-message"
@@ -36,7 +58,7 @@
                 error</p>
         </div>
         <div class="form-group"
-             th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+            >
             <label for="username" class="control-label">Username</label> <input
                 id="username" class="form-control" th:field="*{username}" />
             <p class="error-message"
@@ -44,12 +66,13 @@
                 error</p>
         </div>
 <!--        <div class="form-group"-->
-<!--             th:classappend="${#fields.hasErrors('confirmUsername')}? 'has-error':''">-->
+<!--             >-->
 <!--            <label for="confirmUsername" class="control-label">Confirm-->
-<!--                username</label> <input id="confirmUsername" class="form-control"-->
-<!--                                        th:value="*{confirmUsername}" />-->
+<!--                username</label>-->
+<!--            <input id="confirmPassword" class="form-control"-->
+<!--                   type="tect" th:field="*{confirmUsername}" name="confirmUsername"/>-->
 <!--&lt;!&ndash;                                        changed to value from field&ndash;&gt;-->
-<!--            <p class="error-message"-->
+<!--            <p class="error-message alert-danger"-->
 <!--               th:each="error : ${#fields.errors('confirmUsername')}"-->
 <!--               th:text="${error}">Validation error</p>-->
 <!--        </div>-->
@@ -59,7 +82,7 @@
                    id="phone" th:field="*{phone}">
         </div>
         <div class="form-group"
-             th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+             >
             <label for="password" class="control-label">Password</label> <input
                 id="password" class="form-control" type="password"
                 th:field="*{password}" />
@@ -68,17 +91,24 @@
                th:text="${error}">Validation error</p>
         </div>
 <!--        <div class="form-group"-->
-<!--             th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">-->
+<!--             >-->
 <!--            <label for="confirmPassword" class="control-label">Confirm-->
 <!--                password</label> <input id="confirmPassword" class="form-control"-->
 <!--                                        type="password" th:field="*{confirmPassword}" />-->
-<!--            <p class="error-message"-->
+<!--            <p class="error-message alert-danger"-->
 <!--               th:each="error : ${#fields.errors('confirmPassword')}"-->
 <!--               th:text="${error}">Validation error</p>-->
 <!--        </div>-->
 
-        <input class="btn btn-success" type="submit" value="Update">
+        <button type="submit" value="submit" class="btn btn-success">Update</button>
     </form>
 
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
