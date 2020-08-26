@@ -70,23 +70,25 @@ public class CartController {
 
         cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
 
-        for(Product cartItem : cart){
-            if(quantityBtnPlus.equalsIgnoreCase(cartItem.getName())){
-               int plus = cartItem.getInStoreCount() + 1;
-               cartItem.setInStoreCount(plus);
-            }
-        }
-
-        for(Product cartItem : cart){
-            if(quantityBtnMinus.equalsIgnoreCase(cartItem.getName())){
-                int minus = cartItem.getInStoreCount() + 1;
-                cartItem.setInStoreCount(minus);
-            }
-        }
-
-//        if (cart == null) {
-//            request.getSession().setAttribute("cart", cart);
+//        for(Product cartItem : cart){
+//            if(quantityBtnPlus.equalsIgnoreCase(cartItem.getName())){
+//               int plus = cartItem.getInStoreCount() + 1;
+//                int plusCalc = plus + 1;
+//               cartItem.setInStoreCount(plusCalc);
+//            }
 //        }
+//
+//        for(Product cartItem : cart) {
+//            if (quantityBtnMinus.equalsIgnoreCase(cartItem.getName())) {
+//                int minus = cartItem.getInStoreCount();
+//                int minusCalc = minus - 1;
+////                if (minus < 0) {
+////                    cartItem.getInStoreCount();
+////                } else {
+//                    cartItem.setInStoreCount(minusCalc);
+//                }
+//            }
+
 
 
 
