@@ -75,8 +75,12 @@ public class CartController {
         Instant instant = Instant.now();
         Timestamp timestamp = Timestamp.from(instant);
         newOrder.setCreatedAt(timestamp);
+        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
+        System.out.println("HERE WE ARE" + pickUpDate);
+        System.out.println("HERE WE ARE" + isCurbside);
+        System.out.println("HERE WE ARE" + pickupTime);
 
-        return null;
+        return "cart";
     }
 
 

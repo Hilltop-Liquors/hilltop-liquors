@@ -119,7 +119,7 @@
             <tr class="float-right">
                 <td>
                     <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
-                    <button sec:authorize="isAuthenticated()" th:action="@{/CheckoutDetails}" th:object="${order}"
+                    <button sec:authorize="isAuthenticated()" th:object="${order}"
                             class="bg-dark text-white"
                             data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
                         Checkout
@@ -140,73 +140,80 @@
 </div> <!--  END DIV ROW-->
 
 <!--CHECKOUT DETAILS MODAL-->
-<div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel">Checkout</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <!-- ====================  isCURBISDE ======= -->
-                        <div class="input-group-text">
-                            <input type="checkbox" name="isCurbside" aria-label="Checkbox for following text input">
+
+    <div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Checkout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <!-- ====================  isCURBISDE ======= -->
+                            <div class="input-group-text">
+                                <form th:action ="@{/Cart}" th:method="post">
+                                <input type="checkbox" name="isCurbside" aria-label="Checkbox for following text input">
+                                    <button type="submit">confirm curbisde pickup </button>
+                                </form>
+                            </div>
+                            <p>curbside-store pickup</p>
                         </div>
-                        <p>curbside-store pickup</p>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+
+                            <!-- ====================  PICK UP DATE INPUT ======= -->
+                            <div class="form-question">
+                                <div class="form-question__title">
+                                    <span>Pickup Date</span>
+                                </div>
+                                <div class="input-container">
+                                    <form th:action ="@{/Cart}" th:method="post">
+                                    <input id="effective-date" type="date" minlength="1"
+                                           maxlength="64" placeholder=" " autocomplete="nope" required="required"
+                                           name="pickUpDate">
+                                        <button type="submit">date confirm</button>
+                                    <span class="bar"></span>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--           CITATION: https://stackoverflow.com/questions/51334960/how-to-show-calendar-popup-when-inputtype-date-is-on-focus             -->
+
+                            <!-- ====================  PICK UP TIME ======= -->
+                            <div class="form-question">
+                                <div class="form-question__title">
+                                    <span>Choose a time for your pickup:</span>
+                                </div>
+                                <div class="input-container">
+                                    <form th:action ="@{/Cart}" th:method="post">
+                                    <label for="pickupTime"></label>
+                                    <input type="time" id="pickupTime" name="pickupTime"
+                                           min="10:00" max="20:00" required>
+                                        <button type="submit">confirm time</button>
+                                    </form>
+                                    <small>Hilltop's hours are 10am to 8:45pm</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-
-                        <!-- ====================  PICK UP DATE INPUT ======= -->
-                        <div class="form-question">
-                            <div class="form-question__title">
-                                <span>Pickup Date</span>
-                            </div>
-                            <div class="input-container">
-                                <input id="effective-date" type="date" minlength="1"
-                                       maxlength="64" placeholder=" " autocomplete="nope" required="required" name="pickUpDate">
-                                <span class="bar"></span>
-                            </div>
-                        </div>
-                        <!--           CITATION: https://stackoverflow.com/questions/51334960/how-to-show-calendar-popup-when-inputtype-date-is-on-focus             -->
-
-                        <!-- ====================  PICK UP TIME ======= -->
-                        <div class="form-question">
-                            <div class="form-question__title">
-                                <span>Choose a time for your pickup:</span>
-                            </div>
-                            <div class="input-container">
-                                <label for="pickupTime"></label>
-
-                                <input type="time" id="pickupTime" name="pickupTime"
-                                       min="10:00" max="20:00" required>
-
-                                <small>Hilltop's hours are 10am to 8:45pm</small>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
+                <div class="modal-footer">
+                    <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
+                    <form th:action ="@{/Cart}" th:method="post">
+                    <input class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
+                            data-target="#checkoutModal" type="button" name="pickUpDate" name="pickupTime" name="">
+                        Confirm pickup details </input>
+                    <!--         ==========================           -->
+                    </form>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
-                <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
-                        data-target="#checkoutModal" type="button">
-                    Confirm pickup details
-                </button>
-                <!--         ==========================           -->
             </div>
         </div>
     </div>
-</div>
 
 <!--CHECKOUT MODAL-->
 <div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
