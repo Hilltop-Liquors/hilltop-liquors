@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Cart</title>
+
+    <style media="screen">
+        nav {
+            height: 70px !important;
+        }
+
+        .form-question {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 0 3rem;
+            min-height: 3rem;
+        }
+
+        .form-question__title {
+            color: #342357;
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+
+        .input-container input {
+            border: none;
+            box-sizing: border-box;
+            outline: 0;
+            padding: .75rem;
+            position: relative;
+            width: 100%;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            bottom: 0;
+            color: transparent;
+            cursor: pointer;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
+
+        label {
+            display: block;
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input,
+        label {
+            margin: .4rem 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--  TOP NAV  -->
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<a style="text-decoration: none; color:black; margin-top:15%;" th:href="@{/Search}">keep
+    shopping</a>
+<h1 class="ml-4" style="margin-top:5%;">Cart</h1>
+<br>
+<div style="width: 100%;">
+
+    <div class="d-inline float-left ml-3 pl-4" style="width: 40%; margin-right:10%;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Size</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${cart}">
+                <td th:text="${cartItem.getName()}"></td>
+                <td th:text="${cartItem.getSize()}"></td>
+                <th></th>
+                <td th:text="${cartItem.getPriceInCents()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--  Start Checkout Details -->
+    <div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">
+        <h4 class="p-2">Ready to place your order for pickup?</h4>
+        <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Size</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${cart}">
+                <!--                    <th scope="row"></th>-->
+                <td th:text="${cartItem.getName()}"></td>
+                <td th:text="${cartItem.getSize()}"></td>
+                <th>Qty</th>
+                <td th:text="${cartItem.getPriceInCents()}"></td>
+            </tr>
+            </tbody>
+            <tfoot>
+
+            <tr class="float-right">
+                <td>
+                    <p><span>Total: #</span></p>
+                </td>
+            </tr>
+            <tr class="float-right">
+                <td>
+                    <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
+                    <button sec="isAuthenticated()" th:object="${order}"
+                            th:href="@{/Cart/confirm-details}"  class="bg-dark text-white"
+                            data-toggle="modal" data-target="#checkoutDetailsModal" type="button">
+                        Checkout
+                    </button>
+
+                    <span sec="isAnonymous()">
+                        <a th:href="@{/Login}">Please log in </a>
+                    </span>
+                    <!--         ==========================           -->
+                </td>
+
+            </tr>
+
+            </tfoot>
+        </table>
+    </div>
+
+</div> <!--  END DIV ROW-->
+
+<!--CHECKOUT DETAILS MODAL-->
+<!--<form id='myform' th:action ="@{/Cart}" method='POST' target='formresponse'>-->
+<!--    <div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog modal-dialog-centered">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="detailsModalLabel">Checkout</h5>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <div class="input-group mb-3">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            &lt;!&ndash; ====================  isCURBISDE ======= &ndash;&gt;-->
+<!--                            <div class="input-group-text">-->
+<!--                                <form th:action ="@{/Cart}" th:method="post">-->
+<!--                                <input type="checkbox" name="isCurbside" aria-label="Checkbox for following text input">-->
+<!--                                    <button type="submit">confirm curbside pickup </button>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                            <p>curbside-store pickup</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="input-group mb-3">-->
+<!--                        <div class="input-group-prepend">-->
+
+<!--                            &lt;!&ndash; ====================  PICK UP DATE INPUT ======= &ndash;&gt;-->
+<!--                            <div class="form-question">-->
+<!--                                <div class="form-question__title">-->
+<!--                                    <span>Pickup Date</span>-->
+<!--                                </div>-->
+<!--                                <div class="input-container">-->
+<!--                                    <form th:action ="@{/Cart}" th:method="post">-->
+<!--                                    <input id="effective-date" type="date" minlength="1"-->
+<!--                                           maxlength="64" placeholder=" " autocomplete="nope" required="required"-->
+<!--                                           name="pickUpDate">-->
+<!--                                        <button type="submit">date confirm</button>-->
+<!--                                    <span class="bar"></span>-->
+<!--                                    </form>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash;           CITATION: https://stackoverflow.com/questions/51334960/how-to-show-calendar-popup-when-inputtype-date-is-on-focus             &ndash;&gt;-->
+
+<!--                            &lt;!&ndash; ====================  PICK UP TIME ======= &ndash;&gt;-->
+<!--                            <div class="form-question">-->
+<!--                                <div class="form-question__title">-->
+<!--                                    <span>Choose a time for your pickup:</span>-->
+<!--                                </div>-->
+<!--                                <div class="input-container">-->
+<!--                                    <form th:action ="@{/Cart}" th:method="post">-->
+<!--                                    <label for="pickupTime"></label>-->
+<!--                                    <input type="time" id="pickupTime" name="pickupTime"-->
+<!--                                           min="10:00" max="20:00" required>-->
+<!--                                        <button type="submit">confirm time</button>-->
+<!--                                    </form>-->
+<!--                                    <small>Hilltop's hours are 10am to 8:45pm</small>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    &lt;!&ndash;         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           &ndash;&gt;-->
+<!--&lt;!&ndash;                    <form th:action ="@{/Cart}" th:method="post">&ndash;&gt;-->
+<!--                    <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"-->
+<!--                            data-target="#checkoutModal" >-->
+<!--                        Confirm pickup details </button>-->
+<!--                    &lt;!&ndash;         ==========================           &ndash;&gt;-->
+<!--&lt;!&ndash;                    </form>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+<!--<iframe name='formresponse' width='300' height='200'></iframe>-->
+<!--CHECKOUT MODAL-->
+<!--<div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title" id="checkoutModalLabel">Checkout</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <h4 class="p-2">Place your order for pickup</h4>-->
+<!--                <table class="table table-hover table-sm">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">Product</th>-->
+<!--                        <th scope="col">Size</th>-->
+<!--                        <th scope="col">Quantity</th>-->
+<!--                        <th scope="col">Price</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr th:each="cartItem : ${cart}">-->
+<!--                        <th scope="row"></th>-->
+<!--                        <td th:text="${cartItem.getName()}"></td>-->
+<!--                        <td th:text="${cartItem.getSize()}"></td>-->
+<!--                        <th>Qty</th>-->
+<!--                        <td th:text="${cartItem.getPriceInCents()}"></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                    &lt;!&ndash; checkout btn &ndash;&gt;-->
+<!--                    <tfoot>-->
+
+<!--                    <tr class="float-right">-->
+<!--                        <td>-->
+<!--                            <p><span>Total: #</span></p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tfoot>-->
+<!--                </table>-->
+
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                &lt;!&ndash;         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           &ndash;&gt;-->
+<!--                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal"-->
+<!--                        data-target="#successModal">-->
+<!--                    Send Order-->
+<!--                </button>-->
+<!--                &lt;!&ndash;         ==========================           &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--SUCCESS MODAL-->
+<!--<div class="fade modal" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title" id="successModalLabel">Success</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="modal-body">-->
+<!--                    <h5>An order receipt has been sent to your email. </h5>-->
+<!--                    <h5>be ready to show your id upon arrival</h5>-->
+
+<!--                    <h6>See you at the top!</h6>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                &lt;!&ndash;         ============== DISMISS ============           &ndash;&gt;-->
+<!--                <button class="bg-dark text-white close" data-dismiss="modal">-->
+<!--                    Send Order-->
+<!--                </button>-->
+<!--                &lt;!&ndash;         ==========================           &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

@@ -2,29 +2,13 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
-import com.codeup.hilltopliquors.security.UserRegistrationDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.net.http.HttpRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @Controller
@@ -63,7 +47,7 @@ public class CartController {
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
 
-        return "cart";
+        return "cart/cart";
     }
 
 //    Will set name of values in modal and then call to save them on button click to database
@@ -80,7 +64,23 @@ public class CartController {
         System.out.println("HERE WE ARE" + isCurbside);
         System.out.println("HERE WE ARE" + pickupTime);
 
-        return "cart";
+        return "cart/cart";
+    }
+
+//  CHECKOUT STOP 1
+    @GetMapping("/Cart/confirm-details")
+    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart) {
+        model.addAttribute("cart", cart);
+
+        return "cart/cart-checkout-details";
+    }
+
+    //  CHECKOUT STOP 2
+    @GetMapping("/Cart/confirm-details")
+    public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart) {
+        model.addAttribute("cart", cart);
+
+        return "cart/cart-checkout-receipt";
     }
 
 
