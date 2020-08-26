@@ -25,11 +25,6 @@ public class LoginController {
         this.userDao = userDao;
     }
 
-    @ModelAttribute("user")
-    public User setUpUserForm() {
-        return new User();
-    }
-
     @GetMapping("/Login")
     public String login(Model model, HttpServletRequest request, HttpServletResponse response) {
             return "user/login";

@@ -66,6 +66,7 @@ public class SearchController {
 //        cart = (List<Product>) request.getSession().getAttribute("cart");
 
         List<Product> products = productDao.findAll();
+
 //        List<ProductType> productTypes = productTypeDao.findAll();
 //        List<Category> categories = catDao.findAll();
 //        List<Subcategory> subCategories = subCatDao.findAll();
