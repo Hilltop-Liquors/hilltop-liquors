@@ -62,58 +62,71 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="m-5 p-5" style="width:100%;">
-    <a style="text-decoration: none; color:black;" th:href="@{/Cart/confirm-details}">back to cart</a>
+    <a style="text-decoration: none; color:black;" th:href="@{/Cart/confirm-details}">previous</a>
     <br>
     <h5>Checkout</h5>
     <small>Hilltop Liquor's hours are from 10am - 8:45pm. Closed on Sundays</small>
     <hr>
-<!--  Start Checkout Details -->
-<div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">
-    <h4 class="p-2">Ready to place your order for pickup?</h4>
-    <table class="table table-hover table-sm">
-        <thead>
-        <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Size</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="cartItem : ${cart}">
-            <!--                    <th scope="row"></th>-->
-            <td th:text="${cartItem.getName()}"></td>
-            <td th:text="${cartItem.getSize()}"></td>
-            <th>Qty</th>
-            <td th:text="${cartItem.getPriceInCents()}"></td>
-        </tr>
-        </tbody>
-        <tfoot>
+    <!--  Start Checkout Details -->
+    <div class="border border-3 border-dark rounded-lg shadow-lg mr-5 ml-2 p-3">
+        <h4 class="p-2">Ready to place your order for pickup?</h4>
+        <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Size</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${cart}">
+                <!--                    <th scope="row"></th>-->
+                <td th:text="${cartItem.getName()}"></td>
+                <td th:text="${cartItem.getSize()}"></td>
+                <th>Qty</th>
+                <td th:text="${cartItem.getPriceInCents()}"></td>
+            </tr>
+            </tbody>
+        </table>
 
-        <tr class="float-right">
-            <td>
-                <p><span>Total: #</span></p>
-            </td>
-        </tr>
-        <tr class="float-right">
-            <td>
-                <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
+        <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th class="float-right" scope="col">Pickup Date</th>
+                <th class="float-right" scope="col">Pickup Time</th>
+                <th class="float-right" scope="col">In-Store or Curbside</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="orderDetail : ${orderDetails}">
+                <!--                    <th scope="row"></th>-->
+                <td class="float-right" th:text="${orderDetail}"></td>
+                <td class="float-right" th:text="${orderDetail}"></td>
+                <td class="float-right" th:text="${orderDetail}"></td>
+            </tr>
+            </tbody>
+            <tfoot>
 
-                <form th:action="@{/Cart}" th:method="get">
-                    <input type="hidden" class="form-control" />
-                    <button type="submit">
-                        Confirm checkout
-                    </button>
-                </form>
+            <tr class="float-right">
+                <td>
+                    <p><span>Total: #</span></p>
+                </td>
+            </tr>
+            <tr class="float-right">
+                <td>
+                    <form th:action="@{/Cart/checkout-receipt}" th:method="post">
+                        <input type="hidden" class="form-control"/>
+                        <button type="submit">
+                            Confirm checkout
+                        </button>
+                    </form>
 
-                <!--         ==========================           -->
-            </td>
-
-        </tr>
-
-        </tfoot>
-    </table>
-</div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 
 </div> <!--  END DIV ROW-->
 
