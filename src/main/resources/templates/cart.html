@@ -140,7 +140,7 @@
 </div> <!--  END DIV ROW-->
 
 <!--CHECKOUT DETAILS MODAL-->
-
+<form id='myform' th:action ="@{/Cart}" method='POST' target='formresponse'>
     <div class="fade modal" id="checkoutDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -158,7 +158,7 @@
                             <div class="input-group-text">
                                 <form th:action ="@{/Cart}" th:method="post">
                                 <input type="checkbox" name="isCurbside" aria-label="Checkbox for following text input">
-                                    <button type="submit">confirm curbisde pickup </button>
+                                    <button type="submit">confirm curbside pickup </button>
                                 </form>
                             </div>
                             <p>curbside-store pickup</p>
@@ -197,6 +197,7 @@
                                         <button type="submit">confirm time</button>
                                     </form>
                                     <small>Hilltop's hours are 10am to 8:45pm</small>
+
                                 </div>
                             </div>
                         </div>
@@ -204,17 +205,18 @@
                 </div>
                 <div class="modal-footer">
                     <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
-                    <form th:action ="@{/Cart}" th:method="post">
-                    <input class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
-                            data-target="#checkoutModal" type="button" name="pickUpDate" name="pickupTime" name="">
-                        Confirm pickup details </input>
+<!--                    <form th:action ="@{/Cart}" th:method="post">-->
+                    <button class="button bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
+                            data-target="#checkoutModal" >
+                        Confirm pickup details </button>
                     <!--         ==========================           -->
-                    </form>
+<!--                    </form>-->
                 </div>
             </div>
         </div>
     </div>
-
+</form>
+<iframe name='formresponse' width='300' height='200'></iframe>
 <!--CHECKOUT MODAL-->
 <div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
