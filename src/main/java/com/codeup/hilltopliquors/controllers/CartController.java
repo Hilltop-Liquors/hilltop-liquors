@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.http.HttpRequest;
 import java.sql.Timestamp;
@@ -19,7 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 @Controller
+@SessionAttributes({ "cart" })
 public class CartController {
     private final OrderRepository orderDao;
     private final ProductRepository productDao;
@@ -50,6 +54,13 @@ public class CartController {
         return newOrder;
     }
 
+
+    @ModelAttribute("cart")
+    public List<Product> cart(List<Product> cart) {
+        return  cart;
+    }
+
+
 //        only conditional logic is if there is not anything in their cart and if their cart has not been created yet then this is when we would create the cart in the session. Because when they first load up a session their session does not have a cart.
 
     // check if cart exists
@@ -65,34 +76,48 @@ public class CartController {
             cart.add the product to the cart
             request.getSession().setAttribute("cart", cart);
          */
+
     @PostMapping("/{productId}")
-    public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
+    public String addToCart(@ModelAttribute Product product, @ModelAttribute("cart") List<Product> cart, RedirectAttributes attributes) {
+        cart.add(product);
+        attributes.addFlashAttribute("todos", todos);
+        return new RedirectView("/sessionattributes/todos.html");
+    }
+//        ========== was using
+//    public String addToCart(Model model, HttpServletRequest request, @PathVariable("productId") Long id, @ModelAttribute("order") Order userOrder) {
+//        List<Product> cart;
+//        cart = (List<Product>) request.getSession().getAttribute("cart");
+//        Product product = productDao.getOne(id);
+//        cart.add(product);
+//        return "search/search";
 
-        List<Product> cart;
-        cart = (List<Product>) request.getSession().getAttribute("cart");
-
-        Product product = productDao.getOne(id);
-
+//  ===============      =====================
 //        if (request.getSession().getAttribute("cart") == null) {
 //            cart = new ArrayList<>();
 //        } else {
 //            cart = (List<Product>) request.getSession().getAttribute("cart");
 //        }
 //        request.getSession().setAttribute("cart", cart);
-
-        cart.add(product);
-
+//
 //        System.out.println(cart);
-        model.addAttribute("cart", cart);
+//        model.addAttribute("cart", cart);
+//=============   =======================
+
 
 //        Have to redirect to cart because on /cart
-        return "cart";
 
-    }
+//    }
 
     @GetMapping("/Cart")
-    public String showCart(Model model, HttpServletRequest request) {
+    @RequestMapping("/sessionattributes")
+    @SessionAttributes("cart")
+    public String showCart(Model model, @ModelAttribute("cart") List<Product> cart) {
 
+//        List<Product> cart;
+//        List<Product> cart = (List<Product>)
+//        cart = (List<Product>) session.getAttribute("cart");
+//                session.getAttribute("cart");
+//        model.addAttribute("cart", cart);
 
 //        List<Product> cart;
 //        if (request.getSession().getAttribute("cart") == null) {
@@ -101,12 +126,21 @@ public class CartController {
 //            cart = (List<Product>) request.getSession().getAttribute("cart");
 //        }
 //        request.getSession().setAttribute("cart", cart);
-
+//
 //        List<Product> cart;
-//        cart = (List<Product>) session.getAttribute("cart");
+//        cart = (List<Product>) response.
+//                getSession().getAttribute("cart");
 //        model.addAttribute("cart", cart);
 
         return "cart";
     }
+
+//    @PostMapping("/Cart")
+//    public String addToCart(Model model, HttpServletRequest request) {
+//        List<Product> cart;
+//        cart = (List<Product>) request.getSession().getAttribute("cart");
+//        model.addAttribute("cart", cart);
+//        return "cart";
+//    }
 
 }

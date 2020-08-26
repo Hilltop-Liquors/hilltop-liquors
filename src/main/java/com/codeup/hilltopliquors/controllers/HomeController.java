@@ -2,6 +2,7 @@ package com.codeup.hilltopliquors.controllers;
 import com.codeup.hilltopliquors.models.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -17,15 +18,16 @@ public class HomeController {
     }
 
     @GetMapping("/Home")
+//    @ModelAttribute("cart")
     public String showHome(HttpServletRequest request) {
 
-        List<Product> cart;
-        if (request.getSession().getAttribute("cart") == null) {
-            cart = new ArrayList<>();
-        } else {
-            cart = (List<Product>) request.getSession().getAttribute("cart");
-        }
-        request.getSession().setAttribute("cart", cart);
+//        List<Product> cart;
+//        if (request.getSession().getAttribute("cart") == null) {
+//            cart = new ArrayList<>();
+//        } else {
+//            cart = (List<Product>) request.getSession().getAttribute("cart");
+//        }
+//        request.getSession().setAttribute("cart", cart);
         return "home";
     }
 
