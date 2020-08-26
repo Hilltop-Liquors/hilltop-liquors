@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/cart")
 public class SearchController {
 
     private final ProductRepository productDao;
@@ -67,9 +66,9 @@ public class SearchController {
 //        cart = (List<Product>) request.getSession().getAttribute("cart");
 
         List<Product> products = productDao.findAll();
-        List<ProductType> productTypes = productTypeDao.findAll();
-        List<Category> categories = catDao.findAll();
-        List<Subcategory> subCategories = subCatDao.findAll();
+//        List<ProductType> productTypes = productTypeDao.findAll();
+//        List<Category> categories = catDao.findAll();
+//        List<Subcategory> subCategories = subCatDao.findAll();
 
 //        if (keyword != null) {
 //            model.addAttribute("products", productDao.findByKeyWord(keyword));
@@ -78,11 +77,10 @@ public class SearchController {
 //        }
             model.addAttribute("products", products);
 
-        model.addAttribute("productTypes", productTypes);
-        model.addAttribute("categories", categories);
+//        model.addAttribute("productTypes", productTypes);
+//        model.addAttribute("categories", categories);
         Product product = productDao.getOne(productId);
         cart.add(product);
-        System.out.println("THE DAMN CART: " + cart);
         return "search/search";
     }
 

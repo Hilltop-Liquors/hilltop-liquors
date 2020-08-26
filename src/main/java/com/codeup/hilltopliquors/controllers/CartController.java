@@ -24,7 +24,6 @@ import java.util.Objects;
 
 
 @Controller
-//@RequestMapping("/cart")
 public class CartController {
     private final OrderRepository orderDao;
     private final ProductRepository productDao;
@@ -56,105 +55,11 @@ public class CartController {
     }
 
 
-//    @ModelAttribute("cart")
-//    public List<Product> cart(List<Product> cart) {
-//        return  cart;
-//    }
-
-
-//        only conditional logic is if there is not anything in their cart and if their cart has not been created yet then this is when we would create the cart in the session. Because when they first load up a session their session does not have a cart.
-
-    // check if cart exists
-    // if not set a cart in the session with one item
-    // if it does exist, extract the cart and add a new item to it
-        /*
-            List<Product> cart;
-            if (request.getSession().getAttribute("cart") == null) {
-                cart = new ArrayList<>();
-            } else {
-                cart = request.getSession().getAttribute("cart");
-            }
-            cart.add the product to the cart
-            request.getSession().setAttribute("cart", cart);
-         */
-
-//    public String addToCart(@ModelAttribute Product product, @ModelAttribute("cart") List<Product> cart, RedirectAttributes attributes) {
-//        cart.add(product);
-//        attributes.addFlashAttribute("cart", cart);
-//        return String.valueOf(new RedirectView("/sessionattributes/cart.html"));
-//    }
-//        ========== was using
-//    @PostMapping("/Search")
-//    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, long productId) {
-////        List<Product> cart;
-////        cart = (List<Product>) request.getSession().getAttribute("cart");
-//        Product product = productDao.getOne(productId);
-//        cart.add(product);
-//        return "search/search";
-//    }
-
-//  ===============      =====================
-//        if (request.getSession().getAttribute("cart") == null) {
-//            cart = new ArrayList<>();
-//        } else {
-//            cart = (List<Product>) request.getSession().getAttribute("cart");
-//        }
-//        request.getSession().setAttribute("cart", cart);
-//
-//        System.out.println(cart);
-//        model.addAttribute("cart", cart);
-//=============   =======================
-
-
-//        Have to redirect to cart because on /cart
-
-//    }
-
     @GetMapping("/Cart")
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
-//        List<Product> cart;
-//        cart = (List<Product>) request.getSession().getAttribute("cart");
-//        Product product = productDao.getOne(id);
-//        cart.add(product);
-//        if (!todos.isEmpty()) {
-//            model.addAttribute("
-//        } else {
-//            model.addAttribute("
-//        }
         model.addAttribute("cart", cart);
         return "cart";
     }
 
-//    @GetMapping("/Cart")
-//    public String showCart(Model model, @ModelAttribute("cart") List<Product> cart) {
-
-//        List<Product> cart;
-//        List<Product> cart = (List<Product>)
-//        cart = (List<Product>) session.getAttribute("cart");
-//                session.getAttribute("cart");
-
-//        List<Product> cart;
-//        if (request.getSession().getAttribute("cart") == null) {
-//            cart = new ArrayList<>();
-//        } else {
-//            cart = (List<Product>) request.getSession().getAttribute("cart");
-//        }
-//        request.getSession().setAttribute("cart", cart);
-//
-//        List<Product> cart;
-//        cart = (List<Product>) response.
-//                getSession().getAttribute("cart");
-//        model.addAttribute("cart", cart);
-
-//        return "cart";
-//    }
-
-//    @PostMapping("/Cart")
-//    public String addToCart(Model model, HttpServletRequest request) {
-//        List<Product> cart;
-//        cart = (List<Product>) request.getSession().getAttribute("cart");
-//        model.addAttribute("cart", cart);
-//        return "cart";
-//    }
 
 }
