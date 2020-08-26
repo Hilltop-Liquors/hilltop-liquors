@@ -20,7 +20,6 @@ public class HomeController {
     }
 
     @GetMapping("/Home")
-    @ModelAttribute("cart")
     public String showHome() {
         return "home";
     }
