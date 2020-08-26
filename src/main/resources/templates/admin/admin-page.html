@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/head :: head">
+    <title>Hilltop-Home</title>
 
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <style>
+        nav {
+            height: 70px !important;
+        }
+    </style>
 
-    <title>Admin Page</title>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="container m-5 p-5">
         <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
         <div>
             <br>
-            <h2><a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a></h2>
+            <h3><a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a></h3>
             <br>
         </div>
 
         <h2><a th:href="@{/admin/users}">View Users</a></h2>
+
+        <h2> <a class="nav-link" th:href="@{/products}">Upload<span class="sr-only">(current)</span></a></h2>
+
     </div>
 </sec:authorize>
 
@@ -26,5 +35,8 @@
         <!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
         <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+</div>
+
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
