@@ -56,10 +56,33 @@ public class UserRegistrationController {
 //        model.addAttribute("existing", existingUserName);
 
         if (existingUserName != null) {
-//            result.rejectValue("username", null, "There is already an account registered with that username");
-            model.addAttribute("regError", true);
+            result.rejectValue("username", null, "There is already an account registered with that username");
+//            model.addAttribute("regError", true);
             return "user/registration";
         }
+
+        username = userDto.getUsername();
+        confirmUsername = userDto.getConfirmUsername();
+
+        if(username.equalsIgnoreCase("null")) {
+            result.rejectValue("username", null, "Who do you think we are, Domino's? We take exception to this!");
+            return "user/registration";
+        }
+
+        if(!(username.equals(confirmUsername))) {
+            result.rejectValue("confirmUsername", null, "Please make sure both usernames match");
+            return "user/registration";
+        }
+
+        password = userDto.getPassword();
+        confirmPassword = userDto.getConfirmPassword();
+
+        if(!(password.equals(confirmPassword))) {
+            result.rejectValue("password", null, "Please make sure both passwords match");
+            return "user/registration";
+        }
+
+
 
         if ( email.equalsIgnoreCase("") || username.equalsIgnoreCase("") || confirmUsername.equalsIgnoreCase("") || password.equalsIgnoreCase("") || confirmPassword.equalsIgnoreCase("")){
             model.addAttribute("emptyField", true);
