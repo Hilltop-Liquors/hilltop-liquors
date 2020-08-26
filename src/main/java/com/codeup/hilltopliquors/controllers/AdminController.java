@@ -20,16 +20,17 @@ public class AdminController {
 //        } else {
 //            return "/Home";
 //        }
-//
-//    }
 
+//    }
 
     @GetMapping("/admin")
     public String showAdmin(HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")) {
+            System.out.println(request.isUserInRole(("ROLE_ADMIN")));
             return "/admin/admin-page";
         } else {
             return "redirect:/Home";
         }
     }
+
 }

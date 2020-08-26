@@ -53,7 +53,7 @@ public class UserEditController {
     }
 
     @PostMapping("/user/edit/{id}")
-    public String updateUser(@ModelAttribute User user) {
+    public String updateUser(@ModelAttribute User user, @PathVariable long id) {
 
 //        if(email.isEmpty()) {
 //            result.rejectValue("email", null, "Please make sure to provide a proper email");
@@ -109,9 +109,12 @@ public class UserEditController {
 //        }
 
 //        user.setPassword(bCryptPasswordEncoder.encode(password));
-
-        user.setPassword(user.getPassword());
-            userDao.save(user);
+        User updatingUser = userDao.getOne(id);
+        updatingUser.setPhone(user.getPhone());
+        updatingUser.setEmail(user.getEmail());
+        updatingUser.setFirst_name(user.getFirst_name());
+        updatingUser.setLast_name(user.getLast_name());
+        userDao.save(updatingUser);
 
         return "redirect:/user/edit?success";
 
