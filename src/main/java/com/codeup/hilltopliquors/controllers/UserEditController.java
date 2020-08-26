@@ -53,45 +53,65 @@ public class UserEditController {
     }
 
     @PostMapping("/user/edit/{id}")
-    public String updateUser(@ModelAttribute User user,@RequestParam(name = "email") String email, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password, BindingResult result) {
+    public String updateUser(@ModelAttribute User user, @RequestParam(name = "email") String email, @RequestParam(name = "username") String username, @RequestParam(name = "phone") String phone,@RequestParam(name = "password") String password, @RequestParam(name = "keepUserName") Boolean keepUsername,BindingResult result) {
 
         if(email.isEmpty()) {
             result.rejectValue("email", null, "Please make sure to provide a proper email");
         return "user/edit";
         }
 
-        List<User> users = userDao.findAll();
-        User current = userDao.findByUsername(username);
+        User existingUserName = userService.findByUsername(username);
+        String currentUN = user.getUsername();
 
-;        for(User u : users) {
-//            User userExists = userDao.findByUsername(u.getUsername());
-//            System.out.println(userExists.getUsername());
-
-            if (!current.getUsername().equals(user.getUsername()) && user == u) {
-                result.rejectValue("username", null, "This username already exists, please provide another");
-                return "user/edit";
-            }
+        if(existingUserName != null) {
+            result.rejectValue("username", null, "This username already exists, please provide another");
+            return "user/edit";
         }
+//        List<User> users = userDao.findAll();
+//        User current = userDao.findByUsername(username);
+//
+//;        for(User u : users) {
+////            User userExists = userDao.findByUsername(u.getUsername());
+////            System.out.println(userExists.getUsername());
+//
+//            if (!current.getUsername().equals(user.getUsername()) && user == u) {
+//                result.rejectValue("username", null, "This username already exists, please provide another");
+//                return "user/edit";
+//            }
+//        }
 
         if(username.equalsIgnoreCase("null")) {
             result.rejectValue("username", null, "Who do you think we are, Domino's? We take exception to this!");
             return "user/edit";
         }
 
-        if(username.isEmpty()) {
-            result.rejectValue("username", null, "Please fill in a username");
-            return "user/edit";
-        }
+
 
         if(password.isEmpty()) {
             result.rejectValue("password", null, "Please make sure to fill in a proper password");
             return "user/edit";
         }
 
+//        if(username.isEmpty() && password.isEmpty()) {
+//            result.rejectValue("password", null, "Please make sure to fill in a proper password");
+//            return "user/edit";
+//        }
+
+        if(keepUsername){
+////          username.equals(user.getUsername());
+            User update = userDao.getOne(user.getId());
+            update.setPassword(bCryptPasswordEncoder.encode(password));
+            update.setUsername(currentUN);
+            update.setPhone(phone);
+            update.setEmail(email);
+            userDao.save(update);
+
+            return "redirect:/user/edit?success";
+
+        }
 
         user.setPassword(bCryptPasswordEncoder.encode(password));
-
-
+        user.setUsername(up);
 
             userDao.save(user);
 
