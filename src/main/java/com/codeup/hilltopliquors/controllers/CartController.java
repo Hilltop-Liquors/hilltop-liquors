@@ -59,17 +59,21 @@ public class CartController {
     @GetMapping("/Cart")
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
-
         return "cart/cart";
     }
 
 //    Will set name of values in modal and then call to save them on button click to database
 
     @PostMapping("/Cart")
-    public String orderDetails(String delete, @SessionAttribute("cart") List<Product> cart) {
+    public String orderDetails(Model model ,String delete, @SessionAttribute("cart") List<Product> cart) {
+        model.addAttribute("cart", cart);
 
+        cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
 
-            cart.remove(delete);
+//        if (cart == null) {
+//            request.getSession().setAttribute("cart", cart);
+//        }
+
 
 
 //        Order newOrder = new Order();
@@ -82,7 +86,7 @@ public class CartController {
 //        System.out.println("HERE WE ARE" + isCurbside);
 //        System.out.println("HERE WE ARE" + pickupTime);
 
-        return "redirect:/Cart";
+        return "cart/cart";
     }
 
     //  CHECKOUT STOP 1
