@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
 </head>
 <body>
+        <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
 
-    <h1>Welcome to the Admin Page</h1>
-
+        <h2><a th:href="@{/admin/users}">View Users</a></h2>
+    </div>
+</sec:authorize>
 </body>
 </html>
