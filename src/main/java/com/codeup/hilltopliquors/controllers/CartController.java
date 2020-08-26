@@ -123,7 +123,7 @@ public class CartController {
 //            cart = (List<Product>) request.getSession().getAttribute("cart");
 //        }
 
-        return "redirect:/Home";
+        return "redirect:/Home?success";
     }
 
 
