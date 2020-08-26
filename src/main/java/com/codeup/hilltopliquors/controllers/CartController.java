@@ -65,10 +65,24 @@ public class CartController {
 //    Will set name of values in modal and then call to save them on button click to database
 
     @PostMapping("/Cart")
-    public String orderDetails(Model model ,String delete, @SessionAttribute("cart") List<Product> cart) {
+    public String orderDetails(Model model ,String delete, String quantityBtnPlus,  String quantityBtnMinus ,@SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
 
         cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
+
+        for(Product cartItem : cart){
+            if(quantityBtnPlus.equalsIgnoreCase(cartItem.getName())){
+               int plus = cartItem.getInStoreCount() + 1;
+               cartItem.setInStoreCount(plus);
+            }
+        }
+
+        for(Product cartItem : cart){
+            if(quantityBtnMinus.equalsIgnoreCase(cartItem.getName())){
+                int minus = cartItem.getInStoreCount() + 1;
+                cartItem.setInStoreCount(minus);
+            }
+        }
 
 //        if (cart == null) {
 //            request.getSession().setAttribute("cart", cart);

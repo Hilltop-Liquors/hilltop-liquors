@@ -67,7 +67,7 @@
 <br>
 <div style="width: 100%;">
 
-    <div class="d-inline float-left ml-3 pl-4" style="width: 40%; margin-right:10%;">
+    <div class="d-inline float-left ml-3 pl-2" style="width: 40%; margin-right:10%;">
         <table class="table">
             <thead>
             <tr>
@@ -77,14 +77,28 @@
                 <th scope="col">Price</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="cartItem : ${cart}">
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
-                <td><input type="number" th:value="${cartItem.setInStoreCount(1)}" min="0" max="99" class="qtyinput"></td>
+                <td th:text="${cartItem.getInStoreCount() }"></td>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
+                <td>
+                    <form th:action="@{/Cart}" method="post">
+                        <input class="btn btn-warning btn-sm" name="quantityBtnPlus" type="hidden" th:value="${cartItem.getName()}">
+                        <button type="submit" value="Submit" class="btn btn-primary btn-sm">+1</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/Cart}" method="post">
+                        <input class="btn btn-warning btn-sm" name="quantityBtnMinus" type="hidden" th:value="${cartItem.getName()}">
+                        <button type="submit" value="Submit" class="btn btn-secondary btn-sm">+1</button>
+                    </form>
+                </td>
                 <td></td>
                 <td>
                     <form th:action="@{/Cart}" method="post">
