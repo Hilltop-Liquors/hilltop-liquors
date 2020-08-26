@@ -47,39 +47,15 @@ public class SearchController {
         model.addAttribute("productTypes", productTypes);
         model.addAttribute("categories", categories);
 
-//        if(productId != null) {
-//            Product product = productDao.getOne(productId);
-//            cart.add(product);
-//            model.addAttribute("products", products);
-//        System.out.println("THE DAMN CART: " + cart);
-//        } else {
-//            model.addAttribute("products", products);
-//        }
-//        System.out.println("THE DAMN CART is outside the if: " + cart);
-
         return "search/search";
     }
 
     @PostMapping("/Search")
     public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
-//        List<Product> cart;
-//        cart = (List<Product>) request.getSession().getAttribute("cart");
-
         List<Product> products = productDao.findAll();
 
-//        List<ProductType> productTypes = productTypeDao.findAll();
-//        List<Category> categories = catDao.findAll();
-//        List<Subcategory> subCategories = subCatDao.findAll();
-
-//        if (keyword != null) {
-//            model.addAttribute("products", productDao.findByKeyWord(keyword));
-//            model.addAttribute("keyword", "Search results for: " + keyword);
-//        } else {
-//        }
             model.addAttribute("products", products);
 
-//        model.addAttribute("productTypes", productTypes);
-//        model.addAttribute("categories", categories);
         Product product = productDao.getOne(productId);
         cart.add(product);
         return "search/search";

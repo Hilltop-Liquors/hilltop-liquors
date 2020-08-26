@@ -112,9 +112,10 @@ public class CartController {
     }
 
     @PostMapping("/Cart/checkout-receipt")
-    public String saveCheckoutOrder(@SessionAttribute("cart") List<Product> cart) {
+    public String saveCheckoutOrder(@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
 //        List<Product> cart;
         cart.clear();
+        orderDetails.clear();
 
 
 
