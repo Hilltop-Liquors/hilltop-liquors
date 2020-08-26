@@ -54,7 +54,7 @@ public class SearchController {
     public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
         List<Product> products = productDao.findAll();
 
-            model.addAttribute("products", products);
+        model.addAttribute("products", products);
 
         Product product = productDao.getOne(productId);
         cart.add(product);
