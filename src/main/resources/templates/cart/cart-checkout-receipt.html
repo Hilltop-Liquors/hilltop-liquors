@@ -61,58 +61,61 @@
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="fade modal" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="checkoutModalLabel">Checkout</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h4 class="p-2">Place your order for pickup</h4>
-                <table class="table table-hover table-sm">
-                    <thead>
-                    <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Size</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="cartItem : ${cart}">
-                        <th scope="row"></th>
-                        <td th:text="${cartItem.getName()}"></td>
-                        <td th:text="${cartItem.getSize()}"></td>
-                        <th>Qty</th>
-                        <td th:text="${cartItem.getPriceInCents()}"></td>
-                    </tr>
-                    </tbody>
-                    <!-- checkout btn -->
-                    <tfoot>
+<div class="m-5 p-5" style="width:100%;">
+    <a style="text-decoration: none; color:black;" th:href="@{/Cart/confirm-details}">back to cart</a>
+    <br>
+    <h5>Checkout</h5>
+    <small>Hilltop Liquor's hours are from 10am - 8:45pm. Closed on Sundays</small>
+    <hr>
+<!--  Start Checkout Details -->
+<div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3" style="width: 40%;">
+    <h4 class="p-2">Ready to place your order for pickup?</h4>
+    <table class="table table-hover table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Size</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cartItem : ${cart}">
+            <!--                    <th scope="row"></th>-->
+            <td th:text="${cartItem.getName()}"></td>
+            <td th:text="${cartItem.getSize()}"></td>
+            <th>Qty</th>
+            <td th:text="${cartItem.getPriceInCents()}"></td>
+        </tr>
+        </tbody>
+        <tfoot>
 
-                    <tr class="float-right">
-                        <td>
-                            <p><span>Total: #</span></p>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
-<!--Button to confirm-->
-            </div>
-            <div class="modal-footer">
+        <tr class="float-right">
+            <td>
+                <p><span>Total: #</span></p>
+            </td>
+        </tr>
+        <tr class="float-right">
+            <td>
                 <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME ============           -->
-                <button class="bg-dark text-white close" data-dismiss="modal" data-toggle="modal"
-                        data-target="#successModal">
-                    Send Order
-                </button>
+
+                <form th:action="@{/Cart}" th:method="get">
+                    <input type="hidden" class="form-control" />
+                    <button type="submit">
+                        Confirm checkout
+                    </button>
+                </form>
+
                 <!--         ==========================           -->
-            </div>
-        </div>
-    </div>
+            </td>
+
+        </tr>
+
+        </tfoot>
+    </table>
 </div>
+
+</div> <!--  END DIV ROW-->
 
 
 <footer th:replace="partials/footer :: footer"></footer>

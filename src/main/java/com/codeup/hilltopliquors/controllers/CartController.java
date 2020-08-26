@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -53,7 +55,7 @@ public class CartController {
 //    Will set name of values in modal and then call to save them on button click to database
 
     @PostMapping("/Cart")
-    public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime){
+    public String orderDetails(String pickUpDate, boolean isCurbside, String pickupTime) {
 //        Order newOrder = new Order();
 ////        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        Instant instant = Instant.now();
@@ -67,7 +69,7 @@ public class CartController {
         return "cart/cart";
     }
 
-//  CHECKOUT STOP 1
+    //  CHECKOUT STOP 1
     @GetMapping("/Cart/confirm-details")
     public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
@@ -93,11 +95,25 @@ public class CartController {
     }
 
     //  CHECKOUT STOP 2
-    @GetMapping("/Cart/confirm-receipt")
+    @GetMapping("/Cart/checkout-receipt")
     public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart) {
         model.addAttribute("cart", cart);
 
-        return "cart/cart-checkout-receipt";
+        return "cart/cart";
+    }
+
+    @PostMapping("/Cart/checkout-receipt")
+    public String saveCheckoutOrder(@SessionAttribute("cart") List<Product> cart) {
+//        List<Product> cart;
+        cart.clear();
+
+
+
+//        else {
+//            cart = (List<Product>) request.getSession().getAttribute("cart");
+//        }
+
+        return "cart/cart";
     }
 
 

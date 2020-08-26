@@ -59,11 +59,12 @@
 <body>
 
 <!--  CONTAINER  -->
-<div class="mt-5 p-5" style="width:100%;">
-
+<div class="m-5 p-5" style="width:100%;">
+    <a style="text-decoration: none; color:black;" th:href="@{/Cart}">back to cart</a>
+    <br>
     <h5>Checkout</h5>
-
-
+    <small>Hilltop Liquor's hours are from 10am - 8:45pm. Closed on Sundays</small>
+    <hr>
     <!--=-================================== FORM DETAILS -->
 
     <form th:action="@{/Cart/confirm-details}" th:method="post">
