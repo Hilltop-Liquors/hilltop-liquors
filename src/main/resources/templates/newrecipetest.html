@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-
-<head th:include="partials/head :: head">
-    <title>Hilltop-Recipes</title>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-
+<html lang="en">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>COCKTAILS</title>
     <style>
-        nav {
-            height: 70px !important;
-        }
         h1{
-            width: 50%;
+            width: 100%;
             text-align:center;
         }
         #drink-section img{
-            width:50%;
-            height:auto%;
+            width:100%;
+            height:auto;
         }
     </style>
-
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
-
+<h1>Random Cocktails</h1>
 <div class="container m-5 p-5">
-    <h2>Recipes</h2>
-    <section id ="drink-section"></section>
-    <section id ="on-list_item"></section>
-    <section id ="ons-card"></section>
+
+    <h2 id = drink-section"></h2>
 </div>
+<div class="container m-5 p-5">
 
+    <h2 id="ons-list-item"></h2>
+</div>
+<div class="container m-5 p-5">
 
+    <h2 id="ons-card"></h2>
+</div>
 
 
 
@@ -44,7 +41,7 @@
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-            "x-rapidapi-key": "key"
+            "x-rapidapi-key": "KEY"
         }
     })
         .then(response => response.json())
@@ -86,7 +83,5 @@
         drinkSection.appendChild(card);
     }
 </script>
-<!--<scritp src="static/cocktails.js"></scritp>-->
-<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
