@@ -85,7 +85,11 @@
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.setInStoreCount(1) }"></td>
-                <td th:text="${cartItem.getPriceInCents()}"></td>
+<!--                th:text=“${‘$’+#numbers.formatDecimal(grandTotal,0,‘COMMA’,2,‘POINT’)}“-->
+                <td th:text="${#numbers.formatDecimal(cartItem.getPriceInCents(), 1 , 'DEFAULT', 2, 'POINT')}">
+<!--                    <p th:text="${cartItem.getPriceInCents()}"></p>-->
+<!--                </td>-->
+<!--                <td th:text="${cartItem.getPriceInCents()}"></td>-->
 <!--                <td>-->
 <!--                    <form th:action="@{/Cart}" method="post">-->
 <!--                        <input name="quantityBtnPlus" type="hidden" th:value="${cartItem.getSku() }">-->
@@ -133,12 +137,12 @@
             </tbody>
             <tfoot>
 
-            <tr class="float-right">
+            <tr >
                 <td>
-                    <p><span>Total: #</span></p>
+                    <p><span th:text="${total}"></span></p>
                 </td>
             </tr>
-            <tr class="float-right">
+            <tr >
                 <td>
                     <!--         ============== GET USER DETAILS MODAL (IN STORE OR CART DATE AND TIME -->
 
@@ -150,7 +154,7 @@
                     </form>
 
                     <span sec:authorize="isAnonymous()">
-                        <a th:href="@{/Login}">Please log in </a>
+                        <a th:href="@{/Login}">You must be logged in to checkout</a>
                     </span>
                     <!--         ==========================           -->
                 </td>
