@@ -34,3 +34,6 @@ build/
 
 src/main/resources/application.properties
 sendgrid.env
+
+src/main/resources/templates/public/cocktailkey.js
+cocktailkey.js
