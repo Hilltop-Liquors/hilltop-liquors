@@ -92,12 +92,12 @@
             </tbody>
         </table>
 
-        <table class="table table-sm table-dark">
+        <table class="table table-sm" style="width:50%">
             <thead>
             <tr>
                 <th scope="row">Pickup Date</th>
                 <th scope="row">Pickup Time</th>
-                <th scope="col">Pickup Type</th>
+                <th scope="col">Curbside Pickup</th>
             </tr>
             </thead>
             <tbody>
@@ -105,7 +105,7 @@
                 <td th:each="orderDetail : ${orderDetails}" th:text="${orderDetail }"></td>
             </tr>
             <tr><td></td></tr>
-            <tr><td>Total: $0.00</td></tr>
+            <tr><td th:text="${total}">Total: </td></tr>
             <tr>
                 <td>
                     <form th:action="@{/Cart/checkout-receipt}" th:method="post">

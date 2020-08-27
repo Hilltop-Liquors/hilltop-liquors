@@ -2,18 +2,25 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.poi.ss.usermodel.charts.ScatterChartData;
 import org.springframework.http.converter.json.GsonBuilderUtils;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 
 @Controller
@@ -37,17 +44,20 @@ public class CartController {
     }
 
     @ModelAttribute("order")
-    public Order order() {
-        Order newOrder = new Order();
-        Instant instant = Instant.now();
-        Timestamp timestamp = Timestamp.from(instant);
-        newOrder.setCreatedAt(timestamp);
+    public Order order(HttpServletRequest request) {
+        Order order = new Order();
+        if (request.getSession().getAttribute("order") == null) {
+            order = new Order();
+        } else {
+            order = (Order) request.getSession().getAttribute("order");
+        }
+        request.getSession().setAttribute("order", order);
 
-        return newOrder;
+        return order;
     }
 
     @ModelAttribute("orderDetails")
-    public List<String> order(HttpServletRequest request) {
+    public List<String> orderDetails(HttpServletRequest request) {
         List<String> orderDetails;
         if (request.getSession().getAttribute("orderDetails") == null) {
             orderDetails = new ArrayList<>();
@@ -61,6 +71,21 @@ public class CartController {
 
     @GetMapping("/Cart")
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
+
+//        BigDecimal price;
+//        for (Product cartItem : cart) {
+//            long itemPrice = cartItem.getPriceInCents()/ 100;
+//            price = new BigDecimal(Math.round(itemPrice));
+//            cartItem.setPriceInCents(Integer.parseInt(String.valueOf(price)));
+//        }
+
+        int total = 0;
+        for (Product cartItem : cart) {
+            total += cartItem.getPriceInCents();
+        }
+
+//        model.addAttribute("price", price);
+        model.addAttribute("total", total);
         model.addAttribute("cart", cart);
         return "cart/cart";
     }
@@ -124,17 +149,6 @@ public class CartController {
 //            cart.add(null);
 //        }
 
-
-//        Order newOrder = new Order();
-////        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Instant instant = Instant.now();
-//        Timestamp timestamp = Timestamp.from(instant);
-//        newOrder.setCreatedAt(timestamp);
-//        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
-//        System.out.println("HERE WE ARE" + pickUpDate);
-//        System.out.println("HERE WE ARE" + isCurbside);
-//        System.out.println("HERE WE ARE" + pickupTime);
-
         model.addAttribute("cart", cart);
         return "cart/cart";
 
@@ -152,55 +166,50 @@ public class CartController {
 
     //    POST MAPPING FOR CONFIRM DETAILS
     @PostMapping("/Cart/confirm-details")
-    public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime) {
+    public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime, @SessionAttribute("order") Order order) {
         orderDetails.add(pickUpDate);
         orderDetails.add(pickupTime);
-        orderDetails.add(isCurbside);
+//        orderDetails.add(isCurbside);
 
-//        String pickupType;
-//        if (isCurbside.equals("on")) {
-//           orderDetails.add("curbside");
-//        } else if (isCurbside == null) {
-//            orderDetails.add("in-store");
-//        }
+//        Null POINTER EXCEPTION
+        boolean pickupType = false;
+        if (isCurbside.equals("on")) {
+            pickupType = true;
+            orderDetails.add(String.valueOf(pickupType));
+        }
+
 
         List<String> titles = new ArrayList<>();
         titles.add("Pickup Date");
         titles.add("Pickup Time");
-        titles.add("Type Pickup");
 
-//        model.addAttribute("dateF", orderDetails.add(pickUpDate));
-//        model.addAttribute("timeF", orderDetails.add(pickupTime));
-//        model.addAttribute("typePickupF", orderDetails.add(isCurbside));
-//        model.addAttribute("date", titles.add("Date"));
-//        model.addAttribute("time",   titles.add("Arrival"));
-//        model.addAttribute("typePickup", titles.add("Pickup"));
         model.addAttribute("titles", titles);
         model.addAttribute("orderDetails", orderDetails);
 
-//    thymeleaf if cu
+        int total = 0;
+        for (Product cartItem : cart) {
+            total = +cartItem.getPriceInCents();
+        }
+
+//        SETTING CURBSIDE
+        order.setIsCurbside(pickupType);
+        order.setTotalInCents(total);
+
 
         System.out.println(orderDetails);
         model.addAttribute("cart", cart);
-
+        model.addAttribute("total", total);
         return "cart/cart-checkout-receipt";
     }
 
 
     //  CHECKOUT STOP 2
     @GetMapping("/Cart/checkout-receipt")
-    public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
+    public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order) {
         model.addAttribute("cart", cart);
 
-//        List<String> titles = new ArrayList<>();
-//        titles.add("Pickup Date");
-//        titles.add("Pickup Time");
-//        titles.add("Type Pickup");
-//
-//        System.out.println(titles);
-//        model.addAttribute("titles", titles);
-//        model.addAttribute("orderDetails", orderDetails);
-//        System.out.println(orderDetails);
+        System.out.println("ORDER DETAILS" + orderDetails);
+        System.out.println("ORDER" + order);
 
         return "cart/cart-checkout-receipt";
     }
@@ -208,17 +217,35 @@ public class CartController {
     // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
     public String saveCheckoutOrder
-    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
-//        List<Product> cart;
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order) {
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+       User authUser = userDao.findByUsername(auth.getName());
+
+        Instant instant = Instant.now();
+        Timestamp timestamp = Timestamp.from(instant);
+        order.setCreatedAt(timestamp);
+        order.setUser(authUser);
+
+        orderDao.save(order);
+
+        System.out.println("CREATED AT " + order.getCreatedAt());
+        System.out.println("IS CURBSIDE "+ order.getIsCurbside());
+        System.out.println("FULLFILLED " + order.getOrderIsFulfilled());
+        System.out.println("TOTAL IN CENTS " + order.getTotalInCents());
+        System.out.println("USER ID " + order.getUser());
+
+//        System.out.println("ID " + authUser.getId() + "USERNAME " +authUser.getUsername());
+
+        System.out.println("Auth what is here" + auth.getName());
+        System.out.println("WHAT IS IN HERE " + order);
+        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
+//    System.out.println("HERE WE ARE" + pickUpDate);
+//    System.out.println("HERE WE ARE" + isCurbside);
+//    System.out.println("HERE WE ARE" + pickupTime);
 
         cart.clear();
         orderDetails.clear();
-
-
-//        else {
-//            cart = (List<Product>) request.getSession().getAttribute("cart");
-//        }
 
         return "redirect:/Home?success";
     }
