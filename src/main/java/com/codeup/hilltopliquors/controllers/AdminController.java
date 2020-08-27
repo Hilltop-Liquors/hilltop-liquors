@@ -2,61 +2,72 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.User;
 import com.codeup.hilltopliquors.repositories.UserRepository;
-import com.codeup.hilltopliquors.security.UserRegistrationDto;
-import com.codeup.hilltopliquors.services.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class UserEditController {
-
-    @Autowired
-    UserServiceImpl userService;
+public class AdminController {
 
     private final UserRepository userDao;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+public AdminController(UserRepository userDao) {
+    this.userDao = userDao;
+}
 
-//    @ModelAttribute("user")
-//    public UserRegistrationDto userRegistrationDto() {
-//        return new UserRegistrationDto();
+//    public String showUserDashboard(Model viewModel, HttpServletRequest request){
+//    //.... controller code here
+//        if(request.isUserInRole("ROLE_CONTRACTOR")){
+//            viewModel.addAttribute(//what goes in here??)
+//            return"redirect:/admin";
+//        } else {
+//            return "/Home";
+//        }
+
 //    }
 
-
-    public UserEditController(UserRepository userDao) {
-        this.userDao = userDao;
-    }
-
-    @GetMapping("/user/edit")
-    public String showEditForm(Model model, Authentication authentication) {
-//        User user = userDao.getOne(1);
-//        System.out.println(user);
-//        System.out.println("This is the SOUT:" + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//        System.out.println("hello from showEditForm");
-//
-//        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        String username = authentication.getName();
-        User currentUser = userDao.findByUsername(username);
+    @GetMapping("/admin")
+    public String showAdmin(HttpServletRequest request, Model model, Authentication auth) {
+        if (request.isUserInRole("ROLE_ADMIN")) {
+            String username = auth.getName();
+            User currentUser = userDao.findByUsername(username);
 //        System.out.println("THIS IS THE SOUT:" + currentUser);
-       model.addAttribute("user", currentUser);
-
-        return "user/edit";
+            model.addAttribute("user", currentUser);
+            System.out.println(request.isUserInRole(("ROLE_ADMIN")));
+            return "admin/admin-page";
+        } else {
+            return "redirect:/Home";
+        }
     }
 
-    @PostMapping("/user/edit/{id}")
+    @GetMapping("/admin/users")
+    public String showUsers(Model model) {
+//        if(request.isUserInRole("ROLE-ADMIN")) {
+
+        List<User> siteUsers = userDao.findAll();
+        model.addAttribute("users", siteUsers);
+            return "admin/users-list";
+//        } else {
+//            return "redirect:/Home";
+//        }
+    }
+
+    @GetMapping("/admin/user/edit{id}")
+    public String updateUser(@PathVariable long id, Model model) {
+        User user = userDao.getOne(id);
+        model.addAttribute("user", user);
+        return "admin/edit-user";
+    }
+
+    @PostMapping("/admin/user/edit/{id}")
     public String updateUser(@ModelAttribute User user, @PathVariable long id) {
 
 //        if(email.isEmpty()) {
@@ -120,21 +131,23 @@ public class UserEditController {
         updatingUser.setLast_name(user.getLast_name());
         userDao.save(updatingUser);
 
-        return "redirect:/user/edit?success";
+        return "redirect:/admin/user/edit{id}?success";
 
     }
 
-    @PostMapping("/user/delete/{id}")
-    public String deleteUserById(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) {
-        userDao.deleteById(id);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
+//    @PostMapping("/user/delete/{id}")
+//    public String deleteUserById(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) {
+//        userDao.deleteById(id);
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null){
+//            new SecurityContextLogoutHandler().logout(request, response, auth);
+//        }
+//
+//        request.getSession().invalidate();
+//
+//        return "redirect:/Home";
+//    }
 
-        request.getSession().invalidate();
 
-        return "redirect:/Home";
-    }
 
 }

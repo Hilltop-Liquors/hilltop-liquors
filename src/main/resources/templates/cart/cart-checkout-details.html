@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Cart-Checkout Details</title>
+
+    <style media="screen">
+        nav {
+            height: 70px !important;
+        }
+
+        .form-question {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 0 3rem;
+            min-height: 3rem;
+        }
+
+        .form-question__title {
+            color: #342357;
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+
+        .input-container input {
+            border: none;
+            box-sizing: border-box;
+            outline: 0;
+            padding: .75rem;
+            position: relative;
+            width: 100%;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            bottom: 0;
+            color: transparent;
+            cursor: pointer;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
+
+        label {
+            display: block;
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input, label {
+            margin: .4rem 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--  TOP NAV  -->
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="m-2 p-5" style="width:100%;">
+<!--  CONTAINER  -->
+<div class="m-5 p-5" style="width:100%;">
+    <a style="text-decoration: none; color:black;" th:href="@{/Cart}">back to cart</a>
+    <br>
+    <h5>Checkout</h5>
+    <small>Hilltop Liquor's hours are from 10am - 8:45pm. Closed on Sundays</small>
+    <hr>
+    <!--=-================================== FORM DETAILS -->
+
+    <form th:action="@{/Cart/confirm-details}" th:method="post">
+        <!--    CURBSIDE  -->
+        <div class="form-group row">
+            <label for="isCurbside" class="col-sm-2 col-form-label">Would you like curbside service?</label>
+            <div class="col-sm-10">
+                <input type="checkbox" id="isCurbside" name="isCurbside" aria-label="Checkbox for following text input">
+            </div>
+        </div>
+        <!--    DATE PICKING UP  -->
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">What date will you be picking up your
+                items?</label>
+            <div class="col-sm-10">
+                <div class="input-container">
+                    <input id="inputPassword3" type="date" minlength="1"
+                           maxlength="64" placeholder=" " autocomplete="nope" required="required"
+                           name="pickUpDate">
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--    TIME PICKING UP    -->
+        <div class="form-group row">
+            <label for="pickupTime" class="col-sm-2 col-form-label">What time will you be arriving?</label>
+            <div class="col-sm-10">
+                <input type="time" id="pickupTime" name="pickupTime" min="10:00" max="20:00" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

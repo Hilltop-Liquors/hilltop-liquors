@@ -2,25 +2,18 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.net.http.HttpRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @Controller
@@ -44,21 +37,257 @@ public class CartController {
     }
 
     @ModelAttribute("order")
-    public Order order() {
-        Order newOrder = new Order();
-//        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Instant instant = Instant.now();
-        Timestamp timestamp = Timestamp.from(instant);
-        newOrder.setCreatedAt(timestamp);
-//        newOrder.setUser(user);
-        return newOrder;
+    public Order order(HttpServletRequest request) {
+        Order order = new Order();
+        if (request.getSession().getAttribute("order") == null) {
+            order = new Order();
+        } else {
+            order = (Order) request.getSession().getAttribute("order");
+        }
+        request.getSession().setAttribute("order", order);
+
+        return order;
+    }
+
+    @ModelAttribute("orderProduct")
+    public OrderProduct orderProduct(HttpServletRequest request) {
+        OrderProduct orderProduct = new OrderProduct();
+        if (request.getSession().getAttribute("orderProduct") == null) {
+            orderProduct = new OrderProduct();
+        } else {
+            orderProduct = (OrderProduct) request.getSession().getAttribute("orderProduct");
+        }
+        request.getSession().setAttribute("orderProduct", orderProduct);
+
+        return orderProduct;
+    }
+
+
+    @ModelAttribute("orderDetails")
+    public List<String> orderDetails(HttpServletRequest request) {
+        List<String> orderDetails;
+        if (request.getSession().getAttribute("orderDetails") == null) {
+            orderDetails = new ArrayList<>();
+        } else {
+            orderDetails = (List<String>) request.getSession().getAttribute("orderDetails");
+        }
+        request.getSession().setAttribute("orderDetails", orderDetails);
+        return orderDetails;
     }
 
 
     @GetMapping("/Cart")
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
+
+//        BigDecimal price;
+//        for (Product cartItem : cart) {
+//            long itemPrice = cartItem.getPriceInCents()/ 100;
+//            price = new BigDecimal(Math.round(itemPrice));
+//            cartItem.setPriceInCents(Integer.parseInt(String.valueOf(price)));
+//        }
+
+        int total = 0;
+        for (Product cartItem : cart) {
+            total += cartItem.getPriceInCents();
+        }
+
+//        model.addAttribute("price", price);
+        model.addAttribute("total", total);
         model.addAttribute("cart", cart);
-        return "cart";
+        return "cart/cart";
+    }
+
+//    Will set name of values in modal and then call to save them on button click to database
+
+    @PostMapping("/Cart")
+    public String orderDetails(Model model, Long delete, Long quantityBtnPlus, Long quantityBtnMinus, @SessionAttribute("cart") List<Product> cart) {
+
+//        cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
+
+        cart.removeIf(cartItem -> delete.equals(cartItem.getSku()));
+
+//            assert quantityBtnMinus != null;
+//            assert quantityBtnPlus != null;
+
+
+        System.out.println(quantityBtnMinus);
+        System.out.println(quantityBtnPlus);
+
+//            for (Product cartItem : cart) {
+//                int minus = cartItem.getInStoreCount();
+//                if (quantityBtnMinus == cartItem.getSku()) {
+//                    int minusCalc = minus - 1;
+//                    if (minusCalc > 0) {
+//                        cartItem.setInStoreCount(minusCalc);
+//                    } else if (minusCalc < 0) {
+//                        cartItem.setInStoreCount(minus);
+//                    }
+//                }
+//
+//
+////                if (quantityBtnPlus != null) {
+////            for (Product cartItem : cart) {
+//                    int plus = cartItem.getInStoreCount();
+//                    int plusCalc = plus + 1;
+//                    if (quantityBtnPlus == cartItem.getSku()) {
+//                        cartItem.setInStoreCount(plusCalc);
+//                    }
+//                }
+
+
+//            }
+//            cart.add(null);
+////            cart.retainAll(Collections.singleton(quantityBtnPlus));
+//        }
+
+//        if (quantityBtnMinus != null) {
+//            for (Product cartItem : cart) {
+//                int minus = cartItem.getInStoreCount();
+//                if (quantityBtnMinus == cartItem.getSku()) {
+//                    int minusCalc = minus - 1;
+//                    if (minusCalc > 0) {
+//                        cartItem.setInStoreCount(minusCalc);
+//                    } else if (minusCalc < 0) {
+//                        cartItem.setInStoreCount(minus);
+//                    }
+//                }
+//                cartItem.setInStoreCount(minus);
+//            }
+//            cart.add(null);
+//        }
+
+        model.addAttribute("cart", cart);
+        return "cart/cart";
+
+    }
+
+
+    //  CHECKOUT STOP 1
+    @GetMapping("/Cart/confirm-details")
+    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
+        orderDetails.clear();
+        model.addAttribute("cart", cart);
+
+        return "cart/cart-checkout-details";
+    }
+
+    //    POST MAPPING FOR CONFIRM DETAILS
+    @PostMapping("/Cart/confirm-details")
+    public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime, @SessionAttribute("order") Order order) {
+        orderDetails.add(pickUpDate);
+        orderDetails.add(pickupTime);
+//        orderDetails.add(isCurbside);
+
+//        Null POINTER EXCEPTION
+        boolean pickupType = false;
+        if (isCurbside.equals("on")) {
+            pickupType = true;
+            orderDetails.add(String.valueOf(pickupType));
+        }
+
+
+        List<String> titles = new ArrayList<>();
+        titles.add("Pickup Date");
+        titles.add("Pickup Time");
+
+        model.addAttribute("titles", titles);
+        model.addAttribute("orderDetails", orderDetails);
+
+        int total = 0;
+        for (Product cartItem : cart) {
+            total += cartItem.getPriceInCents();
+        }
+
+        order.setIsCurbside(pickupType);
+        order.setTotalInCents(total);
+
+
+        System.out.println(orderDetails);
+        model.addAttribute("cart", cart);
+        model.addAttribute("total", total);
+        return "cart/cart-checkout-receipt";
+    }
+
+
+    //  CHECKOUT STOP 2
+    @GetMapping("/Cart/checkout-receipt")
+    public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order) {
+        model.addAttribute("cart", cart);
+
+        int total = 0;
+        for (Product cartItem : cart) {
+            total = +cartItem.getPriceInCents();
+        }
+
+        order.setTotalInCents(total);
+
+        System.out.println("ORDER DETAILS" + orderDetails);
+        System.out.println("ORDER" + order);
+
+        return "cart/cart-checkout-receipt";
+    }
+
+    // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
+    @PostMapping("/Cart/checkout-receipt")
+    public String saveCheckoutOrder
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User authUser = userDao.findByUsername(auth.getName());
+
+//        Order authU = SecurityContextHolder.getContext().getAuthentication();
+
+//        Order authenUser = userDao.findByUsername(auth.getName());
+
+//        OrderProduct orderCart = new OrderProduct();
+
+        List<Long> orderproductTwoTheReturn = new ArrayList<>();
+//        List<OrderProduct> orderproductTwoTheReturns = cart;
+
+        for (Product cartItem : cart) {
+//            orderproductTwoTheReturn.add(productDao.getOne(cartItem.getId()));
+            orderproductTwoTheReturn.add(cartItem.getId());
+//            System.out.println(cartItem.getId() + "THIS ONE!!!!!!!!!!!");
+//            System.out.println("products !!!!!!!" + productDao.getOne(cartItem.getId()));
+//            System.out.println("THIS IS THE ORDER ID -ANDREW " + order.getId());
+        }
+
+        Product saveThis = new Product();
+        for (Long orderId : orderproductTwoTheReturn) {
+            System.out.println(orderId + "SOUT, SOUT ORDER ID");
+           saveThis = productDao.getOne(orderId);
+        }
+
+//        System.out.println(orderproductTwoTheReturn.toString() + "THE RETURN!!!!!!!!!!!!!!! ");
+//        System.out.println(cart.toString() + "CART !!!!!!!!");
+
+        orderProduct.setProduct(saveThis);
+        orderProduct.setQuantity(1);
+        orderProductDao.save(orderProduct);
+        orderProduct.setOrder(order);
+
+//        System.out.println(cart.containsAll());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getId());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getUser());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getOrderProducts());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.g ;
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order);
+//         orders primary id to be saved in order product table as order_id
+
+
+        Instant instant = Instant.now();
+        Timestamp timestamp = Timestamp.from(instant);
+        order.setCreatedAt(timestamp);
+        order.setUser(authUser);
+//        order.setOrderProducts(cart);
+
+        orderDao.save(order);
+
+        cart.clear();
+        orderDetails.clear();
+
+        return "redirect:/Home?success";
     }
 
 

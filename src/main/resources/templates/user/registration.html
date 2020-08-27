@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="" lang="en">
 <head th:include="partials/head :: head">
+    <title>Hilltop-Home</title>
 
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+        nav {
+            height: 70px !important;
+        }
+    </style>
 
-    <title>Registration</title>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
 <!--    <div class="container">-->
 <!--        <div class="navbar-header">-->
@@ -83,7 +87,7 @@
                      th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
                     <label for="username" class="control-label">Username</label> <input
                         id="username" class="form-control" th:field="*{username}" name="username" />
-                    <p class="error-message"
+                    <p class="error-message alert-danger"
                        th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation
                         error</p>
                 </div>
@@ -92,7 +96,7 @@
                     <label for="confirmUsername" class="control-label">Confirm
                         username</label> <input id="confirmUsername" class="form-control"
                                               th:field="*{confirmUsername}" name="confirmUsername" />
-                    <p class="error-message"
+                    <p class="error-message alert-danger"
                        th:each="error : ${#fields.errors('confirmUsername')}"
                        th:text="${error}">Validation error</p>
                 </div>
@@ -106,7 +110,7 @@
                     <label for="password" class="control-label">Password</label> <input
                         id="password" class="form-control" type="password"
                         th:field="*{password}" name="password" />
-                    <p class="error-message danger"
+                    <p class="error-message alert-danger"
                        th:each="error : ${#fields.errors('password')}"
                        th:text="${error}">Validation error</p>
                 </div>
@@ -115,7 +119,7 @@
                     <label for="confirmPassword" class="control-label">Confirm
                         password</label> <input id="confirmPassword" class="form-control"
                                                 type="password" th:field="*{confirmPassword}" name="confirmPassword"/>
-                    <p class="error-message"
+                    <p class="error-message alert-danger"
                        th:each="error : ${#fields.errors('confirmPassword')}"
                        th:text="${error}">Validation error</p>
                 </div>
@@ -135,7 +139,7 @@
                         class="control-label" for="terms"> I agree with the <a
                         href="#">terms and conditions</a> for Registration.
                 </label>
-                    <p class="error-message"
+                    <p class="error-message alert-danger"
                        th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
                         error</p>
                 </div>
@@ -146,6 +150,8 @@
                 </div>
 
             </form>
+            <br>
+            <br>
         </div>
     </div>
 </div>
@@ -153,5 +159,8 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</div>
+
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
