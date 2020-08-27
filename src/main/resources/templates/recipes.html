@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="partials/head :: head">
-    <title>Hilltop-Recipes</title>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<head>
+    <meta name="cocktailApiKey" th:content="${cocktailApiKey}">
 
+        <div th:replace="partials/head :: head"></div>
+    <title>Hilltop-Recipes</title>
+<!--    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
 
     <style>
         nav {
@@ -16,7 +18,7 @@
         }
         #drink-section img{
             width:50%;
-            height:auto%;
+            height:auto;
         }
     </style>
 
@@ -31,6 +33,12 @@
     <section id ="ons-card"></section>
 </div>
 
+<div class="fb-page"
+     data-href="https://www.facebook.com/HilltopLiquorsTX/"
+     data-width="380"
+     data-hide-cover="false"
+     data-show-facepile="false"></div>
+
 
 
 
@@ -39,12 +47,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
-
+    console.log(document.querySelector('meta[name="cocktailApiKey"]').content);
     fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-            "x-rapidapi-key": "key"
+            "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content
         }
     })
         .then(response => response.json())
@@ -86,7 +94,6 @@
         drinkSection.appendChild(card);
     }
 </script>
-<!--<scritp src="static/cocktails.js"></scritp>-->
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
