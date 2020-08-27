@@ -74,6 +74,7 @@ public class HomeController {
         return "cart";
     }
 
+
     @GetMapping("/Home")
     public String showHome() {
         return "home";

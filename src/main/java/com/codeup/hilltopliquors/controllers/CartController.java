@@ -155,13 +155,28 @@ public class CartController {
     public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime) {
         orderDetails.add(pickUpDate);
         orderDetails.add(pickupTime);
+        orderDetails.add(isCurbside);
 
-        if (isCurbside.equals("on")) {
-            orderDetails.add("curbside");
-        } else if (isCurbside == null) {
-            orderDetails.add("in-store");
-        }
+//        String pickupType;
+//        if (isCurbside.equals("on")) {
+//           orderDetails.add("curbside");
+//        } else if (isCurbside == null) {
+//            orderDetails.add("in-store");
+//        }
 
+        List<String> titles = new ArrayList<>();
+        titles.add("Pickup Date");
+        titles.add("Pickup Time");
+        titles.add("Type Pickup");
+
+//        model.addAttribute("dateF", orderDetails.add(pickUpDate));
+//        model.addAttribute("timeF", orderDetails.add(pickupTime));
+//        model.addAttribute("typePickupF", orderDetails.add(isCurbside));
+//        model.addAttribute("date", titles.add("Date"));
+//        model.addAttribute("time",   titles.add("Arrival"));
+//        model.addAttribute("typePickup", titles.add("Pickup"));
+        model.addAttribute("titles", titles);
+        model.addAttribute("orderDetails", orderDetails);
 
 //    thymeleaf if cu
 
@@ -177,37 +192,14 @@ public class CartController {
     public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
         model.addAttribute("cart", cart);
 
-//        String str[] = num.split(" ");
-
-//        String time = String.valueOf(orderDetails.subList(0,1));
-//        String wantCurbside = String.valueOf(orderDetails.subList(1,2));
-//        String pickupDate = String.valueOf(orderDetails.subList(2,3));
+//        List<String> titles = new ArrayList<>();
+//        titles.add("Pickup Date");
+//        titles.add("Pickup Time");
+//        titles.add("Type Pickup");
 //
-//String orderString;
-//        for(<l order : orderDetails){
-////            System.out.println(order.toString());
-//            System.out.println(order.split(","));
-//        }
-
-        //        String pickupDate = orderDetails.get(2);
-////
-//        System.out.println("TIME ===== " + time);
-//        System.out.println("WANT CURBSIDE ===== " + wantCurbside);
-//        System.out.println("PICKUP =======" + pickupDate);
-
-
-//        model.addAttribute("pickupTime", time);
-//        model.addAttribute("wantCurbside", wantCurbside);
-//        model.addAttribute("pickupDate", pickupDate);
-
-        List<String> titles = new ArrayList<>();
-        titles.add("Pickup Date");
-        titles.add("Pickup Time");
-        titles.add("Type Pickup");
-
-        System.out.println(titles);
-        model.addAttribute("titles", titles);
-        model.addAttribute("orderDetails", orderDetails);
+//        System.out.println(titles);
+//        model.addAttribute("titles", titles);
+//        model.addAttribute("orderDetails", orderDetails);
 //        System.out.println(orderDetails);
 
         return "cart/cart-checkout-receipt";

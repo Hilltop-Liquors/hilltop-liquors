@@ -58,6 +58,10 @@
 </head>
 <body>
 
+<!--  TOP NAV  -->
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="m-2 p-5" style="width:100%;">
 <!--  CONTAINER  -->
 <div class="m-5 p-5" style="width:100%;">
     <a style="text-decoration: none; color:black;" th:href="@{/Cart}">back to cart</a>
@@ -103,7 +107,7 @@
         </div>
     </form>
 </div>
-
+</div>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
