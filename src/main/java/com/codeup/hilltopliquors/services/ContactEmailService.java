@@ -7,27 +7,27 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-@Service("mailService")
-public class EmailService {
+@Service("contactMailService")
+public class ContactEmailService {
 
-    //    Delivery person
     @Autowired
-    public JavaMailSender emailSender;
+    public JavaMailSender contactEmailSender;
+
 
     @Value("${spring.mail.from}")
-    private String from;
+    private String to;
 
-    public void prepareAndSend(String recipient, String subject, String body) {
+    public void prepareAndSend(String from, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        msg.setTo(recipient);
+        msg.setTo(to);
         msg.setSubject(subject);
         msg.setText(body);
 
 //
 
         try {
-            this.emailSender.send(msg);
+            this.contactEmailSender.send(msg);
         } catch (MailException ex) {
             System.err.println(ex.getMessage());
         }

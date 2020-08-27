@@ -17,12 +17,13 @@ public class EmailController {
     @GetMapping("/email")
     @ResponseBody
     public String sendEmail() {
-        String [] recipients = new String[3];
-        recipients[0] = "shelbypolasek@gmail.com";
-        recipients[1] = "juliacontreras483@gmail.com";
-        recipients[2] = "andrewbrought@gmail.com";
+//        String [] recipients = new String[3];
+//        recipients[0] = "shelbypolasek@gmail.com";
+//        recipients[1] = "juliacontreras483@gmail.com";
+//        recipients[2] = "andrewbrought@gmail.com";
 
-        emailService.prepareAndSend(recipients, "Testing!", "This is a test from Hilltop's generated API Key!");
+//   This needs a TO email address
+        emailService.prepareAndSend("recipient", "Testing!", "This is a test from Hilltop's generated API Key!");
         return "Check your gmail!";
     }
 

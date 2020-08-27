@@ -90,10 +90,10 @@ public class HomeController {
         return "eventSupply";
     }
 
-    @GetMapping("/Contact")
-    public String showContact() {
-        return "contact";
-    }
+//    @GetMapping("/Contact")
+//    public String showContact() {
+//        return "contact";
+//    }
 
     @GetMapping("/Recipes")
     public String showRecipes() {
