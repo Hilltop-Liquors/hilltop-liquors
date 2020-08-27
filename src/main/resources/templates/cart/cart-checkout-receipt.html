@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:include="partials/head :: head">
-    <title>Hilltop-Cart-Checkout Details</title>
+    <title>Hilltop-Cart-Checkout confirm</title>
 
     <style media="screen">
         nav {
@@ -61,15 +61,15 @@
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="m-5 p-5" style="width:100%;">
-    <a style="text-decoration: none; color:black;" th:href="@{/Cart/confirm-details}">previous</a>
+<div class="m-2 p-5" style="width:100%;">
+
     <br>
     <h5>Checkout</h5>
     <small>Hilltop Liquor's hours are from 10am - 8:45pm. Closed on Sundays</small>
     <hr>
     <!--  Start Checkout Details -->
     <div class="border border-3 border-dark rounded-lg shadow-lg mr-5 ml-2 p-3">
-        <h4 class="p-2">Ready to place your order for pickup?</h4>
+        <h4 class="p-2">Confirm order for pickup?</h4>
         <table class="table table-hover table-sm">
             <thead>
             <tr>
@@ -79,41 +79,34 @@
                 <th scope="col">Price</th>
             </tr>
             </thead>
+
             <tbody>
             <tr th:each="cartItem : ${cart}">
                 <!--                    <th scope="row"></th>-->
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
-                <th th:text="${cartItem.getInStoreCount()}"></th>
+                <td th:text="${cartItem.getInStoreCount()}"></td>
                 <td th:text="${cartItem.getPriceInCents()}"></td>
+                <td></td>
             </tr>
             </tbody>
         </table>
 
-        <table class="table table-hover table-sm">
+        <table class="table table-sm table-dark">
             <thead>
             <tr>
-                <th class="float-right" scope="col">Pickup Date</th>
-                <th class="float-right" scope="col">Pickup Time</th>
-                <th class="float-right" scope="col">In-Store or Curbside</th>
+                <th scope="row">Pickup Date</th>
+                <th scope="row">Pickup Time</th>
+                <th scope="col">Pickup Type</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="orderDetail : ${orderDetails}">
-                <!--                    <th scope="row"></th>-->
-                <td class="float-right" th:text="${orderDetail}"></td>
-                <td class="float-right" th:text="${orderDetail}"></td>
-                <td class="float-right" th:text="${orderDetail}"></td>
+            <tr>
+                <td th:each="orderDetail : ${orderDetails}" th:text="${orderDetail }"></td>
             </tr>
-            </tbody>
-            <tfoot>
-
-            <tr class="float-right">
-                <td>
-                    <p><span>Total: #</span></p>
-                </td>
-            </tr>
-            <tr class="float-right">
+            <tr><td></td></tr>
+            <tr><td>Total: $0.00</td></tr>
+            <tr>
                 <td>
                     <form th:action="@{/Cart/checkout-receipt}" th:method="post">
                         <input type="hidden" class="form-control"/>
@@ -121,12 +114,16 @@
                             Confirm checkout
                         </button>
                     </form>
-
                 </td>
             </tr>
-            </tfoot>
+            </tbody>
         </table>
+
     </div>
+    <form th:action="@{/Cart/confirm-details}" th:method="get">
+        <input type="hidden">
+        <button class="mr-2 btn btn-secondary float-right" style="text-decoration: none; color:black;">previous</button>
+    </form>
 
 </div> <!--  END DIV ROW-->
 

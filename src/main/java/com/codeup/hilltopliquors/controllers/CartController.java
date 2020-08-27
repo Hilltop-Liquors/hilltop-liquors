@@ -2,6 +2,8 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
+import org.apache.poi.ss.usermodel.charts.ScatterChartData;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -65,31 +68,61 @@ public class CartController {
 //    Will set name of values in modal and then call to save them on button click to database
 
     @PostMapping("/Cart")
-    public String orderDetails(Model model ,String delete, String quantityBtnPlus,  String quantityBtnMinus ,@SessionAttribute("cart") List<Product> cart) {
-        model.addAttribute("cart", cart);
+    public String orderDetails(Model model, Long delete, Long quantityBtnPlus, Long quantityBtnMinus, @SessionAttribute("cart") List<Product> cart) {
 
-        cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
+//        cart.removeIf(cartItem -> delete.equalsIgnoreCase(cartItem.getName()));
 
-//        for(Product cartItem : cart){
-//            if(quantityBtnPlus.equalsIgnoreCase(cartItem.getName())){
-//               int plus = cartItem.getInStoreCount() + 1;
-//                int plusCalc = plus + 1;
-//               cartItem.setInStoreCount(plusCalc);
-//            }
-//        }
-//
-//        for(Product cartItem : cart) {
-//            if (quantityBtnMinus.equalsIgnoreCase(cartItem.getName())) {
+        cart.removeIf(cartItem -> delete.equals(cartItem.getSku()));
+
+//            assert quantityBtnMinus != null;
+//            assert quantityBtnPlus != null;
+
+
+        System.out.println(quantityBtnMinus);
+        System.out.println(quantityBtnPlus);
+
+//            for (Product cartItem : cart) {
 //                int minus = cartItem.getInStoreCount();
-//                int minusCalc = minus - 1;
-////                if (minus < 0) {
-////                    cartItem.getInStoreCount();
-////                } else {
-//                    cartItem.setInStoreCount(minusCalc);
+//                if (quantityBtnMinus == cartItem.getSku()) {
+//                    int minusCalc = minus - 1;
+//                    if (minusCalc > 0) {
+//                        cartItem.setInStoreCount(minusCalc);
+//                    } else if (minusCalc < 0) {
+//                        cartItem.setInStoreCount(minus);
+//                    }
 //                }
+//
+//
+////                if (quantityBtnPlus != null) {
+////            for (Product cartItem : cart) {
+//                    int plus = cartItem.getInStoreCount();
+//                    int plusCalc = plus + 1;
+//                    if (quantityBtnPlus == cartItem.getSku()) {
+//                        cartItem.setInStoreCount(plusCalc);
+//                    }
+//                }
+
+
 //            }
+//            cart.add(null);
+////            cart.retainAll(Collections.singleton(quantityBtnPlus));
+//        }
 
-
+//        if (quantityBtnMinus != null) {
+//            for (Product cartItem : cart) {
+//                int minus = cartItem.getInStoreCount();
+//                if (quantityBtnMinus == cartItem.getSku()) {
+//                    int minusCalc = minus - 1;
+//                    if (minusCalc > 0) {
+//                        cartItem.setInStoreCount(minusCalc);
+//                    } else if (minusCalc < 0) {
+//                        cartItem.setInStoreCount(minus);
+//                    }
+//                }
+//                cartItem.setInStoreCount(minus);
+//            }
+//            cart.add(null);
+//        }
 
 
 //        Order newOrder = new Order();
@@ -102,22 +135,50 @@ public class CartController {
 //        System.out.println("HERE WE ARE" + isCurbside);
 //        System.out.println("HERE WE ARE" + pickupTime);
 
+        model.addAttribute("cart", cart);
         return "cart/cart";
+
     }
+
 
     //  CHECKOUT STOP 1
     @GetMapping("/Cart/confirm-details")
-    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart) {
+    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
+        orderDetails.clear();
         model.addAttribute("cart", cart);
 
         return "cart/cart-checkout-details";
     }
 
+    //    POST MAPPING FOR CONFIRM DETAILS
     @PostMapping("/Cart/confirm-details")
-    public String saveCheckoutDetails( Model model ,@SessionAttribute("cart") List<Product> cart ,@SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime) {
+    public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime) {
+        orderDetails.add(pickUpDate);
         orderDetails.add(pickupTime);
         orderDetails.add(isCurbside);
-        orderDetails.add(pickUpDate);
+
+//        String pickupType;
+//        if (isCurbside.equals("on")) {
+//           orderDetails.add("curbside");
+//        } else if (isCurbside == null) {
+//            orderDetails.add("in-store");
+//        }
+
+        List<String> titles = new ArrayList<>();
+        titles.add("Pickup Date");
+        titles.add("Pickup Time");
+        titles.add("Type Pickup");
+
+//        model.addAttribute("dateF", orderDetails.add(pickUpDate));
+//        model.addAttribute("timeF", orderDetails.add(pickupTime));
+//        model.addAttribute("typePickupF", orderDetails.add(isCurbside));
+//        model.addAttribute("date", titles.add("Date"));
+//        model.addAttribute("time",   titles.add("Arrival"));
+//        model.addAttribute("typePickup", titles.add("Pickup"));
+        model.addAttribute("titles", titles);
+        model.addAttribute("orderDetails", orderDetails);
+
+//    thymeleaf if cu
 
         System.out.println(orderDetails);
         model.addAttribute("cart", cart);
@@ -125,23 +186,34 @@ public class CartController {
         return "cart/cart-checkout-receipt";
     }
 
+
     //  CHECKOUT STOP 2
     @GetMapping("/Cart/checkout-receipt")
     public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
-        model.addAttribute("orderDetails", orderDetails);
         model.addAttribute("cart", cart);
 
-        System.out.println(orderDetails);
+//        List<String> titles = new ArrayList<>();
+//        titles.add("Pickup Date");
+//        titles.add("Pickup Time");
+//        titles.add("Type Pickup");
+//
+//        System.out.println(titles);
+//        model.addAttribute("titles", titles);
+//        model.addAttribute("orderDetails", orderDetails);
+//        System.out.println(orderDetails);
 
-        return "cart/cart";
+        return "cart/cart-checkout-receipt";
     }
 
+    // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
-    public String saveCheckoutOrder(@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
+    public String saveCheckoutOrder
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
 //        List<Product> cart;
+
+
         cart.clear();
         orderDetails.clear();
-
 
 
 //        else {

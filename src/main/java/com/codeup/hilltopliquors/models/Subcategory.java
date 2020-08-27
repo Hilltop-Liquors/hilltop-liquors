@@ -14,8 +14,6 @@ public class Subcategory {
     @Column(length = 120, nullable = false)
     private String name;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "categories_id")
     @ManyToOne
     @JoinColumn(name = "cat_id", referencedColumnName = "id")
     private Category category;
