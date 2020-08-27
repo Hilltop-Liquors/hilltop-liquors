@@ -188,10 +188,9 @@ public class CartController {
 
         int total = 0;
         for (Product cartItem : cart) {
-            total = +cartItem.getPriceInCents();
+            total += cartItem.getPriceInCents();
         }
 
-//        SETTING CURBSIDE
         order.setIsCurbside(pickupType);
         order.setTotalInCents(total);
 
@@ -208,6 +207,13 @@ public class CartController {
     public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order) {
         model.addAttribute("cart", cart);
 
+        int total = 0;
+        for (Product cartItem : cart) {
+            total = +cartItem.getPriceInCents();
+        }
+
+        order.setTotalInCents(total);
+
         System.out.println("ORDER DETAILS" + orderDetails);
         System.out.println("ORDER" + order);
 
@@ -220,7 +226,7 @@ public class CartController {
     (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-       User authUser = userDao.findByUsername(auth.getName());
+        User authUser = userDao.findByUsername(auth.getName());
 
         Instant instant = Instant.now();
         Timestamp timestamp = Timestamp.from(instant);
@@ -230,7 +236,7 @@ public class CartController {
         orderDao.save(order);
 
         System.out.println("CREATED AT " + order.getCreatedAt());
-        System.out.println("IS CURBSIDE "+ order.getIsCurbside());
+        System.out.println("IS CURBSIDE " + order.getIsCurbside());
         System.out.println("FULLFILLED " + order.getOrderIsFulfilled());
         System.out.println("TOTAL IN CENTS " + order.getTotalInCents());
         System.out.println("USER ID " + order.getUser());
