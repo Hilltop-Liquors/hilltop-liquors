@@ -2,25 +2,18 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
-import jdk.swing.interop.SwingInterOpUtils;
-import org.apache.poi.ss.usermodel.charts.ScatterChartData;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.sql.Timestamp;
-import java.text.NumberFormat;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 
 @Controller
@@ -55,6 +48,20 @@ public class CartController {
 
         return order;
     }
+
+    @ModelAttribute("orderProduct")
+    public OrderProduct orderProduct(HttpServletRequest request) {
+        OrderProduct orderProduct = new OrderProduct();
+        if (request.getSession().getAttribute("orderProduct") == null) {
+            orderProduct = new OrderProduct();
+        } else {
+            orderProduct = (OrderProduct) request.getSession().getAttribute("orderProduct");
+        }
+        request.getSession().setAttribute("orderProduct", orderProduct);
+
+        return orderProduct;
+    }
+
 
     @ModelAttribute("orderDetails")
     public List<String> orderDetails(HttpServletRequest request) {
@@ -223,32 +230,59 @@ public class CartController {
     // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
     public String saveCheckoutOrder
-    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order) {
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         User authUser = userDao.findByUsername(auth.getName());
+
+//        Order authU = SecurityContextHolder.getContext().getAuthentication();
+
+//        Order authenUser = userDao.findByUsername(auth.getName());
+
+//        OrderProduct orderCart = new OrderProduct();
+
+        List<Long> orderproductTwoTheReturn = new ArrayList<>();
+//        List<OrderProduct> orderproductTwoTheReturns = cart;
+
+        for (Product cartItem : cart) {
+//            orderproductTwoTheReturn.add(productDao.getOne(cartItem.getId()));
+            orderproductTwoTheReturn.add(cartItem.getId());
+//            System.out.println(cartItem.getId() + "THIS ONE!!!!!!!!!!!");
+//            System.out.println("products !!!!!!!" + productDao.getOne(cartItem.getId()));
+//            System.out.println("THIS IS THE ORDER ID -ANDREW " + order.getId());
+        }
+
+        Product saveThis = new Product();
+        for (Long orderId : orderproductTwoTheReturn) {
+            System.out.println(orderId + "SOUT, SOUT ORDER ID");
+           saveThis = productDao.getOne(orderId);
+        }
+
+//        System.out.println(orderproductTwoTheReturn.toString() + "THE RETURN!!!!!!!!!!!!!!! ");
+//        System.out.println(cart.toString() + "CART !!!!!!!!");
+
+        orderProduct.setProduct(saveThis);
+        orderProduct.setQuantity(1);
+        orderProductDao.save(orderProduct);
+        orderProduct.setOrder(order);
+
+//        System.out.println(cart.containsAll());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getId());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getUser());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getOrderProducts());
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.g ;
+//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order);
+//         orders primary id to be saved in order product table as order_id
+
 
         Instant instant = Instant.now();
         Timestamp timestamp = Timestamp.from(instant);
         order.setCreatedAt(timestamp);
         order.setUser(authUser);
+//        order.setOrderProducts(cart);
 
         orderDao.save(order);
-
-        System.out.println("CREATED AT " + order.getCreatedAt());
-        System.out.println("IS CURBSIDE " + order.getIsCurbside());
-        System.out.println("FULLFILLED " + order.getOrderIsFulfilled());
-        System.out.println("TOTAL IN CENTS " + order.getTotalInCents());
-        System.out.println("USER ID " + order.getUser());
-
-//        System.out.println("ID " + authUser.getId() + "USERNAME " +authUser.getUsername());
-
-        System.out.println("Auth what is here" + auth.getName());
-        System.out.println("WHAT IS IN HERE " + order);
-        System.out.println("WHAT TIME IS IT!!!!!!!!!! " + timestamp);
-//    System.out.println("HERE WE ARE" + pickUpDate);
-//    System.out.println("HERE WE ARE" + isCurbside);
-//    System.out.println("HERE WE ARE" + pickupTime);
 
         cart.clear();
         orderDetails.clear();

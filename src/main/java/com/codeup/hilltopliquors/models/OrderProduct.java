@@ -34,6 +34,7 @@ public class OrderProduct {
         this.product = product;
     }
 
+
     public Order getOrder() {
         return order;
     }
@@ -53,10 +54,10 @@ public class OrderProduct {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
+
     public int getQuantity() {
         return quantity;
     }
