@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <head th:include="partials/head :: head">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Home</title>
 
-        <link rel="stylesheet" type="text/css"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+        nav {
+            height: 70px !important;
+        }
+    </style>
 
-        <title>Settings</title>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="container m-auto">
     <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
@@ -117,5 +120,6 @@
 <!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

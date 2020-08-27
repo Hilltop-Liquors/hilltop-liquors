@@ -28,7 +28,7 @@
             <p><span th:text="${user.first_name}"></span><span th:text="${user.last_name}"></span></p>
             <p th:text="${user.email}"></p>
             <p th:text="${user.phone}"></p>
-            <a class="btn btn-primary" href="/user/edit" role="button">EDIT</a>
+            <a class="btn btn-primary" th:href="@{/admin/user/edit{id}(id=${user.id})}" role="button">EDIT</a>
             <br>
             <br>
         </div>
