@@ -61,8 +61,13 @@
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="m-5 p-5" style="width:100%;">
-    <a style="text-decoration: none; color:black;" th:href="@{/Cart/confirm-details}">previous</a>
+<div class="m-2 p-5" style="width:100%;">
+
+    <form th:action="@{/Cart/confirm-details}" th:method="get">
+        <input type="hidden">
+        <button style="text-decoration: none; color:black;">previous</button>
+    </form>
+
     <br>
     <h5>Checkout</h5>
     <small>Hilltop Liquor's hours are from 10am - 8:45pm. Closed on Sundays</small>

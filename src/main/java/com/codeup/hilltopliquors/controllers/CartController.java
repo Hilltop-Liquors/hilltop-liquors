@@ -123,7 +123,6 @@ public class CartController {
 //            cart.add(null);
 //        }
 
-        model.addAttribute("cart", cart);
 
 
 //        Order newOrder = new Order();
@@ -136,6 +135,7 @@ public class CartController {
 //        System.out.println("HERE WE ARE" + isCurbside);
 //        System.out.println("HERE WE ARE" + pickupTime);
 
+        model.addAttribute("cart", cart);
         return "cart/cart";
 
     }
@@ -145,16 +145,16 @@ public class CartController {
 
     //  CHECKOUT STOP 1
     @GetMapping("/Cart/confirm-details")
-    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart) {
+    public String getCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
+        orderDetails.clear();
         model.addAttribute("cart", cart);
 
         return "cart/cart-checkout-details";
     }
 
+//    POST MAPPING FOR CONFIRM DETAILS
     @PostMapping("/Cart/confirm-details")
-    public String saveCheckoutDetails(Model
-                                              model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String
-                                              pickUpDate, String isCurbside, String pickupTime) {
+    public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime) {
         orderDetails.add(pickupTime);
         orderDetails.add(isCurbside);
         orderDetails.add(pickUpDate);
@@ -167,16 +167,15 @@ public class CartController {
 
     //  CHECKOUT STOP 2
     @GetMapping("/Cart/checkout-receipt")
-    public String getCheckoutReceipt(Model
-                                             model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
-        model.addAttribute("orderDetails", orderDetails);
+    public String getCheckoutReceipt(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
         model.addAttribute("cart", cart);
 
+        model.addAttribute("orderDetails", orderDetails);
         System.out.println(orderDetails);
 
         return "cart/cart";
     }
-
+// POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
     public String saveCheckoutOrder
             (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails) {
