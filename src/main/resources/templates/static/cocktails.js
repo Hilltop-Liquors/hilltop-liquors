@@ -26,3 +26,18 @@ function getRandomCocktail(){
         });
 }
 getRandomCocktail();
+
+
+
+function displayRandomCocktail(cocktail){
+    console.log(cocktail.drinks[0]);
+
+    let drinkSection = document.querySelector('#drink-section');
+
+    let drinkName = document.createElement('h2');
+
+    drinkName.innerHTML = cocktail.drinks[0].strDrink;
+
+    drinkSection.appendChild(drinkName);
+
+}
