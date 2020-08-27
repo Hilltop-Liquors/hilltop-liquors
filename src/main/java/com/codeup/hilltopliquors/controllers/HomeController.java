@@ -1,12 +1,17 @@
 package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.Product;
+
+import org.springframework.beans.factory.annotation.Value;
+
 import com.codeup.hilltopliquors.models.User;
 import com.codeup.hilltopliquors.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -19,12 +24,17 @@ import java.util.List;
 //@SessionAttributes("cart")
 public class HomeController {
 
+    @Value("${cocktail.api.key}")
+    private String cocktailApiKey;
+
+
     public final UserRepository userDao;
 
 
     public HomeController(UserRepository userDao) {
         this.userDao = userDao;
     }
+
 
     @GetMapping("/")
     public String showLanding(HttpServletRequest request) {
@@ -97,7 +107,8 @@ public class HomeController {
 //    }
 
     @GetMapping("/Recipes")
-    public String showRecipes() {
+    public String showRecipes(Model model) {
+        model.addAttribute("cocktailApiKey", cocktailApiKey);
         return "recipes";
     }
 
