@@ -34,6 +34,14 @@ public class OrderProduct {
         this.product = product;
     }
 
+    public OrderProduct( int quantity, Order order, Product product) {
+        this.quantity = quantity;
+        this.order = order;
+        this.product = product;
+    }
+
+
+
 
     public Order getOrder() {
         return order;
