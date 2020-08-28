@@ -31,21 +31,20 @@ public class LiquorController {
     //        LIQUOR
     //        GET ALL POSTS and SEARCH BAR
     @GetMapping("/Liquor")
-    public String getLiquorProducts(Model model, String keyword, Integer catId, Integer subId) {
-
-//        7.2 switch statement thymeleaf
-//        5.1 setting thymeleaf value
+    public String getLiquorProducts(Model model, String keyword, Integer catId, Integer subId, Integer productTypeId) {
 
 //        NAV DISPLAY
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
         List<Category> catTags = catDao.findCategoriesByProductTypeId(2);
 
-//        PRODUCT TARGET
+//      PRODUCT TYPE TAGS
+        List<Product> productTypes = productDao.findAllBySubCategoryCategoryProductTypeId(productTypeId);
+//      CATEOGRY TAGS
         List<Product> catProducts = productDao.findAllBySubCategoryCategoryId(catId);
+//      SUB-CAT TAGS
+        List<Product> subProducts = productDao.findAllBySubCategoryId(subId);
 
-//      SUB TAGS REDIRECT
-        List<Product> subProducts =productDao.findAllBySubCategoryId(subId);
-
+//        SEARCH BOX
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
             model.addAttribute("keyword", "Search results for: " + keyword);
@@ -53,13 +52,19 @@ public class LiquorController {
 
         if (catId != null) {
             model.addAttribute("catProducts", catProducts);
+            model.addAttribute("subProducts", subProducts);
+            model.addAttribute("productTypes", productTypes);
         } else if (subId != null) {
             System.out.println(subId);
+            model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
-        } else {
+            model.addAttribute("productTypes", productTypes);
+        } else{
+            model.addAttribute("catProducts", catProducts);
+            model.addAttribute("subProducts", subProducts);
+            model.addAttribute("productTypes", productTypes);
             model.addAttribute("products", products);
         }
-
 
         model.addAttribute("catTags", catTags);
 
