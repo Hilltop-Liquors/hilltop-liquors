@@ -44,6 +44,7 @@ public class CartController {
         } else {
             order = (Order) request.getSession().getAttribute("order");
         }
+
         request.getSession().setAttribute("order", order);
 
         return order;
@@ -230,7 +231,8 @@ public class CartController {
     // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
     public String saveCheckoutOrder
-    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails,
+     @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User authUser = userDao.findByUsername(auth.getName());
@@ -238,18 +240,27 @@ public class CartController {
 
         List<OrderProduct> orderProducts = new ArrayList<>();
 
-        try{
-            order.getOrderProducts();
-        }catch(NullPointerException e) {
+        System.out.println(order);
+        if(order.getOrderProducts() == null) {
             order.setOrderProducts(orderProducts);
-            e.printStackTrace();
         }
+
+       try{
+           order.getId();
+       }catch(Exception e) {
+           e.printStackTrace();
+           orderDao.save(order);
+       }
+
+
 
         for (Product cartItem : cart) {
             OrderProduct addingProduct = new OrderProduct(1, order, cartItem);
             cartItem.getOrderProduct().add(addingProduct);
 //            orderProducts.add(addingProduct);
+            System.out.println("order.getId() = " + order.getId());
             order.getOrderProducts().add(addingProduct);
+            System.out.println("order.getOrderProducts() = " + order.getOrderProducts());
             productDao.save(cartItem);
             orderProductDao.save(orderProduct);
         }
