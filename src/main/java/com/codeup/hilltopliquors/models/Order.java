@@ -1,4 +1,6 @@
 package com.codeup.hilltopliquors.models;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -12,8 +14,12 @@ public class Order {
     private int totalInCents;
     @Column(length = 250, nullable = false)
     private boolean isCurbside;
+
+//    @CreationTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(length = 250, nullable = false)
     private Timestamp createdAt;
+
     @Column(length = 250, nullable = false)
     private  boolean orderIsFulfilled;
     @ManyToOne(fetch = FetchType.LAZY)
