@@ -58,7 +58,7 @@
         <a th:href="@{/Wine}">
             <h2 style="margin-left: 18%; background-color: #EBEDEF;"
                 class="fixed-top pt-3 pb-1 mt-5">
-                Beer
+                Wine
                 <hr>
                 <span><h5 th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></h5></span>
             </h2>
@@ -79,7 +79,11 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                <!--                 ADD TO CART            -->
+                <form th:action="@{/Wine}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                </form>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <!--   ============      TAGS       ========-->
@@ -121,7 +125,11 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                <!--                 ADD TO CART            -->
+                <form th:action="@{/Wine}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                </form>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <!--   ============      TAGS       ========-->
@@ -161,7 +169,11 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                <!--                 ADD TO CART            -->
+                <form th:action="@{/Wine}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                </form>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <!--   ============      TAGS       ========-->

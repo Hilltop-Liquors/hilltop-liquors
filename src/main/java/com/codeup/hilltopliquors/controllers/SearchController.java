@@ -31,18 +31,43 @@ public class SearchController {
 
     //        GET ALL POSTS and SEARCH BAR
     @GetMapping("/Search")
-    public String getProducts(Model model, String keyword, @SessionAttribute("cart") List<Product> cart, Long productId) {
+    public String getProducts(Model model, String keyword, Integer catId, Integer subId, Integer productTypeId, Long ProductId) {
         List<Product> products = productDao.findAll();
         List<ProductType> productTypes = productTypeDao.findAll();
         List<Category> categories = catDao.findAll();
         List<Subcategory> subCategories = subCatDao.findAll();
 
+//        if (keyword != null) {
+//            model.addAttribute("products", productDao.findByKeyWord(keyword));
+//            model.addAttribute("keyword", "Search results for: " + keyword);
+//        } else {
+//            model.addAttribute("products", products);
+//        }
+
+//      CATEOGRY TAGS
+        List<Product> catProducts = productDao.findAllBySubCategoryCategoryId(catId);
+//      SUB-CAT TAGS
+        List<Product> subProducts = productDao.findAllBySubCategoryId(subId);
+
+//        SEARCH BOX
         if (keyword != null) {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
             model.addAttribute("keyword", "Search results for: " + keyword);
+        }
+        if (catId != null) {
+            model.addAttribute("catProducts", catProducts);
+            model.addAttribute("subProducts", subProducts);
+        } else if (subId != null) {
+            System.out.println(subId);
+            model.addAttribute("catProducts", catProducts);
+            model.addAttribute("subProducts", subProducts);
+        } else if (productTypeId != null){
+            model.addAttribute("catProducts", catProducts);
+            model.addAttribute("subProducts", subProducts);
         } else {
             model.addAttribute("products", products);
         }
+
 
         model.addAttribute("productTypes", productTypes);
         model.addAttribute("categories", categories);

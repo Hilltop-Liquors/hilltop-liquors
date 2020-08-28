@@ -34,20 +34,20 @@
         <ul class="c-sidebar-nav">
             <li class="c-sidebar-nav-title">Browse by category</li>
 
-            <!--  CATEGORY SIDE NAV BUTTONS WORKING -->
-            <li>
-                <ul class="c-sidebar-nav">
-                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">
-                        <form th:action="@{/Extras}" method="get">
-                            <button type="submit" class="c-sidebar-nav-link nav-link"
-                                    style="color: white; text-decoration: none;"
-                                    th:value="${category.getId()}" name="catId">
-                                <span th:text="${category.getName()}"></span>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            </li>
+<!--            &lt;!&ndash;  CATEGORY SIDE NAV BUTTONS WORKING &ndash;&gt;-->
+<!--            <li>-->
+<!--                <ul class="c-sidebar-nav">-->
+<!--                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">-->
+<!--                        <form th:action="@{/Extras}" method="get">-->
+<!--                            <button type="submit" class="c-sidebar-nav-link nav-link"-->
+<!--                                    style="color: white; text-decoration: none;"-->
+<!--                                    th:value="${category.getId()}" name="catId">-->
+<!--                                <span th:text="${category.getName()}"></span>-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
         </ul>
     </div>
 
@@ -79,7 +79,11 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                <!--                 ADD TO CART            -->
+                <form th:action="@{/Extras}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                </form>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <!--   ============      TAGS       ========-->
@@ -121,7 +125,11 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                <!--                 ADD TO CART            -->
+                <form th:action="@{/Extras}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                </form>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <!--   ============      TAGS       ========-->
@@ -161,7 +169,11 @@
                 <p th:text="${productType.name}"></p>
                 <p th:text="${productType.priceInCents}"></p>
 
-                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                <!--                 ADD TO CART            -->
+                <form th:action="@{/Wine}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+                </form>
                 <hr>
                 <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
                 <!--   ============      TAGS       ========-->

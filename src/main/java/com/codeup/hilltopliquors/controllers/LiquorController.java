@@ -11,6 +11,8 @@ import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.List;
 
@@ -65,6 +67,15 @@ public class LiquorController {
 
         return "search/liquor";
     }
+    @PostMapping("/Liquor")
+    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
+        List<Product> products = productDao.findAll();
 
+        model.addAttribute("products", products);
+
+        Product product = productDao.getOne(productId);
+        cart.add(product);
+        return "search/search";
+    }
 
 }

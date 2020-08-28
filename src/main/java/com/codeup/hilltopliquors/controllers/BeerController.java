@@ -9,6 +9,8 @@ import com.codeup.hilltopliquors.repositories.SubcategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class BeerController {
     //        BEER
     //        GET ALL POSTS and SEARCH BAR
     @GetMapping("/Beer")
-    public String getLiquorProducts(Model model, String keyword, Integer catId, Integer subId, Integer productTypeId) {
+    public String getBeerProducts(Model model, String keyword, Integer catId, Integer subId, Integer productTypeId) {
 
 //        NAV DISPLAY
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(1);
@@ -65,5 +67,15 @@ public class BeerController {
         return "search/beer";
     }
 
+    @PostMapping("/Beer")
+    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
+        List<Product> products = productDao.findAll();
+
+        model.addAttribute("products", products);
+
+        Product product = productDao.getOne(productId);
+        cart.add(product);
+        return "search/search";
+    }
 
 }
