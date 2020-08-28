@@ -35,7 +35,7 @@ public class Product {
     @Column(name = "file_type")
     private String fileType;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderProduct> orderProducts;
 
 //    @ManyToOne(fetch = FetchType.LAZY)

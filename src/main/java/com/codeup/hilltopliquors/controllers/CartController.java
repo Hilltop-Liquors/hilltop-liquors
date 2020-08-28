@@ -233,54 +233,35 @@ public class CartController {
     (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         User authUser = userDao.findByUsername(auth.getName());
 
-//        Order authU = SecurityContextHolder.getContext().getAuthentication();
 
-//        Order authenUser = userDao.findByUsername(auth.getName());
+        List<OrderProduct> orderProducts = new ArrayList<>();
 
-//        OrderProduct orderCart = new OrderProduct();
+        try{
+            order.getOrderProducts();
+        }catch(NullPointerException e) {
+            order.setOrderProducts(orderProducts);
+            e.printStackTrace();
+        }
 
-//        List<Long> orderproductTwoTheReturn = new ArrayList<>();
-//        List<OrderProduct> orderproductTwoTheReturns = cart;
+        for (Product cartItem : cart) {
+            OrderProduct addingProduct = new OrderProduct(1, order, cartItem);
+            cartItem.getOrderProduct().add(addingProduct);
+//            orderProducts.add(addingProduct);
+            order.getOrderProducts().add(addingProduct);
+            productDao.save(cartItem);
+            orderProductDao.save(orderProduct);
+        }
 
-//        for (Product cartItem : cart) {
-//            orderproductTwoTheReturn.add(productDao.getOne(cartItem.getId()));
-//            orderproductTwoTheReturn.add(cartItem.getId());
-//            System.out.println(cartItem.getId() + "THIS ONE!!!!!!!!!!!");
-//            System.out.println("products !!!!!!!" + productDao.getOne(cartItem.getId()));
-//            System.out.println("THIS IS THE ORDER ID -ANDREW " + order.getId());
-//        }
+//        order.setOrderProducts(orderProducts);
 
-//        Product saveThis = new Product();
-//        for (Long orderId : orderproductTwoTheReturn) {
-//            System.out.println(orderId + "SOUT, SOUT ORDER ID");
-//           saveThis = productDao.getOne(orderId);
-//        }
-
-//        System.out.println(orderproductTwoTheReturn.toString() + "THE RETURN!!!!!!!!!!!!!!! ");
-//        System.out.println(cart.toString() + "CART !!!!!!!!");
-
-//        orderProduct.setProduct(saveThis);
-//        orderProduct.setQuantity(1);
-//        orderProductDao.save(orderProduct);
-//        orderProduct.setOrder(order);
-
-//        System.out.println(cart.containsAll());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getId());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getUser());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getOrderProducts());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.g ;
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order);
-//         orders primary id to be saved in order product table as order_id
-// changes
 
         Instant instant = Instant.now();
         Timestamp timestamp = Timestamp.from(instant);
         order.setCreatedAt(timestamp);
         order.setUser(authUser);
-//        order.setOrderProducts(cart);
+
 
         orderDao.save(order);
 

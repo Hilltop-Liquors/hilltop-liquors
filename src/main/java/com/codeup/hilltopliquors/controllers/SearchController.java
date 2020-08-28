@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -76,13 +78,20 @@ public class SearchController {
     }
 
     @PostMapping("/Search")
-    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
+    public String addToCart(HttpServletRequest request, Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
         List<Product> products = productDao.findAll();
-
         model.addAttribute("products", products);
+
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
+
 
         Product product = productDao.getOne(productId);
         cart.add(product);
+        request.getSession().setAttribute("cart", cart);
         return "search/search";
     }
 

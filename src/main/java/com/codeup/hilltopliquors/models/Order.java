@@ -19,10 +19,18 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User user;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts;
+
     public Order() {
     }
+
+    public Order(User user, List<OrderProduct> orderProducts) {
+        this.user = user;
+        this.orderProducts = orderProducts;
+    }
+
     public Order(long id, int totalInCents, boolean isCurbside, Timestamp createdAt, boolean orderIsFulfilled) {
         this.id = id;
         this.totalInCents = totalInCents;
