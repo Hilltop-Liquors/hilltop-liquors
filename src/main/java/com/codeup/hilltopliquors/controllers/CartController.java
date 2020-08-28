@@ -242,30 +242,30 @@ public class CartController {
 
 //        OrderProduct orderCart = new OrderProduct();
 
-        List<Long> orderproductTwoTheReturn = new ArrayList<>();
+//        List<Long> orderproductTwoTheReturn = new ArrayList<>();
 //        List<OrderProduct> orderproductTwoTheReturns = cart;
 
-        for (Product cartItem : cart) {
+//        for (Product cartItem : cart) {
 //            orderproductTwoTheReturn.add(productDao.getOne(cartItem.getId()));
-            orderproductTwoTheReturn.add(cartItem.getId());
+//            orderproductTwoTheReturn.add(cartItem.getId());
 //            System.out.println(cartItem.getId() + "THIS ONE!!!!!!!!!!!");
 //            System.out.println("products !!!!!!!" + productDao.getOne(cartItem.getId()));
 //            System.out.println("THIS IS THE ORDER ID -ANDREW " + order.getId());
-        }
+//        }
 
-        Product saveThis = new Product();
-        for (Long orderId : orderproductTwoTheReturn) {
-            System.out.println(orderId + "SOUT, SOUT ORDER ID");
-           saveThis = productDao.getOne(orderId);
-        }
+//        Product saveThis = new Product();
+//        for (Long orderId : orderproductTwoTheReturn) {
+//            System.out.println(orderId + "SOUT, SOUT ORDER ID");
+//           saveThis = productDao.getOne(orderId);
+//        }
 
 //        System.out.println(orderproductTwoTheReturn.toString() + "THE RETURN!!!!!!!!!!!!!!! ");
 //        System.out.println(cart.toString() + "CART !!!!!!!!");
 
-        orderProduct.setProduct(saveThis);
-        orderProduct.setQuantity(1);
-        orderProductDao.save(orderProduct);
-        orderProduct.setOrder(order);
+//        orderProduct.setProduct(saveThis);
+//        orderProduct.setQuantity(1);
+//        orderProductDao.save(orderProduct);
+//        orderProduct.setOrder(order);
 
 //        System.out.println(cart.containsAll());
 //        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getId());
