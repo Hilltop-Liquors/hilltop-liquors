@@ -83,11 +83,15 @@
         </h2>
         <hr>
         <div th:each="product : ${products}" class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
-            <div class="card-header bg-dark text-white center"
-                 style="border-bottom: 4px solid maroon; ">
-                <img class="center" style="width: 126px; height: 189px;" src="../static/img/filler_bottle.png"
-                     th:src="@{img/filler_bottle.png}" alt="bottle"/>
-            </div>
+
+            <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
+               th:value="${product.id}">
+                <div class="card-header bg-dark text-white center"
+                     style="border-bottom: 4px solid maroon; ">
+                    <img class="center" style="width: 126px; height: 189px;"
+                         th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getName()})}" alt="bottle"/>
+                </div>
+            </a>
 
             <div class="card-body d-flex flex-column">
                 <p th:text="${product.name}"></p>
