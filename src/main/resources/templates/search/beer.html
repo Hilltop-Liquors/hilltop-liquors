@@ -20,8 +20,8 @@
 
     <!--  SIDE NAV  -->
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-dark c-sidebar-show fixed-top nav-expand-md"
-         style="margin-top: 55px; height: 100%; z-index: 1001;">
+    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"
+         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: #3E0723;">
 
         <!--  SEARCH BAR  -->
         <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
@@ -56,9 +56,9 @@
     <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
 
         <!--  SEARCH KEYWORD RENDERED  -->
-        <a th:href="@{/Beer}">
-            <h2 style="margin-left: 18%; background-color: #EBEDEF;"
-                class="fixed-top pt-3 pb-1 mt-5">
+        <a th:href="@{/Beer}" style="color: white">
+            <h2 style="margin-left: 16%; background-color: #3E0723;"
+                class="fixed-top pt-3 pl-5 pb-21 mt-5">
                 Beer
                 <hr>
                 <span><h5 th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></h5></span>
@@ -67,8 +67,8 @@
 
         <!-- ===============   BEER LOOP  ===================  -->
         <div th:each="productType : ${products}" class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
-                <div class="card-header bg-dark text-white center"
-                     style="border-bottom: 4px solid maroon;  ">
+                <div class="card-header text-white center"
+                     style="border-bottom: 4px solid maroon;  background-color: black">
                     <img class="center" style="width: 126px; height: 189px;"
                          src="../static/img/filler_bottle.png"
                          th:src="@{img/filler_bottle.png}" alt="bottle"/>
@@ -111,8 +111,8 @@
         <!--   ========================== CAT NAV PRODUCT LOOP ================================    -->
         <div th:each="productType : ${catProducts}"
              class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
-                <div class="card-header bg-dark text-white center"
-                     style="border-bottom: 4px solid maroon;  ">
+                <div class="card-header  text-white center"
+                     style="border-bottom: 4px solid maroon;  background-color: black">
                     <img class="center" style="width: 126px; height: 189px;"
                          src="../static/img/filler_bottle.png"
                          th:src="@{img/filler_bottle.png}" alt="bottle"/>
@@ -157,8 +157,8 @@
              class="card col-md-3 m-3 shadow p-3 bg-white rounded float-right">
             <!--            <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${productType.id})}"-->
             <!--               th:value="${productType.id}">-->
-            <div class="card-header bg-dark text-white center"
-                 style="border-bottom: 4px solid maroon;  ">
+            <div class="card-header text-white center"
+                 style="border-bottom: 4px solid maroon;  background-color: black">
                 <img class="center" style="width: 126px; height: 189px;"
                      src="../static/img/filler_bottle.png"
                      th:src="@{img/filler_bottle.png}" alt="bottle"/>
