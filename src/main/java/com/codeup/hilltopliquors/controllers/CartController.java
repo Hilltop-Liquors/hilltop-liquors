@@ -245,7 +245,7 @@ public class CartController {
 
         List<OrderProduct> orderProducts = new ArrayList<>();
 
-        System.out.println("order.getId() = " + order.getId());
+
         if(order.getOrderProducts() == null) {
             order.setOrderProducts(orderProducts);
         }
@@ -257,28 +257,30 @@ public class CartController {
 //          orderDao.save(order);
 //      }
 
-        System.out.println("order.getId() = " + order.getId());
 
+        List<OrderProduct> check = new ArrayList<>();
 
         for (Product cartItem : cart) {
             OrderProduct addingProduct = new OrderProduct(1, order, cartItem);
             cartItem.getOrderProduct().add(addingProduct);
 //            orderProducts.add(addingProduct);
-            System.out.println("order.getId() = " + order.getId());
-            order.getOrderProducts().add(addingProduct);
-            System.out.println("order.getOrderProducts() = " + order.getOrderProducts());
+            check.add(addingProduct);
+//            order.getOrderProducts().add(addingProduct);
+
             orderProduct.setOrder(order);
             orderProduct.setProduct(cartItem);
 //            productDao.save(cartItem);
             orderProductDao.save(orderProduct);
         }
 
-//        order.setOrderProducts(orderProducts);
+        order.setOrderProducts(check);
 
 
 //        Instant instant = Instant.now();
 //        Timestamp timestamp = Timestamp.from(instant);
 //        order.setCreatedAt(timestamp);
+
+
         order.setUser(authUser);
         orderDao.save(order);
 
