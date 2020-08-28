@@ -41,9 +41,15 @@ public class CartController {
         Order order = new Order();
         if (request.getSession().getAttribute("order") == null) {
             order = new Order();
+            Instant instant = Instant.now();
+            Timestamp timestamp = Timestamp.from(instant);
+            order.setCreatedAt(timestamp);
+            orderDao.save(order);
         } else {
             order = (Order) request.getSession().getAttribute("order");
         }
+
+
         request.getSession().setAttribute("order", order);
 
         return order;
@@ -230,7 +236,8 @@ public class CartController {
     // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
     public String saveCheckoutOrder
-    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails,
+     @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User authUser = userDao.findByUsername(auth.getName());
@@ -238,31 +245,43 @@ public class CartController {
 
         List<OrderProduct> orderProducts = new ArrayList<>();
 
-        try{
-            order.getOrderProducts();
-        }catch(NullPointerException e) {
+
+        if(order.getOrderProducts() == null) {
             order.setOrderProducts(orderProducts);
-            e.printStackTrace();
         }
+
+//      if(order.getId() == 0) {
+//        Instant instant = Instant.now();
+//        Timestamp timestamp = Timestamp.from(instant);
+//        order.setCreatedAt(timestamp);
+//          orderDao.save(order);
+//      }
+
+
+        List<OrderProduct> check = new ArrayList<>();
 
         for (Product cartItem : cart) {
             OrderProduct addingProduct = new OrderProduct(1, order, cartItem);
             cartItem.getOrderProduct().add(addingProduct);
 //            orderProducts.add(addingProduct);
-            order.getOrderProducts().add(addingProduct);
-            productDao.save(cartItem);
+            check.add(addingProduct);
+//            order.getOrderProducts().add(addingProduct);
+
+            orderProduct.setOrder(order);
+            orderProduct.setProduct(cartItem);
+//            productDao.save(cartItem);
             orderProductDao.save(orderProduct);
         }
 
-//        order.setOrderProducts(orderProducts);
+        order.setOrderProducts(check);
 
 
-        Instant instant = Instant.now();
-        Timestamp timestamp = Timestamp.from(instant);
-        order.setCreatedAt(timestamp);
+//        Instant instant = Instant.now();
+//        Timestamp timestamp = Timestamp.from(instant);
+//        order.setCreatedAt(timestamp);
+
+
         order.setUser(authUser);
-
-
         orderDao.save(order);
 
         cart.clear();
