@@ -39,8 +39,8 @@
                 <ul class="c-sidebar-nav">
                     <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">
                         <form th:action="@{/Wine}" method="get">
-                            <button type="submit" class="c-sidebar-nav-link nav-link"
-                                    style="color: white; text-decoration: none; background-color: black;"
+                            <button type="submit" class="c-sidebar-nav-link m-1 nav-link"
+                                    style="color: white; text-decoration: none;"
                                     th:value="${category.getId()}" name="catId">
                                 <span th:text="${category.getName()}"></span>
                             </button>
