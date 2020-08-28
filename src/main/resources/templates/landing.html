@@ -2,26 +2,27 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:include="partials/head :: head">
     <title>Hilltop-Liquors</title>
-
+</head>
+<head>
     <style>
-        nav{
-            height: 70px!important;
+        body{
+            background-image: url("/img/tractor-sign-1 copy.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
         }
     </style>
-
 </head>
 <body>
-<h1>Hilltop Liquors</h1>
 
-<div class="card m-5 p-5">
+<div class="card m-5 p-1 shadow center" style="width: 14rem ;">
     <div class="card-header">
         Are you 21 or older?
     </div>
-    <div class="card-body">
+    <div class="card-body center shadow">
         <a href="/Home" class="btn btn-primary">YES</a>
 
         <!--NO Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+        <button type="button" class="btn" data-toggle="modal" data-target="#staticBackdrop">
             NO
         </button>
 

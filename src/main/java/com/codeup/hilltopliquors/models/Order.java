@@ -1,4 +1,6 @@
 package com.codeup.hilltopliquors.models;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -12,17 +14,29 @@ public class Order {
     private int totalInCents;
     @Column(length = 250, nullable = false)
     private boolean isCurbside;
+
+//    @CreationTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(length = 250, nullable = false)
     private Timestamp createdAt;
+
     @Column(length = 250, nullable = false)
     private  boolean orderIsFulfilled;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User user;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts;
+
     public Order() {
     }
+
+    public Order(User user, List<OrderProduct> orderProducts) {
+        this.user = user;
+        this.orderProducts = orderProducts;
+    }
+
     public Order(long id, int totalInCents, boolean isCurbside, Timestamp createdAt, boolean orderIsFulfilled) {
         this.id = id;
         this.totalInCents = totalInCents;

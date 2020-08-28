@@ -41,9 +41,15 @@ public class CartController {
         Order order = new Order();
         if (request.getSession().getAttribute("order") == null) {
             order = new Order();
+            Instant instant = Instant.now();
+            Timestamp timestamp = Timestamp.from(instant);
+            order.setCreatedAt(timestamp);
+            orderDao.save(order);
         } else {
             order = (Order) request.getSession().getAttribute("order");
         }
+
+
         request.getSession().setAttribute("order", order);
 
         return order;
@@ -230,58 +236,52 @@ public class CartController {
     // POST MAPPING FOR SAVE ORDER AND SEND EMAIL
     @PostMapping("/Cart/checkout-receipt")
     public String saveCheckoutOrder
-    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
+    (@SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails,
+     @SessionAttribute("order") Order order, @SessionAttribute("orderProduct") OrderProduct orderProduct) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         User authUser = userDao.findByUsername(auth.getName());
 
-//        Order authU = SecurityContextHolder.getContext().getAuthentication();
 
-//        Order authenUser = userDao.findByUsername(auth.getName());
+        List<OrderProduct> orderProducts = new ArrayList<>();
 
-//        OrderProduct orderCart = new OrderProduct();
 
-//        List<Long> orderproductTwoTheReturn = new ArrayList<>();
-//        List<OrderProduct> orderproductTwoTheReturns = cart;
+        if(order.getOrderProducts() == null) {
+            order.setOrderProducts(orderProducts);
+        }
 
-//        for (Product cartItem : cart) {
-//            orderproductTwoTheReturn.add(productDao.getOne(cartItem.getId()));
-//            orderproductTwoTheReturn.add(cartItem.getId());
-//            System.out.println(cartItem.getId() + "THIS ONE!!!!!!!!!!!");
-//            System.out.println("products !!!!!!!" + productDao.getOne(cartItem.getId()));
-//            System.out.println("THIS IS THE ORDER ID -ANDREW " + order.getId());
-//        }
+//      if(order.getId() == 0) {
+//        Instant instant = Instant.now();
+//        Timestamp timestamp = Timestamp.from(instant);
+//        order.setCreatedAt(timestamp);
+//          orderDao.save(order);
+//      }
 
-//        Product saveThis = new Product();
-//        for (Long orderId : orderproductTwoTheReturn) {
-//            System.out.println(orderId + "SOUT, SOUT ORDER ID");
-//           saveThis = productDao.getOne(orderId);
-//        }
 
-//        System.out.println(orderproductTwoTheReturn.toString() + "THE RETURN!!!!!!!!!!!!!!! ");
-//        System.out.println(cart.toString() + "CART !!!!!!!!");
+        List<OrderProduct> check = new ArrayList<>();
 
-//        orderProduct.setProduct(saveThis);
-//        orderProduct.setQuantity(1);
-//        orderProductDao.save(orderProduct);
-//        orderProduct.setOrder(order);
+        for (Product cartItem : cart) {
+            OrderProduct addingProduct = new OrderProduct(1, order, cartItem);
+            cartItem.getOrderProduct().add(addingProduct);
+//            orderProducts.add(addingProduct);
+            check.add(addingProduct);
+//            order.getOrderProducts().add(addingProduct);
 
-//        System.out.println(cart.containsAll());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getId());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getUser());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.getOrderProducts());
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order.g ;
-//        System.out.println("THIS IS THE ORDER ID -ANDREW "+ order);
-//         orders primary id to be saved in order product table as order_id
-// changes
+            orderProduct.setOrder(order);
+            orderProduct.setProduct(cartItem);
+//            productDao.save(cartItem);
+            orderProductDao.save(orderProduct);
+        }
 
-        Instant instant = Instant.now();
-        Timestamp timestamp = Timestamp.from(instant);
-        order.setCreatedAt(timestamp);
+        order.setOrderProducts(check);
+
+
+//        Instant instant = Instant.now();
+//        Timestamp timestamp = Timestamp.from(instant);
+//        order.setCreatedAt(timestamp);
+
+
         order.setUser(authUser);
-//        order.setOrderProducts(cart);
-
         orderDao.save(order);
 
         cart.clear();
