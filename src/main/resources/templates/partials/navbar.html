@@ -11,15 +11,15 @@
 
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: black;">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top shadow" style="background-color: black;">
     <a class="navbar-brand" href="/Home">Hilltop Liquors</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse float-right" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse mr-3" id="navbarsExampleDefault" style="margin-left: 40%;">
+        <ul class="navbar-nav">
 
 <!--                ADDING THIS TO ALLOW ONLY ADMIN TO ACCESS AND SEE THIS PAGE-->
             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -60,12 +60,12 @@
                 <a class="nav-link" href="/About">About <span class="sr-only">(current)</span></a>
             </li>
 
-            <li sec:authorize="isAnonymous()" class="nav-item active">
-                <a class="nav-link" href="/registration">Register <span class="sr-only">(current)</span></a>
-            </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>
+            </li>
+            <li sec:authorize="isAnonymous()" class="nav-item active">
+                <a class="nav-link" href="/registration">Register <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <div sec:authorize="isAuthenticated()">
@@ -93,9 +93,9 @@
         <!--            <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
         <!--        </form>-->
 
-        <form class="form-inline my-2 my-lg-0" th:action="@{/Search}" method="get">
+        <form class="form-inline my-2 ml-5 my-lg-0" th:action="@{/Search}" method="get">
             <input id="txtSearch" type="text" name="keyword">
-            <button class="btn btn-dark btn-outline my-2 my-sm-0" type="submit">Search</button>
+<!--            <button class="btn btn-dark btn-outline my-2 ml-2 my-sm-0" type="submit">Search</button>-->
         </form>
 
         <!--        &lt;!&ndash;Login Modal &ndash;&gt;-->
