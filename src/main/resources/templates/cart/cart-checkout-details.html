@@ -61,7 +61,7 @@
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="m-2 p-5" style="width:100%;">
+<div class="m-2 p-5" style="width:100%; background-color: #f4f4f4;">
 <!--  CONTAINER  -->
 <div class="m-5 p-5" style="width:100%;">
     <a style="text-decoration: none; color:black;" th:href="@{/Cart}">back to cart</a>
@@ -73,7 +73,7 @@
 
     <form th:action="@{/Cart/confirm-details}" th:method="post">
         <!--    CURBSIDE  -->
-        <div class="form-group row">
+        <div class="form-group row" style="background-color: #f4f4f4;">
             <label for="isCurbside" class="col-sm-2 col-form-label">Would you like curbside service?</label>
             <div class="col-sm-10">
                 <input type="checkbox" id="isCurbside" name="isCurbside" aria-label="Checkbox for following text input">
