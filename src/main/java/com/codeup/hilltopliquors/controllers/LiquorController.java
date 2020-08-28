@@ -37,8 +37,6 @@ public class LiquorController {
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
         List<Category> catTags = catDao.findCategoriesByProductTypeId(2);
 
-//      PRODUCT TYPE TAGS
-        List<Product> productTypes = productDao.findAllBySubCategoryCategoryProductTypeId(productTypeId);
 //      CATEOGRY TAGS
         List<Product> catProducts = productDao.findAllBySubCategoryCategoryId(catId);
 //      SUB-CAT TAGS
@@ -49,20 +47,17 @@ public class LiquorController {
             model.addAttribute("products", productDao.findByKeyWord(keyword));
             model.addAttribute("keyword", "Search results for: " + keyword);
         }
-
         if (catId != null) {
             model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
-            model.addAttribute("productTypes", productTypes);
         } else if (subId != null) {
             System.out.println(subId);
             model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
-            model.addAttribute("productTypes", productTypes);
-        } else{
+        } else if (productTypeId != null){
             model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
-            model.addAttribute("productTypes", productTypes);
+        } else {
             model.addAttribute("products", products);
         }
 
