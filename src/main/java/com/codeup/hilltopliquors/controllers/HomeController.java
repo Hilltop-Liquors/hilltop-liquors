@@ -1,14 +1,11 @@
 package com.codeup.hilltopliquors.controllers;
-
 import com.codeup.hilltopliquors.models.Product;
-
 import org.springframework.beans.factory.annotation.Value;
-
-import com.codeup.hilltopliquors.models.User;
 import com.codeup.hilltopliquors.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import com.codeup.hilltopliquors.models.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,14 +24,11 @@ public class HomeController {
     @Value("${cocktail.api.key}")
     private String cocktailApiKey;
 
-
     public final UserRepository userDao;
-
 
     public HomeController(UserRepository userDao) {
         this.userDao = userDao;
     }
-
 
     @GetMapping("/")
     public String showLanding(HttpServletRequest request) {
@@ -43,7 +37,49 @@ public class HomeController {
         return "landing";
     }
 
-//    @ModelAttribute("ValidUser")
+    @ModelAttribute("cart")
+    public String showHome(HttpServletRequest request) {
+        List<Product> cart;
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
+        request.getSession().setAttribute("cart", cart);
+        return "cart";
+    }
+
+    @GetMapping("/Home")
+    public String showHome(Model model) {
+        model.addAttribute("cocktailApiKey", cocktailApiKey);
+        return "home";
+    }
+
+    @GetMapping("/About")
+    public String showAbout() {
+
+        return "about";
+    }
+
+    @GetMapping("/EventSupply")
+    public String showCatering() {
+        return "eventSupply";
+    }
+
+    @GetMapping("/user")
+    public String userIndex() {
+        return "user/index";
+    }
+
+//////    add confirm field then run if else
+//    if( confirm username field != existing database.name ){
+//        save confirm username field
+//    } else if (confirm username field == database name ){
+//        throw error.
+//    } else if (confirm username field.equals(" ") ){
+//        save first username field;
+//    }
+    //    @ModelAttribute("ValidUser")
 //    public String isValidUser(HttpServletRequest request) {
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        if (request.getSession().getAttribute("auth") == null) {
@@ -70,47 +106,15 @@ public class HomeController {
 //            response.sendRedirect("/login");
 //        }
 //    }
-
-
-    @ModelAttribute("cart")
-    public String showHome(HttpServletRequest request) {
-        List<Product> cart;
-        if (request.getSession().getAttribute("cart") == null) {
-            cart = new ArrayList<>();
-        } else {
-            cart = (List<Product>) request.getSession().getAttribute("cart");
-        }
-        request.getSession().setAttribute("cart", cart);
-        return "cart";
-    }
-
-
-    @GetMapping("/Home")
-    public String showHome() {
-        return "home";
-    }
-
-    @GetMapping("/About")
-    public String showAbout() {
-
-        return "about";
-    }
-
-    @GetMapping("/EventSupply")
-    public String showCatering() {
-        return "eventSupply";
-    }
-
-//    @GetMapping("/Contact")
+    //    @GetMapping("/Contact")
 //    public String showContact() {
 //        return "contact";
 //    }
 
-    @GetMapping("/Recipes")
-    public String showRecipes(Model model) {
-        model.addAttribute("cocktailApiKey", cocktailApiKey);
-        return "recipes";
-    }
+//    @GetMapping("/Recipes")
+//    public String showRecipes() {
+//        return "recipes";
+//    }
 
 //    @GetMapping("/Register")
 //    public String showSignUp() {
@@ -127,19 +131,6 @@ public class HomeController {
 //        return "search";
 //    }
 
-    @GetMapping("/user")
-    public String userIndex() {
-        return "user/index";
-    }
-
-//////    add confirm field then run if else
-//    if( confirm username field != existing database.name ){
-//        save confirm username field
-//    } else if (confirm username field == database name ){
-//        throw error.
-//    } else if (confirm username field.equals(" ") ){
-//        save first username field;
-//    }
 
 
 }
