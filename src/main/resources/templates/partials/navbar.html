@@ -12,14 +12,21 @@
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-md navbar-dark fixed-top shadow" style="background-color: black;">
-    <a class="navbar-brand" href="/Home">Hilltop Liquors</a>
+    <!--  =========== HILLTOP LOGO ============  -->
+    <a href="/Home">
+        <img th:src="@{img/H.png}" style="width: 30px; height: 30px;" src="../../static/img/H.png" class="rounded"
+             alt="Shop local">
+    </a>
+
+    <a class="navbar-brand" href="/Home" style="font-size: 25px; font-weight: lighter; margin-left:5px;">illtop
+        Liquors</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse mr-3" id="navbarsExampleDefault" style="margin-left: 50%;" >
-<!--        https://codeup.slack.com/archives/G010LTLGGKH/p1591797373000500-->
+    <div class="collapse navbar-collapse mr-3" id="navbarsExampleDefault" style="margin-left: 50%;">
+        <!--        https://codeup.slack.com/archives/G010LTLGGKH/p1591797373000500-->
         <ul class="navbar-nav">
 
             <!--  =========== ADMIN NAV ============  -->
@@ -33,7 +40,8 @@
 
             <!--  =========== SEARCH ============  -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="color:white;" th:href="@{/Search}" id="dropdown01" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" style="color:white;" th:href="@{/Search}" id="dropdown01"
+                   data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Shop Now!</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" th:href="@{/Search}">All Products</a>
@@ -60,7 +68,8 @@
 
             <!--  =========== FACEBOOK ICON ============  -->
             <li class="nav-link">
-                <a style="color:#3b5998;" href="https://www.facebook.com/HilltopLiquorsTX/" target="_blank"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
+                <a style="color:#00b9f7;" href="https://www.facebook.com/HilltopLiquorsTX/" target="_blank"><i
+                        style="font-size: 25px;" class="fab fa-facebook"></i></a>
             </li>
 
             <!--  =========== CONTACT ICON ============  -->
@@ -86,7 +95,7 @@
                 </span>
             </span>
 
-            <span sec:authorize="isAnonymous()">
+                <span sec:authorize="isAnonymous()">
                 <a class="nav-item" style="color: white;" data-toggle="modal"
                    data-target="#exampleModalLong">
                     Login</a>
