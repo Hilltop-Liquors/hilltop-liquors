@@ -27,7 +27,7 @@ public class ExtrasController {
             this.subCatDao = subCatDao;
             this.catDao = catDao;
             this.productTypeDao = productTypeDao;
-        }git
+        }
 
         //        EXTRAS
         //        GET ALL POSTS and SEARCH BAR

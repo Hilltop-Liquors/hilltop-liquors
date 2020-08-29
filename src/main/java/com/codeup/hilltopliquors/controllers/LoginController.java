@@ -30,6 +30,13 @@ public class LoginController {
 //            return "user/login";
 //    }
 
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+//            return "user/login";
+        return "redirect:/Home?error";
+    }
+
 
 //    @RequestMapping(value = "/Login", method = RequestMethod.POST)
 //    public String loginPage(@RequestParam(value = "error", required = false) String error,
