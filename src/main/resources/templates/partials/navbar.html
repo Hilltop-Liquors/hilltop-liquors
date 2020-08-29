@@ -21,21 +21,16 @@
     <div class="collapse navbar-collapse mr-3" id="navbarsExampleDefault" style="margin-left: 40%;">
         <ul class="navbar-nav">
 
-<!--                ADDING THIS TO ALLOW ONLY ADMIN TO ACCESS AND SEE THIS PAGE-->
+            <!--  =========== ADMIN NAV ============  -->
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                     <li class="nav-item active">
                         <a class="nav-link" href="/admin">ADMIN<span class="sr-only">(current)</span></a>
                     </li>
-<!--                    <li class="nav-item active">-->
-<!--                        <a class="nav-link" href="/products">Upload<span class="sr-only">(current)</span></a>-->
-<!--                    </li>-->
-
                 </div>
             </sec:authorize>
 
-
-            <!--        SEARCH       -->
+            <!--  =========== SEARCH ============  -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" th:href="@{/Search}" id="dropdown01" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Shop Now!</a>
@@ -47,137 +42,87 @@
                     <a class="dropdown-item" th:href="@{/Extras}">Extras</a>
                 </div>
             </li>
-<!--            Rest of Navbar-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" href="EventSupply">Events Supply <span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-
+            <!--  =========== EVENT SUPPLY ============  -->
             <li class="nav-item active">
-                <a class="nav-link" href="/Recipes">Recipes <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="EventSupply">Events Supply <span class="sr-only">(current)</span></a>
             </li>
-
+            <!--  =========== ABOUT ============  -->
             <li class="nav-item active">
                 <a class="nav-link" href="/About">About <span class="sr-only">(current)</span></a>
             </li>
 
-
+            <!--  =========== CONTACT ============  -->
             <li class="nav-item active">
                 <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>
             </li>
+
+            <!--  =========== REGISTER ============  -->
             <li sec:authorize="isAnonymous()" class="nav-item active">
                 <a class="nav-link" href="/registration">Register <span class="sr-only">(current)</span></a>
             </li>
+
+            <!--  =========== CART ICON ============  -->
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/Cart}"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
+            </li>
+
+            <!--  =========== LOGIN/LOGOUT ============  -->
+            <li>
+            <li class="nav-item active" sec:authorize="isAuthenticated()">
+                <a class="nav-link d-inline" th:href="@{/Logout}">Logout</a>
+
+
+                <span class="nav-line d-inline" style="color:white"
+                      th:text="${#authentication.principal.username}">
+                                </span>
+            </li>
+            <li class="nav-item active" sec:authorize="isAnonymous()">
+<!--                <a class="nav-link" th:href="@{/Login}">Login</a>-->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" style="margin-top: 10%;" data-toggle="modal"
+                        data-target="#exampleModalLong">
+                    Login
+                </button>
+            </li>
+
+            <!--  =========== SETTINGS ============  -->
             <li class="nav-item active">
                 <div sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:href="@{/user/edit}"><i class="fas fa-user-cog"></i> <span class="sr-only">(current)</span></a>
                 </div>
             </li>
-            <!--        CART        -->
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/Cart}"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active" sec:authorize="isAuthenticated()">
-                <a class="nav-link d-inline" th:href="@{/Logout}">Logout</a>
-                <span class="nav-line d-inline" style="color:white"
-                      th:text="${#authentication.principal.username}"></span>
-            </li>
-            <li class="nav-item active" sec:authorize="isAnonymous()">
-                <a class="nav-link" th:href="@{/Login}">Login</a>
-            </li>
-            <!--            <li class="nav-item active">-->
-            <!--                <a class="nav-link" href="/registration">Register</a>-->
-            <!--            </li>-->
         </ul>
-        <!--        <form class="form-inline my-2 my-lg-0">-->
-        <!--            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
-        <!--            <button class="btn btn-dark btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
-        <!--        </form>-->
+        <!--  =========== END UL LIST============  -->
 
+        <!--  =========== SEARCH ============  -->
         <form class="form-inline my-2 ml-5 my-lg-0" th:action="@{/Search}" method="get">
             <input id="txtSearch" type="text" name="keyword">
-<!--            <button class="btn btn-dark btn-outline my-2 ml-2 my-sm-0" type="submit">Search</button>-->
+            <!--            <button class="btn btn-dark btn-outline my-2 ml-2 my-sm-0" type="submit">Search</button>-->
         </form>
 
-        <!--        &lt;!&ndash;Login Modal &ndash;&gt;-->
-        <!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-        <!--            <div class="modal-dialog">-->
-        <!--                <div class="modal-content">-->
-        <!--                    <div class="modal-header">-->
-        <!--                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
-        <!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-        <!--                            <span aria-hidden="true">&times;</span>-->
-        <!--                        </button>-->
-        <!--                    </div>-->
-        <!--                    <div class="modal-body">-->
-        <!--                        ...-->
-        <!--                    </div>-->
-        <!--                    <div class="modal-footer">-->
-        <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-        <!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
-        <!--        &lt;!&ndash;            End login modal&ndash;&gt;-->
-
-        <!-- LOGIN BTN-->
-        <!--<li>-->
-        <!--    <label for="login">login</label>-->
-        <!--    <input type="button" th:href="/login" class="button" id="login">-->
-        <!--</li>-->
-
-
-        <!--            <li class="nav-item active bg-dark" data-toggle="modal" data-target="#exampleModal">-->
-        <!--                <button style="z-index: 1;" type="button" class="btn btn-dark d-inline"-->
-        <!--                        data-toggle="modal"-->
-        <!--                        data-target="#exampleModalCenter">-->
-        <!--                    Login-->
-        <!--                </button>-->
-        <!--            </li>-->
-
-
-        <!-- LOGIN MODAL -->
-        <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title">Login</h1>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <!--                                <div th:if="${param.error}">-->
-                        <!--                                    Invalid Username and Password.-->
-                        <!--                                </div>-->
-                        <!--                                <div th:if="${param.logout}">-->
-                        <!--                                    You have been logged out.-->
-                        <!--                                </div>-->
-
-                        <form method="post">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input class="form-control" id="username" name="username" type="text"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input class="form-control" id="password" name="password" type="password"/>
-                            </div>
-                            <button class="bg-dark text-white"
-                                    style="border-left: 4px solid orange; font-weight: lighter;"
-                                    type="submit">Login
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--        CONTACT        -->
     </div>
 </nav>
+<!--  =========== LOGIN MODAL ============  -->
+<!--<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                ...-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
+<!--</div>-->
 </body>
 </html>

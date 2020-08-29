@@ -1,49 +1,74 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
-<!--<body>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
 
-<!--&lt;!&ndash; LOGIN MODAL &ndash;&gt;-->
-<!--<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"-->
-<!--     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
-<!--    <div class="modal-dialog modal-dialog-centered" role="document">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h1 class="modal-title">Login</h1>-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                    <span aria-hidden="true">&times;</span>-->
-<!--                </button>-->
-<!--            </div>-->
+<!--  =========== LOGIN FORM ============  -->
 
-<!--            <div class="modal-body">-->
-<!--                &lt;!&ndash;                                <div th:if="${param.error}">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    Invalid Username and Password.&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div th:if="${param.logout}">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    You have been logged out.&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--  =========== LOGIN MODAL ============  -->
+<div th:fragment="login-modal" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--  =========== LOGIN FORM ============  -->
+                <div th:if="${loginError}">
+                    <div class="alert alert-danger"> Invalid username or
+                        password.
+                    </div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">You have been logged out.</div>
+                </div>
+                <br>
 
-<!--                <form method="post">-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="username">Username</label>-->
-<!--                        <input class="form-control" id="username" name="username" type="text"/>-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="password">Password</label>-->
-<!--                        <input class="form-control" id="password" name="password" type="password"/>-->
-<!--                    </div>-->
-<!--                    <button class="bg-dark text-white"-->
-<!--                            style="border-left: 4px solid orange; font-weight: lighter;"-->
-<!--                            type="submit">Login-->
-<!--                    </button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+                <div class="container m-auto" style="background-color: #f4f4f4;">
+                    <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
 
-<!--</body>-->
-<!--</html>-->
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <h1>Login page</h1>
+                            <form th:action="@{/login}" method="post">
+                                <div class="form-group">
+                                    <label for="username">Username</label>: <input type="text"
+                                                                                   id="username" name="username"
+                                                                                   class="form-control"
+                                                                                   autofocus="autofocus"
+                                                                                   placeholder="Username"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>: <input type="password"
+                                                                                   id="password" name="password"
+                                                                                   class="form-control"
+                                                                                   placeholder="Password"/>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="login-submit" id="login-submit"
+                                                   class="form-control btn btn-primary" value="Log In"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+      <span>New user? <a href="/registration">Register
+        here</a></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

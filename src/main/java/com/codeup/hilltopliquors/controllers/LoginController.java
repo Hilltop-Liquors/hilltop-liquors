@@ -25,15 +25,16 @@ public class LoginController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/Login")
-    public String login(Model model, HttpServletRequest request, HttpServletResponse response) {
-            return "user/login";
-    }
+//    @GetMapping("/Login")
+//    public String login(Model model, HttpServletRequest request, HttpServletResponse response) {
+//            return "user/login";
+//    }
 
     @RequestMapping("/login-error")
     public String loginError(Model model) {
-            model.addAttribute("loginError", true);
-            return "user/login";
+        model.addAttribute("loginError", true);
+//            return "user/login";
+        return "redirect:/Home?error";
     }
 
 //    @RequestMapping(value = "/Login", method = RequestMethod.POST)

@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <meta name="cocktailApiKey" th:content="${cocktailApiKey}">
 <head th:include="partials/head :: head">
-<!--    <meta name="cocktailApiKey" th:content="${cocktailApiKey}">-->
 
     <title>Hilltop-Home</title>
 
@@ -10,44 +9,132 @@
         nav {
             height: 70px !important;
         }
-        h1{
+
+        h1 {
             width: 50%;
-            text-align:center;
+            text-align: center;
         }
-        #drink-section img{
-            width:50%;
-            height:auto;
+
+        #drink-section img {
+            width: 50%;
+            height: auto;
         }
     </style>
 
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
+<div th:replace="partials/login-modal :: login-modal"></div>
 
 <div class="container m-5 p-5">
-    <div th:if="${param.success}">
-        <div class="alert alert-info">Thank you for your order! See you at the top!
-        </div>
+<!--  CHECKOUT SUCCESS PARAM -->
+    <div th:if="${param.success}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> Thank you for your order! See you at the top!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 
-<!--Email success-->
-    <div th:if="${param.emailSuccess}">
-        <div class="alert alert-info">Thank you for contacting us, we'll get in touch ASAP!
-        </div>
+<!--ERROR LOGIN PARAM-->
+    <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> Incorrect login
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div th:if="${param.emailSuccess}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> Thank you for contacting us, we'll get in touch ASAP!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 
 
-    <section id ="drink-section"></section>
-    <section id ="on-list_item"></section>
-    <section id ="ons-card"></section>
+    <!--  =========== LOGIN MODAL ============  -->
+<!--    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog" role="document">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    &lt;!&ndash;  =========== LOGIN FORM ============  &ndash;&gt;-->
+<!--                    <div th:if="${loginError}">-->
+<!--                        <div class="alert alert-danger"> Invalid username or-->
+<!--                            password.-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div th:if="${param.logout}">-->
+<!--                        <div class="alert alert-info">You have been logged out.</div>-->
+<!--                    </div>-->
+<!--                    <br>-->
+
+<!--                    <div class="container m-auto" style="background-color: #f4f4f4;">-->
+<!--                        <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-6 col-md-offset-3">-->
+<!--                                <h1>Login page</h1>-->
+<!--                                <form th:action="@{/login}" method="post">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="username">Username</label>: <input type="text"-->
+<!--                                                                                       id="username" name="username" class="form-control"-->
+<!--                                                                                       autofocus="autofocus" placeholder="Username"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="password">Password</label>: <input type="password"-->
+<!--                                                                                       id="password" name="password" class="form-control"-->
+<!--                                                                                       placeholder="Password"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-sm-6 col-sm-offset-3">-->
+<!--                                                <input type="submit" name="login-submit" id="login-submit"-->
+<!--                                                       class="form-control btn btn-primary" value="Log In"/>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--      <span>New user? <a href="/registration">Register-->
+<!--        here</a></span>-->
+<!--                                    </div>-->
+<!--                                </form>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
 
-<!--    <h2>HOME TEST</h2>-->
+
+
+
+
+
+
+
+                    <!--  =========== END LOGIN FORM ============  -->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                    <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+
+
+<!--  =========== RECIPES ============  -->
+    <section id="drink-section"></section>
+    <section id="on-list_item"></section>
+    <section id="ons-card"></section>
 
 </div>
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
 <script>
     console.log(document.querySelector('meta[name="cocktailApiKey"]').content);
     fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
@@ -59,7 +146,6 @@
     })
         .then(response => response.json())
         .then(
-
             data =>
                 // console.log(data))
                 getCocktail(data))
@@ -68,7 +154,7 @@
             console.log(err);
         });
 
-    function getCocktail(cocktail){
+    function getCocktail(cocktail) {
 
         // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);
         let drinkSection = document.querySelector('#drink-section');
@@ -80,9 +166,9 @@
         img.src = cocktail.drinks[0].strDrinkThumb;
 
         drinkSection.appendChild(img);
-        for(let i=1; i<16; i++){
+        for (let i = 1; i < 16; i++) {
             // console.log(i);
-            if(cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '' ){
+            if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {
                 break;
             }
 
@@ -96,6 +182,7 @@
         drinkSection.appendChild(card);
     }
 </script>
+<!--  =========== END RECIPES ============  -->
 
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
