@@ -9,7 +9,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -26,12 +26,9 @@
                 </div>
                 <br>
 
-                <div class="container m-auto" style="background-color: #f4f4f4;">
-                    <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
-
+                <div class="container m-auto">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
-                            <h1>Login page</h1>
                             <form th:action="@{/login}" method="post">
                                 <div class="form-group">
                                     <label for="username">Username</label>: <input type="text"
@@ -50,7 +47,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <input type="submit" name="login-submit" id="login-submit"
-                                                   class="form-control btn btn-primary" value="Log In"/>
+                                                   class="btn btn-primary" value="Log In"/>
                                         </div>
                                     </div>
                                 </div>

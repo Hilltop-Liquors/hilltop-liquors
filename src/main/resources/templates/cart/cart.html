@@ -156,7 +156,9 @@
                     </form>
 
                     <span sec:authorize="isAnonymous()">
-                        <a th:href="@{/Login}">You must be logged in to checkout</a>
+                        <button class="btn btn-primary" style="margin-top: 15%;" data-toggle="modal"
+                                data-target="#exampleModalLong">
+                        You must be logged in to checkout</button>
                     </span>
                     <!--         ==========================           -->
                 </td>
