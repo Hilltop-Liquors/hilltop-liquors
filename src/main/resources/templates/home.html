@@ -10,15 +10,15 @@
             height: 70px !important;
         }
 
-        h1 {
-            width: 50%;
-            text-align: center;
-        }
+        /*h1 {*/
+        /*    width: 15%;*/
+        /*    text-align: center;*/
+        /*}*/
 
-        #drink-section img {
-            width: 50%;
-            height: auto;
-        }
+        /*#drink-section {*/
+        /*    width: 15%;*/
+        /*    height: 8%;*/
+        /*}*/
     </style>
 
 </head>
@@ -54,14 +54,14 @@
 
     <!--  =========== EVENT SUPPLY BTN ============  -->
     <button class="nav-link btn btn-primary" style="margin-top: 10%;" data-toggle="modal"
-       data-target="#EventModalLong">Ask us about supplying your next event!
+            data-target="#EventModalLong">Ask us about supplying your next event!
     </button>
 
     <!--  =========== RECIPES ============  -->
-    <section id="drink-section"></section>
-    <section id="on-list_item"></section>
-    <section id="ons-card"></section>
-
+    <!--IMG-->
+    <section id="drink-section" style="width: 5%; height: 5%;"></section>
+    <section id="ons-list_item" style="width: 5%; height: 5%;"></section>
+    <section id="ons-card" style="width: 5%; height: 5%;"></section>
 </div>
 <script>
     console.log(document.querySelector('meta[name="cocktailApiKey"]').content);
@@ -83,7 +83,6 @@
         });
 
     function getCocktail(cocktail) {
-
         // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);
         let drinkSection = document.querySelector('#drink-section');
         let drinkName = document.createElement('h2');
@@ -92,6 +91,12 @@
 
         let img = document.createElement('img');
         img.src = cocktail.drinks[0].strDrinkThumb;
+
+        // var obj = document.createElement('div');
+        img.id = "::img";
+        img.style.cssText = 'width:500%; height:500%;';
+        // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';
+        // document.getElementById("divInsteadOfDocument.Write").appendChild(img);
 
         drinkSection.appendChild(img);
         for (let i = 1; i < 16; i++) {
@@ -110,8 +115,8 @@
         drinkSection.appendChild(card);
     }
 </script>
-<!--  =========== END RECIPES ============  -->
-<!--about-->
+
+<!--  =========== ABOUT ============  -->
 <section id="section-about">
     <div class="container">
         <div id="about">
@@ -121,14 +126,13 @@
                         <div class="wow bounceIn">
 
                             <h2 class="section-heading animated" data-animation="bounceInUp">About Us</h2>
-                            <p><b>Let's begin by breaking the ice, grabbing a beer, and getting to know one another!</b></p>
+                            <p><b>Let's begin by breaking the ice, grabbing a beer, and getting to know one another!</b>
+                            </p>
 
                         </div>
                     </div>
                 </div>
             </div>
-
-
             <div class="col-lg-12 ">
                 <div class="company mar-left10">
                     <h4><span id="span">Welcome to Hilltop Liquors!</span></h4>
@@ -146,21 +150,13 @@
                         <br><br>
                         Your local Victoria family, <br>
                         <i>~The Smiths</i></p>
-
                 </div>
-
             </div>
-
         </div>
     </div>
 
-
-    <!--/about-->
-    <!-- OUR TEAM -->
-    <!-- ======== OUR TEAM ========-->
-
+    <!-- ======== ABOUT: OUR TEAM ========-->
     <div class="container mb-5">
-
         <div class="row mar-bot10">
             <div class="col-md-offset-3 col-md-6">
                 <div class="section-header">
@@ -174,8 +170,7 @@
         </div>
 
         <div class="row align-center mar-bot45">
-            <!-- CARD ONE- family -->
-            <!-- ==========================-->
+            <!-- ===========FAMILY PIC===============-->
             <div class="col-md-4">
                 <div class="wow bounceIn" data-animation-delay="4.8s">
                     <div class="team-member">
@@ -186,13 +181,10 @@
                             <h4>The Smith Family</h4>
                             <span>New owners</span>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            <!-- CARD TWO - manager-->
-            <!-- ==========================-->
+            <!-- ===========MANAGER===============-->
             <div class="col-md-4">
                 <div class="wow bounceIn">
                     <div class="team-member">
@@ -207,8 +199,7 @@
                     </div>
                 </div>
             </div>
-            <!-- CARD animals-->
-            <!-- ==========================-->
+            <!-- ===========CAT===============-->
             <div class="col-md-4">
                 <div class="wow bounceIn">
                     <div class="team-member">
@@ -229,9 +220,15 @@
 
 <!--============= MAP =============-->
 <section id="section-map" class="clearfix col-lg-12">
-    <div style="width: 100%; margin-bottom: 5%;"><iframe width="100%" height="450" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe></div>
+    <div style="width: 100%; margin-bottom: 5%;">
+        <iframe width="100%" height="450"
+                src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
+                href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe>
+    </div>
 </section>
 
+<!-- ===========FOOTER===============-->
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
