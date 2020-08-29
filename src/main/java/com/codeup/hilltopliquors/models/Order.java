@@ -3,6 +3,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 @Entity
 @Table(name = "orders")
@@ -15,10 +16,13 @@ public class Order {
     @Column(length = 250, nullable = false)
     private boolean isCurbside;
 
-//    @CreationTimestamp
-//    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(length = 250, nullable = false)
-    private Timestamp createdAt;
+    private Date createdAt;
+
+//    @Column(length = 250, nullable = false)
+//    private Timestamp createdAt;
 
     @Column(length = 250, nullable = false)
     private  boolean orderIsFulfilled;
@@ -36,6 +40,8 @@ public class Order {
         this.user = user;
         this.orderProducts = orderProducts;
     }
+
+
 
     public Order(long id, int totalInCents, boolean isCurbside, Timestamp createdAt, boolean orderIsFulfilled) {
         this.id = id;
@@ -62,9 +68,9 @@ public class Order {
     public void setIsCurbside(boolean isCurbside) {
         this.isCurbside = isCurbside;
     }
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
+//    public Timestamp getCreatedAt() {
+//        return createdAt;
+//    }
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
