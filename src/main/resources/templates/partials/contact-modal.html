@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+
+<!--  =========== LOGIN MODAL ============  -->
+<div th:fragment="contact-modal" class="modal fade" id="CartModalLong" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--  =========== LOGIN FORM ============  -->
+                <form th:action="@{/Contact}" method="post">
+                    <div class="form-group">
+                        <label for="Name">Name:</label>
+                        <input type="text" class="form-control" id="Name" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="number" class="form-control" id="phoneNumber" name="phone" placeholder="(xxx)xxx-xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventInfo">Message Here</label>
+                        <textarea class="form-control" id="eventInfo" name="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" value="submit" class="btn btn-dark btn-outline-info">Send Email</button>
+                    <!--            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>-->
+                </form>
+
+            </div> <!--end modal body-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -53,7 +53,10 @@
 
             <!--  =========== CONTACT ============  -->
             <li class="nav-item active">
-                <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>
+<!--                <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>-->
+                <a class="nav-link" style="margin-top: 10%;" data-toggle="modal"
+                   data-target="#CartModalLong"><i class="far fa-envelope"></i><span class="sr-only">(current)</span>
+                </a>
             </li>
 
             <!--  =========== REGISTER ============  -->
@@ -77,12 +80,9 @@
                                 </span>
             </li>
             <li class="nav-item active" sec:authorize="isAnonymous()">
-<!--                <a class="nav-link" th:href="@{/Login}">Login</a>-->
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" style="margin-top: 10%;" data-toggle="modal"
+                <a class="nav-link" style="margin-top: 10%;" data-toggle="modal"
                         data-target="#exampleModalLong">
-                    Login
-                </button>
+                    Login</a>
             </li>
 
             <!--  =========== SETTINGS ============  -->
