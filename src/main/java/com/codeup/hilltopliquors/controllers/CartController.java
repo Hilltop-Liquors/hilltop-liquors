@@ -78,7 +78,6 @@ public class CartController {
         return orderDetails;
     }
 
-
     @GetMapping("/Cart")
     public String showCart(Model model, @SessionAttribute("cart") List<Product> cart) {
 

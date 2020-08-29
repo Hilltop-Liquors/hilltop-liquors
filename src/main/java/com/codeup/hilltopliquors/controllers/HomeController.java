@@ -33,7 +33,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String showLanding(HttpServletRequest request) {
-
         request.getSession().invalidate();
         return "landing";
     }
