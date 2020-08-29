@@ -29,8 +29,8 @@
 
 <div class="container m-5 p-5">
     <!--  =========== ORDER SUCCESS PARAM============  -->
-    <div th:if="${param.success}" class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> Thank you for your order! See you at the top!
+    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Thank you for your order! See you at the top!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -38,7 +38,7 @@
 
     <!--  =========== LOGIN ERROR PARAM ============  -->
     <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> Incorrect login
+        <strong>Incorrect Login!</strong>
         <strong>Incorrect login</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -46,8 +46,8 @@
     </div>
 
     <!--  =========== EMAIL SUCCESS PARAM ============  -->
-    <div th:if="${param.emailSuccess}" class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> Thank you for contacting us, we'll get in touch ASAP!
+    <div th:if="${param.emailSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Thank you for contacting us, we'll get in touch ASAP!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
