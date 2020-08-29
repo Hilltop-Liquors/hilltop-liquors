@@ -97,7 +97,7 @@
                 <p th:text="${product.priceInCents}"></p>
 
                 <form th:action="@{/Search}" th:method="post">
-                    <input type="hidden" class="form-control" th:value="${product.getId()}" name="productId"/>
+                    <input type="hidden" class="form-control" th:value="${product.getId() }" name="productId"/>
                     <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
                 </form>
 

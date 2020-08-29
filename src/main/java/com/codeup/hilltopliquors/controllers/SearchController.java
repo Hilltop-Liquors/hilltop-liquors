@@ -39,12 +39,12 @@ public class SearchController {
         List<Category> categories = catDao.findAll();
         List<Subcategory> subCategories = subCatDao.findAll();
 
-//        if (keyword != null) {
-//            model.addAttribute("products", productDao.findByKeyWord(keyword));
-//            model.addAttribute("keyword", "Search results for: " + keyword);
-//        } else {
-//            model.addAttribute("products", products);
-//        }
+        if (keyword != null) {
+            model.addAttribute("products", productDao.findByKeyWord(keyword));
+            model.addAttribute("keyword", "Search results for: " + keyword);
+        } else {
+            model.addAttribute("products", products);
+        }
 
 //      CATEOGRY TAGS
         List<Product> catProducts = productDao.findAllBySubCategoryCategoryId(catId);
@@ -52,10 +52,10 @@ public class SearchController {
         List<Product> subProducts = productDao.findAllBySubCategoryId(subId);
 
 //        SEARCH BOX
-        if (keyword != null) {
-            model.addAttribute("products", productDao.findByKeyWord(keyword));
-            model.addAttribute("keyword", "Search results for: " + keyword);
-        }
+//        if (keyword != null) {
+//            model.addAttribute("products", productDao.findByKeyWord(keyword));
+//            model.addAttribute("keyword", "Search results for: " + keyword);
+//        }
         if (catId != null) {
             model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
@@ -82,11 +82,11 @@ public class SearchController {
         List<Product> products = productDao.findAll();
         model.addAttribute("products", products);
 
-        if (request.getSession().getAttribute("cart") == null) {
-            cart = new ArrayList<>();
-        } else {
-            cart = (List<Product>) request.getSession().getAttribute("cart");
-        }
+//        if (request.getSession().getAttribute("cart") == null) {
+//            cart = new ArrayList<>();
+//        } else {
+//            cart = (List<Product>) request.getSession().getAttribute("cart");
+//        }
 
 
         Product product = productDao.getOne(productId);

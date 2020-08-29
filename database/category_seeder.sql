@@ -1,8 +1,7 @@
 USE hilltop_app_db;
-USE hilltop_db;
 
-TRUNCATE TABLE orders;
-TRUNCATE TABLE order_product;
+# TRUNCATE TABLE orders;
+# TRUNCATE TABLE order_product;
 
 # role
 INSERT INTO `role` (`id`, `name`)
