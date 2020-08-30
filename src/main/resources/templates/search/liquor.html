@@ -23,6 +23,7 @@
 
 <!--  CONTAINER  -->
 <div class="mt-5" style="width:100%;">
+
     <!--SIDE NAV-->
     <div class="fixed-top shadow" style="margin-top:4.8%; width:100%; border-top: 2px solid white;">
         <div class="collapse" id="navbarToggleExternalContent">
@@ -30,12 +31,13 @@
                 <ul class="row">
                     <li class="col-md-2" style="text-decoration: none;">
                         <form style="color: white;" th:action="@{/Search}">
-                            <button type="submit" class="m-1 nav-link rounded-pill"
+                            <button type="submit" class="m-1 nav-link rounded-pill btn-custom"
                                     style=" text-decoration: none; width: 100%;">
                                 All Products
                             </button>
                         </form>
                     </li>
+                    <!--============ INSERT CUSTOM LOOP CATS =============-->
                     <li class="col-md-2" th:each="category : ${catTags}">
                         <form th:action="@{/Liquor}" method="get">
                             <button type="submit" class="m-1 nav-link rounded-pill btn-custom"
@@ -50,17 +52,17 @@
         </div>
         <nav class="navbar navbar-dark " style="background-color: white; text-decoration: none;">
 
-             <span style="color: white; text-decoration: none;" class="d-flex d-inline">
+             <span style="color: white; text-decoration: none;" class="d-flex d-inline mr-4">
 
                   <form style="text-decoration: none; color: white;" th:action="@{/Search}">
                         <button type="submit" class="rounded-pill m-1 nav-link ml-1 mr-2 btn-custom"
                                 style=" text-decoration: none; width: 100%;">All Products
                         </button>
                     </form>
-
+                 <!--=========== CURRENT DIV HIGHLIGHT ==============-->
                     <form style="text-decoration: none; color: white;" th:action="@{/Liquor}">
                         <button type="submit" class="rounded-pill m-1 nav-link ml-1 mr-2 btn-custom"
-                                style=" text-decoration: none; width: 100%;">Liquor
+                                style=" text-decoration: none; width: 100%; border-color: #400000; background-color:white; color:black;">Liquor
                         </button>
                     </form>
 
@@ -80,13 +82,9 @@
                                 style="text-decoration: none; width: 100%;">Extras
                         </button>
                     </form>
-
-                 <!--                 <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">-->
-                 <!--                     <input id="txtSearch" type="text" name="keyword">-->
-                 <!--                </form>-->
-
+                 <!--============ INSERT TITLE =============-->
         </span>
-            <div style="color: black; font-weight: lighter;" class="m-auto">
+            <div style="color: black; font-weight: lighter;" class="ml-auto mt-2 mr-2">
                 <h2 style="font-weight: lighter;">
                     Liquor
                 </h2>
@@ -103,21 +101,13 @@
         </nav>
     </div>
 
-    <!--SHOW ALL PRODUCTS-->
+    <!-- ===============   LIQUOR SHOW ALL PRODUCTS LOOP  ===================  -->
     <div class="row justify-content-around d-flex text-center mr-auto ml-auto"
          style="width: 90%; z-index: 1; margin-top: 10%; position: relative;">
-
-        <!--        <a th:href="@{/Liquor}" style="color: white">-->
-        <!--            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">-->
-        <!--                Liquor-->
-        <!--                <span><h5 th:text="${keyword}"></h5></span>-->
-        <!--            </h2>-->
-        <!--        </a>-->
-        <!-- ===============   LIQUOR LOOP  ===================  -->
+        <!--   ============      INSTERT LOOP VAR      ========-->
         <div th:each="productType : ${products}"
-             class="card col-md-3 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-5 mt-5 h-auto btn-product-hover"
+             class="card col-md-3 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 h-auto btn-product-hover"
              style="background-color:#EBEDF0;">
-            <!--            style="background-color:#EBEDF0;  border-left: 3px solid #3E0723; border-right: 2px solid #EBEDF0; border-top: 2px solid #EBEDF0;">-->
             <div class="mask flex-center">
                 <div class="d-flex d-inline text-center" style="font-size:large; color: black;">
                     <p th:text="${productType.name}"></p>
@@ -127,24 +117,24 @@
                     <img class="center shadow" style="width: 100px; height: 100px; border-left: 5px solid #3E0723;"
                          src="../static/img/filler_bottle.png"
                          th:src="@{img/LIQUOR.jpg}" alt="bottle"/>
-                    <!--   ============      TAGS       ========-->
+                    <!--   ============      INSTERT CORRECT TAG       ========-->
                     <div class="d-inline">
                         <p style="font-weight: lighter; font-size: smaller;" class="float-right;"><i>tags</i></p>
                         <form th:action="@{/Liquor}" method="get">
-                            <!--   ========  PRODUCT-TYPE TAGS  CONNECTED=======        -->
+                            <!--   ========  PRODUCT-TYPE TAGS  =======        -->
                             <button type="submit"
                                     style="color: black; font-size: smaller; border: 1px solid #3E0723;"
                                     class="mt-auto btn btn-light">
                                 <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
                             </button>
-                            <!--   ========  CATEGORY TAGS NOT CONNECTED=======        -->
+                            <!--   ========  CATEGORY TAGS =======        -->
                             <button type="submit"
                                     style="color: black; font-size: smaller; border: 1px solid #3E0723;"
                                     class="mt-auto btn btn-light"
                                     th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
                                 <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
                             </button>
-                            <!--   ========  SUB-CATEGORY TAGS  NOT CONNECTED=======    -->
+                            <!--   ========  SUB-CATEGORY TAGS =======    -->
                             <button type="submit"
                                     style="color: black; font-size: smaller; border: 1px solid #3E0723;"
                                     class="mt-auto btn btn-light"
@@ -155,9 +145,11 @@
                     </div>
                 </div>
 
-                <!--                 ADD TO CART            -->
-                <p>$<span class="p-2 m-2" th:text="${productType.priceInCents}/100"></span></p>
                 <form th:action="@{/Liquor}" th:method="post">
+                    <!--  =============== PRICE ===================== -->
+                    <p class="m-4 p-2 d-flex text-center" style="font-weight: bold">$<span
+                            style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
+                <!--  =============== ADD TO CART ===================== -->
                     <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
                     <button style="width: 95%; position: absolute;"
                             class="fixed-bottom rounded btn-custom mt-2 p-2 mr-2 ml-2 mb-2">Add to Cart
@@ -165,7 +157,7 @@
                 </form>
             </div>
         </div>
-
+        <!--end-->
         <!--   ========================== CAT NAV PRODUCT LOOP ================================    -->
         <div th:each="productType : ${catProducts}"
              class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
