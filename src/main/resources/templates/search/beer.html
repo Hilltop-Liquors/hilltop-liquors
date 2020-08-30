@@ -22,25 +22,46 @@
 
     <!--  SIDE NAV  -->
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"
-         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">
-        <!--  SEARCH KEYWORD RENDERED  -->
-        <a th:href="@{/Beer}" style="color: white">
-            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
-                Beer
-        <!--  SEARCH BAR  -->
-        <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
-            </h2>
-        <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
-            <input id="txtSearch" type="text" name="keyword">
-        </form>
+<!--    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"-->
+<!--         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">-->
+<!--        &lt;!&ndash;  SEARCH KEYWORD RENDERED  &ndash;&gt;-->
+<!--        <a th:href="@{/Beer}" style="color: white">-->
+<!--            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">-->
+<!--                Beer-->
+<!--        &lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </h2>&ndash;&gt;-->
+<!--&lt;!&ndash;        <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input id="txtSearch" type="text" name="keyword">&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
 
-        <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-        <ul class="c-sidebar-nav">
-            <li class="c-sidebar-nav-title">Browse by category</li>
+<!--        &lt;!&ndash;    PRODUCT TYPE SIDE-NAV DISPLAY    &ndash;&gt;-->
+<!--        <ul class="c-sidebar-nav">-->
+<!--            <li class="c-sidebar-nav-title">Browse by category</li>-->
 
-            <!--  CATEGORY SIDE NAV BUTTONS WORKING -->
-            <li>
+<!--            &lt;!&ndash;  CATEGORY SIDE NAV BUTTONS WORKING &ndash;&gt;-->
+<!--            <li>-->
+<!--                <ul class="c-sidebar-nav">-->
+<!--                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">-->
+<!--                        <form th:action="@{/Beer}" method="get">-->
+<!--                            <button type="submit" class="c-sidebar-nav-link m-1 nav-link"-->
+<!--                                    style="color: white; text-decoration: none;"-->
+<!--                                    th:value="${category.getId()}" name="catId">-->
+
+<!--                                <span th:text="${category.getName()}"></span>-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+
+    <!--SIDE NAV-->
+    <div class="fixed-top" style="margin-top:5%; width:16.5%;">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
                 <ul class="c-sidebar-nav">
                     <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">
                         <form th:action="@{/Beer}" method="get">
@@ -53,13 +74,29 @@
                         </form>
                     </li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
     </div>
+
 
     <!--SHOW ALL PRODUCTS-->
     <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
-
+        <!--  SEARCH KEYWORD RENDERED  -->
+        <a th:href="@{/Beer}" style="color: white">
+            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
+                Beer
+            </h2>
+<!--                SEARCH BAR-->
+            <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
+                <input id="txtSearch" type="text" name="keyword">
+            </form>
         <!-- ===============   BEER LOOP  ===================  -->
         <div th:each="productType : ${products}" class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
                 <div class="card-header text-white center"

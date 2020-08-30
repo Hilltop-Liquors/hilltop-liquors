@@ -20,48 +20,43 @@
 <!--  CONTAINER  -->
 <div class="row mt-5" style="width:100%;">
 
-    <!--  SIDE NAV  -->
-    <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top navbar nav-expand-md"
-         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">
-        <!--  SEARCH KEYWORD RENDERED  -->
+
+<!--SIDE NAV-->
+    <div class="fixed-top" style="margin-top:5%; width:16.5%;">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <ul>
+                    <li th:each="category : ${catTags}">
+                        <form th:action="@{/Liquor}" method="get">
+                            <a type="submit" class="m-1 nav-link"
+                               style="color: white; text-decoration: none;"
+                               th:value="${category.getId()}" name="catId">
+
+                                <span th:text="${category.getName()}"></span>
+                            </a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+    <!--SHOW ALL PRODUCTS-->
+    <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
+
         <a th:href="@{/Liquor}" style="color: white">
             <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
                 Liquor
                 <span><h5 th:text="${keyword}"></h5></span>
             </h2>
         </a>
-        <!--  SEARCH BAR  -->
-        <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
-
-        <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
-            <input id="txtSearch" type="text" name="keyword">
-        </form>
-
-        <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-        <ul class="c-sidebar-nav">
-            <li class="c-sidebar-nav-title">Browse by category</li>
-
-            <!--  CATEGORY SIDE NAV BUTTONS WORKING -->
-            <li>
-                <ul class="c-sidebar-nav">
-                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">
-                        <form th:action="@{/Liquor}" method="get">
-                            <button type="submit" class="c-sidebar-nav-link m-1 nav-link"
-                                    style="color: white; text-decoration: none;"
-                                    th:value="${category.getId()}" name="catId">
-
-                                <span th:text="${category.getName()}"></span>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <!--SHOW ALL PRODUCTS-->
-    <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
 
         <!-- ===============   LIQUOR LOOP  ===================  -->
         <div th:each="productType : ${products}" class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
