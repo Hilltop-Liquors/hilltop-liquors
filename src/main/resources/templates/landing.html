@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="partials/head :: head">
     <title>Hilltop-Liquors</title>
 </head>
 <head>
     <style>
         body{
-            background-image: url("/img/tractor-sign-1 copy.jpeg");
-            background-size: cover;
-            background-repeat: no-repeat;
+            /*background-image: url("/img/tractor-sign-1 copy.jpeg");*/
+            /*background-size: cover;*/
+            /*background-repeat: no-repeat;*/
         }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
     </style>
 </head>
 <body>
+
+<video id="myVideo" autoplay muted loop>
+    <source th:src="@{/video/Hilltop.mp4}" type="video/mp4">
+</video>
 
 <div class="card m-5 p-1 shadow center" style="width: 14rem ;">
     <div class="card-header">

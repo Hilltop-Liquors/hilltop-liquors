@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <meta name="cocktailApiKey" th:content="${cocktailApiKey}">
 <head th:include="partials/head :: head">
 <!--    <meta name="cocktailApiKey" th:content="${cocktailApiKey}">-->
 
     <title>Hilltop-Home</title>
 
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
         nav {
             height: 70px !important;
         }
@@ -18,11 +27,53 @@
             width:50%;
             height:auto;
         }
+        .video-background {
+            background: #000;
+            /*position: fixed;*/
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -99;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .video-foreground,
+        /*.video-background  {*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    pointer-events: none;*/
+        /*}*/
     </style>
 
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
+<!--<div class="video">-->
+<!--<video autoplay muted loop id="myVideo">-->
+<!--    <source th:src="@{/video/HilltopLiquorsHomepage.mp4}" type="video/mp4">-->
+<!--</video>-->
+<!--<div class="video-background">-->
+<!--    <div class="video-foreground">-->
+<!--&lt;!&ndash;        <iframe src="https://www.youtube.com/embed/9M5gY3lNiUM?controls=0&showinfo=0&rel=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>&ndash;&gt;-->
+<!--&lt;!&ndash;        &ndash;&gt;-->
+<!--        <iframe src="https://giphy.com/embed/hsJ8pnbpEQLq3wHazq" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/hsJ8pnbpEQLq3wHazq"></a></p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<iframe-->
+<!--        width="420"-->
+<!--        height="315"-->
+<!--        src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"-->
+<!--        frameborder="0"-->
+<!--        allowfullscreen="allowfullscreen"-->
+<!--&gt;-->
+
+<div>Iteration: <span id="iteration"></span></div>
+
+
+
 
 <div class="container m-5 p-5">
     <div th:if="${param.success}">
@@ -95,6 +146,71 @@
 
         drinkSection.appendChild(card);
     }
+</script>
+
+
+
+<!--<script>-->
+<!--    // 2. This code loads the IFrame Player API code asynchronously.-->
+<!--    var tag = document.createElement('script');-->
+
+<!--    tag.src = "https://www.youtube.com/iframe_api";-->
+<!--    var firstScriptTag = document.getElementsByTagName('script')[0];-->
+<!--    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);-->
+
+<!--    // 3. This function creates an <iframe> (and YouTube player)-->
+<!--    //    after the API code downloads.-->
+<!--    var player;-->
+<!--    function onYouTubeIframeAPIReady() {-->
+<!--        player = new YT.Player('player', {-->
+<!--            width: '100%',-->
+<!--            height: '100%',-->
+<!--            videoId: '9M5gY3lNiUM?Version=3&loop=1',-->
+<!--            playerVars: {'autoplay': 1, 'playsinline': 1 },-->
+<!--            events: {-->
+<!--                'onReady': onPlayerReady,-->
+<!--                'onStateChange': onPlayerStateChange-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+
+<!--    // 4. The API will call this function when the video player is ready.-->
+<!--    function onPlayerReady(event) {-->
+<!--        event.target.playVideo();-->
+<!--    }-->
+
+<!--    // 5. The API calls this function when the player's state changes.-->
+<!--    //    The function indicates that when playing a video (state=1),-->
+<!--    //    the player should play for six seconds and then stop.-->
+<!--    var done = false;-->
+<!--    function onPlayerStateChange(event) {-->
+<!--        if (event.data == YT.PlayerState.PLAYING && !done) {-->
+<!--            setTimeout(stopVideo, 6000);-->
+<!--            done = true;-->
+<!--        }-->
+<!--    }-->
+<!--    function stopVideo() {-->
+<!--        player.stopVideo();-->
+<!--    }-->
+<!--</script>-->
+
+<script>
+    var iterations = 1;
+
+    document.getElementById('iteration').innerText = iterations;
+
+    var myVideo = document.getElementById('video-background');
+    myVideo.addEventListener('ended', function () {
+        alert('end');
+        if (iterations < 2) {
+            this.currentTime = 0;
+            this.play();
+            iterations ++;
+            document.getElementById('iteration').innerText = iterations;
+        }
+
+    }, false);
+
 </script>
 
 <footer th:replace="partials/footer :: footer"></footer>
