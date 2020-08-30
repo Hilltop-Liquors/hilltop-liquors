@@ -20,21 +20,21 @@
 <!--  CONTAINER  -->
 <div class="row mt-5" style="width:100%;">
     <!--SIDE NAV-->
-    <div class="fixed-top" style="margin-top:5%; width:100%;" >
+    <div class="fixed-top" style="margin-top:4.8%; width:100%;" >
         <div class="collapse" id="navbarToggleExternalContent">
-            <div class="p-4" style="background-color: rgba(0, 0, 0, 0.5);">
+            <div class="p-4" style="background-color: rgba(0, 0, 0, 0.8);">
                 <ul class="row">
                     <li class="col-md-2">
                         <form style="text-decoration: none; color: white;" th:action="@{/Search}" >
                             <button type="submit" class="m-1 nav-link"
-                            style="color: white; background-color: #3E0723; text-decoration: none;">All Products
+                            style="color: white; background-color: #400000; text-decoration: none; width: 100%;">All Products
                             </button>
                         </form>
                     </li>
                     <li class="col-md-2" th:each="category : ${catTags}">
                         <form th:action="@{/Liquor}" method="get">
                             <button type="submit" class="m-1 nav-link"
-                               style="color: white; background-color: #3E0723; text-decoration: none;"
+                               style="color: white; background-color: #400000; text-decoration: none; width: 100%;"
                                th:value="${category.getId()}" name="catId">
                                 <span th:text="${category.getName()}"></span>
                             </button>
@@ -46,8 +46,8 @@
         <nav class="navbar navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                    aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
+                <span class="navbar-toggler-icon" style="background-color: black"></span>
             </button>
         </nav>
     </div>
