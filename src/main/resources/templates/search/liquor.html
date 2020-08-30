@@ -109,7 +109,8 @@
     </div>
 
     <!--SHOW ALL PRODUCTS-->
-    <div class="row justify-content-around d-flex" style="width: 100%; z-index: 1; margin-top: 10%;">
+    <div class="row justify-content-around d-flex text-center mr-auto ml-auto"
+         style="width: 90%; z-index: 1; margin-top: 12%;">
 
         <!--        <a th:href="@{/Liquor}" style="color: white">-->
         <!--            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">-->
@@ -117,77 +118,78 @@
         <!--                <span><h5 th:text="${keyword}"></h5></span>-->
         <!--            </h2>-->
         <!--        </a>-->
-
         <!-- ===============   LIQUOR LOOP  ===================  -->
         <div th:each="productType : ${products}"
-             class="card col-md-2 p-3 m-2 rounded" style="background-color:#EBEDF0; border: 2px solid #EBEDF0;">
-<!--            <div class="d-flex d-inline">-->
-            <div class="d-flex d-inline text-center" style="border-left: 5px solid #3E0723;">
+             class="card col-md-3 p-3 mr-2 ml-2 rounded h-50"
+             style="background-color:#EBEDF0; border: 2px solid #EBEDF0;">
+            <div class="d-flex d-inline text-center" style="font-size:large; color: #3E0723;">
                 <p th:text="${productType.name}"></p>
                 <br>
             </div>
-                <div class="d-flex d-inline">
-                    <img class="center shadow" style="width: 100px; height: 100px; border-left: 5px solid #3E0723;"
-                         src="../static/img/filler_bottle.png"
-                         th:src="@{img/LIQUOR.jpg}" alt="bottle"/>
-                    <!--   ============      TAGS       ========-->
-                    <div class="d-inline d-flex">
-                    <p style="font-weight: lighter; font-size: smaller; "><i>tags</i></p>
-                        <form th:action="@{/Liquor}" method="get">
-                            <!--   ========  PRODUCT-TYPE TAGS  CONNECTED=======        -->
-                            <button type="submit"
-                                    style="color: white; font-size: smaller; border-right: 5px solid #3E0723;" class="mt-auto btn btn-light">
-                                <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
-                            </button>
-                            <!--   ========  CATEGORY TAGS NOT CONNECTED=======        -->
-                            <button type="submit"
-                                    style="color: white; font-size: smaller; border-right: 5px solid #3E0723;" class="mt-auto btn btn-light"
-                                    th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
-                                <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
-                            </button>
-                            <!--   ========  SUB-CATEGORY TAGS  NOT CONNECTED=======    -->
-                            <button type="submit"
-                                    style="color: white; font-size: smaller; border-right: 5px solid #3E0723;" class="mt-auto btn btn-light"
-                                    th:value="${productType.getSubCategory().getId()}" name="subId">
-                                <span th:text="${productType.getSubCategory().getName()}"></span>
-                            </button>
-                        </form>
-                    </div>
+            <p style="font-weight: lighter; font-size: smaller;" class="float-right;"><i>tags</i></p>
+            <div class="d-flex d-inline">
+                <img class="center shadow" style="width: 100px; height: 100px; border-left: 5px solid #3E0723;"
+                     src="../static/img/filler_bottle.png"
+                     th:src="@{img/LIQUOR.jpg}" alt="bottle"/>
+                <!--   ============      TAGS       ========-->
+                <div class="d-inline">
+                    <form th:action="@{/Liquor}" method="get">
+                        <!--   ========  PRODUCT-TYPE TAGS  CONNECTED=======        -->
+                        <button type="submit"
+                                style="color: black; font-size: smaller; border: 1px solid #3E0723;"
+                                class="mt-auto btn btn-light">
+                            <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
+                        </button>
+                        <!--   ========  CATEGORY TAGS NOT CONNECTED=======        -->
+                        <button type="submit"
+                                style="color: black; font-size: smaller; border: 1px solid #3E0723;"
+                                class="mt-auto btn btn-light"
+                                th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
+                            <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
+                        </button>
+                        <!--   ========  SUB-CATEGORY TAGS  NOT CONNECTED=======    -->
+                        <button type="submit"
+                                style="color: black; font-size: smaller; border: 1px solid #3E0723;"
+                                class="mt-auto btn btn-light"
+                                th:value="${productType.getSubCategory().getId()}" name="subId">
+                            <span th:text="${productType.getSubCategory().getName()}"></span>
+                        </button>
+                    </form>
                 </div>
+            </div>
 
-<!--            </div>-->
+            <!--            </div>-->
             <p th:text="${productType.priceInCents}"></p>
             <!--                 ADD TO CART            -->
-            <form th:action="@{/Liquor}" th:method="post">
+            <form th:action="@{/Liquor}" th:method="post" style="width: 100%;">
                 <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
-                <button style="background-color: #3E0723;" class="bg-dark text-white">Add to Cart</button>
+                <button style="background-color: #3E0723; width: 100%;" class="text-white">Add to Cart</button>
             </form>
-<!--            <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>-->
-<!--            &lt;!&ndash;   ============      TAGS       ========&ndash;&gt;-->
-<!--            <div class="d-inline d-flex">-->
-<!--                <form th:action="@{/Liquor}" method="get">-->
-<!--                    &lt;!&ndash;   ========  PRODUCT-TYPE TAGS  CONNECTED=======        &ndash;&gt;-->
-<!--                    <button type="submit"-->
-<!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light">-->
-<!--                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>-->
-<!--                    </button>-->
-<!--                    &lt;!&ndash;   ========  CATEGORY TAGS NOT CONNECTED=======        &ndash;&gt;-->
-<!--                    <button type="submit"-->
-<!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
-<!--                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">-->
-<!--                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>-->
-<!--                    </button>-->
-<!--                    &lt;!&ndash;   ========  SUB-CATEGORY TAGS  NOT CONNECTED=======    &ndash;&gt;-->
-<!--                    <button type="submit"-->
-<!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
-<!--                            th:value="${productType.getSubCategory().getId()}" name="subId">-->
-<!--                        <span th:text="${productType.getSubCategory().getName()}"></span>-->
-<!--                    </button>-->
-<!--                </form>-->
-<!--            </div>-->
+            <!--            <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>-->
+            <!--            &lt;!&ndash;   ============      TAGS       ========&ndash;&gt;-->
+            <!--            <div class="d-inline d-flex">-->
+            <!--                <form th:action="@{/Liquor}" method="get">-->
+            <!--                    &lt;!&ndash;   ========  PRODUCT-TYPE TAGS  CONNECTED=======        &ndash;&gt;-->
+            <!--                    <button type="submit"-->
+            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light">-->
+            <!--                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>-->
+            <!--                    </button>-->
+            <!--                    &lt;!&ndash;   ========  CATEGORY TAGS NOT CONNECTED=======        &ndash;&gt;-->
+            <!--                    <button type="submit"-->
+            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
+            <!--                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">-->
+            <!--                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>-->
+            <!--                    </button>-->
+            <!--                    &lt;!&ndash;   ========  SUB-CATEGORY TAGS  NOT CONNECTED=======    &ndash;&gt;-->
+            <!--                    <button type="submit"-->
+            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
+            <!--                            th:value="${productType.getSubCategory().getId()}" name="subId">-->
+            <!--                        <span th:text="${productType.getSubCategory().getName()}"></span>-->
+            <!--                    </button>-->
+            <!--                </form>-->
+            <!--            </div>-->
             <!--            </div>-->
         </div>
-
         <!--   ========================== CAT NAV PRODUCT LOOP ================================    -->
         <div th:each="productType : ${catProducts}"
              class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
