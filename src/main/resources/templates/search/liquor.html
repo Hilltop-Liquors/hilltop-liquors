@@ -19,21 +19,25 @@
 
 <!--  CONTAINER  -->
 <div class="row mt-5" style="width:100%;">
-
-
-<!--SIDE NAV-->
-    <div class="fixed-top" style="margin-top:5%; width:16.5%;">
+    <!--SIDE NAV-->
+    <div class="fixed-top" style="margin-top:5%; width:100%;" >
         <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <ul>
-                    <li th:each="category : ${catTags}">
+            <div class="p-4" style="background-color: rgba(0, 0, 0, 0.5);">
+                <ul class="row">
+                    <li class="col-md-2">
+                        <form style="text-decoration: none; color: white;" th:action="@{/Search}" >
+                            <button type="submit" class="m-1 nav-link"
+                            style="color: white; background-color: #3E0723; text-decoration: none;">All Products
+                            </button>
+                        </form>
+                    </li>
+                    <li class="col-md-2" th:each="category : ${catTags}">
                         <form th:action="@{/Liquor}" method="get">
-                            <a type="submit" class="m-1 nav-link"
-                               style="color: white; text-decoration: none;"
+                            <button type="submit" class="m-1 nav-link"
+                               style="color: white; background-color: #3E0723; text-decoration: none;"
                                th:value="${category.getId()}" name="catId">
-
                                 <span th:text="${category.getName()}"></span>
-                            </a>
+                            </button>
                         </form>
                     </li>
                 </ul>
