@@ -20,9 +20,9 @@
 <!--  CONTAINER  -->
 <div class="row mt-5" style="width:100%; color:black">
 
-    <div class="fixed-top" style="margin-top:5%; width:16.5%;">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
+<!--    <div class="fixed-top" style="margin-top:5%; width:16.5%;">-->
+<!--        <div class="collapse" id="navbarToggleExternalContent">-->
+<!--            <div class="bg-dark p-4">-->
                 <!--                <h5 class="text-white h4">Collapsed content</h5>-->
                 <!--                <span class="text-muted">Toggleable via the navbar brand.</span>-->
 
@@ -31,9 +31,13 @@
 <!--                    <span><h5 th:text="${keyword}"></h5></span>-->
 <!--                </h2>-->
                 <!--  SEARCH BAR  -->
-                <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">
-                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">
-                </form>
+<!--                <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">-->
+<!--                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">-->
+<!--                </form>-->
+
+
+
+
                 <!--       LIQUOR      -->
                 <a style="text-decoration: none; color: white;" th:href="@{/Liquor}">
                     <form class="nav-link">
@@ -65,14 +69,67 @@
 
             </div>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
+<!--        <nav class="navbar navbar-dark bg-dark">-->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
+<!--                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
+<!--                    aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--        </nav>-->
+<!--    </div>-->
+
+
+
+<!--SIDE NAV-->
+<div class="fixed-top" style="margin-top:4.8%; width:100%;" >
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="p-4" style="background-color: rgba(0, 0, 0, 0.8);">
+            <ul class="row">
+
+                <li class="col-md-2">
+                    <form style="text-decoration: none; color: white;" th:action="@{/Liquor}" >
+                        <button type="submit" class="m-1 nav-link"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Liquor
+                        </button>
+                    </form>
+                </li>
+
+                <li class="col-md-2">
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}" >
+                        <button type="submit" class="m-1 nav-link"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Beer
+                        </button>
+                    </form>
+                </li>
+
+                <li class="col-md-2">
+                    <form style="text-decoration: none; color: white;" th:action="@{/Wine}" >
+                        <button type="submit" class="m-1 nav-link"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Wine
+                        </button>
+                    </form>
+                </li>
+
+                <li class="col-md-2">
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}" >
+                        <button type="submit" class="m-1 nav-link"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Extras
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
+        </div>
     </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
+            <span class="navbar-toggler-icon" style="background-color: black"></span>
+        </button>
+    </nav>
+</div>
+
 
     <!--    <div class="fixed-top" style="margin-top: 4.5%; width: 15.65%; transform: rotate(180deg); border-bottom: black; border-right:black;">-->
     <!--        <div class="collapse" id="navbarToggleExternalContent" style="margin-bottom: -27%;">-->

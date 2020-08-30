@@ -22,39 +22,72 @@
 
     <!--  SIDE NAV  -->
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"
-         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">
-        <!--  SEARCH KEYWORD RENDERED  -->
-        <a th:href="@{/Extras}" style="color: white">
-            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
-                Extras
-                <!--  SEARCH BAR  -->
-                <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
-            </h2>
-            <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
-                <input id="txtSearch" type="text" name="keyword">
-            </form>
+<!--    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"-->
+<!--         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">-->
+<!--        &lt;!&ndash;  SEARCH KEYWORD RENDERED  &ndash;&gt;-->
+<!--        <a th:href="@{/Extras}" style="color: white">-->
+<!--            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">-->
+<!--                Extras-->
+<!--                &lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
+<!--                <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>-->
+<!--            </h2>-->
+<!--            <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">-->
+<!--                <input id="txtSearch" type="text" name="keyword">-->
+<!--            </form>-->
 
             <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-            <ul class="c-sidebar-nav">
-                <li class="c-sidebar-nav-title">Browse by category</li>
+<!--            <ul class="c-sidebar-nav">-->
+<!--                <li class="c-sidebar-nav-title">Browse by category</li>-->
 
-                <!--            &lt;!&ndash;  CATEGORY SIDE NAV BUTTONS WORKING &ndash;&gt;-->
-                <!--            <li>-->
-                <!--                <ul class="c-sidebar-nav">-->
-                <!--                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">-->
-                <!--                        <form th:action="@{/Extras}" method="get">-->
-                <!--                            <button type="submit" class="c-sidebar-nav-link nav-link"-->
-                <!--                                    style="color: white; text-decoration: none;"-->
-                <!--                                    th:value="${category.getId()}" name="catId">-->
-                <!--                                <span th:text="${category.getName()}"></span>-->
-                <!--                            </button>-->
-                <!--                        </form>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
-                <!--            </li>-->
-            </ul>
+<!--                &lt;!&ndash;            &lt;!&ndash;  CATEGORY SIDE NAV BUTTONS WORKING &ndash;&gt;&ndash;&gt;-->
+<!--                &lt;!&ndash;            <li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <ul class="c-sidebar-nav">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <form th:action="@{/Extras}" method="get">&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <button type="submit" class="c-sidebar-nav-link nav-link"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                    style="color: white; text-decoration: none;"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                    th:value="${category.getId()}" name="catId">&ndash;&gt;-->
+<!--                &lt;!&ndash;                                <span th:text="${category.getName()}"></span>&ndash;&gt;-->
+<!--                &lt;!&ndash;                            </button>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </ul>&ndash;&gt;-->
+<!--                &lt;!&ndash;            </li>&ndash;&gt;-->
+<!--            </ul>-->
 
+<!--    </div>-->
+
+    <!--SIDE NAV-->
+    <div class="fixed-top" style="margin-top:4.8%; width:100%;" >
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="p-4" style="background-color: rgba(0, 0, 0, 0.8);">
+                <ul class="row">
+                    <li class="col-md-2">
+                        <form style="text-decoration: none; color: white;" th:action="@{/Search}" >
+                            <button type="submit" class="m-1 nav-link"
+                                    style="color: white; background-color: #400000; text-decoration: none; width: 100%;">All Products
+                            </button>
+                        </form>
+                    </li>
+<!--                    <li class="col-md-2" th:each="category : ${catTags}">-->
+<!--                        <form th:action="@{/Extras}" method="get">-->
+<!--                            <button type="submit" class="m-1 nav-link"-->
+<!--                                    style="color: white; background-color: #400000; text-decoration: none; width: 100%;"-->
+<!--                                    th:value="${category.getId()}" name="catId">-->
+<!--                                <span th:text="${category.getName()}"></span>-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+                </ul>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
+                <span class="navbar-toggler-icon" style="background-color: black"></span>
+            </button>
+        </nav>
     </div>
 
     <!--SHOW ALL PRODUCTS-->
