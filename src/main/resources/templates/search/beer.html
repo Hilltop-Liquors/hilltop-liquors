@@ -84,6 +84,61 @@
             </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
+
+                     <span style="color: white;" class="d-flex d-inline">
+
+                  <form style="text-decoration: none; color: white;" th:action="@{/Search}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">All Products
+                        </button>
+                    </form>
+                         <!--             <ul class="row">-->
+
+                         <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Liquor}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Liquor
+                        </button>
+                    </form>
+                         <!--                </li>-->
+
+                         <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Beer
+                        </button>
+                    </form>
+                         <!--                </li>-->
+
+                         <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Wine}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Wine
+                        </button>
+                    </form>
+                         <!--                </li>-->
+                         <!---->
+                         <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Extras
+                        </button>
+                    </form>
+
+                         <!--                 <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">-->
+                         <!--                     <input id="txtSearch" type="text" name="keyword">-->
+                         <!--                </form>-->
+
+        </span>
+            <div style="color: white;" class="ml-auto mr-3 mt-1">
+                <!--                <h2 style="font-weight: lighter;">-->
+                <h2 style="font-weight: lighter;">
+                    Beer
+                </h2>
+                <!--                <p>Click to browse by categories</p>-->
+<!--                <h6 th:text="${keyword}"></h6>-->
+            </div>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
                     aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
@@ -101,9 +156,9 @@
                 Beer
             </h2>
             <!--                SEARCH BAR-->
-            <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
-                <input id="txtSearch" type="text" name="keyword">
-            </form>
+<!--            <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">-->
+<!--                <input id="txtSearch" type="text" name="keyword">-->
+<!--            </form>-->
             <!-- ===============   BEER LOOP  ===================  -->
             <div th:each="productType : ${products}"
                  class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
