@@ -7,14 +7,6 @@
         nav {
             height: 70px !important;
         }
-        a {
-            text-decoration: none;
-            color: white;
-            font-size: 25px;
-        }
-        a:hover{
-            background-color: #3E0723;
-        }
     </style>
 
 </head>
@@ -26,52 +18,54 @@
 <div th:replace="partials/contact-modal :: contact-modal"></div>
 
 <!--  CONTAINER  -->
-<div class="row mt-5" style="width:100%; color:black;">
+<div class="row mt-5" style="width:100%; color:black">
 
-    <div class="fixed-top" style="margin-top: 4.5%; width: 15.6%; transform: rotate(180deg);">
-        <div class="collapse" id="navbarToggleExternalContent" style="margin-bottom: -27%;">
-            <div class="p-4" style="transform: rotate(180deg);background-color: #3E0723;">
-                <h2 style="color:white; font-weight: lighter" class=" mt-5">
+    <div class="fixed-top" style="margin-top:5%; width:16.5%;">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <!--                <h5 class="text-white h4">Collapsed content</h5>-->
+                <!--                <span class="text-muted">Toggleable via the navbar brand.</span>-->
 
-                    <span><h5 th:text="${keyword}"></h5></span>
-                </h2>
+<!--                <h2 style="color:white; font-weight: bold;" class=" mt-5">-->
+<!--                    All Products-->
+<!--                    <span><h5 th:text="${keyword}"></h5></span>-->
+<!--                </h2>-->
                 <!--  SEARCH BAR  -->
                 <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">
-                    <input id="txtSearch" type="text" name="keyword">
+                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">
                 </form>
-
-                <!--  PRODUCT TYPE SIDE-NAV DISPLAY    -->
                 <!--       LIQUOR      -->
-                <a th:href="@{/Liquor}">
+                <a style="text-decoration: none; color: white;" th:href="@{/Liquor}">
                     <form class="nav-link">
                         <p>LIQUOR</p>
                     </form>
                 </a>
 
                 <!--       BEER      -->
-                <a th:href="@{/Beer}">
+                <a style="text-decoration: none; color: white;" th:href="@{/Beer}">
                     <form class="nav-link">
                         <p>BEER</p>
                     </form>
                 </a>
 
                 <!--       WINE      -->
-                <a th:href="@{/Wine}">
+                <a style="text-decoration: none; color: white;" th:href="@{/Wine}">
                     <form class="nav-link">
                         <p>WINE</p>
                     </form>
                 </a>
 
                 <!--       EXTRAS      -->
-                <a th:href="@{/Extras}">
+                <a style="text-decoration: none; color: white;" th:href="@{/Extras}">
                     <form class="nav-link">
                         <p>EXTRAS</p>
                     </form>
                 </a>
-            </div> <!-- CLOSE TOGGLE DIV -->
+
+
+            </div>
         </div>
-        <nav class="navbar navbar-dark" style="transform: rotate(180deg); background-color: black;">
-            <span style="color:white; font-weight: lighter; font-size:25px;">All Products</span>
+        <nav class="navbar navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -79,6 +73,58 @@
             </button>
         </nav>
     </div>
+
+    <!--    <div class="fixed-top" style="margin-top: 4.5%; width: 15.65%; transform: rotate(180deg); border-bottom: black; border-right:black;">-->
+    <!--        <div class="collapse" id="navbarToggleExternalContent" style="margin-bottom: -27%;">-->
+    <!--            <div class="p-4" style="transform: rotate(180deg);background-color: black;">-->
+    <!--                <h2 style="color:white; font-weight: bold;" class=" mt-5">-->
+
+    <!--                    <span><h5 th:text="${keyword}"></h5></span>-->
+    <!--                </h2>-->
+    <!--                &lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
+    <!--                <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">-->
+    <!--                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">-->
+    <!--                </form>-->
+
+    <!--                &lt;!&ndash;  PRODUCT TYPE SIDE-NAV DISPLAY    &ndash;&gt;-->
+    <!--                &lt;!&ndash;       LIQUOR      &ndash;&gt;-->
+    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Liquor}">-->
+    <!--                    <form class="nav-link">-->
+    <!--                        <p>LIQUOR</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+
+    <!--                &lt;!&ndash;       BEER      &ndash;&gt;-->
+    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Beer}">-->
+    <!--                    <form class="nav-link">-->
+    <!--                        <p>BEER</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+
+    <!--                &lt;!&ndash;       WINE      &ndash;&gt;-->
+    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Wine}">-->
+    <!--                    <form class="nav-link">-->
+    <!--                        <p>WINE</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+
+    <!--                &lt;!&ndash;       EXTRAS      &ndash;&gt;-->
+    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Extras}">-->
+    <!--                    <form class="nav-link">-->
+    <!--                        <p>EXTRAS</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+    <!--            </div> &lt;!&ndash; CLOSE TOGGLE DIV &ndash;&gt;-->
+    <!--        </div>-->
+    <!--        <nav class="navbar navbar-dark position-static" style="transform: rotate(180deg); background-color: #800000;">-->
+    <!--            <span style="color:white; font-weight: lighter; font-size:25px;">All Products</span>-->
+    <!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
+    <!--                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
+    <!--                    aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--                <span class="navbar-toggler-icon"></span>-->
+    <!--            </button>-->
+    <!--        </nav>-->
+    <!--    </div>-->
 
     <!--SHOW ALL PRODUCTS-->
     <div class="col-md-9 mt-5" style="width: 100%; z-index: 1;">
