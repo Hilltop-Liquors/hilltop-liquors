@@ -110,7 +110,7 @@
 
     <!--SHOW ALL PRODUCTS-->
     <div class="row justify-content-around d-flex text-center mr-auto ml-auto"
-         style="width: 90%; z-index: 1; margin-top: 12%; position: relative;">
+         style="width: 90%; z-index: 1; margin-top: 8%; position: relative;">
 
         <!--        <a th:href="@{/Liquor}" style="color: white">-->
         <!--            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">-->
@@ -120,8 +120,9 @@
         <!--        </a>-->
         <!-- ===============   LIQUOR LOOP  ===================  -->
         <div th:each="productType : ${products}"
-             class="card col-md-3 p-3 mr-2 ml-2 rounded"
-             style="background-color:#EBEDF0;  border-left: 3px solid #3E0723; border-top: 2px solid #3E0723;">
+             class="card col-md-3 p-3 mr-2 ml-2 mb-5 mt-5 rounded"
+             style="background-color:#EBEDF0; border: 2px solid #EBEDF0;">
+<!--            style="background-color:#EBEDF0;  border-left: 3px solid #3E0723; border-right: 2px solid #EBEDF0; border-top: 2px solid #EBEDF0;">-->
             <div class="d-flex d-inline text-center" style="font-size:large; color: black;">
                 <p th:text="${productType.name}"></p>
                 <br>
@@ -159,9 +160,9 @@
             </div>
 
             <!--            </div>-->
-            <p th:text="${productType.priceInCents}"></p>
             <!--                 ADD TO CART            -->
             <form th:action="@{/Liquor}" th:method="post" style="width: 100%;">
+            <p class="mt-auto p-2" th:text="${productType.priceInCents}"></p>
                 <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
                 <button style="background-color: #3E0723; width: 100%; position: absolute;" class="text-white fixed-bottom">Add to Cart</button>
             </form>
