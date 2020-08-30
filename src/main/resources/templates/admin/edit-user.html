@@ -108,7 +108,7 @@
             </form>
             <br>
             <!--            Delete Button -->
-            <form th:action="@{/user/delete/{id}(id=${user.id})}" method="post" th:object="${user}">
+            <form th:action="@{/admin/user/delete/{id}(id=${user.id})}" method="post" th:object="${user}">
                 <button type="submit" value="submit" class="btn btn-danger">Delete Account</button>
             </form>
 

@@ -23,16 +23,27 @@
 
 <div class="container m-auto">
     <div class="col-md-6 col-md-offset-3">
-        <div th:each="user : ${users}">
-            <h3 th:text="${user.username}"></h3>
-            <p><span th:text="${user.first_name}"></span><span th:text="${user.last_name}"></span></p>
-            <p th:text="${user.email}"></p>
-            <p th:text="${user.phone}"></p>
-            <a class="btn btn-primary" th:href="@{/admin/user/edit{id}(id=${user.id})}" role="button">EDIT</a>
-            <br>
-            <br>
-        </div>
-        <br>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+            <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text=${user.username}"></td>
+                <td><span th:text="${user.first_name}"></span><span th:text="${user.last_name}"></span></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.phone}"></td>
+                <a class="btn btn-primary" th:href="@{/admin/user/edit{id}(id=${user.id})}" role="button">EDIT</a>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
 

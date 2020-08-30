@@ -135,7 +135,7 @@ public AdminController(UserRepository userDao) {
 
     }
 
-    @PostMapping("/user/delete/{id}")
+    @PostMapping("/admin/user/delete/{id}")
     public String deleteUserById(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) {
         userDao.deleteById(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
