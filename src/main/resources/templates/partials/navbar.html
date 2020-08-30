@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <style>
-
-
-    </style>
-
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-md navbar-dark fixed-top shadow" style="background-color: black;">
@@ -87,19 +82,17 @@
             <!--  =========== LOGIN/LOGOUT ============  -->
             <li class="nav-item mr-1 mt-2 d-flex d-inline">
 
-            <span class="nav-item d-flex d-inline mr-2" sec:authorize="isAuthenticated()">
-                <a style="color: white;" th:href="@{/Logout}">Logout</a>
-
-                <span class="nav-item d-flex d-inline ml-2" style="color:white"
-                      th:text="${#authentication.principal.username}">
+                <span class="nav-item d-flex d-inline mr-2" sec:authorize="isAuthenticated()">
+                    <a style="color: white;" th:href="@{/Logout}">Logout</a>
+                    <span class="nav-item d-flex d-inline ml-2" style="color:white"
+                      th:text="${#authentication.principal.username}"></span>
                 </span>
-            </span>
 
                 <span sec:authorize="isAnonymous()">
-                <a class="nav-item" style="color: white;" data-toggle="modal"
-                   data-target="#exampleModalLong">
-                    Login</a>
-            </span>
+                    <a class="nav-item" style="color: white;" data-toggle="modal"
+                       data-target="#exampleModalLong">Login</a>
+                </span>
+
             </li>
 
             <!--  =========== SETTINGS ============  -->
