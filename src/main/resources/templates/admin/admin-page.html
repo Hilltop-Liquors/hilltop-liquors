@@ -19,7 +19,7 @@
     <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
         <div>
             <br>
-            <h3><a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a></h3>
+            <h3><a class="btn btn-success" style="text-decoration: none; color:black;" th:href="@{/admin}">Dashboard</a></h3>
             <br>
         </div>
 

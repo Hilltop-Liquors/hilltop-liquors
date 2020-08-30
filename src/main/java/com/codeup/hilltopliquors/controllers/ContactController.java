@@ -31,7 +31,7 @@ public class ContactController {
 
 
         System.out.println("THIS IS THE EMAIL WE'RE LOOKING FOR: " + name + phone + email + message);
-        contactEmailService.prepareAndSend(email + "", name + "", message + " \nCustomer phone number: " + phone);
+        contactEmailService.prepareAndSend("hilltopliquorstx@gmail.com", name + "", message + " \nCustomer Name : " + name + " \nCustomer Email : " + email + " \nCustomer phone number: " + phone);
 
         return "redirect:/Home?emailSuccess";
     }
