@@ -68,22 +68,21 @@
             </li>
 
             <!--  =========== CONTACT ICON ============  -->
-            <li class="nav-item active ml-1">
+            <li class="nav-item active ml-1" style="margin-top: -.5%">
                 <!--                <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>-->
-                <a class="nav-link" style="margin-top: 10%;" data-toggle="modal"
-                   data-target="#CartModalLong"><i class="far fa-envelope"></i>
+                <a class="nav-link mr-1" style="margin-top: 10%;" data-toggle="modal"
+                   data-target="#CartModalLong"><i style="font-size: 18px" class="far fa-envelope"></i>
                 </a>
             </li>
             <!--  =========== REGISTER ============  -->
-            <li sec:authorize="isAnonymous()" class="nav-item active">
+            <li sec:authorize="isAnonymous()" class="nav-item active mr-1">
                 <a class="nav-link" href="/registration">Register <span class="sr-only">(current)</span></a>
             </li>
 
             <!--  =========== LOGIN/LOGOUT ============  -->
             <li class="nav-item mr-1 mt-2 d-flex d-inline">
-
                 <span class="nav-item d-flex d-inline mr-2" sec:authorize="isAuthenticated()">
-                    <a style="color: white;" th:href="@{/Logout}">Logout</a>
+                    <a style="color: white; text-decoration: none" th:href="@{/Logout}">Logout</a>
                     <span class="nav-item d-flex d-inline ml-2" style="color:white"
                       th:text="${#authentication.principal.username}"></span>
                 </span>
@@ -92,7 +91,6 @@
                     <a class="nav-item" style="color: white;" data-toggle="modal"
                        data-target="#exampleModalLong">Login</a>
                 </span>
-
             </li>
 
             <!--  =========== SETTINGS ============  -->
