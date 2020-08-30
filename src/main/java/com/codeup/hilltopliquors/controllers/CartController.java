@@ -2,6 +2,7 @@ package com.codeup.hilltopliquors.controllers;
 
 import com.codeup.hilltopliquors.models.*;
 import com.codeup.hilltopliquors.repositories.*;
+import com.codeup.hilltopliquors.services.EmailService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
@@ -25,8 +26,11 @@ public class CartController {
     private final ProductTypeRepository productTypeDao;
     private final UserRepository userDao;
     private final OrderProductRepository orderProductDao;
+    private final EmailService emailService;
 
-    public CartController(OrderRepository orderDao, ProductRepository productDao, SubcategoryRepository subCatDao, CategoryRepository catDao, ProductTypeRepository productTypeDao, UserRepository userDao, OrderProductRepository orderProductDao) {
+    public CartController(OrderRepository orderDao, ProductRepository productDao, SubcategoryRepository subCatDao,
+                          CategoryRepository catDao, ProductTypeRepository productTypeDao, UserRepository userDao,
+                          OrderProductRepository orderProductDao, EmailService emailService) {
         this.orderDao = orderDao;
         this.productDao = productDao;
         this.subCatDao = subCatDao;
@@ -34,6 +38,7 @@ public class CartController {
         this.productTypeDao = productTypeDao;
         this.userDao = userDao;
         this.orderProductDao = orderProductDao;
+        this.emailService = emailService;
     }
 
     @ModelAttribute("order")
@@ -277,7 +282,8 @@ public class CartController {
 
 
         orderDao.save(order);
-
+        String[] recipients =
+        emailService.prepareAndSend("", "", "");
         cart.clear();
         orderDetails.clear();
         request.getSession().removeAttribute("order");
