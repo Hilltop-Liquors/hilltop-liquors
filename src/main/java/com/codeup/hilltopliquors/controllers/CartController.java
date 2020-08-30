@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -282,8 +284,31 @@ public class CartController {
 
 
         orderDao.save(order);
-        String[] recipients =
-        emailService.prepareAndSend("", "", "");
+        String[] recipients = new String[2];
+        System.out.println("order.getUser().getEmail() = " + order.getUser().getEmail());
+        recipients[0] = authUser.getEmail();
+        recipients[1] = "hilltopliquorstx@gmail.com";
+//        recipients[2] = "andrewbrought@gmail.com";
+        String subject = authUser.getUsername() + "'s Order Receipt";
+
+       List<String> items = new ArrayList<>();
+        for(int i = 0; i < order.getOrderProducts().size(); i ++) {
+             items.add(order.getOrderProducts().get(i).getProduct().getName() + "   " + order.getOrderProducts().get(i).getQuantity()
+                    + "   $" + order.getOrderProducts().get(i).getProduct().getPriceInCents()/100 + "\n");
+
+        }
+
+        String body = authUser.getFirst_name() + " " + authUser.getLast_name() + ", \n"
+                + "Thank you for joining us at the top! \nHere's Your Purchase Receipt: \n"
+                + "\n" + authUser.getUsername() + "\n"
+                + order.getId() + "\n"
+                +" Items:                                               Qty:      Price:" + "\n"
+                + items
+                + "\n" + " Total: $" + order.getTotalInCents()/100 + "\n"
+                + "\n Thank you for your purchase!";
+
+        System.out.println("orderDetails = " + orderDetails.toString());
+        emailService.prepareAndSend(recipients, subject, body);
         cart.clear();
         orderDetails.clear();
         request.getSession().removeAttribute("order");
