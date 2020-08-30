@@ -14,6 +14,8 @@
 
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
+<div th:replace="partials/login-modal :: login-modal"></div>
+<div th:replace="partials/contact-modal :: contact-modal"></div>
 
 <!--  CONTAINER  -->
 <div class="row mt-5" style="width:100%; color:black">
@@ -71,7 +73,6 @@
         </ul>
     </div>
 
-
     <!--SHOW ALL PRODUCTS-->
     <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
         <!--  SEARCH KEYWORD RENDERED  -->
@@ -88,7 +89,7 @@
                 <div class="card-header text-white center"
                      style="border-bottom: 4px solid maroon; width: 126px; height: 189px; background-color: black">
                     <img class="center" style="width: 126px; height: 189px;"
-                         th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getName()})}" alt="bottle"/>
+                         th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getProductType().getName()})}" alt="bottle"/>
                 </div>
             </a>
 
