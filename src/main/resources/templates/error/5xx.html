@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="partials/head :: head"></head>
+</head>
+<body>
+<<nav th:replace="partials/navbar :: navbar"></nav>
+<div th:replace="partials/login-modal :: login-modal"></div>
+<div th:replace="partials/contact-modal :: contact-modal"></div>
+
+<div class="card register-mainBox">
+    <div class="card-body box-box text-center">
+        <th:block th:switch="${error}">
+            <div th:case="'Internal Server Error'">
+                <h1>500 Internal Server Error</h1>
+                <p>This error indicates that the server has encountered an unexpected condition.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Not Implemented'">
+                <h1>501 Not Implemented</h1>
+                <p>HTTP method sent by the client is not supported by the server.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Bad Gateway'">
+                <h1>502 Bad Gateway</h1>
+                <p> Please check firewall is functioning properly.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Service Unavailable'">
+                <h1>503 Service Unavailable</h1>
+                <p>Temporarily closed for maintenance.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Gateway Timeout'">
+                <h1>504 Gateway Timeout</h1>
+                <p>Gateway Timeout slow communication between upstream computers.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'HTTP Version Not Supported'">
+                <h1>505 HTTP Version Not Supported</h1>
+                <p>Invalid version number has been specified.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Variant Also Negotiates'">
+                <h1>506 Variant Also Negotiates</h1>
+                <p>This error indicates that the server is not properly configured. Contact the system administrator to resolve this issue.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Insufficient Storage'">
+                <h1>507 Insufficient Storage</h1>
+                <p>This error indicates that the server is out of free memory.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Bandwidth Limit Exceeded'">
+                <h1>509 Bandwidth Limit Exceeded</h1>
+                <p>This error occurs when the bandwidth limit imposed by the system administrator has been reached.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+            <div th:case="'Not Extended'">
+                <h1>510 Not Extended</h1>
+                <p>HTTP request is not supported by the web server.</p>
+                <a href="/Home"><button type="button" class="btn error-btn">Back to Home</button></a>
+            </div>
+        </th:block>
+    </div>
+</div>
+<img class="center" style="width: 166px; height: 229px;" src="../static/img/SPILLED.jpg">
+<footer th:replace="partials/footer :: footer"></footer>
+
+</body>
+</html>
