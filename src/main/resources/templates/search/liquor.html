@@ -27,7 +27,7 @@
                     <li class="col-md-2" style="text-decoration: none;">
                         <form style="color: white;" th:action="@{/Search}">
                             <button type="submit" class="m-1 nav-link"
-                                    style="color: white; background-color: #400000; text-decoration: none; width: 100%;">
+                                    style="color: black; background-color: #400000; text-decoration: none; width: 100%;">
                                 All Products
                             </button>
                         </form>
@@ -44,7 +44,7 @@
                 </ul>
             </div>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-dark " style="background-color: white;">
 
              <span style="color: white;" class="d-flex d-inline">
 
@@ -53,33 +53,24 @@
                                 style="color: white; background-color: #400000; text-decoration: none; width: 100%;">All Products
                         </button>
                     </form>
-                 <!--             <ul class="row">-->
 
-                 <!--                <li class="col-md-2">-->
                     <form style="text-decoration: none; color: white;" th:action="@{/Liquor}">
                         <button type="submit" class="m-1 nav-link ml-1 mr-2"
                                 style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Liquor
                         </button>
                     </form>
-                 <!--                </li>-->
 
-                 <!--                <li class="col-md-2">-->
                     <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
                         <button type="submit" class="m-1 nav-link ml-1 mr-2"
                                 style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Beer
                         </button>
                     </form>
-                 <!--                </li>-->
 
-                 <!--                <li class="col-md-2">-->
                     <form style="text-decoration: none; color: white;" th:action="@{/Wine}">
                         <button type="submit" class="m-1 nav-link ml-1 mr-2"
                                 style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Wine
                         </button>
                     </form>
-                 <!--                </li>-->
-                 <!---->
-                 <!--                <li class="col-md-2">-->
                     <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
                         <button type="submit" class="m-1 nav-link ml-1 mr-2"
                                 style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Extras
@@ -91,7 +82,7 @@
                  <!--                </form>-->
 
         </span>
-            <div style="color: white; font-weight: lighter;" class="ml-auto mr-3 mt-1">
+            <div style="color: black; font-weight: lighter;" class="ml-auto mr-3 mt-1">
                 <h2 style="font-weight: lighter;">
                     Liquor
                 </h2>
@@ -166,31 +157,8 @@
                 <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
                 <button style="background-color: #3E0723; width: 100%; position: absolute;" class="text-white fixed-bottom">Add to Cart</button>
             </form>
-            <!--            <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>-->
-            <!--            &lt;!&ndash;   ============      TAGS       ========&ndash;&gt;-->
-            <!--            <div class="d-inline d-flex">-->
-            <!--                <form th:action="@{/Liquor}" method="get">-->
-            <!--                    &lt;!&ndash;   ========  PRODUCT-TYPE TAGS  CONNECTED=======        &ndash;&gt;-->
-            <!--                    <button type="submit"-->
-            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light">-->
-            <!--                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>-->
-            <!--                    </button>-->
-            <!--                    &lt;!&ndash;   ========  CATEGORY TAGS NOT CONNECTED=======        &ndash;&gt;-->
-            <!--                    <button type="submit"-->
-            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
-            <!--                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">-->
-            <!--                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>-->
-            <!--                    </button>-->
-            <!--                    &lt;!&ndash;   ========  SUB-CATEGORY TAGS  NOT CONNECTED=======    &ndash;&gt;-->
-            <!--                    <button type="submit"-->
-            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
-            <!--                            th:value="${productType.getSubCategory().getId()}" name="subId">-->
-            <!--                        <span th:text="${productType.getSubCategory().getName()}"></span>-->
-            <!--                    </button>-->
-            <!--                </form>-->
-            <!--            </div>-->
-            <!--            </div>-->
         </div>
+
         <!--   ========================== CAT NAV PRODUCT LOOP ================================    -->
         <div th:each="productType : ${catProducts}"
              class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
