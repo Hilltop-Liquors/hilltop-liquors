@@ -23,34 +23,38 @@
     <!--  SIDE NAV  -->
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
     <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"
-         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: #3E0723;">
+         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">
+        <!--  SEARCH KEYWORD RENDERED  -->
+        <a th:href="@{/Extras}" style="color: white">
+            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
+                Extras
+                <!--  SEARCH BAR  -->
+                <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
+            </h2>
+            <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
+                <input id="txtSearch" type="text" name="keyword">
+            </form>
 
-        <!--  SEARCH BAR  -->
-        <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
+            <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
+            <ul class="c-sidebar-nav">
+                <li class="c-sidebar-nav-title">Browse by category</li>
 
-        <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
-            <input id="txtSearch" type="text" name="keyword">
-        </form>
+                <!--            &lt;!&ndash;  CATEGORY SIDE NAV BUTTONS WORKING &ndash;&gt;-->
+                <!--            <li>-->
+                <!--                <ul class="c-sidebar-nav">-->
+                <!--                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">-->
+                <!--                        <form th:action="@{/Extras}" method="get">-->
+                <!--                            <button type="submit" class="c-sidebar-nav-link nav-link"-->
+                <!--                                    style="color: white; text-decoration: none;"-->
+                <!--                                    th:value="${category.getId()}" name="catId">-->
+                <!--                                <span th:text="${category.getName()}"></span>-->
+                <!--                            </button>-->
+                <!--                        </form>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+                <!--            </li>-->
+            </ul>
 
-        <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-        <ul class="c-sidebar-nav">
-            <li class="c-sidebar-nav-title">Browse by category</li>
-
-<!--            &lt;!&ndash;  CATEGORY SIDE NAV BUTTONS WORKING &ndash;&gt;-->
-<!--            <li>-->
-<!--                <ul class="c-sidebar-nav">-->
-<!--                    <li class="c-sidebar-nav pl-3" th:each="category : ${catTags}">-->
-<!--                        <form th:action="@{/Extras}" method="get">-->
-<!--                            <button type="submit" class="c-sidebar-nav-link nav-link"-->
-<!--                                    style="color: white; text-decoration: none;"-->
-<!--                                    th:value="${category.getId()}" name="catId">-->
-<!--                                <span th:text="${category.getName()}"></span>-->
-<!--                            </button>-->
-<!--                        </form>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </li>-->
-        </ul>
     </div>
 
     <!--SHOW ALL PRODUCTS-->

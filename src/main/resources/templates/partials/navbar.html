@@ -6,23 +6,23 @@
 
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-md navbar-dark fixed-top shadow" style="background-color: black;">
+<nav th:fragment="navbar" class="navbar navbar-expand-md navbar-dark fixed-top shadow" style="background-color: black; z-index: 2999; height: 70px;">
     <!--  =========== HILLTOP LOGO ============  -->
     <a href="/Home">
-        <img th:src="@{img/H.png}" style="width: 30px; height: 30px;" src="../../static/img/H.png" class="rounded"
+        <img th:src="@{img/H.png}" style="width: 40px; height: 40px;" src="../../static/img/H.png" class="rounded"
              alt="Shop local">
     </a>
 
-    <a class="navbar-brand" href="/Home" style="font-size: 25px; font-weight: lighter; margin-left:5px;">illtop
-        Liquors</a>
+    <p class="navbar-brand position-sticky mt-2 " style="font-size: 30px; font-weight: lighter; margin-left: -1.2%; z-index: -1;">Hilltop
+        Liquors</p>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse mr-3" id="navbarsExampleDefault" style="margin-left: 50%;">
+    <div class="collapse navbar-collapse p-3" id="navbarsExampleDefault" style="background-color: black; width: 100%">
         <!--        https://codeup.slack.com/archives/G010LTLGGKH/p1591797373000500-->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
 
             <!--  =========== ADMIN NAV ============  -->
             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -51,7 +51,6 @@
             <li class="nav-item active mr-1">
                 <a class="nav-link" th:href="@{/Cart}"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
             </li>
-
 
             <!--  =========== SEARCH ============  -->
             <li class="nav-item mt-1 mr-1 ml-1">

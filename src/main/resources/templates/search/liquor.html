@@ -22,9 +22,15 @@
 
     <!--  SIDE NAV  -->
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-    <div th:fragment="side-nav" class="col-md-2 c-sidebar  c-sidebar-show fixed-top nav-expand-md"
-         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: #3E0723;">
-
+    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top navbar nav-expand-md"
+         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">
+        <!--  SEARCH KEYWORD RENDERED  -->
+        <a th:href="@{/Liquor}" style="color: white">
+            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
+                Liquor
+                <span><h5 th:text="${keyword}"></h5></span>
+            </h2>
+        </a>
         <!--  SEARCH BAR  -->
         <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
 
@@ -56,15 +62,6 @@
 
     <!--SHOW ALL PRODUCTS-->
     <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
-
-        <!--  SEARCH KEYWORD RENDERED  -->
-        <a th:href="@{/Liquor}" style="color: white">
-            <h2 style="margin-left: 16%; background-color: #3E0723;"
-                class="fixed-top pt-3 pl-5 pb-21 mt-5">
-                Liquor
-                <span><h5 th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></h5></span>
-            </h2>
-        </a>
 
         <!-- ===============   LIQUOR LOOP  ===================  -->
         <div th:each="productType : ${products}" class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">

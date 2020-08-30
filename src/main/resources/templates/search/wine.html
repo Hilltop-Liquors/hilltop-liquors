@@ -24,10 +24,13 @@
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
     <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top nav-expand-md"
          style="margin-top: 52px; height: 100%; z-index: 1001; background-color: #3E0723;">
-
+        <!--  SEARCH KEYWORD RENDERED  -->
+        <a th:href="@{/Wine}" style="color: white">
+            <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">
+                Wine
         <!--  SEARCH BAR  -->
         <a class="p-2 mt-3" style="text-decoration: none; color:white;" th:href="@{/Search}">back</a>
-
+            </h2>>
         <form class="ml-3 d-inline mt-3" th:action="@{/Search}" method="get">
             <input id="txtSearch" type="text" name="keyword">
         </form>

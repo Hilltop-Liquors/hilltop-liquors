@@ -18,78 +18,88 @@
 <div th:replace="partials/contact-modal :: contact-modal"></div>
 
 <!--  CONTAINER  -->
-<div class="row mt-5" style="width:100%; color:black">
+<div class="row mt-5" style="width:100%; color:black;">
+
+    <div class="pos-f-t fixed-top" style="margin-top: -15%; margin-right: 30%; width: 50%; transform: rotate(270deg);">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h4 class="text-white">Collapsed content</h4>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
 
     <!--  SIDE NAV  -->
     <!--  CITATION: https://coreui.io/docs/getting-started/download/#source-files  -->
-    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top navbar-expand-md"
-         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: #3E0723">
+    <!--    <div th:fragment="side-nav" class="col-md-2 c-sidebar c-sidebar-show fixed-top navbar-expand-md"-->
+    <!--         style="margin-top: 52px; height: 100%; z-index: 1001; background-color: black;">-->
+    <!--        <h2 style="color:white; font-weight: lighter" class="pl-2 mt-5">-->
+    <!--            All Products-->
+    <!--            <span><h5 th:text="${keyword}" ></h5></span>-->
+    <!--        </h2>-->
+    <!--        &lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
+    <!--        <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">-->
+    <!--            <input id="txtSearch" type="text" name="keyword">-->
+    <!--        </form>-->
 
-        <!--  SEARCH BAR  -->
-        <form class="center ml-2 d-inline mt-5" th:action="@{/Search}" method="get">
-            <input id="txtSearch" type="text" name="keyword">
-        </form>
-
-        <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
-        <ul class="c-sidebar-nav">
-            <li class="c-sidebar-nav-title">Browse by category</li>
+    <!--    PRODUCT TYPE SIDE-NAV DISPLAY    -->
+    <!--        <ul class="c-sidebar-nav">-->
+    <!--            <li class="c-sidebar-nav-title">Browse by category</li>-->
 
 
-            <!--       LIQUOR      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Liquor}">
-                    <form class="c-sidebar-nav-link">
-                        <p>LIQUOR</p>
-                    </form>
-                </a>
-            </li>
+    <!--            &lt;!&ndash;       LIQUOR      &ndash;&gt;-->
+    <!--            <li class="c-sidebar-nav-item">-->
+    <!--                <a th:href="@{/Liquor}">-->
+    <!--                    <form class="c-sidebar-nav-link">-->
+    <!--                        <p>LIQUOR</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+    <!--            </li>-->
 
-            <!--       BEER      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Beer}">
-                    <form class="c-sidebar-nav-link">
-                        <p>BEER</p>
-                    </form>
-                </a>
-            </li>
+    <!--            &lt;!&ndash;       BEER      &ndash;&gt;-->
+    <!--            <li class="c-sidebar-nav-item">-->
+    <!--                <a th:href="@{/Beer}">-->
+    <!--                    <form class="c-sidebar-nav-link">-->
+    <!--                        <p>BEER</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+    <!--            </li>-->
 
-            <!--       WINE      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Wine}">
-                    <form class="c-sidebar-nav-link">
-                        <p>WINE</p>
-                    </form>
-                </a>
-            </li>
+    <!--            &lt;!&ndash;       WINE      &ndash;&gt;-->
+    <!--            <li class="c-sidebar-nav-item">-->
+    <!--                <a th:href="@{/Wine}">-->
+    <!--                    <form class="c-sidebar-nav-link">-->
+    <!--                        <p>WINE</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+    <!--            </li>-->
 
-            <!--       EXTRAS      -->
-            <li class="c-sidebar-nav-item">
-                <a th:href="@{/Extras}">
-                    <form class="c-sidebar-nav-link">
-                        <p>EXTRAS</p>
-                    </form>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <!--            &lt;!&ndash;       EXTRAS      &ndash;&gt;-->
+    <!--            <li class="c-sidebar-nav-item">-->
+    <!--                <a th:href="@{/Extras}">-->
+    <!--                    <form class="c-sidebar-nav-link">-->
+    <!--                        <p>EXTRAS</p>-->
+    <!--                    </form>-->
+    <!--                </a>-->
+    <!--            </li>-->
+    <!--        </ul>-->
 
     <!--SHOW ALL PRODUCTS-->
     <div class="col-md-12 mt-5" style="width: 100%; z-index: 1;">
-        <!--  SEARCH KEYWORD RENDERED  -->
-        <h2 style="margin-left: 16%; background-color: #3E0723; color:white"
-            class="fixed-top pt-3 pl-5 pb-21 mt-5">
-            All Products
-            <span><h5 th:text="${keyword}" style="border-bottom: 2px solid #3a4a67;"></h5></span>
-        </h2>
-
-        <div th:each="product : ${products}" class="card col-md-3 mt-3 m-3 shadow p-3 bg-white rounded float-right">
+        <div th:each="product : ${products}" class="card col-md-4 mt-3 m-3 shadow p-3 bg-white rounded float-right">
 
             <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
                th:value="${product.id}">
                 <div class="card-header text-white center"
                      style="border-bottom: 4px solid maroon; width: 126px; height: 189px; background-color: black">
                     <img class="center" style="width: 126px; height: 189px;"
-                         th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getProductType().getName()})}" alt="bottle"/>
+                         th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getProductType().getName()})}"
+                         alt="bottle"/>
                 </div>
             </a>
 
@@ -129,6 +139,7 @@
     </div>
 
 </div>
+
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

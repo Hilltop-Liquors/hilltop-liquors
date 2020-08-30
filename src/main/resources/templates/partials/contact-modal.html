@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <body>
-
 <!--  =========== LOGIN MODAL ============  -->
 <div th:fragment="contact-modal" class="modal fade" id="CartModalLong" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+     aria-hidden="true" style="z-index: 3005;">
+    <div class="modal-dialog" style="border-left: solid 10px #3E0723;" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Contact</h5>
+                <h5 style="color: #3E0723; font-size: 30px; font-weight: bold;" class="modal-title" id="exampleModalLongTitle">Email Us!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span style="color: #3E0723;" aria-hidden="true">&times;</span>
                 </button>
             </div>
+<!--            <span class="pl-2 pt-2" style="font-weight: bold; font-size: 15px;">Call us:</span><p> +1(361)703-5047</p>-->
+<!--            <span class="pl-2" style="font-weight: bold; font-size: 15px;">Or email us below or at:</span><p> hilltopliquors@yahoo.com</p>-->
             <div class="modal-body">
                 <!--  =========== LOGIN FORM ============  -->
                 <form th:action="@{/Contact}" method="post">
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: -2%;">
                         <label for="Name">Name:</label>
                         <input type="text" class="form-control" id="Name" name="name" placeholder="Name">
                     </div>
@@ -33,7 +34,7 @@
                         <label for="eventInfo">Message Here</label>
                         <textarea class="form-control" id="eventInfo" name="message" rows="3"></textarea>
                     </div>
-                    <button type="submit" value="submit" class="btn btn-primary">Send Email</button>
+                    <button style="background-color: #3E0723;" type="submit" value="submit" class="btn btn-primary">Send Email</button>
                 </form>
 
             </div> <!--end modal body-->
