@@ -8,10 +8,12 @@
             height: 70px !important;
         }
     </style>
+    .hoverDiv:hover {
+        background: rgba(62, 7, 35, .7)
+    }
 
 </head>
 <body>
-
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div th:replace="partials/login-modal :: login-modal"></div>
@@ -66,7 +68,7 @@
 
 
 </div>
-</div>
+
 <!--        <nav class="navbar navbar-dark bg-dark">-->
 <!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
 <!--                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->

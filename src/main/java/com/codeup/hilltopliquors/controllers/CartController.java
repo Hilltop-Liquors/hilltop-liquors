@@ -46,7 +46,6 @@ public class CartController {
         }
 
         System.out.println(order);
-
         request.getSession().setAttribute("order", order);
 
         return order;
@@ -239,7 +238,6 @@ public class CartController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User authUser = userDao.findByUsername(auth.getName());
 
-
         List<OrderProduct> orderProducts = new ArrayList<>();
 
         System.out.println(order);
@@ -253,8 +251,6 @@ public class CartController {
 //           e.printStackTrace();
 //           orderDao.save(order);
 //       }
-
-
 
         for (Product cartItem : cart) {
             OrderProduct addingProduct = new OrderProduct(1, order, cartItem);

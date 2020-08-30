@@ -70,7 +70,6 @@ public class SearchController {
             model.addAttribute("products", products);
         }
 
-
         model.addAttribute("productTypes", productTypes);
         model.addAttribute("categories", categories);
 
