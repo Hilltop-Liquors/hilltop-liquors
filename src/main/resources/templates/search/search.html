@@ -20,55 +20,53 @@
 <!--  CONTAINER  -->
 <div class="row mt-5" style="width:100%; color:black">
 
-<!--    <div class="fixed-top" style="margin-top:5%; width:16.5%;">-->
-<!--        <div class="collapse" id="navbarToggleExternalContent">-->
-<!--            <div class="bg-dark p-4">-->
-                <!--                <h5 class="text-white h4">Collapsed content</h5>-->
-                <!--                <span class="text-muted">Toggleable via the navbar brand.</span>-->
+    <!--    <div class="fixed-top" style="margin-top:5%; width:16.5%;">-->
+    <!--        <div class="collapse" id="navbarToggleExternalContent">-->
+    <!--            <div class="bg-dark p-4">-->
+    <!--                <h5 class="text-white h4">Collapsed content</h5>-->
+    <!--                <span class="text-muted">Toggleable via the navbar brand.</span>-->
 
-<!--                <h2 style="color:white; font-weight: bold;" class=" mt-5">-->
-<!--                    All Products-->
-<!--                    <span><h5 th:text="${keyword}"></h5></span>-->
-<!--                </h2>-->
-                <!--  SEARCH BAR  -->
-<!--                <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">-->
-<!--                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">-->
-<!--                </form>-->
-
-
+    <!--                <h2 style="color:white; font-weight: bold;" class=" mt-5">-->
+    <!--                    All Products-->
+    <!--                    <span><h5 th:text="${keyword}"></h5></span>-->
+    <!--                </h2>-->
+    <!--  SEARCH BAR  -->
+    <!--                <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">-->
+    <!--                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">-->
+    <!--                </form>-->
 
 
-                <!--       LIQUOR      -->
-                <a style="text-decoration: none; color: white;" th:href="@{/Liquor}">
-                    <form class="nav-link">
-                        <p>LIQUOR</p>
-                    </form>
-                </a>
+    <!--       LIQUOR      -->
+    <a style="text-decoration: none; color: white;" th:href="@{/Liquor}">
+        <form class="nav-link">
+            <p>LIQUOR</p>
+        </form>
+    </a>
 
-                <!--       BEER      -->
-                <a style="text-decoration: none; color: white;" th:href="@{/Beer}">
-                    <form class="nav-link">
-                        <p>BEER</p>
-                    </form>
-                </a>
+    <!--       BEER      -->
+    <a style="text-decoration: none; color: white;" th:href="@{/Beer}">
+        <form class="nav-link">
+            <p>BEER</p>
+        </form>
+    </a>
 
-                <!--       WINE      -->
-                <a style="text-decoration: none; color: white;" th:href="@{/Wine}">
-                    <form class="nav-link">
-                        <p>WINE</p>
-                    </form>
-                </a>
+    <!--       WINE      -->
+    <a style="text-decoration: none; color: white;" th:href="@{/Wine}">
+        <form class="nav-link">
+            <p>WINE</p>
+        </form>
+    </a>
 
-                <!--       EXTRAS      -->
-                <a style="text-decoration: none; color: white;" th:href="@{/Extras}">
-                    <form class="nav-link">
-                        <p>EXTRAS</p>
-                    </form>
-                </a>
+    <!--       EXTRAS      -->
+    <a style="text-decoration: none; color: white;" th:href="@{/Extras}">
+        <form class="nav-link">
+            <p>EXTRAS</p>
+        </form>
+    </a>
 
 
-            </div>
-        </div>
+</div>
+</div>
 <!--        <nav class="navbar navbar-dark bg-dark">-->
 <!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
 <!--                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
@@ -79,41 +77,44 @@
 <!--    </div>-->
 
 
-
 <!--SIDE NAV-->
-<div class="fixed-top" style="margin-top:4.8%; width:100%;" >
+<div class="fixed-top" style="margin-top:4.8%; width:100%;">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="p-4" style="background-color: rgba(0, 0, 0, 0.8);">
             <ul class="row">
 
                 <li class="col-md-2">
-                    <form style="text-decoration: none; color: white;" th:action="@{/Liquor}" >
+                    <form style="text-decoration: none; color: white;" th:action="@{/Liquor}">
                         <button type="submit" class="m-1 nav-link"
-                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Liquor
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">
+                            Liquor
                         </button>
                     </form>
                 </li>
 
                 <li class="col-md-2">
-                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}" >
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
                         <button type="submit" class="m-1 nav-link"
-                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Beer
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">
+                            Beer
                         </button>
                     </form>
                 </li>
 
                 <li class="col-md-2">
-                    <form style="text-decoration: none; color: white;" th:action="@{/Wine}" >
+                    <form style="text-decoration: none; color: white;" th:action="@{/Wine}">
                         <button type="submit" class="m-1 nav-link"
-                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Wine
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">
+                            Wine
                         </button>
                     </form>
                 </li>
 
                 <li class="col-md-2">
-                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}" >
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
                         <button type="submit" class="m-1 nav-link"
-                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Extras
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">
+                            Extras
                         </button>
                     </form>
                 </li>
@@ -122,120 +123,113 @@
         </div>
     </div>
     <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
-            <span class="navbar-toggler-icon" style="background-color: black"></span>
-        </button>
+        <span style="color: white;" class="d-flex d-inline">
+
+<!--             <ul class="row">-->
+
+            <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Liquor}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Liquor
+                        </button>
+                    </form>
+            <!--                </li>-->
+
+            <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Beer
+                        </button>
+                    </form>
+            <!--                </li>-->
+
+            <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Wine}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Wine
+                        </button>
+                    </form>
+            <!--                </li>-->
+            <!---->
+            <!--                <li class="col-md-2">-->
+                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">
+                        <button type="submit" class="m-1 nav-link ml-1 mr-2"
+                                style="color: white; background-color: #400000; text-decoration: none; width: 100%;">Extras
+                        </button>
+                    </form>
+            <!--                </li>-->
+
+            <!--            </ul>-->
+
+
+            <!--            -->
+        </span>
+        <!--        <div class=" d-flex d-inline ml-auto align-items-center" style="color: white;">-->
+        <div style="color: white;" class="ml-auto mr-5">
+            <h2 style="font-weight: lighter;">
+                All Products
+            </h2>
+            <h6 th:text="${keyword}"></h6>
+        </div>
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse"-->
+<!--                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
+<!--                aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">-->
+<!--            <span class="navbar-toggler-icon" style="background-color: black"></span>-->
+<!--        </button>-->
     </nav>
 </div>
 
+<!--SHOW ALL PRODUCTS-->
+<div class="col-md-9 mt-5" style="width: 100%; z-index: 1;">
+    <!--        <h2 style="color:white; font-weight: bold;" class=" mt-5">-->
+    <!--            All Products-->
+    <!--            <span><h5 th:text="${keyword}"></h5></span>-->
+    <!--        </h2>-->
+    <div th:each="product : ${products}" class="card col-md-4 mt-3 m-3 shadow p-3 bg-white rounded float-right">
 
-    <!--    <div class="fixed-top" style="margin-top: 4.5%; width: 15.65%; transform: rotate(180deg); border-bottom: black; border-right:black;">-->
-    <!--        <div class="collapse" id="navbarToggleExternalContent" style="margin-bottom: -27%;">-->
-    <!--            <div class="p-4" style="transform: rotate(180deg);background-color: black;">-->
-    <!--                <h2 style="color:white; font-weight: bold;" class=" mt-5">-->
-
-    <!--                    <span><h5 th:text="${keyword}"></h5></span>-->
-    <!--                </h2>-->
-    <!--                &lt;!&ndash;  SEARCH BAR  &ndash;&gt;-->
-    <!--                <form class="center ml-2 d-inline" th:action="@{/Search}" method="get">-->
-    <!--                    <input id="txtSearch" type="text" name="keyword" placeholder="Search">-->
-    <!--                </form>-->
-
-    <!--                &lt;!&ndash;  PRODUCT TYPE SIDE-NAV DISPLAY    &ndash;&gt;-->
-    <!--                &lt;!&ndash;       LIQUOR      &ndash;&gt;-->
-    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Liquor}">-->
-    <!--                    <form class="nav-link">-->
-    <!--                        <p>LIQUOR</p>-->
-    <!--                    </form>-->
-    <!--                </a>-->
-
-    <!--                &lt;!&ndash;       BEER      &ndash;&gt;-->
-    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Beer}">-->
-    <!--                    <form class="nav-link">-->
-    <!--                        <p>BEER</p>-->
-    <!--                    </form>-->
-    <!--                </a>-->
-
-    <!--                &lt;!&ndash;       WINE      &ndash;&gt;-->
-    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Wine}">-->
-    <!--                    <form class="nav-link">-->
-    <!--                        <p>WINE</p>-->
-    <!--                    </form>-->
-    <!--                </a>-->
-
-    <!--                &lt;!&ndash;       EXTRAS      &ndash;&gt;-->
-    <!--                <a style="text-decoration: none; color: white;" th:href="@{/Extras}">-->
-    <!--                    <form class="nav-link">-->
-    <!--                        <p>EXTRAS</p>-->
-    <!--                    </form>-->
-    <!--                </a>-->
-    <!--            </div> &lt;!&ndash; CLOSE TOGGLE DIV &ndash;&gt;-->
-    <!--        </div>-->
-    <!--        <nav class="navbar navbar-dark position-static" style="transform: rotate(180deg); background-color: #800000;">-->
-    <!--            <span style="color:white; font-weight: lighter; font-size:25px;">All Products</span>-->
-    <!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
-    <!--                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
-    <!--                    aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--                <span class="navbar-toggler-icon"></span>-->
-    <!--            </button>-->
-    <!--        </nav>-->
-    <!--    </div>-->
-
-    <!--SHOW ALL PRODUCTS-->
-    <div class="col-md-9 mt-5" style="width: 100%; z-index: 1;">
-        <h2 style="color:white; font-weight: bold;" class=" mt-5">
-            All Products
-            <span><h5 th:text="${keyword}"></h5></span>
-        </h2>
-        <div th:each="product : ${products}" class="card col-md-4 mt-3 m-3 shadow p-3 bg-white rounded float-right">
-
-            <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
-               th:value="${product.id}">
-                <div class="card-header text-white center"
-                     style="border-bottom: 4px solid maroon; width: 126px; height: 189px; background-color: black">
-                    <img class="center" style="width: 126px; height: 189px;"
-                         th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getProductType().getName()})}"
-                         alt="bottle"/>
-                </div>
-            </a>
-
-            <div class="card-body d-flex flex-column">
-                <p th:text="${product.name}"></p>
-                <p th:text="${product.priceInCents}"></p>
-
-                <form th:action="@{/Search}" th:method="post">
-                    <input type="hidden" class="form-control" th:value="${product.getId() }" name="productId"/>
-                    <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
-                </form>
-
-                <hr>
-                <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
-                <!--   ============      TAGS       ========-->
-                <!--                <form th:action="@{/Search}" method="get">-->
-                <!--                    &lt;!&ndash;   ========  PRODUCT-TYPE TAGS CONNECTED=======        &ndash;&gt;-->
-                <!--                    <button type="submit"-->
-                <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light">-->
-                <!--                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>-->
-                <!--                    </button>-->
-                <!--                    &lt;!&ndash;   ========  CATEGORY TAGS CONNECTED=======        &ndash;&gt;-->
-                <!--                    <button type="submit"-->
-                <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
-                <!--                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">-->
-                <!--                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>-->
-                <!--                    </button>-->
-                <!--                    &lt;!&ndash;   ========  SUB-CATEGORY TAGS NOT CONNECTED=======    &ndash;&gt;-->
-                <!--                    <button type="submit"-->
-                <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
-                <!--                            th:value="${productType.getSubCategory().getId()}" name="subId">-->
-                <!--                        <span th:text="${productType.getSubCategory().getName()}"></span>-->
-                <!--                    </button>-->
-                <!--                </form>-->
+        <a style="color: black; text-decoration: none;" th:href="@{/Search/{id}(id=${product.id})}"
+           th:value="${product.id}">
+            <div class="card-header text-white center"
+                 style="border-bottom: 4px solid maroon; width: 126px; height: 189px; background-color: black">
+                <img class="center" style="width: 126px; height: 189px;"
+                     th:src="@{img/{productCat}.jpg(productCat=${product.getSubCategory().getCategory().getProductType().getName()})}"
+                     alt="bottle"/>
             </div>
+        </a>
+
+        <div class="card-body d-flex flex-column">
+            <p th:text="${product.name}"></p>
+            <p th:text="${product.priceInCents}"></p>
+
+            <form th:action="@{/Search}" th:method="post">
+                <input type="hidden" class="form-control" th:value="${product.getId() }" name="productId"/>
+                <button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+            </form>
+
+            <hr>
+            <p style="font-weight: lighter; font-size: smaller"><i>tags</i></p>
+            <!--   ============      TAGS       ========-->
+            <!--                <form th:action="@{/Search}" method="get">-->
+            <!--                    &lt;!&ndash;   ========  PRODUCT-TYPE TAGS CONNECTED=======        &ndash;&gt;-->
+            <!--                    <button type="submit"-->
+            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light">-->
+            <!--                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>-->
+            <!--                    </button>-->
+            <!--                    &lt;!&ndash;   ========  CATEGORY TAGS CONNECTED=======        &ndash;&gt;-->
+            <!--                    <button type="submit"-->
+            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
+            <!--                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">-->
+            <!--                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>-->
+            <!--                    </button>-->
+            <!--                    &lt;!&ndash;   ========  SUB-CATEGORY TAGS NOT CONNECTED=======    &ndash;&gt;-->
+            <!--                    <button type="submit"-->
+            <!--                            style="color: black; font-size: smaller;" class="mt-auto btn btn-light"-->
+            <!--                            th:value="${productType.getSubCategory().getId()}" name="subId">-->
+            <!--                        <span th:text="${productType.getSubCategory().getName()}"></span>-->
+            <!--                    </button>-->
+            <!--                </form>-->
         </div>
     </div>
-
 </div>
 
 <footer th:replace="partials/footer :: footer"></footer>
