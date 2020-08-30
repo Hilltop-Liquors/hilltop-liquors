@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <meta name="cocktailApiKey" th:content="${cocktailApiKey}">
 <head th:include="partials/head :: head">
 
     <title>Hilltop-Home</title>
 
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
         nav {
             height: 70px !important;
         }
+
+
 
         /*h1 {*/
         /*    width: 15%;*/
@@ -19,14 +30,17 @@
         /*    width: 15%;*/
         /*    height: 8%;*/
         /*}*/
+
     </style>
 
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
+
 <div th:replace="partials/login-modal :: login-modal"></div>
 <div th:replace="partials/contact-modal :: contact-modal"></div>
 <div th:replace="partials/event-supply-modal :: event-supply-modal"></div>
+
 <div class="container m-5 p-5">
     <!--  =========== ORDER SUCCESS PARAM============  -->
     <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -115,6 +129,7 @@
         drinkSection.appendChild(card);
     }
 </script>
+
 
 <!--  =========== ABOUT ============  -->
 <section id="section-about">
@@ -229,6 +244,7 @@
 </section>
 
 <!-- ===========FOOTER===============-->
+
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

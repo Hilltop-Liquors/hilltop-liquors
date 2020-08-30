@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <title>Hilltop-Home</title>
+
+    <style>
+        nav {
+            height: 70px !important;
+        }
+    </style>
+
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+
+<div class="container m-5 p-5">
+<div>
+    <br>
+    <h3><a class="btn btn-success" style="text-decoration: none; color:black;" th:href="@{/admin}">Dashboard</a></h3>
+    <br>
+</div>
+    <h1>Store Order History</h1>
+    <!--<div>-->
+    <!--    <br>-->
+    <!--    <h3><a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a></h3>-->
+    <!--    <br>-->
+    <!--</div>-->
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+        <tr>
+            <th>Order Id</th>
+            <th>Date</th>
+            <th>Username</th>
+            <th>Order Total</th>
+            <th>Curbside Pickup</th>
+            <th>Complete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.getId()}"></td>
+            <td th:text="${order.createdAt}"></td>
+            <td th:text="${order.getUser().username}"></td>
+            <td>Total: $<span th:text="${order.totalInCents}/100"></span></td>
+            <td th:text="${order.isCurbside}"></td>
+            <td th:text="${order.isOrderIsFulfilled()}"></td>
+            <td><a class="btn btn-primary" th:href="@{/admin/order/edit{id}(id=${order.id})}" role="button">Edit Order</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<footer th:replace="partials/footer :: footer"></footer>
+
+</body>
+</html>

@@ -56,10 +56,6 @@ public class UserServiceImpl implements UserService{
         user.setSms_consent(registration.getSmsConsent());
         user.setPhone(registration.getPhone());
         user.setRoles(Arrays.asList((roleRepository.findByName("ROLE_USER"))));
-//        user.setRoles()
-        System.out.println(user);
-        System.out.println("TESTING 1, 2, 3 ... is this thing on?!");
-//        This was missing return... could this be WHY nothing is being stored?!
         return userRepository.save(user);
     }
 

@@ -36,8 +36,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
+                .headers().frameOptions().sameOrigin()
+                .and()
                 .authorizeRequests()
-                .antMatchers("/", "/registration", "/Home", "/About", "/Contact", "/EventSupply", "/Recipes", "/Search") // anyone can see the home and the ads pages
+                .antMatchers("/", "/registration", "/Home", "/About", "/Contact", "/EventSupply", "/Recipes", "/Search", "/HilltopLiquorsHomepage.mp4") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
@@ -49,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
         .authorizeRequests()
-        .antMatchers("/admin", "/products", "/admin/users")
+        .antMatchers("/admin", "/products", "/admin/users", "/admin/orders")
 //                add .authenticated here
         .hasRole("ADMIN")
         ;

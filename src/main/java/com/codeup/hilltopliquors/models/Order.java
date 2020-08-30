@@ -92,7 +92,27 @@ public class Order {
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
     }
-//    public OrderProduct getOrderProduct() {
+
+    public boolean isCurbside() {
+        return isCurbside;
+    }
+
+    public void setCurbside(boolean curbside) {
+        isCurbside = curbside;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public boolean isOrderIsFulfilled() {
+        return orderIsFulfilled;
+    }
+    //    public OrderProduct getOrderProduct() {
 //        return orderProduct;
 //    }
 //
