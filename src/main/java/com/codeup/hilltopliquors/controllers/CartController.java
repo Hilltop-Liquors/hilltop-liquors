@@ -302,6 +302,7 @@ public class CartController {
                 + "Thank you for joining us at the top! \nHere's Your Purchase Receipt: \n"
                 + "\n" + authUser.getUsername() + "\n"
                 + order.getId() + "\n"
+                + order.getCreatedAt() + "\n"
                 +" Items:                                               Qty:      Price:" + "\n"
                 + items
                 + "\n" + " Total: $" + order.getTotalInCents()/100 + "\n"
