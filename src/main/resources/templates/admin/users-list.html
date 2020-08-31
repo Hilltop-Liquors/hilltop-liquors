@@ -7,11 +7,15 @@
         nav {
             height: 70px !important;
         }
-        th, td {
-            font-family: "Lato", sans-serif;
-            font-weight: 300;
-            color: #fff;
-            font-size: 18px;
+        /*table, th, td {*/
+        /*    font-family: "Lato", sans-serif;*/
+        /*    font-weight: 800;*/
+        /*    color: white;*/
+        /*    !*font-size: 22px;*!*/
+        /*}*/
+        .head-title {
+            margin-top: 2em;
+            margin-bottom: 2em;
         }
     </style>
 
@@ -33,45 +37,47 @@
 <!--    </div>-->
 <div class="container m-5 p-5">
                 <!--                    <div class="icon icon-fill"><i class="fa fa-home"></i></div>-->
-<!--    <div class="icon-container">-->
+    <div class="content">
         <div>
             <a th:href="@{/admin}"><div class="icon icon-fill"><i class="fa fa-home"></i></div></a>
-            <h4>Dashboard</h4>
+            <h4 class="mt-1">Dashboard</h4>
         </div>
-<!--    </div>-->
-<h1>Update User's Profiles</h1>
+    </div>
+
 <!--<div>-->
 <!--    <br>-->
 <!--    <h3><a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a></h3>-->
 <!--    <br>-->
 <!--</div>-->
 
-<div class="container m-auto">
-    <div class="col-lg-12 col-md-offset-12">
-        <table class="table table-bordered table-hover">
-            <thead>
+<!--<div class="container m-auto">-->
+    <div class="container-fluid m-auto">
+        <h1 class="mt-3 mb-3">User's Profiles</h1>
+        <div class="col-auto">
+        <table class="table table-fit table-bordered font-weight-bold text-white">
+            <thead class="text-uppercase">
             <tr>
             <tr>
                 <th>Username</th>
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>EDIT</th>
+
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
                 <td th:text="${user.username}"></td>
-                <td><span th:text="${user.first_name}"></span><span th:text="${user.last_name}"></span></td>
+                <td><span th:text="${user.first_name}"></span><span> </span><span th:text="${user.last_name}"></span></td>
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.phone}"></td>
-                <td><a class="btn btn-warning" th:href="@{/admin/user/edit{id}(id=${user.id})}" role="button">EDIT</a></td>
+<!--                <td><a class="btn btn-warning" th:href="@{/admin/user/edit{id}(id=${user.id})}" role="button">EDIT</a></td>-->
             </tr>
             </tbody>
         </table>
-
+        </div>
     </div>
-</div>
+<!--</div>-->
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
