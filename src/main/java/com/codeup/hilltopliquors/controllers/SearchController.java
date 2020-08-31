@@ -91,7 +91,8 @@ public class SearchController {
         Product product = productDao.getOne(productId);
         cart.add(product);
         request.getSession().setAttribute("cart", cart);
-        return "search/search";
+//        return "search/search";
+      return  "redirect:/Search?success";
     }
 
 
