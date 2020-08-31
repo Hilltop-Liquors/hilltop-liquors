@@ -45,7 +45,9 @@
             <td th:text="${order.getId()}"></td>
             <td th:text="${order.createdAt}"></td>
             <td th:text="${order.getUser().username}"></td>
+
             <td>Total: $<span th:text="${order.totalInCents}/100"></span></td>
+
             <td th:text="${order.isCurbside}"></td>
             <td th:text="${order.isOrderIsFulfilled()}"></td>
             <td><a class="btn btn-primary" th:href="@{/admin/order/edit{id}(id=${order.id})}" role="button">Edit Order</a></td>
