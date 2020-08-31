@@ -155,7 +155,7 @@
 
                     <form th:action="@{/Cart/confirm-details}" th:method="get">
                         <input type="hidden" class="form-control"/>
-                        <button sec:authorize="isAuthenticated()" type="submit">
+                        <button style="background-color: #400000; color:white;" sec:authorize="isAuthenticated()" type="submit">
                             Checkout
                         </button>
                     </form>
