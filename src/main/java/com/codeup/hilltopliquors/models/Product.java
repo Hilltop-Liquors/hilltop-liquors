@@ -35,8 +35,13 @@ public class Product {
     @Column(name = "file_type")
     private String fileType;
 
+    @Column(length = 2000, name = "image")
+    private String image;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderProduct> orderProducts;
+
+
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "order_product_id", referencedColumnName = "id")
