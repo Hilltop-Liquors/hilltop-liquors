@@ -38,6 +38,7 @@ public class Product {
     @Column(length = 2000, name = "image")
     private String image;
 
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderProduct> orderProducts;
 
@@ -81,6 +82,13 @@ public class Product {
         this.fileType = fileType;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     public Product(String s, int parseInt, String extension) {
     }
 
