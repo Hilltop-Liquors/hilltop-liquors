@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="" lang="en">
-<head th:include="partials/head :: head">
+<head th:include="partials/admin-navbar :: head">
     <title>Hilltop-Home</title>
 
     <style>
+
+
+        /*  END Button Style*/
         nav {
             height: 70px !important;
+        }
+        h1{
+            text-align: center;
         }
     </style>
 
@@ -17,19 +23,63 @@
         <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-        <div>
-            <br>
-            <h3><a class="btn btn-success" style="text-decoration: none; color:black;" th:href="@{/admin}">Dashboard</a></h3>
-            <br>
+<!--        <div>-->
+<!--            <br>-->
+<!--            <h3><a class="btn btn-success" style="text-decoration: none; color:black;" th:href="@{/admin}">Dashboard</a></h3>-->
+<!--            <br>-->
+<!--        </div>-->
+
+
+<!--                https://codepen.io/ishaansaxena/pen/WoJGRK  -->
+         <div class="container">
+            <div class="content">
+                <h2 class="dash">Dashboard</h2>
+                <div class="icon-container">
+<!--                    <div class="icon icon-fill"><i class="fa fa-home"></i></div>-->
+                    <div class="circle">
+                         <a th:href="@{/admin/users}"><div class="icon icon-enter"><i class="fa fa-user"></i></div></a>
+                        <h4>View Users</h4>
+                    </div>
+                    <div class="circle">
+                         <a th:href="@{/admin/orders}"><div class="icon icon-expand"><i class="fa fa-file-invoice-dollar"></i></div></a>
+                        <h4>View All Orders</h4>
+                    </div>
+
+                    <!--                    <div class="icon icon-fill"><i class="fa fa-home"></i></div>-->
+                    <div class="circle">
+                        <a th:href="@{/products}"><div class="icon icon-collapse"><i class="fa fa-sign-in"></i></div></a>
+                        <h4>Upload CSV</h4>
+                    </div>
+                    <div class="circle">
+                        <a th:href="@{/admin/fulfill}"><div class="icon icon-rotate"><i class="fa fa-credit-card"></i></div></a>
+                        <h4>Fulfill Orders</h4>
+                    </div>
+                </div>
+            </div>
+<!--             <div class="content">-->
+<!--                 -->
+<!--             </div>-->
         </div>
 
-        <h2><a th:href="@{/admin/users}">View Users</a></h2>
 
-        <h2> <a class="nav-link" th:href="@{/products}">Upload<span class="sr-only">(current)</span></a></h2>
+<!--        <div class="container">-->
+<!--            <div class="content">-->
+<!--&lt;!&ndash;                <h1>CSS3 Icons</h1>&ndash;&gt;-->
+<!--                <div class="icon-container">-->
+<!--                    <div class="icon icon-fill"><i class="fa fa-home"></i></div>-->
 
-        <h2> <a class="nav-link" th:href="@{/admin/orders}"> View All Orders<span class="sr-only">(current)</span></a></h2>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <h2> <a class="nav-link" th:href="@{/admin/fulfill}"> Fulfill Orders<span class="sr-only">(current)</span></a></h2>
+
+<!--        <h2><a th:href="@{/admin/users}">View Users</a></h2>-->
+
+<!--        <h2> <a class="nav-link" th:href="@{/products}">Upload<span class="sr-only">(current)</span></a></h2>-->
+
+<!--        <h2> <a class="nav-link" th:href="@{/admin/orders}"> View All Orders<span class="sr-only">(current)</span></a></h2>-->
+
+<!--        <h2> <a class="nav-link" th:href="@{/admin/fulfill}"> Fulfill Orders<span class="sr-only">(current)</span></a></h2>-->
 
     </div>
 </sec:authorize>
