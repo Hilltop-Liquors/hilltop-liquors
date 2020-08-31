@@ -51,6 +51,8 @@ public class SearchController {
 //      SUB-CAT TAGS
         List<Product> subProducts = productDao.findAllBySubCategoryId(subId);
 
+//        model.addAttribute("productImage", product.)
+
 //        SEARCH BOX
 //        if (keyword != null) {
 //            model.addAttribute("products", productDao.findByKeyWord(keyword));

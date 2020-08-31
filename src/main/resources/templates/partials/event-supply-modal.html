@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <body>
-
-<!--  =========== LOGIN MODAL ============  -->
+<!--  =========== EVENT MODAL ============  -->
 <div th:fragment="event-supply-modal" class="modal fade" id="EventModalLong" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+     aria-hidden="true" style="z-index: 3005;">
+    <div class="modal-dialog" style="border-left: solid 10px #3E0723;" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Event Supply</h5>
+                <h5 style="color: #3E0723; font-size: 30px; font-weight: bold;" class="modal-title" id="exampleModalLongTitle">Let us supply your next big event!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span style="color: #3E0723;" aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <!--            <span class="pl-2 pt-2" style="font-weight: bold; font-size: 15px;">Call us:</span><p> +1(361)703-5047</p>-->
+            <!--            <span class="pl-2" style="font-weight: bold; font-size: 15px;">Or email us below or at:</span><p> hilltopliquors@yahoo.com</p>-->
             <div class="modal-body">
-                <!--  =========== EVENT SUPPLY ============  -->
-                <form>
-                    <div class="form-group">
+                <!--  =========== EVENT FORM ============  -->
+                <form th:action="@{/Home}" method="post">
+                    <div class="form-group" style="margin-top: -2%;">
                         <label for="Name">Name:</label>
-                        <input type="text" class="form-control" id="Name" placeholder="Name">
+                        <input type="text" class="form-control" id="Name" name="name" placeholder="Name">
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">Phone Number</label>
-                        <input type="number" class="form-control" id="phoneNumber" placeholder="(xxx)xxx-xxxx">
+                        <input type="number" class="form-control" id="phoneNumber" name="phone" placeholder="(xxx)xxx-xxxx">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="eventInfo">Please describe event & date and what products you would like<br> <i>(kegs, cases of wine)</i></label>
-                        <textarea class="form-control" id="eventInfo" rows="3"></textarea>
+                        <label for="eventInfo">Message Here</label>
+                        <textarea class="form-control" id="eventInfo" name="message" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-dark btn-outline-info">Supply Request</button>
-                    <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
+                    <button style="background-color: #3E0723;" type="submit" value="submit" class="btn btn-primary">Send Request</button>
                 </form>
 
             </div> <!--end modal body-->

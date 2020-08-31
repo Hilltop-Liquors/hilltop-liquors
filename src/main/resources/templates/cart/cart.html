@@ -65,11 +65,15 @@
 
 <a style="text-decoration: none; color:black; margin-top:15%;" th:href="@{/Search}">keep
     shopping</a>
+<!--<span class="ml-4" style="margin-top:5%;" sec:authorize="isAuthenticated()">-->
+<!--                    <span class="d-flex d-inline ml-2"-->
+<!--                          th:text="${#authentication.principal.username}"></span>-->
+<!--                </span>'s Cart!-->
 <h1 class="ml-4" style="margin-top:5%;">Cart</h1>
 <br>
 <div style="width: 100%; background-color: #f4f4f4;">
 
-    <div class="d-inline float-left ml-3 pl-2" style="width: 40%; margin-right:10%; background-color: #f4f4f4;">
+    <div class="d-inline float-left ml-5 pl-2" style="width: 40%; margin-right:-5%; background-color: #f4f4f4; border-left: 10px solid #400000;">
         <table class="table">
             <thead>
             <tr>
@@ -87,8 +91,8 @@
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.setInStoreCount(1) }"></td>
-                <!--                th:text=“${‘$’+#numbers.formatDecimal(grandTotal,0,‘COMMA’,2,‘POINT’)}“-->
-                <td th:text="${#numbers.formatDecimal(cartItem.getPriceInCents(), 1 , 'DEFAULT', 2, 'POINT')}">
+<!--                                th:text=“${‘$’+#numbers.formatDecimal(grandTotal,0,‘COMMA’,2,‘POINT’)}“-->
+                <td th:text="${cartItem.getPriceInCents()}/100">
                     <!--                    <p th:text="${cartItem.getPriceInCents()}"></p>-->
                     <!--                </td>-->
                     <!--                <td th:text="${cartItem.getPriceInCents()}"></td>-->
@@ -118,7 +122,7 @@
 
     <!--  Start Checkout Details -->
     <div class="d-inline float-right border border-3 border-dark rounded-lg shadow-lg mr-5 p-3"
-         style="width: 40%; background-color: #f4f4f4;">
+         style="width: 40%; background-color: #f4f4f4; border-left: 10px solid #400000;">
         <h4 class="p-2">Ready to place your order for pickup?</h4>
         <table class="table table-sm">
             <thead>
@@ -135,14 +139,14 @@
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.getInStoreCount()}"></td>
-                <td th:text="${cartItem.getPriceInCents()}"></td>
+                <td th:text="${cartItem.getPriceInCents()}/100"></td>
             </tr>
             </tbody>
             <tfoot>
 
             <tr>
                 <td>
-                    <p><span th:text="${total}"></span></p>
+                    <p><span th:text="${total}/100"></span></p>
                 </td>
             </tr>
             <tr>
@@ -151,14 +155,14 @@
 
                     <form th:action="@{/Cart/confirm-details}" th:method="get">
                         <input type="hidden" class="form-control"/>
-                        <button sec:authorize="isAuthenticated()" type="submit">
+                        <button style="background-color: #400000; color:white;" sec:authorize="isAuthenticated()" type="submit">
                             Checkout
                         </button>
                     </form>
 
                     <span sec:authorize="isAnonymous()">
-                        <button class="btn btn-primary" style="margin-top: 15%;" data-toggle="modal"
-                                data-target="#exampleModalLong">
+                        <button class="btn btn-custom" style="margin-top: 15%; background-color: #400000; color:white;" data-toggle="modal"
+                                data-target="#exampleModalLong" >
                         You must be logged in to checkout</button>
                     </span>
                     <!--         ==========================           -->
