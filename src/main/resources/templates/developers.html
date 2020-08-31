@@ -39,21 +39,21 @@
             transition: all .2s ease-in-out;
         }
         .move-color-a:hover{
-            background-color: rgb(76, 1, 15);
+            background-color: #400000;
             color: white;
         }
         .move-color-b{
             transition: all .2s ease-in-out;
         }
         .move-color-b:hover{
-            background-color: rgb(76, 1, 15);
+            background-color: #400000;
             color: white;
         }
         .move-color-c{
             transition: all .2s ease-in-out;
         }
         .move-color-c:hover{
-            background-color: rgb(76, 1, 15);
+            background-color: #400000;
             color: white;
         }
 
@@ -77,16 +77,63 @@
 </head>
 <body>
 
-<h1 class="text-center quicksand">About Us</h1>
-<div class="container aboutUsContainer">
+<h1 class="text-center quicksand m-15 p-5" style="color: black">Shop Developers!</h1>
+<div class="container aboutUsContainer d-flex justify-content-center">
 
 
-    <div class="card grow move-color-a" style="width: 18rem;">
+    <div class="card grow move-color-c d-flex justify-content-center" style="width: 18rem;">
+        <a href="https://alumni.codeup.com/students/873" target="_blank" style ="border: black;">
+            <img src="../static/img/Shelby.jpg" class="card-img-top"  th:src="@{img/Shelby.jpg}" alt="Shelby"/></a>
+        <div class="card-body">
+            <h3 class="card-title text-center quicksand mt-0">Shelby <br> Polasek</h3>
+            <div class="d-flex justify-content-center">
+                <a href="https://github.com/Shelbypol" target="_blank" class="git pl-2 pr-1 py-1 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:shelbypolasek@gmail.com" class="mail d-flex align-items-center justify-content-center">
+                    <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/shelby-polasek/"
+                   target="_blank"
+                   class="link p-1 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div class="git d-flex justify-content-center"><button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+        </div>
+    </div>
+
+  <div class="card grow move-color-b d-flex justify-content-center" style="width: 18rem;">
+        <a href="https://alumni.codeup.com/students/855" target="_blank">
+            <img src="../static/img/Andrew.jpg" class="card-img-top"  th:src="@{img/Andrew.jpg}" alt="Andrew"/>
+        </a>
+        <div class="card-body">
+            <h3 class="card-title text-center quicksand mt-0">Andrew <br> Brought</h3>
+            <div class="d-flex justify-content-center">
+                <a href="https://github.com/AndrewBrought" target="_blank" class="git pl-2 pr-1 py-1 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:andrewbrought@gmail.com" class="mail d-flex align-items-center justify-content-center">
+                    <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/andrew-brought/"
+                   target="_blank"
+                   class="link p-1 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+      <div class="git d-flex justify-content-center"><button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="card grow move-color-a d-flex justify-content-center" style="width: 18rem;">
         <a href="https://alumni.codeup.com/students/859" target="_blank">
             <img src="../static/img/Julia.jpg" class="card-img-top"  th:src="@{img/Julia.jpg}" alt="Julia"/>
         </a>
         <div class="card-body">
-            <h3 class="card-title text-center quicksand">Julia <br> Contreras</h3>
+            <h3 class="card-title text-center quicksand mt-0">Julia <br> Contreras</h3>
             <div class="git d-flex justify-content-center">
                 <a href="https://github.com/juliacontreras483" target="_blank" class="git pl-2 pr-1 py-1 d-flex align-items-center justify-content-center">
                     <i class="fa fa-github fa-2x" aria-hidden="true"></i>
@@ -102,47 +149,7 @@
             </div>
 
         </div>
-    </div>
-
-  <div class="card grow move-color-b" style="width: 18rem;">
-        <a href="https://alumni.codeup.com/students/855" target="_blank">
-            <img src="../static/img/Andrew.jpg" class="card-img-top"  th:src="@{img/Andrew.jpg}" alt="Andrew"/>
-        </a>
-        <div class="card-body">
-            <h3 class="card-title text-center quicksand">Andrew <br> Brought</h3>
-            <div class="d-flex justify-content-center">
-                <a href="https://github.com/AndrewBrought" target="_blank" class="git pl-2 pr-1 py-1 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-github fa-2x" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:andrewbrought@gmail.com" class="mail d-flex align-items-center justify-content-center">
-                    <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/andrew-brought/"
-                   target="_blank"
-                   class="link p-1 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="card grow move-color-c" style="width: 18rem;">
-        <a href="https://alumni.codeup.com/students/873" target="_blank">
-            <img src="../static/img/Shelby.jpg" class="card-img-top"  th:src="@{img/Shelby.jpg}" alt="Shelby"/></a>
-        <div class="card-body">
-            <h3 class="card-title text-center quicksand">Shelby <br> Polasek</h3>
-            <div class="d-flex justify-content-center">
-                <a href="https://github.com/Shelbypol" target="_blank" class="git pl-2 pr-1 py-1 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-github fa-2x" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:shelbypolasek@gmail.com" class="mail d-flex align-items-center justify-content-center">
-                    <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/shelby-polasek/"
-                   target="_blank"
-                   class="link p-1 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
-                </a>
-            </div>
+        <div class="git d-flex justify-content-center"><button style="border-left: 4px solid #800000;" class="bg-dark text-white">Add to Cart</button>
         </div>
     </div>
 
