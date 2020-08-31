@@ -71,7 +71,7 @@
 
             <td>
                 <form th:action="@{/admin/fulfill/{id}(id=${order.id})}" method="post" th:object="${order}">
-                    <button type="submit" value="submit" class="btn btn-success">Fulfill Order</button>
+                    <button type="submit" value="submit" class="btn btn-warning">Fulfill Order</button>
                 </form>
             </td>
             <td>
