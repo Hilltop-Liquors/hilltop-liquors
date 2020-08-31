@@ -17,8 +17,14 @@
 
 }
 
+.red{
+    color: red;
+}
+
 .communityDiv{
-background-image: url("static/img/pet_sponser1.JPG");
+
+background-image: url("../img/pet_sponser1.JPG") !important;
+
 }
 
 .eventDiv{
