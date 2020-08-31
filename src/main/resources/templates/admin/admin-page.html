@@ -20,7 +20,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="container m-5 p-5">
-        <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
+
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
 <!--        <div>-->
@@ -32,30 +32,31 @@
 
 <!--                https://codepen.io/ishaansaxena/pen/WoJGRK  -->
          <div class="container">
-            <div class="content">
+             <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
                 <h2 class="dash">Dashboard</h2>
-                <div class="icon-container">
+            <div class="content d-flex justify-content-center">
+                <div class="d-flex d-inline icon-container justify-content-center">
 <!--                    <div class="icon icon-fill"><i class="fa fa-home"></i></div>-->
-                    <div class="circle">
+                    <div class="circle mx-3">
                          <a th:href="@{/admin/users}"><div class="icon icon-enter"><i class="fa fa-user"></i></div></a>
-                        <h4>View Users</h4>
+                        <h4 class="mt-1">View Users</h4>
                     </div>
-                    <div class="circle">
+                    <div class="circle mx-3">
                          <a th:href="@{/admin/orders}"><div class="icon icon-expand"><i class="fa fa-file-invoice-dollar"></i></div></a>
-                        <h4>View All Orders</h4>
+                        <h4 class="mt-1">View All Orders</h4>
                     </div>
 
                     <!--                    <div class="icon icon-fill"><i class="fa fa-home"></i></div>-->
-                    <div class="circle">
+                    <div class="circle mx-3">
                         <a th:href="@{/products}"><div class="icon icon-collapse"><i class="fa fa-sign-in"></i></div></a>
-                        <h4>Upload CSV</h4>
+                        <h4 class="mt-1">Upload CSV</h4>
                     </div>
-                    <div class="circle">
+                    <div class="circle mx-3">
                         <a th:href="@{/admin/fulfill}"><div class="icon icon-rotate"><i class="fa fa-credit-card"></i></div></a>
-                        <h4>Fulfill Orders</h4>
+                        <h4 class="mt-1">Fulfill Orders</h4>
                     </div>
                 </div>
-            </div>
+<!--            </div>-->
 <!--             <div class="content">-->
 <!--                 -->
 <!--             </div>-->
