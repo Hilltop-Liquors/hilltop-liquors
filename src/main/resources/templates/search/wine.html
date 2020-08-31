@@ -36,7 +36,7 @@
                     </li>
                     <!--+++++++++++++ INSERT CUSTOM LOOP CATS +++++++++++++-->
                     <li class="col-md-2" th:each="category : ${catTags}">
-                        <form th:action="@{/WINE}" method="get">
+                        <form th:action="@{/Wine}" method="get">
                             <button type="submit" class="m-1 nav-link rounded-pill btn-custom"
                                     style=" text-decoration: none; width: 100%;"
                                     th:value="${category.getId()}" name="catId">
@@ -99,7 +99,7 @@
     </div>
 
 
-    <!-- ===============   LIQUOR SHOW ALL PRODUCTS LOOP  ===================  -->
+    <!-- ===============   WINE SHOW ALL PRODUCTS LOOP  ===================  -->
     <div class="row justify-content-around d-flex text-center mr-auto ml-auto"
          style="width: 90%; z-index: 1; margin-top: 10%; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
