@@ -43,7 +43,7 @@ public class Order {
 
 
 
-    public Order(long id, int totalInCents, boolean isCurbside, Timestamp createdAt, boolean orderIsFulfilled) {
+    public Order(long id, int totalInCents, boolean isCurbside, Date createdAt, boolean orderIsFulfilled) {
         this.id = id;
         this.totalInCents = totalInCents;
         this.isCurbside = isCurbside;
@@ -71,9 +71,9 @@ public class Order {
 //    public Timestamp getCreatedAt() {
 //        return createdAt;
 //    }
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
+//    public void setCreatedAt(Timestamp createdAt) {
+//        this.createdAt = createdAt;
+//    }
     public boolean getOrderIsFulfilled() {
         return orderIsFulfilled;
     }

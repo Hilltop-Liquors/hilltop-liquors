@@ -39,14 +39,10 @@ public class AdminOrdersController {
         public String updateOrder(@ModelAttribute Order order, @PathVariable long id, Model model) {
 
         Order updatingOrder = orderDao.getOne(id);
-        updatingOrder.setTotalInCents(order.getTotalInCents());
-        updatingOrder.setOrderProducts(order.getOrderProducts());
-        updatingOrder.setCreatedAt(order.getCreatedAt());
-        updatingOrder.setUser(order.getUser());
-        updatingOrder.setIsCurbside(order.getIsCurbside());
+
         updatingOrder.setOrderIsFulfilled(true);
         orderDao.save(updatingOrder);
-        model.addAttribute("orderFilled", updatingOrder);
+        model.addAttribute("orderFulfilled", updatingOrder);
         return "redirect:/admin/fulfill?success";
     }
 

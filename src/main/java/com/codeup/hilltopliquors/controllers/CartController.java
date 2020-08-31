@@ -301,9 +301,9 @@ public class CartController {
         String body = authUser.getFirst_name() + " " + authUser.getLast_name() + ", \n"
                 + "Thank you for joining us at the top! \nHere's Your Purchase Receipt: \n"
                 + "\n" + authUser.getUsername() + "\n"
-                + order.getId() + "\n"
+                + "Order #: " + order.getId() + "\n"
                 + order.getCreatedAt() + "\n"
-                +" Items:                                               Qty:      Price:" + "\n"
+                +" Items:                                                  Qty:                    Price:" + "\n"
                 + items
                 + "\n" + " Total: $" + order.getTotalInCents()/100 + "\n"
                 + "\n Thank you for your purchase!";
