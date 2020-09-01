@@ -83,11 +83,11 @@ public class SearchController {
         List<Product> products = productDao.findAll();
         model.addAttribute("products", products);
 
-//        if (request.getSession().getAttribute("cart") == null) {
-//            cart = new ArrayList<>();
-//        } else {
-//            cart = (List<Product>) request.getSession().getAttribute("cart");
-//        }
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
 
 
         Product product = productDao.getOne(productId);
