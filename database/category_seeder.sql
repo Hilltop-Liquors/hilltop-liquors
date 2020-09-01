@@ -215,15 +215,3 @@ VALUES
 (86, '10075310', 'CAPT MORGAN SPICED RUM 50ml 1.75', 48, '1.75L', 26.99, 0, 'https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_967a613e-1b85-4f59-b53b-658a32e2f190.jpg'),
 (87, '83664120260', 'CRUZAN BLACK CHERRY RUM 750ML', 16, '750ML', 11.99, 0, 'https://cdn2.bigcommerce.com/server5500/tpbc2s65/products/1102/images/1135/CruzanBlackCherry__98574__38254.1358534182.1280.1280.jpg?c=2');
 
-
-CREATE TABLE `product` (
- `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`sku` Long,
-`name` varchar(255),
-`sub_category_id` int(11) unsigned,
-`size_by_volume` varchar(100),
-`price` double,
-`in_store_count` int,
-`image` varchar(5000),
-PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8
