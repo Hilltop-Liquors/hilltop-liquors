@@ -79,11 +79,11 @@
             <tr>
                 <th scope="col">Product</th>
                 <th scope="col">Size</th>
-                <th scope="col">Quantity</th>
-                <th></th>
+                <th scope="col">Qty</th>
                 <th scope="col">Price</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th></th>
+<!--                <th scope="col"></th>-->
+<!--                <th scope="col"></th>-->
             </tr>
             </thead>
             <tbody>
@@ -92,7 +92,7 @@
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.setInStoreCount(1) }"></td>
 <!--                                th:text=“${‘$’+#numbers.formatDecimal(grandTotal,0,‘COMMA’,2,‘POINT’)}“-->
-                <td th:text="${cartItem.getPriceInCents()}/100">
+                <td><span>$</span><span th:text="${cartItem.getPriceInCents()}/100"></span>
                     <!--                    <p th:text="${cartItem.getPriceInCents()}"></p>-->
                     <!--                </td>-->
                     <!--                <td th:text="${cartItem.getPriceInCents()}"></td>-->
@@ -139,14 +139,17 @@
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.getInStoreCount()}"></td>
-                <td th:text="${cartItem.getPriceInCents()}/100"></td>
+                <td><span>$</span><span th:text="${cartItem.getPriceInCents()}/100"></span></td>
             </tr>
             </tbody>
             <tfoot>
 
             <tr>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
-                    <p><span th:text="${total}/100"></span></p>
+                    <p><span>Total: $</span><span th:text="${total}/100"></span></p>
                 </td>
             </tr>
             <tr>
@@ -155,9 +158,13 @@
 
                     <form th:action="@{/Cart/confirm-details}" th:method="get">
                         <input type="hidden" class="form-control"/>
-                        <button style="background-color: #400000; color:white;" sec:authorize="isAuthenticated()" type="submit">
-                            Checkout
-                        </button>
+<!--                        <button style="background-color: #400000; color:white;" sec:authorize="isAuthenticated()" type="submit">-->
+<!--                            Checkout-->
+<!--                        </button>-->
+
+                        <button style="background-color: #400000; color:white;"  type="submit">
+                            Checkout</button>
+
                     </form>
 
                     <span sec:authorize="isAnonymous()">
