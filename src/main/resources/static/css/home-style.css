@@ -52,7 +52,7 @@
 }
 
 .contactUs{
-    background-image: url("../img/search-bg.JPG") !important;
+    background-image: url("../img/in-store-wine-rack.jpg") !important;
     background-size: cover !important;
 }
 
@@ -87,6 +87,6 @@
     height: 100%;
     width: 100%;
     opacity: 0;
-    transition: .5s ease;
+    transition: .7s ease;
     background-color: #400000;
 }
