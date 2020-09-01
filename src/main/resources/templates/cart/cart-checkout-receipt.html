@@ -90,7 +90,7 @@
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.getInStoreCount()}"></td>
-                <td><span>$</span><span th:text="${cartItem.getPriceInCents()}/100"></span></td>
+                <td><span>$</span><span th:text="${cartItem.getPriceInCents()}"></span></td>
                 <td></td>
             </tr>
             </tbody>
@@ -111,7 +111,7 @@
             <tr><td></td></tr>
             <tr >
                 <td>
-                    <p><span>Total: $</span><span th:text="${total}/100"></span></p>
+                    <p><span>Total: $</span><span th:text="${total}"></span></p>
                 </td>
             </tr>
             <tr>
