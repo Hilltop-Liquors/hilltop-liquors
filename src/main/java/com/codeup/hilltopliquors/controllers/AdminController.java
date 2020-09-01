@@ -51,7 +51,9 @@ public AdminController(UserRepository userDao) {
     @GetMapping("/admin/users")
     public String showUsers(Model model) {
 //        if(request.isUserInRole("ROLE-ADMIN")) {
-
+//            , Authentication auth
+//        String username = auth.getName();
+//        User currentUser = userDao.findByUsername(username);
         List<User> siteUsers = userDao.findAll();
         model.addAttribute("users", siteUsers);
             return "admin/users-list";

@@ -46,5 +46,11 @@ public class AdminOrdersController {
         return "redirect:/admin/fulfill?success";
     }
 
+    @PostMapping("/admin/fulfill/delete/{id}")
+    public String deleteOrder(@PathVariable long id){
+        orderDao.deleteById(id);
+        return "redirect:/admin/fulfill?successDelete";
+    }
+
 
 }
