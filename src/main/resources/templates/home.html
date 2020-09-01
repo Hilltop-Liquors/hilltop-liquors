@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<meta name="cocktailApiKey" th:content="${cocktailApiKey}">
+<!--<meta name="cocktailApiKey" th:content="${cocktailApiKey}">-->
 <head th:include="partials/head :: head">
 
     <title>Hilltop-Home</title>
@@ -48,7 +48,7 @@
     <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
     <!--    <div class="container divWidth" style="border:2px solid red;">-->
     <div class="row divHover d-flex justify-content-center"
-         style="width: 120% !important; margin-left:-8.8% !important;">
+         style="width: 120% !important; margin-left:-8.8% !important; margin-bottom: 30%; !important;">
 
         <!--        <form class="form-inline mr-1ml-1 my-lg-0" th:action="@{/Search}" method="get">-->
         <!--            <input id="txtSearch" type="text" name="keyword" placeholder="Search ">-->
@@ -116,69 +116,70 @@
 </div>
 
 
-<!--  =========== RECIPES ============  -->
-<div class=" recipesDiv mb-5" style="width: 30%; height: 30%; margin-top: 20%;">
-    <h2>Your daily Random Recipe!</h2>
-    <div class="apiDiv" style="width: 20%; height: 100%;">
+<!--&lt;!&ndash;  =========== RECIPES ============  &ndash;&gt;-->
+<!--<div class=" recipesDiv mb-5" style="width: 600% !important; height: 20% !important; margin-top: 15%; margin-bottom: 10%;">-->
+<!--    <h2>Your daily Random Recipe!</h2>-->
+<!--    <div class="apiDiv row" style="width: 20%; height: 100%;">-->
 
-        <section id="drink-section" style="width: 90%; height: 10%; border: 2px solid red;" class="m-auto rounded"></section>
-        <section id="ons-list_item" style="width: 30%; height: 30%; border: 2px solid blue;" class="rounded"></section>
-        <section id="ons-card" style="width: 30%; height: 30%; border: 2px solid green;" class="rounded"></section>
-        <script>
-            console.log(document.querySelector('meta[name="cocktailApiKey"]').content);
-            fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-                    "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content
-                }
-            })
-                .then(response => response.json())
-                .then(
-                    data =>
-                        // console.log(data))
-                        getCocktail(data))
+<!--        <p id="drink-section" style="width: 20% !important; height: 10% !important; border: 2px solid red;" class=" col-md-3 m-auto rounded"></p>-->
+<!--        <br>-->
+<!--        <p id="ons-list_item" style="width: 100% !important; height: 30% !important; border: 2px solid blue; margin-left: -50%;" class=" col-md-3 rounded"></p>-->
+<!--&lt;!&ndash;        <p id="ons-card" style="width: 100%; height: 30%; border: 2px solid green;" class=" col-md-3 rounded"></p>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<!--        <script>-->
+<!--            console.log(document.querySelector('meta[name="cocktailApiKey"]').content);-->
+<!--            fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {-->
+<!--                "method": "GET",-->
+<!--                "headers": {-->
+<!--                    "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",-->
+<!--                    "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content-->
+<!--                }-->
+<!--            })-->
+<!--                .then(response => response.json())-->
+<!--                .then(-->
+<!--                    data =>-->
+<!--                        // console.log(data))-->
+<!--                        getCocktail(data))-->
 
-                .catch(err => {
-                    console.log(err);
-                });
+<!--                .catch(err => {-->
+<!--                    console.log(err);-->
+<!--                });-->
 
-            function getCocktail(cocktail) {
-                // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);
-                let drinkSection = document.querySelector('#drink-section');
-                let drinkName = document.createElement('h2');
-                drinkName.innerHTML = cocktail.drinks[0].strDrink;
-                drinkSection.appendChild(drinkName);
+<!--            function getCocktail(cocktail) {-->
+<!--                // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);-->
+<!--                let drinkSection = document.querySelector('#drink-section');-->
+<!--                let drinkName = document.createElement('h2');-->
+<!--                drinkName.innerHTML = cocktail.drinks[0].strDrink;-->
+<!--                drinkSection.appendChild(drinkName);-->
 
-                let img = document.createElement('img');
-                img.src = cocktail.drinks[0].strDrinkThumb;
+<!--                let img = document.createElement('img');-->
+<!--                img.src = cocktail.drinks[0].strDrinkThumb;-->
 
-                // var obj = document.createElement('div');
-                img.id = "::img";
-                // img.style.cssText = 'width:500%; height:500%;';
-                // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';
-                // document.getElementById("divInsteadOfDocument.Write").appendChild(img);
+<!--                // var obj = document.createElement('div');-->
+<!--                img.id = "::img";-->
+<!--                img.style.cssText = 'display-flex; align-items:center;'-->
+<!--                // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';-->
+<!--                // document.getElementById("divInsteadOfDocument.Write").appendChild(img);-->
 
-                drinkSection.appendChild(img);
-                for (let i = 1; i < 16; i++) {
-                    // console.log(i);
-                    if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {
-                        break;
-                    }
+<!--                drinkSection.appendChild(img);-->
+<!--                for (let i = 1; i < 16; i++) {-->
+<!--                    // console.log(i);-->
+<!--                    if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {-->
+<!--                        break;-->
+<!--                    }-->
 
-                    let ingredient = document.createElement('ons-list-item');
-                    ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];
-                    drinkSection.appendChild(ingredient);
-                }
-                let card = document.createElement('ons-card');
-                card.innerHTML = cocktail.drinks[0].strInstructions;
+<!--                    let ingredient = document.createElement('ons-list-item');-->
+<!--                    ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];-->
+<!--                    drinkSection.appendChild(ingredient);-->
+<!--                }-->
+<!--                let card = document.createElement('ons-card');-->
+<!--                card.innerHTML = cocktail.drinks[0].strInstructions;-->
 
-                drinkSection.appendChild(card);
-            }
-        </script>
+<!--                drinkSection.appendChild(card);-->
+<!--            }-->
+<!--        </script>-->
 
-    </div>
-</div>
 
 <!--    </div>-->
 
@@ -243,7 +244,7 @@
 
 
 <!-- ========== CONTACT INFO ============-->
-<div class="container mt-5 mb-5" id="section-contact">
+<div class="container mb-5" id="section-contact" style="margin-top: 15%;">
     <div class="row contact-form mb-5">
         <div class="col-lg-6">
             <h1 class="center">Contact Us</h1>
@@ -275,7 +276,7 @@
 
         </div><!-- /.8 -->
 
-        <section id="section-map" class="clearfix col-lg-6" style="border-left: 5px solid #400000;">
+        <section id="section-map" class="clearfix col-lg-6 cardShadow" style="border-left: 5px solid #400000;">
             <iframe width="100%" height="550"
                     src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
