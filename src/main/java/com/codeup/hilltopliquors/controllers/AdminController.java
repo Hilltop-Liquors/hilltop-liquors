@@ -49,7 +49,7 @@ public AdminController(UserRepository userDao) {
     }
 
     @GetMapping("/admin/users")
-    public String showUsers(HttpServletRequest request, Model model) {
+    public String showUsers(Model model) {
 //        if(request.isUserInRole("ROLE-ADMIN")) {
 //            , Authentication auth
 //        String username = auth.getName();
