@@ -163,6 +163,7 @@
         </div>
     </div>
 
+
     <h1 class="text-center quicksand p-5" style="color: black; margin-top:3%;">Meet the team!</h1>
     <div class="container aboutUsContainer d-flex justify-content-center">
 
@@ -198,74 +199,88 @@
 
         </div>
     </div>
-</div>
-        <!--  =========== RECIPES ============  -->
-        <div class=" recipesDiv mb-5"
-             style="width: 600% !important; height: 20% !important; margin-top: 15%; margin-bottom: 10%;">
-            <h2>We love trying new drinks and we thought you might too!</h2><br>
-            Here is today's random recipe!
-            <div class="apiDiv row" style="width: 20%; height: 100%;">
 
-                <p id="drink-section" style="width: 20% !important; height: 10% !important;"
-                   class=" col-md-3 m-auto rounded"></p>
-                <br>
-                <p id="ons-list_item" style="width: 100% !important; height: 30% !important;"
-                   class=" col-md-3 rounded"></p>
-                <!--        <p id="ons-card" style="width: 100%; height: 30%; border: 2px solid green;" class=" col-md-3 rounded"></p>-->
+        <div style="margin-top: 10%;">
+            <h2>We love trying new drinks and we thought you might too!</h2>
+            <h3>Today's: Refresh Recipe:
+                <br><i>Malibu Sunset Cocktail</i></h3>
+            <div class="api-item">
+                <img class="d-block w-100" src="img/random-drink-api.jpg" alt="daily drink" style="width: 400px; height=400px;">
+                <p>Fill a glass with ice cubes</p>
+                <p>Pour the pineapple and Malibu Rum over the ice cubes</p>
+                <p>Pour the grenadine slowly down one side of the glass. *If you pour too quickly, the colors will blend and it won't look as pretty</p>
+                <p>Garnish with cherries/pineapple if desired. And Serve!</p>
             </div>
         </div>
-        <script>
-            console.log(document.querySelector('meta[name="cocktailApiKey"]').content);
-            fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-                    "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content
-                }
-            })
-                .then(response => response.json())
-                .then(
-                    data =>
-                        // console.log(data))
-                        getCocktail(data))
 
-                .catch(err => {
-                    console.log(err);
-                });
+</div>
+<!--  =========== RECIPES ============  -->
+<!--        <div class=" recipesDiv mb-5"-->
+<!--             style="width: 600% !important; height: 20% !important; margin-top: 15%; margin-bottom: 10%;">-->
+<!--            <h2>We love trying new drinks and we thought you might too!</h2><br>-->
+<!--            Here is today's random recipe!-->
+<!--            <div class="apiDiv row" style="width: 20%; height: 100%;">-->
 
-            function getCocktail(cocktail) {
-                // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);
-                let drinkSection = document.querySelector('#drink-section');
-                let drinkName = document.createElement('h2');
-                drinkName.innerHTML = cocktail.drinks[0].strDrink;
-                drinkSection.appendChild(drinkName);
+<!--                <p id="drink-section" style="width: 20% !important; height: 10% !important;"-->
+<!--                   class=" col-md-3 m-auto rounded"></p>-->
+<!--                <br>-->
+<!--                <p id="ons-list_item" style="width: 100% !important; height: 30% !important;"-->
+<!--                   class=" col-md-3 rounded"></p>-->
+<!--                &lt;!&ndash;        <p id="ons-card" style="width: 100%; height: 30%; border: 2px solid green;" class=" col-md-3 rounded"></p>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <script>-->
+<!--            console.log(document.querySelector('meta[name="cocktailApiKey"]').content);-->
+<!--            fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {-->
+<!--                "method": "GET",-->
+<!--                "headers": {-->
+<!--                    "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",-->
+<!--                    "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content-->
+<!--                }-->
+<!--            })-->
+<!--                .then(response => response.json())-->
+<!--                .then(-->
+<!--                    data =>-->
+<!--                        // console.log(data))-->
+<!--                        getCocktail(data))-->
 
-                let img = document.createElement('img');
-                img.src = cocktail.drinks[0].strDrinkThumb;
+<!--                .catch(err => {-->
+<!--                    console.log(err);-->
+<!--                });-->
 
-                // var obj = document.createElement('div');
-                img.id = "::img";
-                img.style.cssText = 'display-flex; align-items:center;'
-                // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';
-                // document.getElementById("divInsteadOfDocument.Write").appendChild(img);
+<!--            function getCocktail(cocktail) {-->
+<!--                // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);-->
+<!--                let drinkSection = document.querySelector('#drink-section');-->
+<!--                let drinkName = document.createElement('h2');-->
+<!--                drinkName.innerHTML = cocktail.drinks[0].strDrink;-->
+<!--                drinkSection.appendChild(drinkName);-->
 
-                drinkSection.appendChild(img);
-                for (let i = 1; i < 16; i++) {
-                    // console.log(i);
-                    if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {
-                        break;
-                    }
+<!--                let img = document.createElement('img');-->
+<!--                img.src = cocktail.drinks[0].strDrinkThumb;-->
 
-                    let ingredient = document.createElement('ons-list-item');
-                    ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];
-                    drinkSection.appendChild(ingredient);
-                }
-                let card = document.createElement('ons-card');
-                card.innerHTML = cocktail.drinks[0].strInstructions;
+<!--                // var obj = document.createElement('div');-->
+<!--                img.id = "::img";-->
+<!--                img.style.cssText = 'display-flex; align-items:center;'-->
+<!--                // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';-->
+<!--                // document.getElementById("divInsteadOfDocument.Write").appendChild(img);-->
 
-                drinkSection.appendChild(card);
-            }
-        </script>
+<!--                drinkSection.appendChild(img);-->
+<!--                for (let i = 1; i < 16; i++) {-->
+<!--                    // console.log(i);-->
+<!--                    if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {-->
+<!--                        break;-->
+<!--                    }-->
+
+<!--                    let ingredient = document.createElement('ons-list-item');-->
+<!--                    ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];-->
+<!--                    drinkSection.appendChild(ingredient);-->
+<!--                }-->
+<!--                let card = document.createElement('ons-card');-->
+<!--                card.innerHTML = cocktail.drinks[0].strInstructions;-->
+
+<!--                drinkSection.appendChild(card);-->
+<!--            }-->
+<!--        </script>-->
 
 <footer th:replace="partials/footer :: footer"></footer>
 
