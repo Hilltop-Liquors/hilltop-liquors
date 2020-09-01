@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
+<nav th:replace="partials/adnav :: navbar"></nav>
 
 <!--<div class="container p-1 mt-2 d-flex d-inline">-->
 <!--    <div>-->
@@ -49,17 +49,30 @@
             </div>
 
             <form action="" th:action="@{'/fileupload'}" th:object="${product}" method="post" enctype="multipart/form-data">
-                <div class="form-group d-flex d-inline justify-content-center">
+                <div class="form-group d-flex d-inline justify-content-center mr-3">
 <!--                    <label for="fileupload">File Upload(CSV)</label>-->
-                    <button type="submit" class="mr-1 btn btn-warning">Submit</button>
-                    <input style="width: 45%;" type="file" class="form-control mr-2" id="fileupload" name="file" th:field="*{file}">
+                    <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="mr-1 btn btn-sm btn-warning">Submit</button>
+                    <input type="file" class="form-control-file ml-1 info" id="fileupload" name="file" th:field="*{file}">
+                     </div>
                 </div>
             </form>
+<!--                <form class="md-form">-->
+<!--                    <div class="file-field">-->
+<!--                        <a class="btn-floating purple-gradient mt-0 float-left">-->
+<!--                            <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>-->
+<!--                            <input type="file">-->
+<!--                        </a>-->
+<!--                        <div class="file-path-wrapper">-->
+<!--                            <input class="file-path validate" type="text" placeholder="Upload your file">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
         </div>
         <div class="col-md-12">
             <h2>All Products</h2>
-            <table class="table table-bordered font-weight-bold text-white">
-                <thead class="text-uppercase">
+            <table class="table table-light table-striped table-bordered font-weight-bold">
+                <thead class="text-uppercase thead-dark">
                 <tr>
                 <tr>
                     <th>SKU</th>
