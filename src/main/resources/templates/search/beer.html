@@ -10,7 +10,7 @@
     </style>
 
 </head>
-<body>
+<body class="searchBody">
 
 <!--  TOP NAV  -->
 <nav th:replace="partials/navbar :: navbar"></nav>
@@ -117,7 +117,7 @@
          style="width: 90%; z-index: 1; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
         <div th:each="productType : ${products}"
-             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto"
+             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto cardShadow"
              style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1);">
             <div class="d-inline m-auto">
 
@@ -182,7 +182,7 @@
          style="width: 90%; z-index: 1; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
         <div th:each="productType : ${catProducts}"
-             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto"
+             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto cardShadow"
              style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1);">
             <div class="d-inline m-auto">
                 <img class="m-auto shadow rounded"
@@ -246,7 +246,7 @@
          style="width: 90%; z-index: 1; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
         <div th:each="productType : ${subProducts}"
-             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto"
+             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto cardShadow"
              style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1);">
             <div class="d-inline m-auto">
 
@@ -306,7 +306,7 @@
         <!--end-->
     </div>
 
-
-    <footer th:replace="partials/footer :: footer"></footer>
+</div>
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
