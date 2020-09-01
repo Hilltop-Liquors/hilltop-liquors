@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<meta name="cocktailApiKey" th:content="${cocktailApiKey}">
+<!--<meta name="cocktailApiKey" th:content="${cocktailApiKey}">-->
 <head th:include="partials/head :: head">
 
     <title>Hilltop-Home</title>
@@ -12,35 +12,15 @@
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
     <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        nav {
-            height: 50px !important;
-        }
-
-        /*h1 {*/
-        /*    width: 15%;*/
-        /*    text-align: center;*/
-        /*}*/
-
-        /*#drink-section {*/
-        /*    width: 15%;*/
-        /*    height: 8%;*/
-        /*}*/
-
-    </style>
 
 </head>
-<body>
+<body class="homeBody">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div th:replace="partials/login-modal :: login-modal"></div>
 <div th:replace="partials/contact-modal :: contact-modal"></div>
 <div th:replace="partials/event-supply-modal :: event-supply-modal"></div>
 
-<div class="container red" style="width: 100%; margin-top:10%">
+<div class="container" style="width: 100%; margin-top:8%">
     <!--  =========== ORDER SUCCESS PARAM============  -->
     <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Thank you for your order! See you at the top!</strong>
@@ -65,318 +45,248 @@
         </button>
     </div>
 
-    <!--    <div style="width:100%; height: 100%; margin-top:-10%; margin-left:-15%; z-index: 20; border-top: 40px solid white;">-->
-    <!--        <img src="../static/img/in-store-overlay-black%20copy.jpg" th:src="@{img/in-store-overlay-black copy.jpg}"-->
-    <!--             alt="shop local"-->
-    <!--             style="width: 130%; height: 1%;"/>-->
-    <!--    </div>-->
-    <!--    <div style="background-color: rgba(0,0,0,.8); z-index: 60000;">-->
-    <!--        <div style="margin-top: -58%; color:white; background-color: black;">-->
-    <!--            <p style=" font-size: 5em;">-->
-    <!--                Hilltop Liquors-->
-    <!--            </p>-->
-    <!--            <h2 style="font-weight: lighter; font-size: 3em;">-->
-    <!--                Beer, Wine & Spirits-->
-    <!--            </h2>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>-->
-    <!--  =========== EVENT SUPPLY BTN ============  -->
-    <!--        <button class="nav-link btn btn-primary" style="margin-top: 10%;" data-toggle="modal"-->
-    <!--                data-target="#EventModalLong">Ask us about supplying your next event!-->
-    <!--        </button>-->
-
     <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
-    <div class="communityDiv">
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, dolore, ipsa. Consequatur distinctio dolor dolores eaque error est ex ipsa, iure labore laboriosam laudantium nemo nesciunt nisi rem sequi voluptates.</h1>
-    </div>
-    <!--  =========== SHOP LOCAL ============  -->
-    <!--            <div class="col-sm border d-inline mx-3 shopLocalDiv" style="width: 100%; height: 20%" th:style="'background: url(/img/shop-local-sign.jpg) no-repeat center center fixed;'">-->
+    <!--    <div class="container divWidth" style="border:2px solid red;">-->
+    <div class="row divHover d-flex justify-content-center"
+         style="width: 120% !important; margin-left:-8.8% !important; margin-bottom: 30%; !important;">
 
-    <!--&lt;!&ndash;                <img src="../static/img/shop-local-sign.jpg" th:src="@{img/shop-local-sign.jpg}" alt="shop local"&ndash;&gt;-->
-    <!--&lt;!&ndash;                     style="width: 100%; height: 20%;"/>&ndash;&gt;-->
-
-    <!--            </div>-->
-    <!--            &lt;!&ndash;  =========== EVENT SUPPLY ============  &ndash;&gt;-->
-    <!--            <div class="col-sm border d-inline eventDiv" style="width: 100%; height: 20%">-->
-    <!--                <a class="nav-link mr-1" style="margin-top: 10%;" data-toggle="modal"-->
-    <!--                   data-target="#EventModalLong">-->
-    <!--                    <img src="../static/img/supply.jpg" th:src="@{img/supply.jpg}" alt="shop local"-->
-    <!--                         style="width: 100%; height: 20%;"/>-->
-    <!--                </a>-->
-    <!--            </div>-->
-    <!--<hr>-->
-    <!--  =========== RECIPES ============  -->
-    <div class=" recipesDiv" style="width: 30%; height: 10%; margin-top: 50%;">
-        <!--IMG-->
-        <section id="drink-section" style="width: 20%; height: 10%;" class="rounded"></section>
-        <section id="ons-list_item" style="width: 30%; height: 30%;" class="rounded"></section>
-        <section id="ons-card" style="width: 30%; height: 30%;" class="rounded"></section>
-        <script>
-            console.log(document.querySelector('meta[name="cocktailApiKey"]').content);
-            fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-                    "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content
-                }
-            })
-                .then(response => response.json())
-                .then(
-                    data =>
-                        // console.log(data))
-                        getCocktail(data))
-
-                .catch(err => {
-                    console.log(err);
-                });
-
-            function getCocktail(cocktail) {
-                // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);
-                let drinkSection = document.querySelector('#drink-section');
-                let drinkName = document.createElement('h2');
-                drinkName.innerHTML = cocktail.drinks[0].strDrink;
-                drinkSection.appendChild(drinkName);
-
-                let img = document.createElement('img');
-                img.src = cocktail.drinks[0].strDrinkThumb;
-
-                // var obj = document.createElement('div');
-                img.id = "::img";
-                img.style.cssText = 'width:500%; height:500%;';
-                // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';
-                // document.getElementById("divInsteadOfDocument.Write").appendChild(img);
-
-                drinkSection.appendChild(img);
-                for (let i = 1; i < 16; i++) {
-                    // console.log(i);
-                    if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {
-                        break;
-                    }
-
-                    let ingredient = document.createElement('ons-list-item');
-                    ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];
-                    drinkSection.appendChild(ingredient);
-                }
-                let card = document.createElement('ons-card');
-                card.innerHTML = cocktail.drinks[0].strInstructions;
-
-                drinkSection.appendChild(card);
-            }
-        </script>
-    </div>
-
-    <!--    </div>-->
+        <!--        <form class="form-inline mr-1ml-1 my-lg-0" th:action="@{/Search}" method="get">-->
+        <!--            <input id="txtSearch" type="text" name="keyword" placeholder="Search ">-->
+        <!--            &lt;!&ndash;            <button class="btn btn-dark btn-outline my-2 ml-2 my-sm-0" type="submit">Search</button>&ndash;&gt;-->
+        <!--        </form>-->
 
 
-    <!--    &lt;!&ndash;  =========== RECIPES ============  &ndash;&gt;-->
-    <!--    &lt;!&ndash;IMG&ndash;&gt;-->
-    <!--    <section id="drink-section" style="width: 5%; height: 5%;"></section>-->
-    <!--    <section id="ons-list_item" style="width: 5%; height: 5%;"></section>-->
-    <!--    <section id="ons-card" style="width: 5%; height: 5%;"></section>-->
-    <!--    <script>-->
-    <!--        console.log(document.querySelector('meta[name="cocktailApiKey"]').content);-->
-    <!--        fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {-->
-    <!--            "method": "GET",-->
-    <!--            "headers": {-->
-    <!--                "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",-->
-    <!--                "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content-->
-    <!--            }-->
-    <!--        })-->
-    <!--            .then(response => response.json())-->
-    <!--            .then(-->
-    <!--                data =>-->
-    <!--                    // console.log(data))-->
-    <!--                    getCocktail(data))-->
+        <div class="communityDiv aboutUs col-md-3 shadow cardShadow" style="width: 35% !important; margin-left:2.8% !important; margin-right: 2.5% !important;
+">
+            <h1 style="font-weight: lighter;">About Us About Us About Us About Us About Us
+                About Us About Us About
+                Us
+                About Us About Us About Us
+                About Us About Us About Us About Us About Us About Us About Us About Us About Us About Us About Us
+                About
+            </h1>
 
-    <!--            .catch(err => {-->
-    <!--                console.log(err);-->
-    <!--            });-->
-
-    <!--        function getCocktail(cocktail) {-->
-    <!--            // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);-->
-    <!--            let drinkSection = document.querySelector('#drink-section');-->
-    <!--            let drinkName = document.createElement('h2');-->
-    <!--            drinkName.innerHTML = cocktail.drinks[0].strDrink;-->
-    <!--            drinkSection.appendChild(drinkName);-->
-
-    <!--            let img = document.createElement('img');-->
-    <!--            img.src = cocktail.drinks[0].strDrinkThumb;-->
-
-    <!--            // var obj = document.createElement('div');-->
-    <!--            img.id = "::img";-->
-    <!--            img.style.cssText = 'width:500%; height:500%;';-->
-    <!--            // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';-->
-    <!--            // document.getElementById("divInsteadOfDocument.Write").appendChild(img);-->
-
-    <!--            drinkSection.appendChild(img);-->
-    <!--            for (let i = 1; i < 16; i++) {-->
-    <!--                // console.log(i);-->
-    <!--                if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {-->
-    <!--                    break;-->
-    <!--                }-->
-
-    <!--                let ingredient = document.createElement('ons-list-item');-->
-    <!--                ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];-->
-    <!--                drinkSection.appendChild(ingredient);-->
-    <!--            }-->
-    <!--            let card = document.createElement('ons-card');-->
-    <!--            card.innerHTML = cocktail.drinks[0].strInstructions;-->
-
-    <!--            drinkSection.appendChild(card);-->
-    <!--        }-->
-    <!--    </script>-->
-
-
-    <!--  =========== ABOUT ============  -->
-    <section id="section-about">
-        <div class="container">
-            <div id="about">
-                <div class="row mar-bot40">
-                    <div class="col-md-offset-3 col-md-12">
-                        <div class="title">
-                            <div class="wow bounceIn">
-
-                                <h2 class="section-heading animated" data-animation="bounceInUp">About Us</h2>
-                                <p><b>Let's begin by breaking the ice, grabbing a beer, and getting to know one
-                                    another!</b>
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 ">
-                    <div class="company mar-left10">
-                        <h4><span id="span">Welcome to Hilltop Liquors!</span></h4>
-                        <p class="text-left"><br> Your number one source for beer, wine & spirits. We're dedicated to
-                            giving you the very best liquor store in Victoria, Tx with a focus on quality products,
-                            dependability, customer service and uniqueness.<br><br>
-
-                            Founded in 2019 by the Smith family, Hilltop Liquors has come a long way from its
-                            beginnings, starting out with a complete remodel in December 2018 to now being compared with
-                            some of the larger corporate run liquor stores! We now serve customers all over Victoria and
-                            the surrounding counties and are thrilled to be a part of the very competitive yet rewarding
-                            liquor store industry.
-                            We hope you enjoy our products as much as we enjoy offering them to you. If you have any
-                            questions or comments, please don't hesitate to contact us.
-                            <br><br>
-                            Your local Victoria family, <br>
-                            <i>~The Smiths</i></p>
-                    </div>
+            <div class="overlay">
+                <div class="text">
+                    <h1 style="font-weight: lighter; font-size: 5em;">
+                        <a style="text-decoration: none; color: white;" href="/AboutUs">
+                            About Us
+                        </a>
+                    </h1>
                 </div>
             </div>
         </div>
 
-        <!-- ======== ABOUT: OUR TEAM ========-->
-        <div class="container mb-5">
-            <div class="row mar-bot10">
-                <div class="col-md-offset-3 col-md-6">
-                    <div class="section-header">
-                        <div class="wow bounceIn">
-
-                            <h2 class="section-heading animated" data-animation="bounceInUp">Meet the Team</h2>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row align-center mar-bot45">
-                <!-- ===========FAMILY PIC===============-->
-                <div class="col-md-4">
-                    <div class="wow bounceIn" data-animation-delay="4.8s">
-                        <div class="team-member">
-                            <div class="profile-picture">
-                                <figure><img class="img-responsive" src="../static/img/team/team-1.jpg" alt=""></figure>
-                            </div>
-                            <div class="team-detail">
-                                <h4>The Smith Family</h4>
-                                <span>New owners</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ===========MANAGER===============-->
-                <div class="col-md-4">
-                    <div class="wow bounceIn">
-                        <div class="team-member">
-                            <div class="profile-picture">
-                                <figure><img class="img-responsive" src="../static/img/team/team-2.jpg" alt=""></figure>
-                            </div>
-                            <div class="team-detail">
-                                <h4>Diane Blough </h4>
-                                <span>Store Manager</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ===========CAT===============-->
-                <div class="col-md-4">
-                    <div class="wow bounceIn">
-                        <div class="team-member">
-                            <div class="profile-picture">
-                                <figure><img class="img-responsive" src="../static/img/team/patch-1.jpg" width="100%"
-                                             height="auto" alt=""></figure>
-                            </div>
-                            <div class="team-detail">
-                                <h4>Patches</h4>
-                                <span>Corporate Moral</span>
-                            </div>
-                        </div>
-                    </div>
+        <div class="communityDiv shopLocal col-md-3 col-sm-3 shadow cardShadow" style="width: 35% !important; margin-left:2.5% !important; margin-right: 2.5% !important;
+">
+            <h1 style="font-weight: lighter;">Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop
+                Local Shop Local Shop Local
+                Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local</h1>
+            <div class="overlay">
+                <img src="../static/img/shop-local-sign.jpg"/>
+                <div class="text">
+                    <h1 style="font-weight: lighter; font-size: 5em;">
+                        <a style="text-decoration: none; color: white;" href="/Liquor">
+                            Shop Local
+                        </a>
+                    </h1>
                 </div>
             </div>
         </div>
-    </section>
 
-    <hr>
-    <!-- ========== CONTACT INFO ============-->
-    <br>
-    <div class="container" id="section-contact">
-        <div class="row  contact-form">
-            <div class="col-lg-12">
-                <h1 class="center">Contact Us</h1>
-                <p class="lead center">Have a question?<br> Want to place an order for an upcoming event/party or make a
-                    request that we stock a certain drink?<br>We can help!<br><br><b>Hours of Operation</b><br>Monday-Saturday
-                    <br>10am-8:45pm<br><i>Closed Sunday</i></p>
-                <hr>
+        <div class="communityDiv contactUs col-md-3 shadow cardShadow " style="width: 35% !important; margin-left:2.5% !important; margin-right: 2.5% !important;
+">
+            <h1 style="font-weight: lighter;">Contact Contact Contact Contact Contact Contact Contact Contact Contact
+                Contact Contact
+                Contact Contact Contact Contact Contact Contact Contact Contact Contact Contact Contact Contact</h1>
 
-                <div class="row">
-                    <ul class="list-unstyled col-sm-12 align-center">
-                        <li class="col-md-4 col-sm-12"><i class="fa fa-map-pin fa-2x"></i><br>
-                            <p>3633 SW Moody St. <br>
-                                Victoria, Texas 77905</p>
-                        </li>
+            <div class="overlay">
+                <div class="text">
+                    <h1 style="font-weight: lighter; font-size: 5em;">
+                        <a style="text-decoration: none; color: white;" href="#section-contact">
+                            Contact
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </div>
 
-                        <li class="col-md-4 col-sm-12"><i class="fa fa-phone fa-2x"></i><br>
-                            <p>(361) 703-5047</p>
-                        </li>
-
-                        <li class="col-md-4 col-sm-12"><i class="fa fa-envelope fa-2x"></i><br>
-                            <p>hilltopliquors@yahoo.com</p>
-                        </li>
-                    </ul>
-                </div>&nbsp;
+        <!--        </div>-->
+    </div>
+</div>
 
 
-            </div><!-- /.8 -->
+<!--&lt;!&ndash;  =========== RECIPES ============  &ndash;&gt;-->
+<!--<div class=" recipesDiv mb-5" style="width: 600% !important; height: 20% !important; margin-top: 15%; margin-bottom: 10%;">-->
+<!--    <h2>Your daily Random Recipe!</h2>-->
+<!--    <div class="apiDiv row" style="width: 20%; height: 100%;">-->
 
-        </div> <!-- /.row-->
+<!--        <p id="drink-section" style="width: 20% !important; height: 10% !important; border: 2px solid red;" class=" col-md-3 m-auto rounded"></p>-->
+<!--        <br>-->
+<!--        <p id="ons-list_item" style="width: 100% !important; height: 30% !important; border: 2px solid blue; margin-left: -50%;" class=" col-md-3 rounded"></p>-->
+<!--&lt;!&ndash;        <p id="ons-card" style="width: 100%; height: 30%; border: 2px solid green;" class=" col-md-3 rounded"></p>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<!--        <script>-->
+<!--            console.log(document.querySelector('meta[name="cocktailApiKey"]').content);-->
+<!--            fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {-->
+<!--                "method": "GET",-->
+<!--                "headers": {-->
+<!--                    "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",-->
+<!--                    "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content-->
+<!--                }-->
+<!--            })-->
+<!--                .then(response => response.json())-->
+<!--                .then(-->
+<!--                    data =>-->
+<!--                        // console.log(data))-->
+<!--                        getCocktail(data))-->
 
-    </div> <!-- /.container-->
+<!--                .catch(err => {-->
+<!--                    console.log(err);-->
+<!--                });-->
+
+<!--            function getCocktail(cocktail) {-->
+<!--                // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);-->
+<!--                let drinkSection = document.querySelector('#drink-section');-->
+<!--                let drinkName = document.createElement('h2');-->
+<!--                drinkName.innerHTML = cocktail.drinks[0].strDrink;-->
+<!--                drinkSection.appendChild(drinkName);-->
+
+<!--                let img = document.createElement('img');-->
+<!--                img.src = cocktail.drinks[0].strDrinkThumb;-->
+
+<!--                // var obj = document.createElement('div');-->
+<!--                img.id = "::img";-->
+<!--                img.style.cssText = 'display-flex; align-items:center;'-->
+<!--                // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';-->
+<!--                // document.getElementById("divInsteadOfDocument.Write").appendChild(img);-->
+
+<!--                drinkSection.appendChild(img);-->
+<!--                for (let i = 1; i < 16; i++) {-->
+<!--                    // console.log(i);-->
+<!--                    if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {-->
+<!--                        break;-->
+<!--                    }-->
+
+<!--                    let ingredient = document.createElement('ons-list-item');-->
+<!--                    ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];-->
+<!--                    drinkSection.appendChild(ingredient);-->
+<!--                }-->
+<!--                let card = document.createElement('ons-card');-->
+<!--                card.innerHTML = cocktail.drinks[0].strInstructions;-->
+
+<!--                drinkSection.appendChild(card);-->
+<!--            }-->
+<!--        </script>-->
+
+
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash;  =========== RECIPES ============  &ndash;&gt;-->
+<!--    &lt;!&ndash;IMG&ndash;&gt;-->
+<!--    <section id="drink-section" style="width: 5%; height: 5%;"></section>-->
+<!--    <section id="ons-list_item" style="width: 5%; height: 5%;"></section>-->
+<!--    <section id="ons-card" style="width: 5%; height: 5%;"></section>-->
+<!--    <script>-->
+<!--        console.log(document.querySelector('meta[name="cocktailApiKey"]').content);-->
+<!--        fetch("https://the-cocktail-db.p.rapidapi.com/random.php", {-->
+<!--            "method": "GET",-->
+<!--            "headers": {-->
+<!--                "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",-->
+<!--                "x-rapidapi-key": document.querySelector('meta[name="cocktailApiKey"]').content-->
+<!--            }-->
+<!--        })-->
+<!--            .then(response => response.json())-->
+<!--            .then(-->
+<!--                data =>-->
+<!--                    // console.log(data))-->
+<!--                    getCocktail(data))-->
+
+<!--            .catch(err => {-->
+<!--                console.log(err);-->
+<!--            });-->
+
+<!--        function getCocktail(cocktail) {-->
+<!--            // console.log( cocktail.drinks[0].strDrinkThumb + " " + cocktail.drinks[0].strDrink);-->
+<!--            let drinkSection = document.querySelector('#drink-section');-->
+<!--            let drinkName = document.createElement('h2');-->
+<!--            drinkName.innerHTML = cocktail.drinks[0].strDrink;-->
+<!--            drinkSection.appendChild(drinkName);-->
+
+<!--            let img = document.createElement('img');-->
+<!--            img.src = cocktail.drinks[0].strDrinkThumb;-->
+
+<!--            // var obj = document.createElement('div');-->
+<!--            img.id = "::img";-->
+<!--            img.style.cssText = 'width:500%; height:500%;';-->
+<!--            // img.style.cssText = 'position:absolute;top:300px;left:300px;width:200px;height:200px;-moz-border-radius:100px;border:1px  solid #ddd;-moz-box-shadow: 0px 0px 8px  #fff;display:none;';-->
+<!--            // document.getElementById("divInsteadOfDocument.Write").appendChild(img);-->
+
+<!--            drinkSection.appendChild(img);-->
+<!--            for (let i = 1; i < 16; i++) {-->
+<!--                // console.log(i);-->
+<!--                if (cocktail.drinks[0][`strIngredient${i}`] == null || cocktail.drinks[0][`strIngredient${i}`] == '') {-->
+<!--                    break;-->
+<!--                }-->
+
+<!--                let ingredient = document.createElement('ons-list-item');-->
+<!--                ingredient.innerHTML = cocktail.drinks[0][`strMeasure${i}`] + ': ' + cocktail.drinks[0][`strIngredient${i}`];-->
+<!--                drinkSection.appendChild(ingredient);-->
+<!--            }-->
+<!--            let card = document.createElement('ons-card');-->
+<!--            card.innerHTML = cocktail.drinks[0].strInstructions;-->
+
+<!--            drinkSection.appendChild(card);-->
+<!--        }-->
+<!--    </script>-->
+
+
+<!-- ========== CONTACT INFO ============-->
+<div class="container mb-5" id="section-contact" style="margin-top: 15%;">
+    <div class="row contact-form mb-5">
+        <div class="col-lg-6">
+            <h1 class="center">Contact Us</h1>
+            <p class="lead center"><strong>Have a question?</strong><br> Want to place an order for an upcoming
+                event/party or make a
+                request that we stock a certain drink?<br>We can help!<br>
+                <!--  =========== EVENT SUPPLY BTN ============  -->
+                <button class="btn btn-md btn-custom" data-toggle="modal"
+                        data-target="#EventModalLong">Ask us about supplying your next event!
+                </button>
+                <br><br><b><strong>Hours of Operation</strong></b><br>Monday-Saturday
+                <br>10am-8:45pm<br><i>Closed Sunday</i></p>
+            <hr>
+
+            <div class="row d-flex text-center d-inline" style="list-style-type: none;">
+                <p class="col-md-3 col-sm-3"><i class="fa fa-map-pin fa-2x"></i><br>
+                    3633 SW Moody St. <br>
+                    Victoria, Texas 77905
+                </p>
+                <p class="col-md-4 col-sm-3">
+                    <i class="fa fa-phone fa-2x"></i><br>
+                    (361) 703-5047
+                </p>
+                <p class="col-md-4 col-sm-3"><i class="fa fa-envelope fa-2x"></i><br>
+                    hilltopliquors@yahoo.com
+                </p>
+            </div>
+
+
+        </div><!-- /.8 -->
+
+        <section id="section-map" class="clearfix col-lg-6 cardShadow" style="border-left: 5px solid #400000;">
+            <iframe width="100%" height="550"
+                    src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
+                    href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe>
+        </section>
+    </div> <!-- /.row-->
 
 
 </div>
 <!--============= MAP =============-->
-<section id="section-map" class="clearfix col-lg-12">
-    <div style="width: 100%; margin-bottom: 5%;">
-        <iframe width="100%" height="450"
-                src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
-                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
-                href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe>
-    </div>
-</section>
 
 <!-- ===========FOOTER===============-->
 
