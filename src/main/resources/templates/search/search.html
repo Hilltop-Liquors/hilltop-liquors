@@ -118,50 +118,48 @@
          style="width: 90%; z-index: 1; margin-top: 10%; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
         <div th:each="productType : ${products}"
-             class="card col-md-3 col-sm-1 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-hover h-auto"
+             class="card col-md-2 col-sm-12 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-card h-auto"
              style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1);">
-            <div class="d-inline d-flex flex-center">
-                <!--                <div class="d-flex d-inline text-center" style="color: black;">-->
-                <!--                    <p th:text="${productType.name}"></p>-->
-                <!--                    <br>-->
-                <!--                </div>-->
+            <div class="d-inline m-auto">
+
                 <img class="m-auto shadow rounded"
                      style="width: 120px; height: 175px; border-left: 5px solid #3E0723;"
 
                      th:src="${productType.image}" alt="Sorry no image available"/>
-                <!--  +++++++++++++      INSTERT CORRECT TAG   +++++++++++++ -->
-                <!--                <div class="d-flex d-inline">-->
             </div>
-<!--            <div class="text-center m-auto">-->
-                <form th:action="@{/Search}" method="get" style="text-decoration: none;" class="text-center d-inline d-flex">
-                    <!--                            <p style="font-weight: lighter; font-size: smaller;"><i>tags</i></p>-->
-                    <hr>
-                    <!--   ========  PRODUCT-TYPE TAGS  =======        -->
-                    <button type="submit"
-                            style="color: black; font-size: smaller; background-color: #EBEDF0; margin-top: -1%;"
-                            class="mt-auto btn btn-cats p-2 m-1 rounded-pill">
-                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
-                    </button>
-                    <br>
-                    <!--   ========  CATEGORY TAGS =======    -->
-                    <button type="submit"
-                            style="color: black; font-size: smaller; background-color: #EBEDF0;"
-                            class="mt-auto btn btn-cats p-2 m-1 rounded-pill"
-                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
-                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
-                    </button>
-                    <br>
-                    <!--   ========  SUB-CATEGORY TAGS =======    -->
-                    <button type="submit"
-                            style="color: black; font-size: smaller;background-color: #EBEDF0; "
-                            class="mt-auto btn btn-cats p-2 m-1 rounded-pill"
-                            th:value="${productType.getSubCategory().getId()}" name="subId">
-                        <span th:text="${productType.getSubCategory().getName()}"></span>
-                    </button>
-                    <hr>
-                </form>
-                <!--                </div>-->
-<!--            </div>-->
+            <!--  +++++++++++++      INSERT CORRECT TAG   +++++++++++++ -->
+            <!--                <div class="d-flex d-inline">-->
+            <!--            <div class="text-center m-auto">-->
+            <form th:action="@{/Search}" method="get" style="text-decoration: none; width: 100%; font-size: small;"
+                  class="center d-inline d-flex">
+                <!--                            <p style="font-weight: lighter; font-size: smaller;"><i>tags</i></p>-->
+<!--                <hr>-->
+                <!--   ========  PRODUCT-TYPE TAGS  =======        -->
+                <button type="submit"
+                        style="color: black; font-size: small; background-color: rgba(255,255,255, 0.1);"
+                        class="mt-auto btn btn-cats p-2 m-2 rounded-pill">
+                    <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
+                </button>
+                <br>
+                <!--   ========  CATEGORY TAGS =======    -->
+                <button type="submit"
+                        style="color: black; font-size: small; background-color: rgba(255,255,255, 0.1);"
+                        class="mt-auto btn btn-cats p-2 m-2 rounded-pill"
+                        th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
+                    <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
+                </button>
+                <br>
+                <!--   ========  SUB-CATEGORY TAGS =======    -->
+<!--                <button type="submit"-->
+<!--                        style="color: black; font-size: small; background-color: rgba(255,255,255, 0.1);"-->
+<!--                        class="mt-auto btn btn-cats p-2 m-1 rounded-pill"-->
+<!--                        th:value="${productType.getSubCategory().getId()}" name="subId">-->
+<!--                    <span th:text="${productType.getSubCategory().getName()}"></span>-->
+<!--                </button>-->
+<!--                <hr>-->
+            </form>
+            <!--                </div>-->
+            <!--            </div>-->
 
             <!--  =============== PRICE ===================== -->
             <div>
