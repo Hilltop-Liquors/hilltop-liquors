@@ -39,10 +39,9 @@
 }
 
 .communityDiv:hover {
-
+    border-right: 5px solid #400000;
     border-bottom: 5px solid #400000;
-    border-bottom: 5px solid #400000;
-    box-shadow: 20px 20px 10px grey;
+    box-shadow: 10px 20px 20px grey;
 }
 
 .divWidth{
