@@ -1,4 +1,7 @@
 .searchBody{
     background-image: url("../img/bg-search.jpg") !important;
-
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    max-width: 100%;
+    /*background-size: cover;*/
 }

@@ -9,7 +9,7 @@
         }
     </style>
     .hoverDiv:hover {
-        background: rgba(62, 7, 35, .7)
+    background: rgba(62, 7, 35, .7)
     }
 
 </head>
@@ -25,36 +25,35 @@
 
     <!--================ SIDE NAV =====================-->
     <div class="fixed-top shadow" style="margin-top:4.8%; width:100%; border-top: 2px solid white;">
-<!--        <div class="collapse" id="navbarToggleExternalContent">-->
-<!--            <div class="p-4" style="background-color: rgba(1, 1, 1, 0.8);">-->
-<!--                <ul class="row">-->
-<!--                    <li class="col-md-2" style="text-decoration: none;">-->
-<!--                        <form style="color: white;" th:action="@{/Search}">-->
-<!--                            <button type="submit" class="m-1 nav-link rounded-pill btn-custom"-->
-<!--                                    style=" text-decoration: none; width: 100%;">-->
-<!--                                All Products-->
-<!--                            </button>-->
-<!--                        </form>-->
-<!--                    </li>-->
-<!--                    &lt;!&ndash;+++++++++++++ INSERT CUSTOM LOOP CATS +++++++++++++&ndash;&gt;-->
-<!--                    <li class="col-md-2" th:each="category : ${catTags}">-->
-<!--                        <form th:action="@{/Search}" method="get">-->
-<!--                            <button type="submit" class="m-1 nav-link rounded-pill btn-custom"-->
-<!--                                    style=" text-decoration: none; width: 100%;"-->
-<!--                                    th:value="${category.getId()}" name="catId">-->
-<!--                                <span th:text="${category.getName()}"></span>-->
-<!--                            </button>-->
-<!--                        </form>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="collapse" id="navbarToggleExternalContent">-->
+        <!--            <div class="p-4" style="background-color: rgba(1, 1, 1, 0.8);">-->
+        <!--                <ul class="row">-->
+        <!--                    <li class="col-md-2" style="text-decoration: none;">-->
+        <!--                        <form style="color: white;" th:action="@{/Search}">-->
+        <!--                            <button type="submit" class="m-1 nav-link rounded-pill btn-custom"-->
+        <!--                                    style=" text-decoration: none; width: 100%;">-->
+        <!--                                All Products-->
+        <!--                            </button>-->
+        <!--                        </form>-->
+        <!--                    </li>-->
+        <!--                    &lt;!&ndash;+++++++++++++ INSERT CUSTOM LOOP CATS +++++++++++++&ndash;&gt;-->
+        <!--                    <li class="col-md-2" th:each="category : ${catTags}">-->
+        <!--                        <form th:action="@{/Search}" method="get">-->
+        <!--                            <button type="submit" class="m-1 nav-link rounded-pill btn-custom"-->
+        <!--                                    style=" text-decoration: none; width: 100%;"-->
+        <!--                                    th:value="${category.getId()}" name="catId">-->
+        <!--                                <span th:text="${category.getName()}"></span>-->
+        <!--                            </button>-->
+        <!--                        </form>-->
+        <!--                    </li>-->
+        <!--                </ul>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
 
         <nav class="navbar navbar-dark " style="background-color: white; text-decoration: none;">
 
              <span style="color: white; text-decoration: none;" class="d-flex d-inline mr-4">
-
                  <!-- +++++++++++++ CURRENT DIV HIGHLIGHT+++++++++++++ -->
                   <form style="text-decoration: none; color: white;" th:action="@{/Search}">
                         <button type="submit" class="rounded-pill m-1 nav-link ml-1 mr-2 btn-custom"
@@ -87,31 +86,31 @@
 
                  <!--  =========== ORDER SUCCESS PARAM============  -->
         <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show ml-5 mt-2" role="alert">
-            <strong >Item has been added to your!
-<!--                <span class="d-flex d-inline mr-2" sec:authorize="isAuthenticated()">-->
-<!--                    <span class="d-flex d-inline ml-2"-->
-<!--                          th:text="${#authentication.principal.username}"></span>-->
-<!--                </span>'s cart!-->
+            <strong>Item has been added to your!
+                <!--                <span class="d-flex d-inline mr-2" sec:authorize="isAuthenticated()">-->
+                <!--                    <span class="d-flex d-inline ml-2"-->
+                <!--                          th:text="${#authentication.principal.username}"></span>-->
+                <!--                </span>'s cart!-->
             </strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         </span>
-<!--            <div style="color: black;" class="ml-auto mt-2 mr-2 d-flex text-center">-->
-<!--                <h2 style="font-weight: lighter; font-size: medium;">-->
-<!--                    <span>browse</span> <br> <span>categories</span>-->
-<!--                </h2>-->
-<!--                <h6 th:text="${keyword}"></h6>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"-->
-<!--                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
-<!--                        aria-expanded="false" aria-label="Toggle navigation"-->
-<!--                        style="background-color: black; border: 2px solid #400000;">-->
-<!--                    <span class="navbar-toggler-icon shadow"></span>-->
-<!--                </button>-->
-<!--            </div>-->
+            <!--            <div style="color: black;" class="ml-auto mt-2 mr-2 d-flex text-center">-->
+            <!--                <h2 style="font-weight: lighter; font-size: medium;">-->
+            <!--                    <span>browse</span> <br> <span>categories</span>-->
+            <!--                </h2>-->
+            <!--                <h6 th:text="${keyword}"></h6>-->
+            <!--            </div>-->
+            <!--            <div>-->
+            <!--                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"-->
+            <!--                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
+            <!--                        aria-expanded="false" aria-label="Toggle navigation"-->
+            <!--                        style="background-color: black; border: 2px solid #400000;">-->
+            <!--                    <span class="navbar-toggler-icon shadow"></span>-->
+            <!--                </button>-->
+            <!--            </div>-->
         </nav>
     </div>
     <!-- ===============   LIQUOR SHOW ALL PRODUCTS LOOP  ===================  -->
@@ -119,63 +118,114 @@
          style="width: 90%; z-index: 1; margin-top: 10%; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
         <div th:each="productType : ${products}"
-             class="card col-md-3 col-sm-1 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-hover"
-             style="background-color:#EBEDF0; ">
-            <div class="flex-center">
-                <div class="d-flex d-inline text-center" style="font-size:large; color: black;">
-                    <p th:text="${productType.name}"></p>
+             class="card col-md-3 col-sm-1 pt-3 pb-3 pr-4 pl-4 mr-2 ml-2 mb-4 mt-4 btn-product-hover h-auto"
+             style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1);">
+            <div class="d-inline d-flex flex-center">
+                <!--                <div class="d-flex d-inline text-center" style="color: black;">-->
+                <!--                    <p th:text="${productType.name}"></p>-->
+                <!--                    <br>-->
+                <!--                </div>-->
+                <img class="m-auto shadow rounded"
+                     style="width: 120px; height: 175px; border-left: 5px solid #3E0723;"
+
+                     th:src="${productType.image}" alt="Sorry no image available"/>
+                <!--  +++++++++++++      INSTERT CORRECT TAG   +++++++++++++ -->
+                <!--                <div class="d-flex d-inline">-->
+            </div>
+<!--            <div class="text-center m-auto">-->
+                <form th:action="@{/Search}" method="get" style="text-decoration: none;" class="text-center d-inline d-flex">
+                    <!--                            <p style="font-weight: lighter; font-size: smaller;"><i>tags</i></p>-->
+                    <hr>
+                    <!--   ========  PRODUCT-TYPE TAGS  =======        -->
+                    <button type="submit"
+                            style="color: black; font-size: smaller; background-color: #EBEDF0; margin-top: -1%;"
+                            class="mt-auto btn btn-cats p-2 m-1 rounded-pill">
+                        <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
+                    </button>
                     <br>
-                </div>
-                <div class="d-flex d-inline">
-                    <img class="center shadow rounded"
-                         style="width: 120px; height: 175px; border-left: 5px solid #3E0723;"
+                    <!--   ========  CATEGORY TAGS =======    -->
+                    <button type="submit"
+                            style="color: black; font-size: smaller; background-color: #EBEDF0;"
+                            class="mt-auto btn btn-cats p-2 m-1 rounded-pill"
+                            th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
+                        <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
+                    </button>
+                    <br>
+                    <!--   ========  SUB-CATEGORY TAGS =======    -->
+                    <button type="submit"
+                            style="color: black; font-size: smaller;background-color: #EBEDF0; "
+                            class="mt-auto btn btn-cats p-2 m-1 rounded-pill"
+                            th:value="${productType.getSubCategory().getId()}" name="subId">
+                        <span th:text="${productType.getSubCategory().getName()}"></span>
+                    </button>
+                    <hr>
+                </form>
+                <!--                </div>-->
+<!--            </div>-->
 
-                         th:src="${productType.image}" alt="Sorry no image available"/>
-                    <!--  +++++++++++++      INSTERT CORRECT TAG   +++++++++++++ -->
-                    <div class="d-inline d-flex text-center m-auto">
-
-                        <form th:action="@{/Search}" method="get" style="text-decoration: none;" class="text-center">
-                            <!--                            <p style="font-weight: lighter; font-size: smaller;"><i>tags</i></p>-->
-                            <hr>
-                            <!--   ========  PRODUCT-TYPE TAGS  =======        -->
-                            <button type="submit"
-                                    style="color: black; font-size: smaller; background-color: #EBEDF0; margin-top: -1%;"
-                                    class="mt-auto btn btn-cats p-2 m-1 rounded-pill">
-                                <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>
-                            </button>
-                            <br>
-                            <!--   ========  CATEGORY TAGS =======    -->
-                            <button type="submit"
-                                    style="color: black; font-size: smaller; background-color: #EBEDF0;"
-                                    class="mt-auto btn btn-cats p-2 m-1 rounded-pill"
-                                    th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">
-                                <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>
-                            </button>
-                            <br>
-                            <!--   ========  SUB-CATEGORY TAGS =======    -->
-                            <button type="submit"
-                                    style="color: black; font-size: smaller;background-color: #EBEDF0; "
-                                    class="mt-auto btn btn-cats p-2 m-1 rounded-pill"
-                                    th:value="${productType.getSubCategory().getId()}" name="subId">
-                                <span th:text="${productType.getSubCategory().getName()}"></span>
-                            </button>
-                            <hr>
-                            <!--  =============== PRICE ===================== -->
-                            <p style="font-weight: bold">Price: $<span
-                                    style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
-                        </form>
-
-                    </div>
-                </div>
+            <!--  =============== PRICE ===================== -->
+            <div>
+                <p style="font-weight: bold; margin-bottom: -.5%">Price: $<span
+                        style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
 
                 <!--  =============== ADD TO CART ===================== -->
                 <form th:action="@{/Search}" th:method="post">
                     <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
-                    <button style="width: 100%; font-size: medium"
-                            class="rounded btn-custom p-2 mt-2">Add to Cart
+                    <button style="width: 80%;"
+                            class="rounded btn-custom btn-sm p-1 mb-1">Add to Cart
                     </button>
                 </form>
+                <!--  =============== NAME ===================== -->
+                <div class="d-flex text-center" style="color: black;">
+                    <p th:text="${productType.name}"></p>
+                    <br>
+                </div>
             </div>
+            <!--                &lt;!&ndash;  +++++++++++++      INSTERT CORRECT TAG   +++++++++++++ &ndash;&gt;-->
+            <!--                &lt;!&ndash;                <div class="d-flex d-inline">&ndash;&gt;-->
+            <!--                <div class="d-flex text-center m-auto">-->
+            <!--                    <form th:action="@{/Search}" method="get" style="text-decoration: none;" class="text-center">-->
+            <!--                        &lt;!&ndash;                            <p style="font-weight: lighter; font-size: smaller;"><i>tags</i></p>&ndash;&gt;-->
+            <!--                        <hr>-->
+            <!--                        &lt;!&ndash;   ========  PRODUCT-TYPE TAGS  =======        &ndash;&gt;-->
+            <!--                        <button type="submit"-->
+            <!--                                style="color: black; font-size: smaller; background-color: #EBEDF0; margin-top: -1%;"-->
+            <!--                                class="mt-auto btn btn-cats p-2 m-1 rounded-pill">-->
+            <!--                            <span th:text="${productType.getSubCategory().getCategory().getProductType().getName()}"></span>-->
+            <!--                        </button>-->
+            <!--                        <br>-->
+            <!--                        &lt;!&ndash;   ========  CATEGORY TAGS =======    &ndash;&gt;-->
+            <!--                        <button type="submit"-->
+            <!--                                style="color: black; font-size: smaller; background-color: #EBEDF0;"-->
+            <!--                                class="mt-auto btn btn-cats p-2 m-1 rounded-pill"-->
+            <!--                                th:value="${productType.getSubCategory().getCategory().getId() }" name="catId">-->
+            <!--                            <span th:text="${productType.getSubCategory().getCategory().getName()}"></span>-->
+            <!--                        </button>-->
+            <!--                        <br>-->
+            <!--                        &lt;!&ndash;   ========  SUB-CATEGORY TAGS =======    &ndash;&gt;-->
+            <!--                        <button type="submit"-->
+            <!--                                style="color: black; font-size: smaller;background-color: #EBEDF0; "-->
+            <!--                                class="mt-auto btn btn-cats p-2 m-1 rounded-pill"-->
+            <!--                                th:value="${productType.getSubCategory().getId()}" name="subId">-->
+            <!--                            <span th:text="${productType.getSubCategory().getName()}"></span>-->
+            <!--                        </button>-->
+            <!--                        <hr>-->
+            <!--                        &lt;!&ndash;  =============== PRICE ===================== &ndash;&gt;-->
+            <!--                        <p style="font-weight: bold">Price: $<span-->
+            <!--                                style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>-->
+            <!--                    </form>-->
+
+            <!--                </div>-->
+            <!--                </div>-->
+
+            <!--                &lt;!&ndash;  =============== ADD TO CART ===================== &ndash;&gt;-->
+            <!--                <form th:action="@{/Search}" th:method="post">-->
+            <!--                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>-->
+            <!--                    <button style="width: 100%; font-size: medium"-->
+            <!--                            class="rounded btn-custom p-2 mt-2">Add to Cart-->
+            <!--                    </button>-->
+            <!--                </form>-->
+            <!--            </div>-->
         </div>
         <!--end-->
     </div>
@@ -311,8 +361,6 @@
         </div> <!--end -->
     </div>
 </div>
-
-
 
 
 <footer th:replace="partials/footer :: footer"></footer>
