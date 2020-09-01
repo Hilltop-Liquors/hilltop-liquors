@@ -35,12 +35,14 @@
     width: 30%;
     background-size: cover;
     background-repeat: no-repeat;
-    color: rgba(255, 255, 255, .1);
+    color: rgba(255, 255, 255, 0);
+    border-lef: 5px solid #400000;
+    /*border-bottom: 2px solid black;*/
 }
 
 .communityDiv:hover .overlay{
-    border-right: 5px solid #400000;
-    border-bottom: 5px solid #400000;
+    /*border-right: 5px solid black;*/
+    /*border-bottom: 5px solid black;*/
     box-shadow: 10px 20px 20px grey;
     opacity: 1;
 }
@@ -70,5 +72,5 @@
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #008CBA;
+    background-color: #400000;
 }
