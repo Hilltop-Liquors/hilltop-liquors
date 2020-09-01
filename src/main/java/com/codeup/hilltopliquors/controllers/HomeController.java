@@ -60,6 +60,12 @@ public class HomeController {
 
         return "about";
     }
+    @GetMapping("/AboutUs")
+    public String showAboutUs() {
+
+        return "aboutUs";
+    }
+
     @GetMapping("/Developers")
     public String showDevelopers(){
         return "developers";
