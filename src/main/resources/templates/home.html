@@ -12,29 +12,9 @@
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
     <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        nav {
-            height: 50px !important;
-        }
-
-        /*h1 {*/
-        /*    width: 15%;*/
-        /*    text-align: center;*/
-        /*}*/
-
-        /*#drink-section {*/
-        /*    width: 15%;*/
-        /*    height: 8%;*/
-        /*}*/
-
-    </style>
 
 </head>
-<body>
+<body class="homeBody">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div th:replace="partials/login-modal :: login-modal"></div>
 <div th:replace="partials/contact-modal :: contact-modal"></div>
@@ -87,8 +67,35 @@
     <!--        </button>-->
 
     <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
-    <div class="communityDiv">
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, dolore, ipsa. Consequatur distinctio dolor dolores eaque error est ex ipsa, iure labore laboriosam laudantium nemo nesciunt nisi rem sequi voluptates.</h1>
+    <div class="container">
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="communityDiv col-md-3"  >
+                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, dolore, ipsa. Consequatur
+                    distinctio
+                    dolor dolores eaque error est ex ipsa, iure labore laboriosam laudantium nemo nesciunt nisi rem
+                    sequi
+                    voluptates.</h1>
+            </div>
+
+            <div class="communityDiv col-md-3" >
+                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, dolore, ipsa. Consequatur
+                    distinctio
+                    dolor dolores eaque error est ex ipsa, iure labore laboriosam laudantium nemo nesciunt nisi rem
+                    sequi
+                    voluptates.</h1>
+            </div>
+
+            <div class="communityDiv col-md-3" >
+                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, dolore, ipsa. Consequatur
+                    distinctio
+                    dolor dolores eaque error est ex ipsa, iure labore laboriosam laudantium nemo nesciunt nisi rem
+                    sequi
+                    voluptates.</h1>
+            </div>
+
+        </div>
     </div>
     <!--  =========== SHOP LOCAL ============  -->
     <!--            <div class="col-sm border d-inline mx-3 shopLocalDiv" style="width: 100%; height: 20%" th:style="'background: url(/img/shop-local-sign.jpg) no-repeat center center fixed;'">-->

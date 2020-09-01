@@ -1,9 +1,22 @@
+
+.homeBody {
+    background-image: url("../img/bg-search.jpg") !important;
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*max-width: 150%;*/
+    /*background-size: cover;*/
+    min-height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /*==== CONTACT ====*/
-#section-contact{
+#section-contact {
     margin-top: -4% !important;
 }
 
-.contact-form{
+.contact-form {
     padding-top: 6% !important;
 }
 
@@ -12,25 +25,20 @@
 }
 
 /*===== TOP DIVS =====*/
-.shopLocalDiv{
-
-
-}
-
-.red{
-    color: red;
-}
-
-.communityDiv{
-
-background-image: url("../img/pet_sponser1.JPG") !important;
+.shopLocalDiv {
 
 }
 
-.eventDiv{
+.communityDiv {
+    background-image: url("../img/pet_sponser1.JPG") !important;
+    height: 20%;
+    width: 30%;
+}
+
+.eventDiv {
 
 }
 
-.recipesDiv{
+.recipesDiv {
 
 }
