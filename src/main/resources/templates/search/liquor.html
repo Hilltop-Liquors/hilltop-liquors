@@ -39,7 +39,7 @@
                     </li>
                     <!--+++++++++++++ INSERT CUSTOM LOOP CATS +++++++++++++-->
                     <li class="col-md-2" th:each="category : ${catTags}">
-                        <form th:action="@{/Search}" method="get">
+                        <form th:action="@{/Liquor}" method="get">
                             <button type="submit" class="m-1 nav-link rounded-pill btn-custom"
                                     style=" text-decoration: none; width: 100%;"
                                     th:value="${category.getId()}" name="catId">
@@ -56,13 +56,13 @@
              <span style="color: white; text-decoration: none;" class="d-flex d-inline mr-4">
                   <form style="text-decoration: none; color: white;" th:action="@{/Search}">
                         <button type="submit" class="rounded-pill m-1 nav-link ml-1 mr-2 btn-custom"
-                                style=" text-decoration: none; width: 100%; font-size: larger;">All Products
+                                style=" text-decoration: none; width: 100%;">All Products
                         </button>
                     </form>
                  <!-- +++++++++++++ CURRENT DIV HIGHLIGHT+++++++++++++ -->
                     <form style="text-decoration: none; color: white;" th:action="@{/Liquor}">
                         <button type="submit" class="rounded-pill m-1 nav-link ml-1 mr-2 btn-custom"
-                                style=" text-decoration: none; width: 100%; background-color:white; color:black; font-weight: bold; width: 100%; border-color: #400000;">Liquor
+                                style=" text-decoration: none; width: 100%; font-size: larger; background-color:white; color:black; font-weight: bold; width: 100%; border-color: #400000;">Liquor
                         </button>
                     </form>
 
