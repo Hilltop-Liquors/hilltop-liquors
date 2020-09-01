@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -75,14 +77,21 @@ public class WineController {
     }
 
     @PostMapping("/Wine")
-    public String addToCart(Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
+    public String addToCart(HttpServletRequest request, Model model, @SessionAttribute("cart") List<Product> cart, Long productId) {
         List<Product> products = productDao.findAll();
-
         model.addAttribute("products", products);
+
+        if (request.getSession().getAttribute("cart") == null) {
+            cart = new ArrayList<>();
+        } else {
+            cart = (List<Product>) request.getSession().getAttribute("cart");
+        }
 
         Product product = productDao.getOne(productId);
         cart.add(product);
-        return "search/search";
+        request.getSession().setAttribute("cart", cart);
+
+        return  "redirect:/Wine?success";
     }
 
 }

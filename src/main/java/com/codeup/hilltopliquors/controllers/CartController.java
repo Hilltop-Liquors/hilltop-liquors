@@ -117,8 +117,8 @@ public class CartController {
 //            assert quantityBtnPlus != null;
 
 
-        System.out.println(quantityBtnMinus);
-        System.out.println(quantityBtnPlus);
+//        System.out.println(quantityBtnMinus);
+//        System.out.println(quantityBtnPlus);
 
 //            for (Product cartItem : cart) {
 //                int minus = cartItem.getInStoreCount();
@@ -130,8 +130,7 @@ public class CartController {
 //                        cartItem.setInStoreCount(minus);
 //                    }
 //                }
-//
-//
+
 ////                if (quantityBtnPlus != null) {
 ////            for (Product cartItem : cart) {
 //                    int plus = cartItem.getInStoreCount();

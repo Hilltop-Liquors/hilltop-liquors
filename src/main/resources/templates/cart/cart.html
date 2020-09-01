@@ -73,7 +73,8 @@
 <br>
 <div style="width: 100%; background-color: #f4f4f4;">
 
-    <div class="d-inline float-left ml-5 pl-2" style="width: 40%; margin-right:-5%; background-color: #f4f4f4; border-left: 10px solid #400000;">
+    <div class="d-inline float-left ml-5 pl-2"
+         style="width: 40%; margin-right:-5%; background-color: #f4f4f4; border-left: 10px solid #400000;">
         <table class="table">
             <thead>
             <tr>
@@ -91,8 +92,11 @@
                 <td th:text="${cartItem.getName()}"></td>
                 <td th:text="${cartItem.getSize()}"></td>
                 <td th:text="${cartItem.setInStoreCount(1) }"></td>
+
+
 <!--                                th:text=“${‘$’+#numbers.formatDecimal(grandTotal,0,‘COMMA’,2,‘POINT’)}“-->
                 <td><span>$</span><span th:text="${cartItem.getPriceInCents()}/100"></span>
+
                     <!--                    <p th:text="${cartItem.getPriceInCents()}"></p>-->
                     <!--                </td>-->
                     <!--                <td th:text="${cartItem.getPriceInCents()}"></td>-->
@@ -158,18 +162,18 @@
 
                     <form th:action="@{/Cart/confirm-details}" th:method="get">
                         <input type="hidden" class="form-control"/>
-<!--                        <button style="background-color: #400000; color:white;" sec:authorize="isAuthenticated()" type="submit">-->
-<!--                            Checkout-->
-<!--                        </button>-->
 
-                        <button style="background-color: #400000; color:white;"  type="submit">
-                            Checkout</button>
+                        <button style="background-color: #400000; color:white;" sec:authorize="isAuthenticated()"
+                                type="submit">
+                            Checkout
+                        </button>
 
                     </form>
 
                     <span sec:authorize="isAnonymous()">
-                        <button class="btn btn-custom" style="margin-top: 15%; background-color: #400000; color:white;" data-toggle="modal"
-                                data-target="#exampleModalLong" >
+                        <button class="btn btn-custom" style="margin-top: 15%; background-color: #400000; color:white;"
+                                data-toggle="modal"
+                                data-target="#exampleModalLong">
                         You must be logged in to checkout</button>
                     </span>
                     <!--         ==========================           -->
