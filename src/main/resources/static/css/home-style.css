@@ -33,6 +33,15 @@
     background-image: url("../img/pet_sponser1.JPG") !important;
     height: 20%;
     width: 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgba(255, 255, 255, .1);
+}
+
+.communityDiv:hover {
+
+    border: 1px solid #400000; /*set the color you want here*/
+    box-shadow: 10px 10px 5px grey;
 }
 
 .eventDiv {

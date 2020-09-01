@@ -76,15 +76,15 @@
                 </a>
             </li>
             <!--  =========== REGISTER ============  -->
-            <li sec:authorize="isAnonymous()" class="nav-item active mr-1">
+            <li sec:authorize="isAnonymous()" style="color:white; font-size: 16px;" class="nav-item active mr-1">
                 <a class="nav-link" href="/registration">Register <span class="sr-only">(current)</span></a>
             </li>
 
             <!--  =========== LOGIN/LOGOUT ============  -->
             <li class="nav-item mr-1 d-flex d-inline mt-2">
                 <span class="nav-item d-flex d-inline mr-2" sec:authorize="isAuthenticated()">
-                    <a style="color: white; text-decoration: none" th:href="@{/Logout}">Logout</a>
-                    <span class="nav-item d-flex d-inline ml-2" style="color:white"
+                    <a style=" font-size:16px; color:white; text-decoration: none" th:href="@{/Logout}">Logout</a>
+                    <span class="nav-item d-flex d-inline ml-2" style="color:white; font-size:16px;"
                       th:text="${#authentication.principal.username}"></span>
                 </span>
 
