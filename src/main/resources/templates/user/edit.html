@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="" lang="en">
-<head th:include="partials/head :: head">
+<head th:include="partials/noHover-head:: head">
     <title>Hilltop-Home</title>
 
     <style>
         nav {
             height: 70px !important;
         }
+        .ahome a:hover {
+            color: inherit !important;
+        }
     </style>
 
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
+<nav th:replace="partials/adnav :: navbar"></nav>
 <div th:replace="partials/contact-modal :: contact-modal"></div>
 
-<div class="container m-auto">
-    <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>
+<div class="container m-5 p-5">
+<!--    <a class="p-2 mt-3" style="text-decoration: none; color:black;" th:href="@{/Home}">back</a>-->
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 

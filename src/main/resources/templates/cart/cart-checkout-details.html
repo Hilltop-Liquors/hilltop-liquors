@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
-<head th:include="partials/head :: head">
+<head th:include="partials/noHover-head :: head">
     <title>Hilltop-Cart-Checkout Details</title>
 
     <style media="screen">
@@ -8,6 +8,9 @@
             height: 70px !important;
         }
 
+        .ahome a:hover {
+            color: inherit !important;
+        }
         .form-question {
             display: flex;
             flex-direction: column;
@@ -59,7 +62,7 @@
 <body>
 
 <!--  TOP NAV  -->
-<nav th:replace="partials/navbar :: navbar"></nav>
+<nav th:replace="partials/adnav :: navbar"></nav>
 <div th:replace="partials/contact-modal :: contact-modal"></div>
 
 <div class="m-2 p-5" style="width:100%; background-color: #f4f4f4;">
@@ -109,6 +112,19 @@
     </form>
 </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+​
+<!-- Include the script to convert all dates -->
+<script>
+    // to view the many options for how to display a date, visit: https://momentjs.com/docs/#/displaying/
+    "use strict";
+    const dates = document.querySelectorAll(".date");
+    for (let date of dates) {
+        date.innerText = moment(date.innerText).format("l");
+    }
+</script>
+
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
