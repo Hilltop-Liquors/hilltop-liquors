@@ -160,7 +160,7 @@
             <!--  =============== PRICE ===================== -->
             <div style="margin-top: -2%;">
                 <p style="font-weight: bold; margin-bottom: -.5%">Price: $<span
-                        style="font-weight: bold" th:text="${productType.priceInCents}"></span></p>
+                        style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
 
                 <!--  =============== ADD TO CART ===================== -->
                 <form th:action="@{/Liquor}" th:method="post">
@@ -225,7 +225,7 @@
             <!--  =============== PRICE ===================== -->
             <div style="margin-top: -2%;">
                 <p style="font-weight: bold; margin-bottom: -.5%">Price: $<span
-                        style="font-weight: bold" th:text="${productType.priceInCents}"></span></p>
+                        style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
 
                 <!--  =============== ADD TO CART ===================== -->
                 <form th:action="@{/Liquor}" th:method="post">
@@ -291,7 +291,7 @@
             <!--  =============== PRICE ===================== -->
             <div style="margin-top: -2%;">
                 <p style="font-weight: bold; margin-bottom: -.5%">Price: $<span
-                        style="font-weight: bold" th:text="${productType.priceInCents}"></span></p>
+                        style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
 
                 <!--  =============== ADD TO CART ===================== -->
                 <form th:action="@{/Liquor}" th:method="post">
