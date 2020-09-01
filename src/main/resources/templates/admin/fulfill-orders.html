@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
 <head th:include="partials/admin-navbar :: head">
     <title>Hilltop-Home</title>
 
@@ -42,6 +42,13 @@
         </div>
     </div>
 
+    <div th:if="${param.successDelete}">
+        <div class="alert alert-info"><Span>This Order has been deleted!</span>
+            <br>
+            <a th:href="@{/admin}">Return to Dashboard!</a>
+        </div>
+    </div>
+
     <h1>Orders To Fulfill</h1>
     <!--<div>-->
     <!--    <br>-->
@@ -49,8 +56,8 @@
     <!--    <br>-->
     <!--</div>-->
 
-    <table class="table table-fit table-bordered font-weight-bold text-white">
-        <thead class="text-uppercase">
+    <table class="table table-light table-fit table-bordered font-weight-bold">
+        <thead class="text-uppercase thead-dark">
         <tr>
         <tr>
             <th>Order Id</th>
@@ -73,24 +80,62 @@
             <td th:text="${order.isCurbside}"></td>
 
             <td>
+                <div class="d-flex d-inline m-1 justify-content-center">
                 <form th:action="@{/admin/fulfill/{id}(id=${order.id})}" method="post" th:object="${order}">
                     <button type="submit" value="submit" class="btn btn-warning">Fulfill Order</button>
                 </form>
-            </td>
-            <td>
-                <form th:action="@{/admin/order/delete/{id}(id=${order.id})}" method="post" th:object="${order}">
+<!--                A tag ref. for pulling up modals-->
+<!--                <a class="nav-link mr-1" style="margin-top: 10%;" data-toggle="modal"-->
+<!--                   data-target="#CartModalLong"><i style="font-size: 18px" class="far fa-envelope"></i>-->
+<!--                </a>-->
+<!--                  <a data-toggle="modal" data-target="#deleteModalCenter" class="btn btn-danger">Delete Order</a>-->
+<!--                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModalCenter">-->
+<!--                        Delete Order-->
+<!--                    </button>-->
+                <form th:action="@{/admin/fulfill/delete/{id}(id=${order.id})}" method="post" th:object="${order}">
                     <button type="submit" value="submit" class="btn btn-danger">Delete Order</button>
                 </form>
+                </div>
             </td>
         </tr>
         </tbody>
     </table>
 
+<!--  Modal HTML-->
+
+    <!-- Button trigger modal -->
+<!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModalCenter">-->
+<!--        Launch demo modal-->
+<!--    </button>-->
+
+    <!-- Modal -->
+<!--    <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">-->
+<!--        <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="deleteModalLongTitle">Modal title</h5>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    Are you sure you want to delete order?-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <form th:action="@{/admin/order/delete/{id}(id=${order.id})}" method="post" th:object="${order}">-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" value="submit" class="btn btn-danger">Delete Order</button>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+    <!--    END Modal HTML-->
 
 
 
-
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 ​
 <!-- Include the script to convert all dates -->
@@ -103,9 +148,10 @@
     }
 </script>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<!--<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js'@'1.16.1/dist/umd/popper.min.js}"></script>-->
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
 <footer th:replace="partials/footer :: footer"></footer>
 
 </body>
