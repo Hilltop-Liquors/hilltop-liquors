@@ -179,7 +179,7 @@ public class HomeController {
         cart.add(product);
         request.getSession().setAttribute("cart", cart);
 //        return "search/search";
-        return  "redirect:/Home?success";
+        return  "redirect:/Home?homeSuccess";
     }
 
 
