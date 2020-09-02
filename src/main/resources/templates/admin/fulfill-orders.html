@@ -1,8 +1,10 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<link rel="shortcut icon" type="image/png" href="img/H.png">
+
+<title>Fulfill Orders</title>
 <head th:include="partials/admin-navbar :: head">
-    <title>Hilltop-Home</title>
+
 
     <style>
         nav {
@@ -80,10 +82,11 @@
             <td th:text="${order.isCurbside}"></td>
 
             <td>
-                <div class="d-flex d-inline m-1 justify-content-center">
+                <div class="d-flex d-inline m-1 justify-content-center btn-toolbar">
                 <form th:action="@{/admin/fulfill/{id}(id=${order.id})}" method="post" th:object="${order}">
-                    <button type="submit" value="submit" class="btn btn-warning">Fulfill Order</button>
+                    <button type="submit" value="submit" class="btn-sm btn btn-warning">Fulfill Order</button>
                 </form>
+                    <div class="p-1"></div>
 <!--                A tag ref. for pulling up modals-->
 <!--                <a class="nav-link mr-1" style="margin-top: 10%;" data-toggle="modal"-->
 <!--                   data-target="#CartModalLong"><i style="font-size: 18px" class="far fa-envelope"></i>-->
@@ -93,7 +96,7 @@
 <!--                        Delete Order-->
 <!--                    </button>-->
                 <form th:action="@{/admin/fulfill/delete/{id}(id=${order.id})}" method="post" th:object="${order}">
-                    <button type="submit" value="submit" class="btn btn-danger">Delete Order</button>
+                    <button type="submit" value="submit" class="btn btn-sm btn-danger mr-2">Delete Order</button>
                 </form>
                 </div>
             </td>

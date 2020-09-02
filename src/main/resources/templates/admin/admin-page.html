@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="" lang="en">
+<link rel="shortcut icon" type="image/png" href="img/H.png">
+
+<title>Admin</title>
+
 <head th:include="partials/admin-navbar :: head">
-    <title>Hilltop-Home</title>
 
     <style>
 
@@ -31,7 +34,7 @@
 
 
 <!--                https://codepen.io/ishaansaxena/pen/WoJGRK  -->
-         <div class="container" style="margin-left: 13%;">
+         <div class="container">
              <h1>Welcome to the Admin Page: <span th:text="${user.username}"></span></h1>
                 <h2 class="dash">Dashboard</h2>
             <div class="content d-flex justify-content-center">

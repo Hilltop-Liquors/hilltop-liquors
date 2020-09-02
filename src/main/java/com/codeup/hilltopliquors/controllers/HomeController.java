@@ -55,11 +55,11 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/About")
-    public String showAbout() {
-
-        return "about";
-    }
+//    @GetMapping("/About")
+//    public String showAbout() {
+//
+//        return "about";
+//    }
     @GetMapping("/AboutUs")
     public String showAboutUs() {
 

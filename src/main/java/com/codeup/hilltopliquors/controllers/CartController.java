@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.jar.JarOutputStream;
 
 
 @Controller
@@ -178,6 +179,7 @@ public class CartController {
     }
 
     //    POST MAPPING FOR CONFIRM DETAILS
+    boolean pickupType;
     @PostMapping("/Cart/confirm-details")
     public String saveCheckoutDetails(Model model, @SessionAttribute("cart") List<Product> cart, @SessionAttribute("orderDetails") List<String> orderDetails, String pickUpDate, String isCurbside, String pickupTime, @SessionAttribute("order") Order order) {
         orderDetails.add(pickUpDate);
@@ -187,12 +189,24 @@ public class CartController {
         System.out.println("incard");
 
 //        Null POINTER EXCEPTION
-        boolean pickupType = false;
-        if (isCurbside.equals("on")) {
-            pickupType = true;
-            orderDetails.add(String.valueOf(pickupType));
-        }
+//        boolean pickupType = false;
+//        if (isCurbside.equals("on")) {
+//            pickupType = ;
+//            orderDetails.add(String.valueOf(pickupType));
+//        }
 
+        System.out.println("isCurbside = " + isCurbside);
+        if (isCurbside == null) {
+            pickupType = false;
+            //set iscurbside booolean in order
+
+            orderDetails.add("Pickup: In-Store");
+        } else {
+            pickupType = true;
+
+            orderDetails.add("Pickup: Curbside");
+        }
+        order.setIsCurbside(pickupType);
 
         List<String> titles = new ArrayList<>();
         titles.add("Pickup Date");
@@ -206,13 +220,16 @@ public class CartController {
             total += cartItem.getPriceInCents();
         }
 
-        order.setIsCurbside(pickupType);
+
+        System.out.println("THIS IS THE CURBSIDE BOOLEAN: " + order.getIsCurbside());
+
         order.setTotalInCents(total);
 
 
         System.out.println(orderDetails);
         model.addAttribute("cart", cart);
         model.addAttribute("total", total);
+//        model.addAttribute("pickupType", pickupType);
         return "cart/cart-checkout-receipt";
     }
 
@@ -276,6 +293,7 @@ public class CartController {
 //        Timestamp timestamp = Timestamp.from(instant);
 //        order.setCreatedAt(timestamp);
         order.setUser(authUser);
+
 
 
         orderDao.save(order);

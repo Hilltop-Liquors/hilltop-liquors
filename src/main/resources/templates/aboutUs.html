@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <meta name="cocktailApiKey" th:content="${cocktailApiKey}">
+<link rel="shortcut icon" type="image/png" href="img/H.png">
+
+<title>About US</title>
 <head th:include="partials/head :: head">
 
     <meta charset="UTF-8">
@@ -9,6 +12,9 @@
     <title>About US</title>
 
     <nav th:replace="partials/navbar :: navbar"></nav>
+    <div th:replace="partials/login-modal :: login-modal"></div>
+    <div th:replace="partials/contact-modal :: contact-modal"></div>
+    <div th:replace="partials/event-supply-modal :: event-supply-modal"></div>
 
     <style>
         .aboutUsContainer {
@@ -79,11 +85,11 @@
 </head>
 <body>
 <div class="container p-5 center" style="margin-top:7%;background-color: #f4f4f4;">
-    <div class="row d-flex justify-content-center" style="margin-top: 3%; border-left: 10px solid #400000;">
+    <div class="row d-flex " style="margin-top: 3%; border-left: 10px solid #400000;">
         <div class="col col-md-6">
-            <h1>About us</h1>
-            <h4>Let's break the ice by grabbing a beer and getting to know one another!</h4>
-            <p style="font-size: 14px;">Welcome to Hilltop Liquors! Your number one source for beer, wine & spirits.
+            <h1 class="text-left">About us</h1>
+            <h5 class="text-left">Let's break the ice by grabbing a beer and getting to know one another!</h5>
+            <p style="font-size: 14px;" class="text-left">Welcome to Hilltop Liquors! Your number one source for beer, wine & spirits.
                 We're dedicated to giving
                 you the very best liquor store in Victoria, Tx with a focus on quality products, dependability, customer
                 service and uniqueness.
@@ -164,7 +170,7 @@
     </div>
 
 
-    <h1 class="text-center quicksand p-5" style="color: black; margin-top:3%;">Meet the team!</h1>
+    <h1 class="text-center quicksand p-5" style=" margin-top:3%;">Meet the team!</h1>
     <div class="container aboutUsContainer d-flex justify-content-center">
 
         <div class="card grow move-color-c d-flex justify-content-center shadow" style="width: 18rem;">
@@ -202,10 +208,10 @@
 
         <div style="margin-top: 10%;">
             <h2>We love trying new drinks and we thought you might too!</h2>
-            <h3>Today's: Refresh Recipe:
-                <br><i>Malibu Sunset Cocktail</i></h3>
+            <h5>Today's: Refresh Recipe:
+                <br><i>Malibu Sunset Cocktail</i></h5>
             <div class="api-item">
-                <img class="d-block w-100" src="img/random-drink-api.jpg" alt="daily drink" style="width: 400px; height=400px;">
+                <img class="d-block mx-auto " src="img/random-drink-api.jpg" alt="daily drink" style="width: 400px; height:400px;">
                 <p>Fill a glass with ice cubes</p>
                 <p>Pour the pineapple and Malibu Rum over the ice cubes</p>
                 <p>Pour the grenadine slowly down one side of the glass. *If you pour too quickly, the colors will blend and it won't look as pretty</p>

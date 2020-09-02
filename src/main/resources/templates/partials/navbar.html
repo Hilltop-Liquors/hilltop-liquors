@@ -27,18 +27,21 @@
 
             <!--  =========== ADMIN NAV ============  -->
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/admin">ADMIN<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" style="color:white; font-size: 20px;" href="/admin">Admin<span class="sr-only">(current)</span></a>
                     </li>
-                    <!--                    <a href="/admin/users" ><input type="hidden"></a>-->
-                </div>
+
+
+<!--                    <a href="/admin/users" ><input type="hidden"></a>-->
+                </span>
+
             </sec:authorize>
 
             <!--  =========== SEARCH ============  -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="color:white; font-size: 16px;" th:href="@{/Search}"
-                   id="dropdown01"
+
+                <a class="nav-link dropdown-toggle" style="color:white; font-size: 20px;" th:href="@{/Search}" id="dropdown01"
                    data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Shop Now!</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -53,7 +56,7 @@
 
             <!--  =========== CART ICON ============  -->
             <li class="nav-item active mr-1">
-                <a class="nav-link" th:href="@{/Cart}"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
+                <a style="margin-top: 8%; font-size: 20px" class="nav-link" th:href="@{/Cart}"><i class="fas fa-shopping-cart"></i> <span class="sr-only">(current)</span></a>
             </li>
             <!--            <li class="nav-item active mr-1">-->
             <!--                <a class="nav-link"th:text="${cart.size()}"> <span class="sr-only">(current)</span></a>-->
@@ -79,26 +82,27 @@
             <!--  =========== CONTACT ICON ============  -->
             <li class="nav-item active ml-1" style="margin-top: -.5%">
                 <!--                <a class="nav-link" href="/Contact">Contact <span class="sr-only">(current)</span></a>-->
-                <a class="nav-link mr-1" style="margin-top: 10%;" data-toggle="modal"
-                   data-target="#CartModalLong"><i style="font-size: 18px" class="far fa-envelope"></i>
+                <a class="nav-link mr-1" style="margin-top: 16%;" data-toggle="modal"
+                   data-target="#CartModalLong"><i style="font-size: 20px" class="far fa-envelope"></i>
                 </a>
                 <p></p>
             </li>
             <!--  =========== REGISTER ============  -->
-            <li sec:authorize="isAnonymous()" style="color:white; font-size: 16px;" class="nav-item active mr-1">
+            <li sec:authorize="isAnonymous()" style="color:white; font-size: 18px;" class="nav-item active mr-1">
                 <a class="nav-link" href="/registration">Register <span class="sr-only">(current)</span></a>
             </li>
 
             <!--  =========== LOGIN/LOGOUT ============  -->
             <li class="nav-item mr-1 d-flex d-inline mt-2">
                 <span class="nav-item d-flex d-inline mr-2" sec:authorize="isAuthenticated()">
-                    <a style=" font-size:16px; color:white; text-decoration: none" th:href="@{/Logout}">Logout</a>
-                    <span class="nav-item d-flex d-inline ml-2" style="color:white; font-size:16px;"
-                          th:text="${#authentication.principal.username}"></span>
+
+                    <a style=" font-size:18px; color:white; text-decoration: none" th:href="@{/Logout}">Logout</a>
+                    <span class="nav-item d-flex d-inline ml-2" style="color:white; font-size: 18px;"
+                      th:text="${#authentication.principal.username}"></span>
                 </span>
 
                 <span sec:authorize="isAnonymous()">
-                    <a class="nav-item" style="color: white;" data-toggle="modal"
+                    <a class="nav-item" style="color: white; font-size: 18px" data-toggle="modal"
                        data-target="#exampleModalLong">Login</a>
                 </span>
             </li>
@@ -106,7 +110,7 @@
             <!--  =========== SETTINGS ============  -->
             <li class="nav-item active">
                 <div sec:authorize="isAuthenticated()">
-                    <a class="nav-link" th:href="@{/user/edit}"><i class="fas fa-user-cog"></i> <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="font-size: 16px;" th:href="@{/user/edit}"><i class="fas fa-user-cog"></i> <span class="sr-only">(current)</span></a>
                 </div>
             </li>
         </ul>
