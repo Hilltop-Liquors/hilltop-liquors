@@ -59,6 +59,56 @@
     </div>
 
 
+<!--SHOP-->
+
+<div th:if="${param.success}" class="alert alert-success alert-dismissible ml-5 fade show mt-2" role="alert">
+    <strong>Item has been added to your!
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+
+<div class="shop">
+    <div class="col justify-content-around d-flex text-center mr-auto ml-auto"
+         style="width: 90%; z-index: 1; position: relative;">
+        <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
+        <div th:each="productType : ${products}"
+             class="card col-lg-2  py-3 px-4 mx-2 my-4"
+             style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1); width: 180px;">
+            <div class="m-auto" style="width: 180px; height: 210px !important;">
+                <!--                class="d-inline m-auto"-->
+                <img class="m-auto rounded"
+                     style="width: 180px !important; height: 210px !important;"
+
+                     th:src="${productType.image}" alt="Sorry no image available"/>
+            </div>
+
+            <!--  =============== PRICE ===================== -->
+            <div style="margin-top: -2%;">
+                <p style="font-weight: bold; margin-bottom: 1%; color: black;">$<span
+                        style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
+
+                <!--  =============== ADD TO CART ===================== -->
+                <form th:action="@{/Home}" th:method="post">
+                    <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
+                    <button style="width: 80%;"
+                            class="rounded btn-custom btn-sm p-1 mb-1">Add to Cart
+                    </button>
+                </form>
+                <!--  =============== NAME ===================== -->
+                <div class="d-flex text-center" style="color: black;">
+                    <p th:text="${productType.name}"></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <!--end-->
+    </div>
+</div>
+
     <!--        <div class="communityDiv shopLocal col-md-3 col-sm-3" style="width: 35% !important; margin-left:2.5% !important; margin-right: 2.5% !important;-->
     <!--">-->
     <!--            <h1 style="font-weight: lighter; color: rgba(255,255,255,.1) !important;">Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop-->

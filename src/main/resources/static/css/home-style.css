@@ -59,8 +59,13 @@ img {
     padding: 5%;
     background-color: rgba(0,0,0,.6);
     color: white;
-
 }
+.shop{
+    width: 95%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 
 /*.shopLocal {*/
 /*    background-image: url("../img/shop-local-1.jpg") !important;*/
