@@ -39,12 +39,12 @@ public class SearchController {
         List<Category> categories = catDao.findAll();
         List<Subcategory> subCategories = subCatDao.findAll();
 
-        if (keyword != null) {
-            model.addAttribute("products", productDao.findByKeyWord(keyword));
-            model.addAttribute("keyword", "Search results for: " + keyword);
-        } else {
-            model.addAttribute("products", products);
-        }
+//        if (keyword != null) {
+//            model.addAttribute("products", productDao.findByKeyWord(keyword));
+//            model.addAttribute("keyword", "Search results for: " + keyword);
+//        } else {
+//            model.addAttribute("products", products);
+//        }
 
 //      CATEOGRY TAGS
         List<Product> catProducts = productDao.findAllBySubCategoryCategoryId(catId);
@@ -54,11 +54,10 @@ public class SearchController {
 //        model.addAttribute("productImage", product.)
 
 //        SEARCH BOX
-//        if (keyword != null) {
-//            model.addAttribute("products", productDao.findByKeyWord(keyword));
-//            model.addAttribute("keyword", "Search results for: " + keyword);
-//        }
-        if (catId != null) {
+        if (keyword != null) {
+            model.addAttribute("products", productDao.findByKeyWord(keyword));
+            model.addAttribute("keyword", "Search results for: " + keyword);
+        } else if (catId != null) {
             model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
         } else if (subId != null) {

@@ -73,6 +73,10 @@
                                 style=" text-decoration: none; width: 100%;">Wine
                         </button>
                     </form>
+<!--                   <form class="form-inline mr-1ml-1 my-lg-0" th:action="@{/Search}" method="get">-->
+<!--                    <input id="txtSearch" type="text" name="keyword" placeholder="Search ">-->
+<!--                       &lt;!&ndash;                                <button class="btn btn-dark btn-outline my-2 ml-2 my-sm-0" type="submit">Search</button>&ndash;&gt;-->
+<!--                </form>-->
                  <!--                    <form style="text-decoration: none; color: white;" th:action="@{/Beer}">-->
                  <!--                        <button type="submit" class="rounded-pill m-1 nav-link ml-1 mr-2 btn-custom"-->
                  <!--                                style="text-decoration: none; width: 100%;">Extras-->
@@ -97,7 +101,7 @@
             <!--                <h2 style="font-weight: lighter; font-size: medium;">-->
             <!--                    <span>browse</span> <br> <span>categories</span>-->
             <!--                </h2>-->
-            <!--                <h6 th:text="${keyword}"></h6>-->
+                            <h6 th:text="${keyword}"></h6>
             <!--            </div>-->
             <!--            <div>-->
             <!--                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"-->
@@ -118,7 +122,7 @@
              class="card col-lg-2 col-md-4 col-sm-12 col-xs-12 py-3 px-4 mx-2 my-4"
              style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1); width: 180px;">
             <div class="m-auto" style="width: 180px; height: 210px !important;">
-<!--                class="d-inline m-auto"-->
+                <!--                class="d-inline m-auto"-->
                 <img class="m-auto rounded"
                      style="width: 180px !important; height: 210px !important;"
 
@@ -127,8 +131,8 @@
             <!--  +++++++++++++      INSERT CORRECT TAG   +++++++++++++ -->
             <form th:action="@{/Search}" method="get"
                   style="text-decoration: none; width: 100%; font-size: small;"
-                  class="center d-inline">
-<!--                d-flex ^-->
+                  class="center d-flex d-inline">
+                <!--                d-flex ^-->
                 <!--   ========  PRODUCT-TYPE TAGS  =======        -->
                 <button type="submit"
                         style="color: black; font-size: small; background-color: rgba(255,255,255, 0.1);"
