@@ -1,13 +1,14 @@
 .searchBody{
-    background-image: url("../img/bg-search.jpg") !important;
+    /*background-image: url("../img/bg-search.jpg") !important;*/
     /*background-repeat: no-repeat;*/
     /*background-position: center;*/
-    max-width: 150%;
+    /*max-width: 150%;*/
     /*background-size: cover;*/
+    background-color: white;
 }
 
-.cardShadow:hover{
-    color: #000000;
-    border: 5px solid #400000; /*set the color you want here*/
-    box-shadow: 10px 10px 5px grey;
-}
+/*.cardShadow:hover{*/
+/*    color: #000000;*/
+/*    !*border: 5px solid #400000; !*set the color you want here*!*!*/
+/*    box-shadow: 5px 10px 5px grey;*/
+/*}*/

@@ -36,7 +36,7 @@ public class LiquorController {
     //        LIQUOR
     //        GET ALL POSTS and SEARCH BAR
     @GetMapping("/Liquor")
-    public String getLiquorProducts(Model model, String keyword, Integer catId, Integer subId, Integer productTypeId) {
+    public String getLiquorProducts(Model model, Integer catId, Integer subId, Integer productTypeId) {
 
 //        NAV DISPLAY
         List<Product> products = productDao.findAllBySubCategoryCategoryProductTypeId(2);
@@ -48,10 +48,10 @@ public class LiquorController {
         List<Product> subProducts = productDao.findAllBySubCategoryId(subId);
 
 //        SEARCH BOX
-        if (keyword != null) {
-            model.addAttribute("products", productDao.findByKeyWord(keyword));
-            model.addAttribute("keyword", "Search results for: " + keyword);
-        }
+//        if (keyword != null) {
+//            model.addAttribute("products", productDao.findByKeyWord(keyword));
+//            model.addAttribute("keyword", "Search results for: " + keyword);
+//        }
         if (catId != null) {
             model.addAttribute("catProducts", catProducts);
             model.addAttribute("subProducts", subProducts);
