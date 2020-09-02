@@ -40,23 +40,12 @@ body {
 .storeDiv {
     height: 100%;
     width: 100%;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*width: 110%;*/
-    /*height: 30% !important;*/
-    /*border: 2px solid red;*/
-    /*margin-bottom: 10%;*/
-    /*padding: 0;*/
-    /*margin-right: 0;*/
-    /*position: relative;*/
-    /*top: 40px; !* Header Height *!*/
-    /*bottom: 20px; !* Footer Height *!*/
-    /*width: 100%;*/
+    position: relative;
 }
 
 img {
     background-image: url("../img/search-bg.JPG");
-    height: 100%%;
+    height: 100%;
     width: 100%;
     background-size: cover;
     /*z-index: 1;*/
@@ -64,7 +53,12 @@ img {
 }
 
 .title {
-
+    position: absolute;
+    top:25%;
+    left: 50%;
+    padding: 5px;
+    background-color: rgba(255,255,255,.6);
+    color: black;
 }
 
 /*.shopLocal {*/

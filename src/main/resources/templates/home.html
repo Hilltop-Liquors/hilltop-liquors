@@ -16,7 +16,7 @@
 
 
 </head>
-<body class="homeBody" style="border: 2px solid blue;">
+<body class="homeBody">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div th:replace="partials/login-modal :: login-modal"></div>
 <div th:replace="partials/contact-modal :: contact-modal"></div>
@@ -48,20 +48,13 @@
     </div>
 
     <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
-    <!--    <div class="container divWidth" style="border:2px solid red;">-->
-
-    <!--        <form class="form-inline mr-1ml-1 my-lg-0" th:action="@{/Search}" method="get">-->
-    <!--            <input id="txtSearch" type="text" name="keyword" placeholder="Search ">-->
-    <!--            &lt;!&ndash;            <button class="btn btn-dark btn-outline my-2 ml-2 my-sm-0" type="submit">Search</button>&ndash;&gt;-->
-    <!--        </form>-->
-
 
     <div class="storeDiv">
         <img src="img/search-bg.JPG"
              alt="Sorry no image available"/>
-        <div>
-            <h1 class="title">Hilltop Liquors</h1>
-            <h2 class="title">Beer, Wine, & Spirits</h2>
+        <div class="title">
+            <h1>Hilltop Liquors</h1>
+            <h2>Beer, Wine, & Spirits</h2>
         </div>
     </div>
 
