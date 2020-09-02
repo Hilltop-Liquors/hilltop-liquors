@@ -25,15 +25,10 @@ body {
 
 /*==== CONTACT ====*/
 #section-contact {
-    margin-top: -4% !important;
 }
 
 .contact-form {
     padding-top: 6% !important;
-}
-
-.center {
-    text-align: center !important;
 }
 
 /*===== TOP DIVS =====*/
@@ -63,8 +58,18 @@ img {
 .shop{
     width: 95%;
     margin: auto;
-    overflow-x: hidden;
+    overflow: auto;
     white-space: nowrap;
+}
+
+.shopText{
+    margin-top:5%;
+    font-weight: lighter;
+    color: black;
+}
+
+.shopText h1{
+    font-size: 4em;
 }
 
 .alert{
