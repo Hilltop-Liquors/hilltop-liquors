@@ -23,31 +23,40 @@
 <div th:replace="partials/event-supply-modal :: event-supply-modal"></div>
 
 <!--<div class="container" style="border: 2px solid red;">-->
-    <!--  =========== ORDER SUCCESS PARAM============  -->
-    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Thank you for your order! See you at the top!</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<!--    &lt;!&ndash;  =========== ORDER SUCCESS PARAM============  &ndash;&gt;-->
+<!--    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">-->
+<!--        <strong>Thank you for your order! See you at the top!</strong>-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--&lt;!&ndash;  =========== ON PAGE ORDER SUCCESS ============  &ndash;&gt;-->
+<!--<div th:if="${param.success}" class="alert alert-success alert-dismissible ml-5 fade show mt-2" role="alert">-->
+<!--    <strong>Item has been added to your!-->
+<!--    </strong>-->
+<!--    <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--        <span aria-hidden="true">&times;</span>-->
+<!--    </button>-->
+<!--</div>-->
 
-    <!--  =========== LOGIN ERROR PARAM ============  -->
-    <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Incorrect Login!</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
 
-    <!--  =========== EMAIL SUCCESS PARAM ============  -->
-    <div th:if="${param.emailSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Thank you for contacting us, we'll get in touch ASAP!</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<!--    &lt;!&ndash;  =========== LOGIN ERROR PARAM ============  &ndash;&gt;-->
+<!--    <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--        <strong>Incorrect Login!</strong>-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--    </div>-->
 
-    <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
+<!--    &lt;!&ndash;  =========== EMAIL SUCCESS PARAM ============  &ndash;&gt;-->
+<!--    <div th:if="${param.emailSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">-->
+<!--        <strong>Thank you for contacting us, we'll get in touch ASAP!</strong>-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;  =========== RESPONSIV LANDING DIV BTN ============  &ndash;&gt;-->
 
     <div class="storeDiv">
         <img src="img/search-bg.JPG"
@@ -56,23 +65,53 @@
             <h1  style="font-size: 5em; !important; letter-spacing: .05em;">Hilltop Liquors</h1>
             <h2 style="font-weight: lighter;background-color: rgba(0,0,0,.5)">Beer, Wine, & Spirits</h2>
         </div>
+
+        <!--  =========== ORDER SUCCESS PARAM============  -->
+        <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Thank you for your order! See you at the top!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!--  =========== ON PAGE ORDER SUCCESS ============  -->
+        <div th:if="${param.success}" class="alert alert-success alert-dismissible ml-5 fade show mt-2" role="alert">
+            <strong>Item has been added to your!
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
+        <!--  =========== LOGIN ERROR PARAM ============  -->
+        <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Incorrect Login!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <!--  =========== EMAIL SUCCESS PARAM ============  -->
+        <div th:if="${param.emailSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Thank you for contacting us, we'll get in touch ASAP!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
+
+
     </div>
 
 
 <!--SHOP-->
 
-<div th:if="${param.success}" class="alert alert-success alert-dismissible ml-5 fade show mt-2" role="alert">
-    <strong>Item has been added to your!
-    </strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
 
 
 
 <div class="shop">
-    <div class="col justify-content-around d-flex text-center mr-auto ml-auto"
+    <div class="col justify-content-around d-flex text-center"
          style="width: 90%; z-index: 1; position: relative;">
         <!--   +++++++++++++     INSTERT LOOP VAR   +++++++++++++ -->
         <div th:each="productType : ${products}"
@@ -85,7 +124,6 @@
 
                      th:src="${productType.image}" alt="Sorry no image available"/>
             </div>
-
             <!--  =============== PRICE ===================== -->
             <div style="margin-top: -2%;">
                 <p style="font-weight: bold; margin-bottom: 1%; color: black;">$<span

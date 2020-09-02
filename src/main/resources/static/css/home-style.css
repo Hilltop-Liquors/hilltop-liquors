@@ -66,6 +66,11 @@ img {
     white-space: nowrap;
 }
 
+.alert{
+    position: absolute;
+    top:15%;
+    left:37%;
+}
 
 /*.shopLocal {*/
 /*    background-image: url("../img/shop-local-1.jpg") !important;*/
