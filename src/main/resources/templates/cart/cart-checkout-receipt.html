@@ -62,7 +62,7 @@
     </style>
 
 </head>
-<body>
+<body style="background-color: white!important;">
 
 <!--  TOP NAV  -->
 <nav th:replace="partials/adnav :: navbar"></nav>
@@ -133,7 +133,7 @@
     </div>
     <form th:action="@{/Cart/confirm-details}" th:method="get">
         <input type="hidden">
-        <button class="mr-2 btn btn-secondary float-right" style="text-decoration: none; color:black;">previous</button>
+        <button class="btn btn-secondary float-right" style="text-decoration: none; color:black;">previous</button>
     </form>
 
 </div> <!--  END DIV ROW-->
