@@ -82,7 +82,6 @@
             </button>
         </div>
 
-
         <!--  =========== LOGIN ERROR PARAM ============  -->
         <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Incorrect Login!</strong>
@@ -119,13 +118,13 @@
              style="background-color: rgba(255,255,255, 0.1); border: rgba(225, 255, 255, 0.1); width: 180px;">
             <div class="m-auto" style="width: 180px; height: 210px !important;">
                 <!--                class="d-inline m-auto"-->
-                <img class="m-auto rounded"
+                <img class="m-auto"
                      style="width: 180px !important; height: 210px !important;"
 
                      th:src="${productType.image}" alt="Sorry no image available"/>
             </div>
             <!--  =============== PRICE ===================== -->
-            <div style="margin-top: -2%;">
+            <div style="margin-top: -2%;" class="m-auto">
                 <p style="font-weight: bold; margin-bottom: 1%; color: black;">$<span
                         style="font-weight: bold" th:text="${productType.priceInCents}/100"></span></p>
 
@@ -133,11 +132,11 @@
                 <form th:action="@{/Home}" th:method="post">
                     <input type="hidden" class="form-control" th:value="${productType.id}" name="productId"/>
                     <button style="width: 80%;"
-                            class="rounded btn-custom btn-sm p-1 mb-1">Add to Cart
+                            class="rounded btn-custom btn-sm p-1 mb-1 center">Add to Cart
                     </button>
                 </form>
                 <!--  =============== NAME ===================== -->
-                <div class="d-flex text-center" style="color: black;">
+                <div class="d-flex text-center" style="color: black; width: 170px; contain:content;">
                     <p th:text="${productType.name}"></p>
                     <br>
                 </div>
@@ -147,41 +146,7 @@
     </div>
 </div>
 
-    <!--        <div class="communityDiv shopLocal col-md-3 col-sm-3" style="width: 35% !important; margin-left:2.5% !important; margin-right: 2.5% !important;-->
-    <!--">-->
-    <!--            <h1 style="font-weight: lighter; color: rgba(255,255,255,.1) !important;">Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop-->
-    <!--                Local Shop Local Shop Local-->
-    <!--                Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local Shop Local</h1>-->
-    <!--            <div class="overlay">-->
-    <!--                <img src="../static/img/shop-local-sign.jpg"/>-->
-    <!--                <div class="text">-->
-    <!--                    <h1 style="font-weight: lighter; font-size: 5em;">-->
-    <!--                        <a style="text-decoration: none; color: white;" href="/Liquor">-->
-    <!--                            Shop Local-->
-    <!--                        </a>-->
-    <!--                    </h1>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
 
-    <!--        <div class="communityDiv contactUs col-md-3" style="width: 35% !important; margin-left:2.5% !important; margin-right: 2.5% !important;-->
-    <!--">-->
-    <!--            <h1 style="font-weight: lighter; color: rgba(255,255,255,.1) !important;">Contact Contact Contact Contact Contact Contact Contact Contact Contact-->
-    <!--                Contact Contact-->
-    <!--                Contact Contact Contact Contact Contact Contact Contact Contact Contact Contact Contact Contact</h1>-->
-
-    <!--            <div class="overlay">-->
-    <!--                <div class="text">-->
-    <!--                    <h1 style="font-weight: lighter; font-size: 5em;">-->
-    <!--                        <a style="text-decoration: none; color: white;" href="#section-contact">-->
-    <!--                            Contact-->
-    <!--                        </a>-->
-    <!--                    </h1>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>-->
 
 
     <!-- ========== CONTACT INFO ============-->

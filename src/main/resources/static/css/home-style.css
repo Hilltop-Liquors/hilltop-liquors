@@ -62,7 +62,8 @@ img {
 }
 .shop{
     width: 95%;
-    overflow-x: auto;
+    margin: auto;
+    overflow-x: hidden;
     white-space: nowrap;
 }
 
