@@ -1,10 +1,26 @@
+/*.homeBody {*/
+/*    background-image: url("../img/bg-search.jpg") !important;*/
+/*    min-height: 50%;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
 
-.homeBody {
-    background-image: url("../img/bg-search.jpg") !important;
-    min-height: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 /*==== CONTACT ====*/
@@ -21,63 +37,97 @@
 }
 
 /*===== TOP DIVS =====*/
-.communityDiv {
-    background-image: url("../img/pet_sponser1.JPG");
-    height: 20%;
-    width: 30%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: rgba(255, 255, 255, 0);
-    border-right: 3px solid #400000;
-    border-bottom: 3px solid #400000;
-    box-shadow: 20px 20px 10px grey !important;
-}
-
-.shopLocal{
-     background-image: url("../img/shop-local-1.jpg") !important;
-     background-size: cover !important;
- }
-
-.aboutUs{
-    background-image: url("../img/first-summer-giveaway-winner-2019.jpg") !important;
-    background-size: cover !important;
-}
-
-.contactUs{
-    background-image: url("../img/in-store-wine-rack.jpg") !important;
-    background-size: cover !important;
-}
-
-.communityDiv:hover .overlay{
-    box-shadow: 10px 20px 20px grey;
-    opacity: 1;
-}
-
-.text {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.divWidth{
-    width: 100%;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.storeDiv {
     height: 100%;
     width: 100%;
-    opacity: 0;
-    transition: .7s ease;
-    background-color: #400000;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*width: 110%;*/
+    /*height: 30% !important;*/
+    /*border: 2px solid red;*/
+    /*margin-bottom: 10%;*/
+    /*padding: 0;*/
+    /*margin-right: 0;*/
+    /*position: relative;*/
+    /*top: 40px; !* Header Height *!*/
+    /*bottom: 20px; !* Footer Height *!*/
+    /*width: 100%;*/
 }
+
+img {
+    background-image: url("../img/search-bg.JPG");
+    height: 100%%;
+    width: 100%;
+    background-size: cover;
+    /*z-index: 1;*/
+    background-repeat: no-repeat;
+}
+
+.title {
+
+}
+
+/*.shopLocal {*/
+/*    background-image: url("../img/shop-local-1.jpg") !important;*/
+/*    background-size: cover !important;*/
+/*}*/
+
+/*.aboutUs {*/
+/*    background-image: url("../img/first-summer-giveaway-winner-2019.jpg") !important;*/
+/*    background-size: cover !important;*/
+/*}*/
+
+/*.contactUs {*/
+/*    background-image: url("../img/in-store-wine-rack.jpg") !important;*/
+/*    background-size: cover !important;*/
+/*}*/
+
+/*.communityDiv:hover .overlay {*/
+/*    box-shadow: 10px 20px 20px grey;*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.text {*/
+/*    color: white;*/
+/*    font-size: 20px;*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    -webkit-transform: translate(-50%, -50%);*/
+/*    -ms-transform: translate(-50%, -50%);*/
+/*    transform: translate(-50%, -50%);*/
+/*    text-align: center;*/
+/*}*/
+
+/*.divWidth {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.overlay {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    opacity: 0;*/
+/*    transition: .7s ease;*/
+/*    background-color: #400000;*/
+/*}*/
+
+/*==================*/
+div.new_html_code {
+    width: 150px;
+    height: 100px;
+    min-width: 150px;
+    min-height: 100px;
+    max-width: 200px;
+    max-height: 100px;
+    overflow: hidden;
+    display: block;
+    border: 1px solid red;
+}
+
+
+
