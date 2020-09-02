@@ -58,57 +58,58 @@
 
 <!--    &lt;!&ndash;  =========== RESPONSIV LANDING DIV BTN ============  &ndash;&gt;-->
 
-    <div class="storeDiv">
-        <img src="img/search-bg.JPG"
-             alt="Sorry no image available"/>
-        <div class="title text-center">
-            <h1  style="font-size: 5em; !important; letter-spacing: .05em;">Hilltop Liquors</h1>
-            <h2 style="font-weight: lighter;background-color: rgba(0,0,0,.5)">Beer, Wine, & Spirits</h2>
-        </div>
-
-        <!--  =========== ORDER SUCCESS PARAM============  -->
-        <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Thank you for your order! See you at the top!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <!--  =========== ON PAGE ORDER SUCCESS ============  -->
-        <div th:if="${param.homeSuccess}" class="alert alert-success alert-dismissible ml-5 fade show mt-2" role="alert">
-            <strong>Item has been added to your!
-            </strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <!--  =========== LOGIN ERROR PARAM ============  -->
-        <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Incorrect Login!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <!--  =========== EMAIL SUCCESS PARAM ============  -->
-        <div th:if="${param.emailSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Thank you for contacting us, we'll get in touch ASAP!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
-
-
+<div class="storeDiv">
+    <img src="img/search-bg.JPG"
+         alt="Sorry no image available"/>
+    <div class="title text-center">
+        <h1 style="font-size: 5em; !important; letter-spacing: .05em;">Hilltop Liquors</h1>
+        <h2 style="font-weight: lighter;background-color: rgba(0,0,0,.5)">Beer, Wine, & Spirits</h2>
     </div>
+
+    <!--  =========== ORDER SUCCESS PARAM============  -->
+    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Thank you for your order! See you at the top!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!--  =========== ON PAGE ORDER SUCCESS ============  -->
+    <div th:if="${param.homeSuccess}" class="alert alert-success alert-dismissible ml-5 fade show mt-2" role="alert">
+        <strong>Item has been added to your!
+        </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!--  =========== LOGIN ERROR PARAM ============  -->
+    <div th:if="${param.error}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Incorrect Login!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!--  =========== EMAIL SUCCESS PARAM ============  -->
+    <div th:if="${param.emailSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Thank you for contacting us, we'll get in touch ASAP!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!--  =========== RESPONSIV LANDING DIV BTN ============  -->
+
+
+</div>
 
 
 <!--SHOP-->
 
 <div class="shopText text-center">
     <h1>Shop Local At the Top!</h1>
-    <h5 >PLACE YOUR CURBSIDE OR IN-STORE PICKUP ONLINE TODAY!</h5>
+    <!--    <h5><i>(NEW) </i></h5>-->
+    <h5>PLACE YOUR CURBSIDE OR IN-STORE PICKUP ONLINE TODAY!</h5>
     <p style="font-weight: normal !important;"><i>(payment due upon arrival)</i></p>
 </div>
 
@@ -150,51 +151,50 @@
 </div>
 
 
+<!-- ========== CONTACT INFO ============-->
+<div class="container mb-3 px-5" id="section-contact" style="margin-top: 10%;">
+    <div class="row contact-form d-flex justify-content-center mb-5">
+        <div class="col-lg-6">
+            <a class="about" style=" color: #400000;" href="/AboutUs"><h1>Want to get to know us?</h1></a>
+            <p class="text-align-center lead "><strong>Or contact us?</strong>
+                <br> Would you like to place an order for an upcoming
+                event/party or make a
+                request that we stock a certain drink?<br>We can help!<br>
+                <!--  =========== EVENT SUPPLY BTN ============  -->
+                <br>
+                <button class=" text-align-center btn btn-lg btn-custom" data-toggle="modal"
+                        data-target="#EventModalLong">Ask us about supplying your next event!
+                </button>
+                <br><br><b><strong>Hours of Operation</strong></b><br>Monday-Saturday
+                <br>10am-8:45pm<br><i>Closed Sunday</i></p>
+            <hr>
+
+            <div class="row d-flex text-center d-inline" style="list-style-type: none;">
+                <p class="col-md-3 col-sm-3"><i class="fa fa-map-pin fa-2x"></i><br>
+                    3633 SW Moody St. <br>
+                    Victoria, Texas 77905
+                </p>
+                <p class="col-md-4 col-sm-3">
+                    <i class="fa fa-phone fa-2x"></i><br>
+                    (361) 703-5047
+                </p>
+                <p class="col-md-4 col-sm-3"><i class="fa fa-envelope fa-2x"></i><br>
+                    hilltopliquors@yahoo.com
+                </p>
+            </div>
 
 
-    <!-- ========== CONTACT INFO ============-->
-    <div class="container mb-3 mx-5 px-5 d-flex justify-content-center " id="section-contact" style="margin-top: 10%;">
-        <div class="row contact-form mb-5">
-            <div class="col-lg-6">
-                <h1 class="text-align-center">Contact Us</h1>
-                <p class="text-align-center lead "><strong>Have a question?</strong><br> Want to place an order for an upcoming
-                    event/party or make a
-                    request that we stock a certain drink?<br>We can help!<br>
-                    <!--  =========== EVENT SUPPLY BTN ============  -->
-                    <br>
-                    <button class=" text-align-center btn btn-md btn-custom" data-toggle="modal"
-                            data-target="#EventModalLong">Ask us about supplying your next event!
-                    </button>
-                    <br><br><b><strong>Hours of Operation</strong></b><br>Monday-Saturday
-                    <br>10am-8:45pm<br><i>Closed Sunday</i></p>
-                <hr>
+        </div><!-- /.8 -->
 
-                <div class="row d-flex text-center d-inline" style="list-style-type: none;">
-                    <p class="col-md-3 col-sm-3"><i class="fa fa-map-pin fa-2x"></i><br>
-                        3633 SW Moody St. <br>
-                        Victoria, Texas 77905
-                    </p>
-                    <p class="col-md-4 col-sm-3">
-                        <i class="fa fa-phone fa-2x"></i><br>
-                        (361) 703-5047
-                    </p>
-                    <p class="col-md-4 col-sm-3"><i class="fa fa-envelope fa-2x"></i><br>
-                        hilltopliquors@yahoo.com
-                    </p>
-                </div>
+        <section id="section-map" class="clearfix col-lg-6">
+            <iframe width="100%" height="550"
+                    src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
+                    href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe>
+        </section>
+    </div> <!-- /.row-->
 
-
-            </div><!-- /.8 -->
-
-            <section id="section-map" class="clearfix col-lg-6" style="border-left: 5px solid #400000;">
-                <iframe width="100%" height="550"
-                        src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=3633%20sw%20moody%20victoria%20tx%2077905+(Hilltop%20Liquors)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
-                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
-                        href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe>
-            </section>
-        </div> <!-- /.row-->
-
-    </div>
+</div>
 <!--</div>-->
 <!--============= MAP =============-->
 
