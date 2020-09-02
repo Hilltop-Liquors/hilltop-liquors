@@ -17,6 +17,10 @@
     <div th:replace="partials/event-supply-modal :: event-supply-modal"></div>
 
     <style>
+        .container{
+            margin-top: 5%!important;;
+        }
+
         .aboutUsContainer {
             display: flex;
             flex-direction: row;
@@ -84,12 +88,12 @@
 
 </head>
 <body>
-<div class="container p-5 center" style="margin-top:7%;background-color: #f4f4f4;">
+<div class="container p-5 m-auto" style="background-color: white; ">
     <div class="row d-flex " style="margin-top: 3%; border-left: 10px solid #400000;">
         <div class="col col-md-6">
             <h1 class="text-left">About us</h1>
             <h5 class="text-left">Let's break the ice by grabbing a beer and getting to know one another!</h5>
-            <p style="font-size: 14px;" class="text-left">Welcome to Hilltop Liquors! Your number one source for beer, wine & spirits.
+            <p style="font-size: 14px;" class="text-left">Welcome to Hilltop Liquors!<br> Your number one source for beer, wine & spirits.
                 We're dedicated to giving
                 you the very best liquor store in Victoria, Tx with a focus on quality products, dependability, customer
                 service and uniqueness.
@@ -207,11 +211,11 @@
     </div>
 
         <div style="margin-top: 10%;">
-            <h2>We love trying new drinks and we thought you might too!</h2>
+            <h2 style="font-weight: lighter;">We love trying new drinks and we thought you might too!</h2>
             <h5>Today's: Refresh Recipe:
                 <br><i>Malibu Sunset Cocktail</i></h5>
             <div class="api-item">
-                <img class="d-block mx-auto " src="img/random-drink-api.jpg" alt="daily drink" style="width: 400px; height:400px;">
+                <img class="d-block mx-auto " src="img/random-drink-api.jpg" alt="daily drink" style="width: 350px; height:350px; margin-top: -2%;">
                 <p>Fill a glass with ice cubes</p>
                 <p>Pour the pineapple and Malibu Rum over the ice cubes</p>
                 <p>Pour the grenadine slowly down one side of the glass. *If you pour too quickly, the colors will blend and it won't look as pretty</p>
